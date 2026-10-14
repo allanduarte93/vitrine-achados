@@ -1,0 +1,14 @@
+# Testes em todo push e PR (não publica nada).
+name: Testes
+on: [push, pull_request]
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
+      - run: npm run validar
+      - run: npm run build:exemplo

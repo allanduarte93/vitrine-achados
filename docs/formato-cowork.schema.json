@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pesquisa do Cowork para a Vitrine Achados (formato recomendado)",
+  "description": "O importador também aceita variações (campos em inglês, links por loja no item, uma linha por loja). Nunca inclua avaliações, notas, vendas, descontos ou comissões.",
+  "type": "object",
+  "required": ["produtos"],
+  "properties": {
+    "fonte": { "type": "string", "examples": ["Cowork"] },
+    "dataValidacao": { "type": "string", "format": "date-time", "description": "Data da verificação dos links. Vale para todos os itens sem data própria." },
+    "produtos": {
+      "type": "array",
+      "maxItems": 200,
+      "items": {
+        "type": "object",
+        "required": ["nome", "categoria", "ofertas"],
+        "properties": {
+          "nome": { "type": "string", "minLength": 3, "description": "Nome como no anúncio." },
+          "marca": { "type": "string" },
+          "categoria": { "type": "string", "examples": ["Casa e Cozinha", "Eletrônicos"] },
+          "prioridade": { "type": "integer", "minimum": 1, "maximum": 10, "description": "1 a 10 para os destaques. No máximo 10 produtos com prioridade." },
+          "descricao": { "type": "string", "minLength": 120, "description": "Resumo factual do anúncio (para a página ser indexável)." },
+          "caracteristicas": { "type": "array", "items": { "type": "string" }, "minItems": 3, "description": "Fatos do anúncio. 3 ou mais tornam a página indexável." },
+          "mesmo_produto": { "type": "boolean", "description": "true só se as ofertas das lojas forem exatamente o mesmo item (modelo, tamanho, cor). Libera a comparação de preço." },
+          "ofertas": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["plataforma", "link"],
+              "properties": {
+                "plataforma": { "enum": ["Amazon", "Mercado Livre", "Shopee"] },
+                "link": { "type": "string", "format": "uri", "description": "Link de afiliado gerado no painel oficial (amzn.to ou amazon.com.br?tag=, mercadolivre.com/sec ou meli.la, s.shopee.com.br)." },
+                "validado": { "enum": ["sim", "nao"], "description": "sim apenas se o link foi aberto e leva ao produto certo com a identificação de afiliado." },
+                "validadoEm": { "type": "string", "format": "date-time" },
+                "preco": { "type": ["number", "string"], "description": "Preço visto na loja. Ignorado para Amazon." },
+                "data_preco": { "type": "string", "format": "date-time", "description": "Obrigatório quando houver preço." },
+                "asin": { "type": "string" },
+                "mlb": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

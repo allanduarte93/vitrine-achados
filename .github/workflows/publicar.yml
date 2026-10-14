@@ -1,0 +1,52 @@
+# Publicação no GitHub Pages — SOMENTE MANUAL (Actions → Publicar → Run workflow).
+# Nada é publicado em push. O job falha se testes, validação estrita ou build falharem.
+name: Publicar
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirmar:
+        description: 'Digite PUBLICAR para confirmar a publicação'
+        required: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: ${{ github.event.inputs.confirmar == 'PUBLICAR' }}
+    runs-on: ubuntu-latest
+    env:
+      # URL pública: variável SITE_URL do repositório ou o padrão do GitHub Pages.
+      SITE_URL: ${{ vars.SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
+      AMAZON_TAG: ${{ vars.AMAZON_TAG }}
+      # GitHub Pages não recebe POST: registro de cliques desligado até existir um endpoint.
+      ENDPOINT_CLIQUES: ${{ vars.ENDPOINT_CLIQUES || '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
+      - run: npm run pronto
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

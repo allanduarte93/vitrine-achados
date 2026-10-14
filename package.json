@@ -1,0 +1,22 @@
+{
+  "name": "maquina-afiliados",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Site estático de ofertas com links de afiliado verificados (Amazon, Mercado Livre, Shopee).",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "validar": "node src/cli/validar.mjs",
+    "importar": "node src/cli/importar.mjs",
+    "build": "node src/build.mjs",
+    "build:exemplo": "node src/build.mjs --catalogo data/exemplo/catalogo-exemplo.json --saida dist-exemplo --exemplo",
+    "servir": "node src/server.mjs",
+    "relatorio": "node src/cli/relatorio.mjs",
+    "test": "node --test",
+    "importar:cowork": "node src/cli/importar.mjs entrada/catalogo.json",
+    "pronto": "node src/cli/validar.mjs --estrito"
+  },
+  "license": "UNLICENSED"
+}

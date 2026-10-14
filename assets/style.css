@@ -1,0 +1,68 @@
+:root {
+  --bg: #f7f7f5; --surface: #ffffff; --text: #1c1f23; --muted: #5d6670; --line: #e3e5e8;
+  --brand: #0f766e; --brand-ink: #ffffff; --accent: #134e4a;
+  --amazon: #ff9900; --amazon-ink: #111111; --ml: #ffe600; --ml-ink: #2d3277; --shopee: #ee4d2d; --shopee-ink: #ffffff;
+  --radius: 14px; --shadow: 0 1px 2px rgba(0,0,0,.05), 0 4px 16px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #111417; --surface: #1a1e22; --text: #eef0f2; --muted: #a2abb5; --line: #2b3136; --brand: #2dd4bf; --brand-ink: #062b28; --accent: #99f6e4; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+a { color: var(--brand); }
+.container { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+.pular { position: absolute; left: -999px; } .pular:focus { left: 16px; top: 8px; background: var(--surface); padding: 8px; z-index: 9; }
+.faixa-exemplo { background: #b91c1c; color: #fff; text-align: center; font-weight: 700; padding: 6px; font-size: 14px; }
+.topo { background: var(--surface); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
+.topo-linha { display: flex; align-items: center; gap: 16px; min-height: 56px; }
+.marca { font-weight: 800; font-size: 19px; color: var(--text); text-decoration: none; white-space: nowrap; }
+.nav-categorias { display: flex; gap: 14px; overflow-x: auto; scrollbar-width: none; font-size: 14px; }
+.nav-categorias a { color: var(--muted); text-decoration: none; white-space: nowrap; padding: 6px 0; }
+.nav-categorias a:hover { color: var(--text); }
+.aviso-topo { margin: 0; text-align: center; font-size: 12px; color: var(--muted); padding: 4px 16px; border-top: 1px solid var(--line); }
+main { padding-bottom: 48px; }
+.hero { padding: 36px 0 12px; }
+.hero h1 { font-size: clamp(26px, 5vw, 38px); line-height: 1.15; margin: 0 0 8px; }
+.hero p { color: var(--muted); max-width: 640px; margin: 0; }
+h2 { font-size: 22px; margin: 32px 0 14px; }
+.grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--shadow); }
+.card-link { color: inherit; text-decoration: none; flex: 1; }
+.card h3 { margin: 4px 0 2px; font-size: 16px; line-height: 1.3; }
+.card-cat { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.card-marca { font-size: 13px; color: var(--muted); }
+.card-lojas { display: flex; flex-wrap: wrap; gap: 6px; }
+.selo { font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 16px; border-radius: 10px; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; text-align: center; }
+.btn-sec { background: transparent; color: var(--brand); border: 1.5px solid var(--brand); }
+.btn-amazon { background: var(--amazon); color: var(--amazon-ink); }
+.btn-mercadolivre { background: var(--ml); color: var(--ml-ink); }
+.btn-shopee { background: var(--shopee); color: var(--shopee-ink); }
+.btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.lista-categorias { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.lista-categorias a { display: inline-flex; gap: 8px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; color: var(--text); text-decoration: none; }
+.lista-categorias span { color: var(--muted); font-size: 13px; }
+.trilha { font-size: 14px; color: var(--muted); padding: 18px 0 4px; }
+.trilha a { color: var(--muted); }
+.sub { color: var(--muted); margin-top: 0; }
+.produto { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); margin-top: 8px; }
+.produto h1 { font-size: clamp(22px, 4.5vw, 32px); line-height: 1.2; margin: 6px 0 4px; }
+.lista-ofertas { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.oferta { display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; align-items: center; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.oferta-loja { font-weight: 700; }
+.oferta-preco { grid-column: 1; font-size: 15px; }
+.oferta-preco small { display: block; color: var(--muted); font-size: 12px; }
+.oferta .btn { grid-column: 2; grid-row: 1 / span 2; min-width: 190px; }
+.sem-preco { color: var(--muted); }
+.tag-menor { font-size: 12px; font-weight: 700; color: var(--brand); margin-left: 6px; }
+.aviso-botoes, .nota, .em-verificacao, .fonte { font-size: 13px; color: var(--muted); }
+.pontos li { margin-bottom: 4px; }
+.vazio { background: var(--surface); border: 1px dashed var(--line); border-radius: var(--radius); padding: 20px; color: var(--muted); }
+.rodape { border-top: 1px solid var(--line); background: var(--surface); padding: 24px 0; font-size: 14px; color: var(--muted); }
+.rodape .mini { font-size: 12px; }
+@media (max-width: 560px) {
+  .oferta { grid-template-columns: 1fr; }
+  .oferta .btn { grid-column: 1; grid-row: auto; width: 100%; min-width: 0; }
+  .nav-categorias { display: none; }
+}

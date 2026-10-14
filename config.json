@@ -1,0 +1,13 @@
+{
+  "nomeSite": "Vitrine Achados",
+  "descricaoSite": "Produtos populares da Amazon, Mercado Livre e Shopee com links verificados e comparação entre lojas.",
+  "siteUrl": "https://exemplo.invalid",
+  "idioma": "pt-BR",
+  "afiliados": {
+    "amazonTag": null,
+    "mercadoLivreMattTool": null
+  },
+  "precoValidadeHoras": 24,
+  "endpointCliques": "/api/clique",
+  "contato": null
+}
