@@ -4,15 +4,19 @@ import { mkdtempSync, readFileSync, existsSync, readdirSync, rmSync } from "node
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { validarLinkAfiliado, normalizarLoja } from "../src/lib/links.mjs";
-import { estadoOferta, validarCatalogo, produtoIndexavel } from "../src/lib/catalogo.mjs";
+import { estadoOferta, validarCatalogo, produtoIndexavel, avaliarPublicacao } from "../src/lib/catalogo.mjs";
 import { normalizarPesquisa, mesclarCatalogo } from "../src/lib/importar.mjs";
 import { normalizarClique, agregar } from "../src/lib/cliques.mjs";
 import { build } from "../src/build.mjs";
 import { criarServidor } from "../src/server.mjs";
 
+// Os testes não podem herdar as variáveis do workflow de publicação.
+for (const v of ["SITE_URL", "AMAZON_TAG", "ENDPOINT_CLIQUES"]) delete process.env[v];
+
 const AGORA = new Date("2026-10-14T18:00:00-03:00");
 const CONFIG = { siteUrl: "https://site.test", afiliados: { amazonTag: null }, precoValidadeHoras: 24 };
 const V = { linkVerificado: true, verificadoEm: "2026-10-14" };
+const CFG = "test/fixtures/config-teste.json";
 
 test("links: aceita formatos de afiliado e recusa os demais", () => {
   assert.equal(validarLinkAfiliado("amazon", "https://www.amazon.com.br/dp/B0X?tag=abc-20").ok, true);
@@ -121,7 +125,7 @@ test("cliques: filtra robôs e dados inválidos; agrega por produto e loja", () 
 test("build: HTML indexável sem JS, só ofertas ativas, dados verdadeiros e sitemap correto", () => {
   const saida = mkdtempSync(join(tmpdir(), "vitrine-"));
   try {
-    const r = build({ catalogoPath: "data/exemplo/catalogo-exemplo.json", saida, agora: AGORA });
+    const r = build({ configPath: CFG, catalogoPath: "data/exemplo/catalogo-exemplo.json", saida, agora: AGORA });
     const ler = (rel) => readFileSync(join(saida, rel), "utf8");
     const produtos = readdirSync(join(saida, "produto"));
     assert.equal(produtos.length, 11, "produto sem oferta ativa não vira página");
@@ -171,7 +175,7 @@ test("build: HTML indexável sem JS, só ofertas ativas, dados verdadeiros e sit
 test("build: modo exemplo nunca é indexável", () => {
   const saida = mkdtempSync(join(tmpdir(), "vitrine-ex-"));
   try {
-    const r = build({ catalogoPath: "data/exemplo/catalogo-exemplo.json", saida, exemplo: true, agora: AGORA });
+    const r = build({ configPath: CFG, catalogoPath: "data/exemplo/catalogo-exemplo.json", saida, exemplo: true, agora: AGORA });
     assert.equal(r.indexaveis, 0);
     assert.match(readFileSync(join(saida, "robots.txt"), "utf8"), /Disallow: \//);
     assert.match(readFileSync(join(saida, "index.html"), "utf8"), /noindex/);
@@ -181,13 +185,13 @@ test("build: modo exemplo nunca é indexável", () => {
 });
 
 test("build: catálogo com erro não gera site", () => {
-  assert.throws(() => build({ catalogoPath: "test/fixtures/catalogo-invalido.json", saida: join(tmpdir(), "nao-gera") }), /erro/);
+  assert.throws(() => build({ configPath: CFG, catalogoPath: "test/fixtures/catalogo-invalido.json", saida: join(tmpdir(), "nao-gera") }), /erro/);
 });
 
 test("servidor: recebe clique e redireciona URL sem barra final", async () => {
   const saida = mkdtempSync(join(tmpdir(), "vitrine-srv-"));
   const arquivo = join(saida, "cliques.jsonl");
-  build({ catalogoPath: "data/exemplo/catalogo-exemplo.json", saida, agora: AGORA });
+  build({ configPath: CFG, catalogoPath: "data/exemplo/catalogo-exemplo.json", saida, agora: AGORA });
   const srv = criarServidor({ dist: saida, arquivoCliques: arquivo, produtos: new Set(["produto-exemplo-02-marca-ficticia"]) });
   await new Promise((r) => srv.listen(0, "127.0.0.1", r));
   const base = `http://127.0.0.1:${srv.address().port}`;
@@ -209,7 +213,7 @@ test("build: subcaminho (GitHub Pages) prefixa links internos e mantém canonica
   const saida = mkdtempSync(join(tmpdir(), "vitrine-base-"));
   process.env.SITE_URL = "https://usuario.github.io/vitrine/";
   try {
-    build({ catalogoPath: "data/exemplo/catalogo-exemplo.json", saida, agora: AGORA });
+    build({ configPath: CFG, catalogoPath: "data/exemplo/catalogo-exemplo.json", saida, agora: AGORA });
     const html = readFileSync(join(saida, "produto/produto-exemplo-02-marca-ficticia/index.html"), "utf8");
     assert.match(html, /href="\/vitrine\/assets\/style\.css"/);
     assert.match(html, /href="\/vitrine\/categoria\//);
@@ -220,4 +224,46 @@ test("build: subcaminho (GitHub Pages) prefixa links internos e mantém canonica
     delete process.env.SITE_URL;
     rmSync(saida, { recursive: true, force: true });
   }
+});
+
+test("versão institucional: catálogo vazio gera site legítimo, sem nada comercial", () => {
+  const saida = mkdtempSync(join(tmpdir(), "vitrine-inst-"));
+  process.env.SITE_URL = "https://usuario.github.io/vitrine";
+  try {
+    const r = build({ configPath: CFG, catalogoPath: "data/catalogo.json", saida, agora: AGORA });
+    assert.equal(r.produtosPublicados, 0);
+    for (const pag of ["index.html", "sobre/index.html", "aviso-de-afiliados/index.html", "contato/index.html", "privacidade/index.html", "404.html"]) {
+      const html = readFileSync(join(saida, pag), "utf8");
+      assert.doesNotMatch(html, /data-oferta|btn-amazon|btn-shopee|btn-mercadolivre/, `${pag}: sem botão de compra`);
+      assert.doesNotMatch(html, /R\$\s?\d/, `${pag}: sem preço`);
+      assert.doesNotMatch(html, /Produto Exemplo|Marca Fictícia|fictíci|Rode a importação/i, `${pag}: sem dado fictício nem texto interno`);
+    }
+    assert.ok(!existsSync(join(saida, "produto")) && !existsSync(join(saida, "categoria")));
+    const home = readFileSync(join(saida, "index.html"), "utf8");
+    assert.match(home, /Como funciona/);
+    assert.match(home, /Primeira seleção em preparação/);
+    assert.match(readFileSync(join(saida, "aviso-de-afiliados/index.html"), "utf8"), /Como Associado da Amazon, ganhamos com compras qualificadas/);
+    assert.match(readFileSync(join(saida, "contato/index.html"), "utf8"), /href="https:\/\/exemplo\.invalid\/contato"/);
+    const locs = [...readFileSync(join(saida, "sitemap.xml"), "utf8").matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+    assert.deepEqual(locs.sort(), ["https://usuario.github.io/vitrine/", "https://usuario.github.io/vitrine/aviso-de-afiliados/", "https://usuario.github.io/vitrine/contato/", "https://usuario.github.io/vitrine/sobre/"]);
+  } finally {
+    delete process.env.SITE_URL;
+    rmSync(saida, { recursive: true, force: true });
+  }
+});
+
+test("publicação: institucional liberado; comercial exige tag da Amazon; URL e contato obrigatórios", () => {
+  const base = { siteUrl: "https://usuario.github.io/vitrine", contato: { url: "https://x.test" }, afiliados: { amazonTag: null }, precoValidadeHoras: 24 };
+  const vazio = { produtos: [] };
+  assert.deepEqual(avaliarPublicacao(vazio, base, AGORA).pendencias, []);
+  assert.equal(avaliarPublicacao(vazio, base, AGORA).modo, "institucional");
+  assert.ok(avaliarPublicacao(vazio, { ...base, siteUrl: "https://exemplo.invalid" }, AGORA).pendencias.length);
+  assert.ok(avaliarPublicacao(vazio, { ...base, contato: {} }, AGORA).pendencias.length);
+  const comAmazon = { produtos: [{ id: "a", nome: "Produto A", categoria: "Casa", ofertas: [{ loja: "amazon", url: "https://amzn.to/x", ...V }] }] };
+  const r = avaliarPublicacao(comAmazon, base, AGORA);
+  assert.equal(r.modo, "comercial");
+  assert.ok(r.pendencias.some((p) => /AMAZON_TAG/.test(p)));
+  assert.deepEqual(avaliarPublicacao(comAmazon, { ...base, afiliados: { amazonTag: "abc-20" } }, AGORA).pendencias, []);
+  const soShopee = { produtos: [{ id: "b", nome: "Produto B", categoria: "Casa", ofertas: [{ loja: "shopee", url: "https://s.shopee.com.br/x", ...V }] }] };
+  assert.deepEqual(avaliarPublicacao(soShopee, base, AGORA).pendencias, [], "sem Amazon, a tag não é exigida");
 });

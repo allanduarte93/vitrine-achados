@@ -66,3 +66,9 @@ h2 { font-size: 22px; margin: 32px 0 14px; }
   .oferta .btn { grid-column: 1; grid-row: auto; width: 100%; min-width: 0; }
   .nav-categorias { display: none; }
 }
+.passos, .compromissos { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 18px 18px 38px; margin: 0; box-shadow: var(--shadow); }
+.passos li, .compromissos li { margin: 6px 0; }
+.aviso-preparo { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--brand); border-radius: var(--radius); padding: 4px 20px 8px; margin-top: 20px; }
+.aviso-preparo h2 { margin-top: 16px; }
+main h1 { line-height: 1.2; }
+code { font-size: .9em; }

@@ -41,6 +41,8 @@ export const layout = ({ config, titulo, descricao, caminho, conteudo, jsonld = 
 <meta property="og:url" content="${esc(url)}">
 <meta property="og:locale" content="pt_BR">
 <meta name="theme-color" content="#0f766e">
+${config.verificacao?.google ? `<meta name="google-site-verification" content="${esc(config.verificacao.google)}">` : ""}
+${config.verificacao?.bing ? `<meta name="msvalidate.01" content="${esc(config.verificacao.bing)}">` : ""}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/style.css">
 ${jsonld.map(jsonLd).join("\n")}
@@ -63,7 +65,7 @@ ${conteudo}
 <footer class="rodape">
   <div class="container">
     <p><strong>Aviso de afiliados.</strong> ${esc(AVISO_CURTO)} ${esc(AVISO_AMAZON)} Preços e disponibilidade são definidos pelas lojas e podem mudar a qualquer momento.</p>
-    <nav aria-label="Institucional"><a href="/">Início</a> · <a href="/sobre/">Sobre e aviso de afiliados</a> · <a href="/privacidade/">Privacidade</a></nav>
+    <nav aria-label="Institucional"><a href="/">Início</a> · <a href="/sobre/">Sobre</a> · <a href="/aviso-de-afiliados/">Aviso de afiliados</a> · <a href="/contato/">Contato</a> · <a href="/privacidade/">Privacidade</a></nav>
     <p class="mini">© ${new Date().getFullYear()} ${esc(config.nomeSite)}</p>
   </div>
 </footer>
@@ -86,29 +88,56 @@ export const cardProduto = (p, ativas) => `<article class="card">
   <a class="btn btn-sec" href="/produto/${p.id}/">Ver ofertas</a>
 </article>`;
 
+const COMPROMISSOS = [
+  "Só publicamos ofertas com link de afiliado conferido antes de entrar no site.",
+  "Não exibimos avaliações, notas, números de vendas ou descontos: esses dados ficam na loja.",
+  "Preço só aparece quando foi consultado recentemente, sempre com data. Na Amazon, o preço é sempre conferido na própria loja.",
+  "A comparação entre lojas só é feita quando confirmamos que é o mesmo produto.",
+];
+
+const blocoComoFunciona = () => `<section aria-labelledby="t-como">
+  <h2 id="t-como">Como funciona</h2>
+  <ol class="passos">
+    <li><strong>Selecionamos</strong> produtos populares nas três lojas.</li>
+    <li><strong>Conferimos</strong> o link, o produto e a loja antes de publicar.</li>
+    <li><strong>Você compra</strong> direto na Amazon, no Mercado Livre ou na Shopee, com as garantias e a política de cada loja.</li>
+  </ol>
+</section>
+<section aria-labelledby="t-compromissos">
+  <h2 id="t-compromissos">Nossos compromissos</h2>
+  <ul class="compromissos">${COMPROMISSOS.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>
+</section>`;
+
 export const paginaInicial = ({ config, destaques, categorias, todos }) => {
+  const temProdutos = destaques.length + todos.length > 0;
   const conteudo = `
 <section class="hero">
-  <h1>Produtos populares com links verificados</h1>
+  <h1>${temProdutos ? "Produtos populares com links verificados" : `${esc(config.nomeSite)}: achados da Amazon, do Mercado Livre e da Shopee`}</h1>
   <p>${esc(config.descricaoSite)}</p>
 </section>
 ${destaques.length ? `<section aria-labelledby="t-destaques">
   <h2 id="t-destaques">Destaques</h2>
   <div class="grade">${destaques.map(({ p, ativas }) => cardProduto(p, ativas)).join("")}</div>
 </section>` : ""}
-<section aria-labelledby="t-categorias">
+${categorias.length ? `<section aria-labelledby="t-categorias">
   <h2 id="t-categorias">Categorias</h2>
   <ul class="lista-categorias">${categorias.map((c) => `<li><a href="/categoria/${c.slug}/">${esc(c.nome)} <span>${c.total}</span></a></li>`).join("")}</ul>
-</section>
+</section>` : ""}
 ${todos.length ? `<section aria-labelledby="t-todos">
   <h2 id="t-todos">Todos os produtos</h2>
   <div class="grade">${todos.map(({ p, ativas }) => cardProduto(p, ativas)).join("")}</div>
-</section>` : `<p class="vazio">Nenhum produto com link verificado ainda. Rode a importação do Cowork e o build novamente.</p>`}`;
+</section>` : ""}
+${temProdutos ? "" : `<section class="aviso-preparo" aria-labelledby="t-preparo">
+  <h2 id="t-preparo">Primeira seleção em preparação</h2>
+  <p>Estamos conferindo os links e os anúncios dos primeiros produtos. Eles aparecem aqui assim que cada link for verificado. Não publicamos ofertas sem essa conferência.</p>
+</section>`}
+${blocoComoFunciona()}
+<p class="sub">Saiba mais em <a href="/sobre/">Sobre</a> e no <a href="/aviso-de-afiliados/">aviso de afiliados</a>.</p>`;
   return {
-    titulo: `${config.nomeSite} — produtos populares com links verificados`,
+    titulo: `${config.nomeSite}: produtos populares com links verificados`,
     descricao: config.descricaoSite,
     conteudo,
-    jsonld: [{ "@context": "https://schema.org", "@type": "WebSite", name: config.nomeSite, url: `${config.siteUrl}/` }],
+    jsonld: [{ "@context": "https://schema.org", "@type": "WebSite", name: config.nomeSite, url: `${config.siteUrl}/`, inLanguage: "pt-BR" }],
   };
 };
 
@@ -223,29 +252,60 @@ ${relacionados.length ? `<section aria-labelledby="t-rel"><h2 id="t-rel">Mais em
 };
 
 export const paginaSobre = ({ config }) => ({
-  titulo: `Sobre e aviso de afiliados | ${config.nomeSite}`,
-  descricao: `Como o ${config.nomeSite} funciona e como ganhamos comissão.`,
+  titulo: `Sobre | ${config.nomeSite}`,
+  descricao: `O que é o ${config.nomeSite}, como escolhemos os produtos e como o site se mantém.`,
   conteudo: `<h1>Sobre o ${esc(config.nomeSite)}</h1>
-<p>Reunimos produtos populares da Amazon, do Mercado Livre e da Shopee em um só lugar, com links conferidos antes de entrar no site.</p>
-<h2>Como ganhamos dinheiro</h2>
-<p>${esc(AVISO_CURTO)} ${esc(AVISO_AMAZON)} Também participamos dos programas de afiliados do Mercado Livre e da Shopee.</p>
+<p>O ${esc(config.nomeSite)} reúne produtos populares da Amazon, do Mercado Livre e da Shopee em um só lugar, para ajudar quem já sabe o que quer comprar a encontrar a oferta e a loja certas mais rápido.</p>
 <h2>Como escolhemos os produtos</h2>
-<ul>
-  <li>Só publicamos ofertas com link de afiliado conferido.</li>
-  <li>Não exibimos avaliações, notas ou números de vendas: consulte-os direto na loja.</li>
-  <li>Preços aparecem apenas quando foram consultados recentemente, sempre com data. Na Amazon, o preço é sempre conferido na própria loja.</li>
-  <li>A comparação entre lojas só é feita quando confirmamos que é o mesmo produto.</li>
-</ul>
-<p>Preços, frete e disponibilidade são definidos pelas lojas e podem mudar a qualquer momento.</p>`,
+<ul>${COMPROMISSOS.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>
+<h2>Como o site se mantém</h2>
+<p>Participamos de programas de afiliados. Quando você compra por um link do site, a loja pode nos pagar uma comissão, sem custo extra para você. Detalhes no <a href="/aviso-de-afiliados/">aviso de afiliados</a>.</p>
+<h2>Fale com a gente</h2>
+<p>Encontrou um link quebrado ou uma informação desatualizada? Veja a página de <a href="/contato/">contato</a>.</p>`,
 });
+
+export const paginaAvisoAfiliados = ({ config }) => ({
+  titulo: `Aviso de afiliados | ${config.nomeSite}`,
+  descricao: `Como o ${config.nomeSite} participa dos programas de afiliados da Amazon, do Mercado Livre e da Shopee.`,
+  conteudo: `<h1>Aviso de afiliados</h1>
+<p>${esc(AVISO_CURTO)}</p>
+<p><strong>${esc(AVISO_AMAZON)}</strong></p>
+<p>Também participamos dos programas de afiliados do Mercado Livre e da Shopee.</p>
+<h2>O que isso significa para você</h2>
+<ul>
+  <li>O preço que você paga é o mesmo da loja: a comissão sai da margem da loja, não do seu bolso.</li>
+  <li>Os botões de compra levam direto à página do produto na loja. A compra, o pagamento, a entrega e as trocas são feitos com a loja.</li>
+  <li>A comissão não muda o que publicamos: só entram produtos com link conferido, e não exibimos avaliações, notas ou números de vendas.</li>
+  <li>Preços, frete e disponibilidade são definidos pelas lojas e podem mudar a qualquer momento. Sempre confira na loja antes de finalizar.</li>
+</ul>
+<p>Os links de afiliado ficam marcados no código da página como patrocinados (<code>rel="sponsored"</code>).</p>`,
+});
+
+export const paginaContato = ({ config }) => {
+  const c = config.contato || {};
+  const canais = [
+    c.email ? `<li>E-mail: <a href="mailto:${esc(c.email)}">${esc(c.email)}</a></li>` : "",
+    c.url ? `<li>Mensagem pública: <a href="${esc(c.url)}" rel="noopener">${esc(c.url.replace(/^https?:\/\//, ""))}</a></li>` : "",
+  ].join("");
+  return {
+    titulo: `Contato | ${config.nomeSite}`,
+    descricao: `Como falar com o ${config.nomeSite}.`,
+    conteudo: `<h1>Contato</h1>
+<p>Use os canais abaixo para avisar sobre links quebrados, informações desatualizadas ou para falar sobre parcerias.</p>
+<ul>${canais}</ul>
+<p>Pedidos, pagamentos, entregas e trocas são tratados diretamente com a loja onde a compra foi feita.</p>`,
+  };
+};
 
 export const paginaPrivacidade = ({ config }) => ({
   titulo: `Privacidade | ${config.nomeSite}`,
   descricao: `Política de privacidade do ${config.nomeSite}.`,
   conteudo: `<h1>Privacidade</h1>
-<p>Este site não usa cookies de rastreamento nem pede dados pessoais.</p>
-<p>Quando você clica em um botão de loja, registramos de forma anônima qual produto e qual loja foram clicados, a página de origem e a data. Não guardamos seu IP nem identificadores pessoais. Usamos esses números apenas para saber quais produtos interessam mais.</p>
-<p>Ao seguir para a Amazon, o Mercado Livre ou a Shopee, valem as políticas de privacidade de cada loja.</p>`,
+<p>Este site não usa cookies de rastreamento, não exibe anúncios e não pede dados pessoais.</p>
+${config.endpointCliques
+    ? `<p>Quando você clica em um botão de loja, registramos de forma anônima qual produto e qual loja foram clicados, a página de origem e a data. Não guardamos seu IP nem identificadores pessoais. Usamos esses números apenas para saber quais produtos interessam mais.</p>`
+    : `<p>No momento, o site não registra os cliques dos visitantes.</p>`}
+<p>A hospedagem pode manter registros técnicos de acesso, como em qualquer site. Ao seguir para a Amazon, o Mercado Livre ou a Shopee, valem as políticas de privacidade de cada loja.</p>`,
 });
 
 export const pagina404 = ({ config }) => ({

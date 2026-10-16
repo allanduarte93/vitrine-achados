@@ -156,3 +156,26 @@ export const resumoCatalogo = (catalogo, config, agora = new Date()) => {
     porLoja,
   };
 };
+
+/**
+ * Decide se o site pode ir para o ar.
+ * - Institucional (sem ofertas ativas): exige URL pública real e um canal de contato.
+ * - Comercial: além disso, se houver oferta ativa da Amazon, exige a tag configurada
+ *   (sem ela não dá para garantir que os links são da nossa conta).
+ * Páginas comerciais continuam dependendo de links verificados (regra de estadoOferta).
+ */
+export const avaliarPublicacao = (catalogo, config, agora = new Date()) => {
+  const { erros } = validarCatalogo(catalogo, config, agora);
+  const r = resumoCatalogo(catalogo, config, agora);
+  const modo = r.comOfertaAtiva > 0 ? "comercial" : "institucional";
+  const pendencias = [...erros.map((e) => `catálogo: ${e}`)];
+  const observacoes = [];
+  if (!/^https:\/\//.test(config.siteUrl || "") || /exemplo\.invalid/.test(config.siteUrl)) pendencias.push("siteUrl ainda não é o endereço público real");
+  if (!config.contato?.email && !config.contato?.url) pendencias.push("nenhum canal de contato em config.contato");
+  if ((r.porLoja.amazon?.ativas || 0) > 0 && !config.afiliados?.amazonTag) {
+    pendencias.push("há ofertas da Amazon ativas e a tag de Associado não está configurada (AMAZON_TAG)");
+  }
+  if (modo === "institucional") observacoes.push("versão institucional: nenhuma página de produto ou botão de compra será publicado");
+  else if (r.indexaveis < r.comOfertaAtiva) observacoes.push(`${r.comOfertaAtiva - r.indexaveis} página(s) de produto sairão com noindex por falta de descrição/pontos-chave`);
+  return { modo, pendencias, observacoes, resumo: r };
+};

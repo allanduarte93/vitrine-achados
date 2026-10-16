@@ -79,15 +79,17 @@ Sem `validado`/`verified` **e** sem data (do item ou `dataValidacao` do arquivo)
 
 | Campo | Para quê |
 |---|---|
-| `siteUrl` | URL final, usada em canonical e sitemap. Hoje: `https://exemplo.invalid` |
+| `siteUrl` | URL pública, usada em canonical e sitemap: `https://allanduarte93.github.io/vitrine-achados` |
 | `afiliados.amazonTag` | Tag de Associado. Os links da Amazon com tag diferente são recusados |
 | `afiliados.mercadoLivreMattTool` | Opcional, confere `matt_tool` nos links longos |
 | `precoValidadeHoras` | Idade máxima do preço exibido |
+| `contato` | `email` e/ou `url` exibidos na página de contato (hoje: Issues do repositório) |
+| `verificacao` | Códigos de verificação do Google Search Console (`google`) e do Bing (`bing`), inseridos como meta tag |
 | `endpointCliques` | Para onde o navegador envia cliques. `/api/clique` funciona com `npm run servir`; em hospedagem estática, aponte para um endpoint equivalente, ou deixe vazio para desligar |
 
 ## Testes
 
-`npm test`: 13 testes cobrindo regras de links, ativação de botões, preços, importação, cliques, build (HTML sem JS, sitemap, dados estruturados, subcaminho do GitHub Pages) e servidor.
+`npm test`: 15 testes cobrindo regras de links, ativação de botões, preços, importação, cliques, build (HTML sem JS, sitemap, dados estruturados, subcaminho do GitHub Pages) e servidor.
 
 ## Entrada do Cowork
 
@@ -95,18 +97,17 @@ Coloque a pesquisa em `entrada/catalogo.json` e rode `npm run importar:cowork`. 
 
 ## Publicação gratuita (GitHub Pages), só com autorização
 
-O workflow `.github/workflows/publicar.yml` **só roda manualmente** e exige digitar `PUBLICAR`. Ele roda os testes e o `npm run pronto`, que bloqueia se faltar URL, tag da Amazon ou produtos verificados. Depois faz o build e publica.
+Site: **https://allanduarte93.github.io/vitrine-achados/**
 
-1. No repositório: **Settings → Pages → Source: GitHub Actions**.
-2. **Settings → Secrets and variables → Actions → Variables**:
-   - `AMAZON_TAG` (obrigatório);
-   - `SITE_URL` (opcional; o padrão é `https://<usuario>.github.io/<repositorio>`).
-3. **Actions → Publicar → Run workflow**, digitando `PUBLICAR`.
+O workflow `.github/workflows/publicar.yml` **só roda manualmente** e exige digitar `PUBLICAR`. Ele roda os testes e o `npm run pronto`, depois faz o build e publica.
+
+**Modos (decididos por `npm run pronto`):**
+- **Institucional** (catálogo sem ofertas verificadas): publica início, sobre, aviso de afiliados, contato e privacidade. Exige só URL real e contato. Nenhum produto, preço ou botão de compra.
+- **Comercial** (há ofertas verificadas): publica também categorias e produtos, mas só com links válidos e verificados. Se houver oferta da Amazon ativa, exige a variável `AMAZON_TAG` no repositório.
+
+**Para publicar:** Actions → Publicar → Run workflow → digite `PUBLICAR`.
 
 Observações:
-- O GitHub Pages gratuito exige **repositório público**. Em repositório privado é preciso um plano pago.
-- No GitHub Pages não há servidor, então o registro de cliques fica desligado (`ENDPOINT_CLIQUES` vazio) até existir um endpoint. Com `npm run servir` em qualquer hospedagem Node, ele funciona.
-- Em subcaminho (`usuario.github.io/repositorio`), o `robots.txt` não fica na raiz do domínio. Envie o `sitemap.xml` direto no Google Search Console e no Bing Webmaster.
-- Antes de publicar, cadastre a URL do site como canal no Amazon Associados e nos programas de afiliados do Mercado Livre e da Shopee.
-
-`.github/workflows/testes.yml` roda os testes em todo push, sem publicar nada.
+- O registro de cliques fica desligado no GitHub Pages (sem servidor). A página de privacidade reflete isso automaticamente.
+- O `robots.txt` em subcaminho não fica na raiz do domínio. Envie o `sitemap.xml` direto no Google Search Console e no Bing Webmaster (propriedade do tipo prefixo de URL). Os códigos de verificação vão em `config.verificacao`.
+- `.github/workflows/testes.yml` roda os testes em todo push, sem publicar.

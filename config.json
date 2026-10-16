@@ -1,13 +1,20 @@
 {
   "nomeSite": "Vitrine Achados",
-  "descricaoSite": "Produtos populares da Amazon, Mercado Livre e Shopee com links verificados e comparação entre lojas.",
-  "siteUrl": "https://exemplo.invalid",
+  "descricaoSite": "Produtos populares da Amazon, do Mercado Livre e da Shopee em um só lugar, com links conferidos e comparação entre lojas quando é o mesmo produto.",
+  "siteUrl": "https://allanduarte93.github.io/vitrine-achados",
   "idioma": "pt-BR",
   "afiliados": {
     "amazonTag": null,
     "mercadoLivreMattTool": null
   },
   "precoValidadeHoras": 24,
-  "endpointCliques": "/api/clique",
-  "contato": null
+  "endpointCliques": "",
+  "contato": {
+    "email": null,
+    "url": "https://github.com/allanduarte93/vitrine-achados/issues"
+  },
+  "verificacao": {
+    "google": null,
+    "bing": null
+  }
 }

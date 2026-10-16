@@ -1,3 +1,5 @@
+> **Concluído em 2026-10-16:** projeto publicado em https://github.com/allanduarte93/vitrine-achados. Este guia fica só como referência.
+
 # Transferir para um repositório próprio
 
 Escolha **uma** das opções. Todas preservam todos os arquivos.

@@ -11,7 +11,7 @@ import { mkdirSync, writeFileSync, readFileSync, rmSync, cpSync } from "node:fs"
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { validarCatalogo, ofertasAtivas, produtoIndexavel, slugify, resumoCatalogo } from "./lib/catalogo.mjs";
-import { layout, paginaInicial, paginaCategoria, paginaProduto, paginaSobre, paginaPrivacidade, pagina404 } from "./lib/render.mjs";
+import { layout, paginaInicial, paginaCategoria, paginaProduto, paginaSobre, paginaAvisoAfiliados, paginaContato, paginaPrivacidade, pagina404 } from "./lib/render.mjs";
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -79,6 +79,8 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
     render(`/produto/${x.p.id}/`, paginaProduto({ config, p: x.p, ativas: x.ativas, inativas: x.inativas, relacionados }), x.indexavel);
   });
   render("/sobre/", paginaSobre({ config }));
+  render("/aviso-de-afiliados/", paginaAvisoAfiliados({ config }));
+  render("/contato/", paginaContato({ config }));
   render("/privacidade/", paginaPrivacidade({ config }), false);
   writeFileSync(join(out, "404.html"), comBase(layout({ config, caminho: "/404", indexavel: false, exemplo, categorias: navCats, ...pagina404({ config }) })));
 

@@ -1,0 +1,11 @@
+{
+  "nomeSite": "Vitrine Teste",
+  "descricaoSite": "Configuração usada só nos testes automatizados.",
+  "siteUrl": "https://exemplo.invalid",
+  "idioma": "pt-BR",
+  "afiliados": { "amazonTag": null, "mercadoLivreMattTool": null },
+  "precoValidadeHoras": 24,
+  "endpointCliques": "/api/clique",
+  "contato": { "email": null, "url": "https://exemplo.invalid/contato" },
+  "verificacao": { "google": null, "bing": null }
+}
