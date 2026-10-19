@@ -3,9 +3,23 @@
   "descricaoSite": "Configuração usada só nos testes automatizados.",
   "siteUrl": "https://exemplo.invalid",
   "idioma": "pt-BR",
-  "afiliados": { "amazonTag": null, "mercadoLivreMattTool": null },
+  "afiliados": {
+    "amazonTag": null,
+    "mercadoLivreMattTool": null
+  },
   "precoValidadeHoras": 24,
   "endpointCliques": "/api/clique",
-  "contato": { "email": null, "url": "https://exemplo.invalid/contato" },
-  "verificacao": { "google": null, "bing": null }
+  "contato": {
+    "email": null,
+    "url": "https://exemplo.invalid/contato"
+  },
+  "verificacao": {
+    "google": null,
+    "bing": null
+  },
+  "categoriasVitrine": [
+    "Eletrônicos",
+    "Casa e Cozinha",
+    "Pets"
+  ]
 }

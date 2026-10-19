@@ -11,7 +11,8 @@ import { mkdirSync, writeFileSync, readFileSync, rmSync, cpSync } from "node:fs"
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { validarCatalogo, ofertasAtivas, produtoIndexavel, slugify, resumoCatalogo } from "./lib/catalogo.mjs";
-import { layout, paginaInicial, paginaCategoria, paginaProduto, paginaSobre, paginaAvisoAfiliados, paginaContato, paginaPrivacidade, pagina404 } from "./lib/render.mjs";
+import { layout, paginaInicial, paginaCategoria, paginaProduto, paginaBusca, paginaComoFunciona, paginaSobre, paginaAvisoAfiliados, paginaContato, paginaPrivacidade, pagina404 } from "./lib/render.mjs";
+import { LOJAS } from "./lib/links.mjs";
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -26,7 +27,7 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
   config.siteUrl = String(config.siteUrl || "").replace(/\/+$/, "");
   // Subcaminho (ex.: usuario.github.io/repositorio): prefixa links internos "/...".
   const base = new URL(config.siteUrl).pathname.replace(/\/+$/, "");
-  const comBase = (html) => (base ? html.replace(/(href|src)="\/(?!\/)/g, `$1="${base}/`) : html);
+  const comBase = (html) => (base ? html.replace(/(href|src|action)="\/(?!\/)/g, `$1="${base}/`) : html);
   const catalogo = lerJson(catalogoPath);
   const { erros, avisos } = validarCatalogo(catalogo, config, agora);
   if (erros.length) {
@@ -72,12 +73,14 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
     paginas.push({ caminho, indexavel: indexavel && !exemplo });
   };
 
-  render("/", paginaInicial({ config, destaques: itens.filter((x) => x.p.prioritario).slice(0, 10), categorias, todos: itens.filter((x) => !x.p.prioritario) }));
+  render("/", paginaInicial({ config, destaques: itens.filter((x) => x.p.prioritario).slice(0, 10), categorias, todos: itens.filter((x) => !x.p.prioritario), categoriasPlanejadas: config.categoriasVitrine || [] }));
   categorias.forEach((c) => render(`/categoria/${c.slug}/`, paginaCategoria({ config, categoria: c, itens: c.itens }), c.indexavel));
   itens.forEach((x) => {
     const relacionados = (catMap.get(slugify(x.p.categoria))?.itens || []).filter((r) => r.p.id !== x.p.id).slice(0, 4);
     render(`/produto/${x.p.id}/`, paginaProduto({ config, p: x.p, ativas: x.ativas, inativas: x.inativas, relacionados }), x.indexavel);
   });
+  render("/como-funciona/", paginaComoFunciona({ config }));
+  render("/busca/", paginaBusca({ config }), false);
   render("/sobre/", paginaSobre({ config }));
   render("/aviso-de-afiliados/", paginaAvisoAfiliados({ config }));
   render("/contato/", paginaContato({ config }));
@@ -97,6 +100,19 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
     exemplo ? "User-agent: *\nDisallow: /\n" : `User-agent: *\nAllow: /\n\nSitemap: ${config.siteUrl}/sitemap.xml\n`
   );
   cpSync(resolve(RAIZ, "assets"), join(out, "assets"), { recursive: true });
+  const indice = itens.map(({ p, ativas }) => {
+    const comPreco = ativas.filter((o) => o.estado.mostrarPreco);
+    return {
+      id: p.id,
+      nome: p.nome,
+      marca: p.marca || "",
+      categoria: p.categoria,
+      lojas: ativas.map((o) => LOJAS[o.loja].nome),
+      preco: comPreco.length ? Math.min(...comPreco.map((o) => o.preco)) : null,
+      url: `${base}/produto/${p.id}/`,
+    };
+  });
+  writeFileSync(join(out, "busca.json"), JSON.stringify({ base, produtos: indice }));
 
   return {
     avisos,

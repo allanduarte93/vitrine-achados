@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 64" role="img" aria-label="Vitrine Achados">
+  <g transform="translate(4 8)">
+  <rect x="2" y="2" width="44" height="44" rx="13" fill="#FF5A1F"/>
+  <path d="M9 13.5h30v4.2a3.75 3.75 0 0 1-7.5 0 3.75 3.75 0 0 1-7.5 0 3.75 3.75 0 0 1-7.5 0 3.75 3.75 0 0 1-7.5 0v-4.2Z" fill="#fff"/>
+  <path d="M16.5 13.5v4.2a3.75 3.75 0 0 1-7.5 0v-4.2M31.5 13.5v4.2a3.75 3.75 0 0 0 7.5 0v-4.2" fill="#FFD3C2"/>
+  <path d="M15.5 30.5 21.5 36.5 33 25" fill="none" stroke="#fff" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+  <text x="64" y="34" font-family="Plus Jakarta Sans, Arial, sans-serif" font-weight="800" font-size="30" fill="#14215A" letter-spacing="-0.9">vitrine</text>
+  <text x="65" y="54" font-family="Plus Jakarta Sans, Arial, sans-serif" font-weight="700" font-size="14" fill="#C2410C" letter-spacing="2.4">ACHADOS</text>
+</svg>

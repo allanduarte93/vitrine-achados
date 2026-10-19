@@ -16,5 +16,17 @@
   "verificacao": {
     "google": null,
     "bing": null
-  }
+  },
+  "categoriasVitrine": [
+    "Eletrônicos",
+    "Casa e Cozinha",
+    "Beleza e Cuidados",
+    "Saúde e Bem-estar",
+    "Esporte e Lazer",
+    "Ferramentas",
+    "Bebês e Infantil",
+    "Pets",
+    "Games",
+    "Informática"
+  ]
 }

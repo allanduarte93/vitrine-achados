@@ -232,7 +232,7 @@ test("versão institucional: catálogo vazio gera site legítimo, sem nada comer
   try {
     const r = build({ configPath: CFG, catalogoPath: "data/catalogo.json", saida, agora: AGORA });
     assert.equal(r.produtosPublicados, 0);
-    for (const pag of ["index.html", "sobre/index.html", "aviso-de-afiliados/index.html", "contato/index.html", "privacidade/index.html", "404.html"]) {
+    for (const pag of ["index.html", "sobre/index.html", "como-funciona/index.html", "busca/index.html", "aviso-de-afiliados/index.html", "contato/index.html", "privacidade/index.html", "404.html"]) {
       const html = readFileSync(join(saida, pag), "utf8");
       assert.doesNotMatch(html, /data-oferta|btn-amazon|btn-shopee|btn-mercadolivre/, `${pag}: sem botão de compra`);
       assert.doesNotMatch(html, /R\$\s?\d/, `${pag}: sem preço`);
@@ -241,11 +241,19 @@ test("versão institucional: catálogo vazio gera site legítimo, sem nada comer
     assert.ok(!existsSync(join(saida, "produto")) && !existsSync(join(saida, "categoria")));
     const home = readFileSync(join(saida, "index.html"), "utf8");
     assert.match(home, /Como funciona/);
-    assert.match(home, /Primeira seleção em preparação/);
+    assert.match(home, /Vitrine em curadoria/);
+    assert.match(home, /Categorias populares/);
+    assert.doesNotMatch(home, /href="[^"]*\/categoria\//, "categoria planejada não vira link sem produtos");
+    assert.match(home, /Em curadoria/);
+    assert.match(home, /Exemplo ilustrativo/);
+    assert.match(home, /<meta property="og:image" content="https:\/\/usuario\.github\.io\/vitrine\/assets\/og-image\.png">/);
+    assert.deepEqual(JSON.parse(readFileSync(join(saida, "busca.json"), "utf8")).produtos, []);
+    assert.ok(existsSync(join(saida, "como-funciona/index.html")) && existsSync(join(saida, "busca/index.html")));
+    for (const f of ["assets/og-image.png", "assets/icon-512.png", "assets/favicon.svg", "assets/fonts/plus-jakarta-sans-latin-800-normal.woff2"]) assert.ok(existsSync(join(saida, f)), f);
     assert.match(readFileSync(join(saida, "aviso-de-afiliados/index.html"), "utf8"), /Como Associado da Amazon, ganhamos com compras qualificadas/);
     assert.match(readFileSync(join(saida, "contato/index.html"), "utf8"), /href="https:\/\/exemplo\.invalid\/contato"/);
     const locs = [...readFileSync(join(saida, "sitemap.xml"), "utf8").matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-    assert.deepEqual(locs.sort(), ["https://usuario.github.io/vitrine/", "https://usuario.github.io/vitrine/aviso-de-afiliados/", "https://usuario.github.io/vitrine/contato/", "https://usuario.github.io/vitrine/sobre/"]);
+    assert.deepEqual(locs.sort(), ["https://usuario.github.io/vitrine/", "https://usuario.github.io/vitrine/aviso-de-afiliados/", "https://usuario.github.io/vitrine/como-funciona/", "https://usuario.github.io/vitrine/contato/", "https://usuario.github.io/vitrine/sobre/"]);
   } finally {
     delete process.env.SITE_URL;
     rmSync(saida, { recursive: true, force: true });
@@ -266,4 +274,22 @@ test("publicação: institucional liberado; comercial exige tag da Amazon; URL e
   assert.deepEqual(avaliarPublicacao(comAmazon, { ...base, afiliados: { amazonTag: "abc-20" } }, AGORA).pendencias, []);
   const soShopee = { produtos: [{ id: "b", nome: "Produto B", categoria: "Casa", ofertas: [{ loja: "shopee", url: "https://s.shopee.com.br/x", ...V }] }] };
   assert.deepEqual(avaliarPublicacao(soShopee, base, AGORA).pendencias, [], "sem Amazon, a tag não é exigida");
+});
+
+test("busca: índice só com produtos publicados e URLs com subcaminho", () => {
+  const saida = mkdtempSync(join(tmpdir(), "vitrine-busca-"));
+  process.env.SITE_URL = "https://usuario.github.io/vitrine";
+  try {
+    build({ configPath: CFG, catalogoPath: "data/exemplo/catalogo-exemplo.json", saida, agora: AGORA });
+    const { produtos } = JSON.parse(readFileSync(join(saida, "busca.json"), "utf8"));
+    assert.equal(produtos.length, 11);
+    assert.ok(produtos.every((p) => p.url.startsWith("/vitrine/produto/")));
+    assert.ok(!produtos.some((p) => p.id.includes("exemplo-06")), "produto sem oferta ativa fica fora da busca");
+    const cat = readFileSync(join(saida, "categoria/eletronicos/index.html"), "utf8");
+    assert.match(cat, /data-filtros/);
+    assert.match(cat, /<form class="busca" action="\/vitrine\/busca\/"/);
+  } finally {
+    delete process.env.SITE_URL;
+    rmSync(saida, { recursive: true, force: true });
+  }
 });

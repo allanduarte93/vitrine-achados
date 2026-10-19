@@ -89,7 +89,17 @@ Sem `validado`/`verified` **e** sem data (do item ou `dataValidacao` do arquivo)
 
 ## Testes
 
-`npm test`: 15 testes cobrindo regras de links, ativação de botões, preços, importação, cliques, build (HTML sem JS, sitemap, dados estruturados, subcaminho do GitHub Pages) e servidor.
+`npm test`: 16 testes cobrindo regras de links, ativação de botões, preços, importação, cliques, build (HTML sem JS, sitemap, dados estruturados, subcaminho do GitHub Pages) e servidor.
+
+## Identidade visual
+
+- **Marca:** etiqueta laranja com toldo de vitrine e visto de "conferido" (SVG original em `src/lib/icones.mjs`; arquivos `assets/favicon.svg`, `assets/logo.svg`).
+- **Paleta:** azul-noite `#14215a` (confiança), laranja vitrine `#ff5a1f` (marca) e `#c2410c` (botões, contraste 5,2:1), verde conferido `#0f7a4a`. Botões de loja nas cores de cada loja, sempre com o nome da loja escrito.
+- **Tipografia:** Plus Jakarta Sans (licença SIL OFL 1.1, em `assets/fonts/OFL.txt`), hospedada no próprio site.
+- **Ilustrações e ícones:** SVG originais (vitrine do banner, ícones de categoria e interface). Nenhuma foto genérica se passa por produto.
+- **Imagens de produto:** só aparecem com `imagem` + `imagemPermitida: true` no catálogo (caminho `/assets/produtos/arquivo.webp` ou URL autorizada pela loja/fabricante). Sem imagem autorizada, o card usa o ícone da categoria.
+- **PNGs de marca** (ícones e `og-image.png`): `node scripts/gerar-imagens.mjs` (precisa de Playwright/Chromium na máquina; os PNGs gerados ficam versionados).
+- **Categorias da home:** `config.categoriasVitrine`. Sem produtos, elas aparecem como "Em curadoria" e sem link; com produtos, viram links com contagem.
 
 ## Entrada do Cowork
 
