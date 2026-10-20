@@ -24,11 +24,14 @@ const DOMINIO = { amazon: /(^|\.)amazon\.com\.br$/, mercadolivre: /(^|\.)mercado
 export const PRODUTO = {
   amazon: /\/(dp|gp\/product)\/[A-Z0-9]{10}/i,
   mercadolivre: /(\/p\/MLB\d+|MLB-?\d+)/i,
-  shopee: /(-i\.\d+\.\d+|\/product\/\d+\/\d+)/i,
+  shopee: /(-i\.\d+\.\d+|\/(product|opaanlp)\/\d+\/\d+)/i,
 };
+// Página social do programa "Afiliados e Criadores" do ML: o produto vem cifrado em `ref`,
+// então a confirmação é pelo identificador MLB no conteúdo da página.
+const ML_SOCIAL = /^\/social\/[\w-]+/i;
 const RUIM = /\/(s|search|busca|lista)(\/|\?|$)|[?&](k|keyword|q)=|\/(login|signin|ap\/signin|jms\/|account)/i;
 
-export const classificar = (loja, urlFinal, status) => {
+export const classificar = (loja, urlFinal, status, { corpo = "", identificador = "" } = {}) => {
   // Lojas costumam barrar robôs de datacenter: isso não prova que o link está quebrado.
   if ([403, 429, 503].includes(status)) return { ok: null, motivo: `inconclusivo: a loja bloqueou a verificação automática (HTTP ${status}); confira abrindo o link` };
   if (!status || status >= 400) return { ok: false, motivo: `HTTP ${status || "sem resposta"}` };
@@ -36,6 +39,12 @@ export const classificar = (loja, urlFinal, status) => {
   try { u = new URL(urlFinal); } catch { return { ok: false, motivo: "URL final inválida" }; }
   if (!DOMINIO[loja]?.test(u.hostname)) return { ok: false, motivo: `destino fora da loja (${u.hostname})` };
   if (RUIM.test(u.pathname + u.search) && !PRODUTO[loja].test(u.pathname)) return { ok: false, motivo: "cai em busca/login, não no produto" };
+  if (loja === "mercadolivre" && ML_SOCIAL.test(u.pathname)) {
+    if (!u.searchParams.get("matt_tool")) return { ok: false, motivo: "página social do ML sem matt_tool (rastreamento perdido)" };
+    const id = String(identificador).replace(/^MLB-?/i, "");
+    if (id && new RegExp(`MLB-?${id}(?!\\d)`, "i").test(corpo)) return { ok: true };
+    return { ok: null, motivo: "inconclusivo: página social de afiliado do ML com matt_tool; produto não confirmado no conteúdo (confira abrindo o link)" };
+  }
   if (!PRODUTO[loja].test(u.pathname + u.search)) return { ok: false, motivo: "destino não parece página de produto" };
   return { ok: true };
 };
@@ -54,7 +63,8 @@ const seguir = async (url) => {
         atual = new URL(loc, atual).toString();
         continue;
       }
-      return { status: r.status, final: atual, cadeia };
+      const corpo = r.status === 200 ? (await r.text()).slice(0, 2_000_000) : "";
+      return { status: r.status, final: atual, cadeia, corpo };
     } catch (e) {
       cadeia.push(`ERRO ${atual}: ${e.cause?.code || e.name}`);
       return { status: 0, final: atual, cadeia };
@@ -76,7 +86,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   let inconclusivos = 0;
   for (const { p, o } of alvos) {
     const r = await seguir(o.url);
-    const c = classificar(o.loja, r.final, r.status);
+    const c = classificar(o.loja, r.final, r.status, { corpo: r.corpo, identificador: o.identificador });
     if (c.ok === false) falhas++;
     if (c.ok === null) inconclusivos++;
     linhas.push({ produto: p.id, loja: o.loja, ok: c.ok, motivo: c.motivo || "", final: r.final, cadeia: r.cadeia });

@@ -345,6 +345,12 @@ test("verificador de links: aceita página de produto da loja certa e recusa bus
   assert.equal(classificar("mercadolivre", "https://lista.mercadolivre.com.br/fone", 200).ok, false);
   assert.equal(classificar("shopee", "https://shopee.com.br/Fone-X-i.123456.7891011", 200).ok, true);
   assert.equal(classificar("shopee", "https://shopee.com.br/search?keyword=fone", 200).ok, false);
+  assert.equal(classificar("shopee", "https://shopee.com.br/opaanlp/419739190/23694205612?utm_source=an_1", 200).ok, true, "link curto de afiliado da Shopee");
+  const social = "https://www.mercadolivre.com.br/social/ad123?matt_word=ad123&matt_tool=68963796&ref=XYZ";
+  assert.equal(classificar("mercadolivre", social, 200, { corpo: '<a href="/p/MLB24326256">', identificador: "MLB24326256" }).ok, true, "social do ML com o produto na página");
+  assert.equal(classificar("mercadolivre", social, 200, { corpo: "<div id=root></div>", identificador: "MLB24326256" }).ok, null, "produto não visível: inconclusivo");
+  assert.equal(classificar("mercadolivre", social, 200, { corpo: "MLB243262567", identificador: "MLB24326256" }).ok, null, "não confunde com outro MLB");
+  assert.equal(classificar("mercadolivre", "https://www.mercadolivre.com.br/social/ad123?ref=XYZ", 200).ok, false, "sem matt_tool é falha");
   assert.equal(classificar("shopee", "https://golpe.com/shopee.com.br/x-i.1.2", 200).ok, false);
   assert.equal(classificar("shopee", "https://shopee.com.br/x-i.1.2", 0).ok, false, "sem resposta é falha");
 });
