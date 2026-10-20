@@ -39,6 +39,10 @@ export const classificar = (loja, urlFinal, status, { corpo = "", identificador 
   let u;
   try { u = new URL(urlFinal); } catch { return { ok: false, motivo: "URL final inválida" }; }
   if (!DOMINIO[loja]?.test(u.hostname)) return { ok: false, motivo: `destino fora da loja (${u.hostname})` };
+  // Página de captcha/robô da Amazon (às vezes com HTTP 200): não prova nada sobre o link.
+  if (loja === "amazon" && (/\/errors\/validateCaptcha/i.test(u.pathname) || /validateCaptcha|api-services-support@amazon\.com/i.test(corpo))) {
+    return { ok: null, motivo: "inconclusivo: a Amazon pediu captcha à verificação automática; confira abrindo o link" };
+  }
   if (RUIM.test(u.pathname + u.search) && !PRODUTO[loja].test(u.pathname)) return { ok: false, motivo: "cai em busca/login, não no produto" };
   if (loja === "mercadolivre" && ML_SOCIAL.test(u.pathname)) {
     if (!u.searchParams.get("matt_tool")) return { ok: false, motivo: "página social do ML sem matt_tool (rastreamento perdido)" };

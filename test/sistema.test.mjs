@@ -13,7 +13,7 @@ import { canonicalizarCategoria } from "../src/lib/categorias.mjs";
 import { criarServidor } from "../src/server.mjs";
 
 // Os testes não podem herdar as variáveis do workflow de publicação.
-for (const v of ["SITE_URL", "AMAZON_TAG", "ENDPOINT_CLIQUES"]) delete process.env[v];
+for (const v of ["SITE_URL", "AMAZON_TAG", "ENDPOINT_CLIQUES", "SOMENTE_CONFIRMADOS"]) delete process.env[v];
 
 const AGORA = new Date("2026-10-14T18:00:00-03:00");
 const CONFIG = { siteUrl: "https://site.test", afiliados: { amazonTag: null }, precoValidadeHoras: 24 };
@@ -340,6 +340,10 @@ test("verificador de links: aceita página de produto da loja certa e recusa bus
   assert.equal(classificar("amazon", "https://www.amazon.com.br/ap/signin?x=1", 200).ok, false);
   assert.equal(classificar("amazon", "https://www.amazon.com.br/dp/B0ABCDEFGH", 404).ok, false);
   assert.equal(classificar("amazon", "https://www.amazon.com.br/dp/B0ABCDEFGH", 503).ok, null, "bloqueio anti-robô é inconclusivo, não falha");
+  assert.equal(classificar("amazon", "https://www.amazon.com.br/errors/validateCaptcha?amzn=x", 200).ok, null, "captcha da Amazon é inconclusivo");
+  assert.equal(classificar("amazon", "https://www.amazon.com.br/dp/B0ABCDEFGH?tag=x-20", 200, { corpo: "<form action=\"/errors/validateCaptcha\">" }).ok, null, "captcha com 200 na URL do produto também");
+  assert.equal(classificar("amazon", "https://www.amazon.com.br/s?k=fone", 200, { corpo: "resultados" }).ok, false, "link que cai na busca continua falha");
+  assert.equal(classificar("amazon", "https://golpe.com/errors/validateCaptcha", 200).ok, false, "captcha fora do domínio da Amazon não salva o link");
   assert.equal(classificar("mercadolivre", "https://www.mercadolivre.com.br/fone-x/p/MLB12345678", 200).ok, true);
   assert.equal(classificar("mercadolivre", "https://produto.mercadolivre.com.br/MLB-1234567-fone-_JM", 200).ok, true);
   assert.equal(classificar("mercadolivre", "https://lista.mercadolivre.com.br/fone", 200).ok, false);
@@ -464,6 +468,33 @@ test("publicação só com lojas confirmadas (SOMENTE_CONFIRMADOS=1)", () => {
     const catalogo = JSON.parse(readFileSync("data/exemplo/catalogo-exemplo.json", "utf8"));
     const recorte = somenteConfirmadas(catalogo, JSON.parse(readFileSync(cfg, "utf8")));
     assert.equal(avaliarPublicacao(recorte, { ...JSON.parse(readFileSync(cfg, "utf8")), siteUrl: "https://a.b" }, AGORA).pendencias.filter((p) => /não está confirmada/.test(p)).length, 0);
+  } finally {
+    delete process.env.SOMENTE_CONFIRMADOS;
+    rmSync(saida, { recursive: true, force: true });
+  }
+});
+
+test("meta descrição (produto, categoria, home, busca) cita só as lojas publicadas", () => {
+  const saida = mkdtempSync(join(tmpdir(), "vitrine-meta-"));
+  const cfg = join(saida, "config.json");
+  const base = JSON.parse(readFileSync("config.json", "utf8"));
+  writeFileSync(cfg, JSON.stringify({ ...base, siteUrl: "https://exemplo.invalid" }));
+  process.env.SOMENTE_CONFIRMADOS = "1";
+  try {
+    const r = build({ configPath: cfg, catalogoPath: "data/catalogo.json", saida: join(saida, "dist"), agora: new Date("2026-10-20T16:00:00-03:00") });
+    const conf = Object.entries(base.afiliados.programasConfirmados).filter(([, v]) => v).map(([l]) => l);
+    const esperado = JSON.parse(readFileSync("data/catalogo.json", "utf8")).produtos.filter((p) => p.ofertas.some((o) => conf.includes(o.loja))).length;
+    assert.equal(r.produtosPublicados, esperado);
+    const dist = join(saida, "dist");
+    const paginas = [join(dist, "index.html"), join(dist, "busca", "index.html"), ...readdirSync(join(dist, "produto")).map((d) => join(dist, "produto", d, "index.html")), ...readdirSync(join(dist, "categoria")).map((d) => join(dist, "categoria", d, "index.html"))];
+    for (const f of paginas) {
+      const html = readFileSync(f, "utf8");
+      const meta = (html.match(/<meta name="description" content="([^"]*)"/) || [])[1] || "";
+      assert.ok(meta.replace(/&(#\d+|\w+);/g, "x").length <= 160, `meta curta: ${meta}`);
+      if (!conf.includes("shopee")) assert.doesNotMatch(meta, /Shopee/, f);
+      if (!conf.includes("mercadolivre")) assert.doesNotMatch(meta, /Mercado Livre/, f);
+      assert.doesNotMatch(html, /s\.shopee\.com\.br|meli\.la/, "loja não confirmada fora do HTML publicado");
+    }
   } finally {
     delete process.env.SOMENTE_CONFIRMADOS;
     rmSync(saida, { recursive: true, force: true });

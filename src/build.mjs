@@ -91,7 +91,8 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
     render(`/produto/${x.p.id}/`, paginaProduto({ config, p: x.p, ativas: x.ativas, inativas: x.inativas, relacionados }), x.indexavel);
   });
   render("/como-funciona/", paginaComoFunciona({ config }));
-  render("/busca/", paginaBusca({ config }), false);
+  const lojasPublicadas = [...new Set(itens.flatMap((x) => x.ativas.map((o) => o.loja)))];
+  render("/busca/", paginaBusca({ config, ...(lojasPublicadas.length ? { lojas: lojasPublicadas } : {}) }), false);
   render("/sobre/", paginaSobre({ config }));
   render("/aviso-de-afiliados/", paginaAvisoAfiliados({ config }));
   render("/contato/", paginaContato({ config }));

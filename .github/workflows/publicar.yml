@@ -28,19 +28,25 @@ jobs:
       AMAZON_TAG: ${{ vars.AMAZON_TAG }}
       # GitHub Pages não recebe POST: registro de cliques desligado até existir um endpoint.
       ENDPOINT_CLIQUES: ${{ vars.ENDPOINT_CLIQUES || '' }}
-      # Publica só as ofertas das lojas com participação confirmada em config.json
-      # (afiliados.programasConfirmados); as demais entram quando forem confirmadas.
-      SOMENTE_CONFIRMADOS: "1"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      # Testes sem o recorte: usam catálogos de exemplo e o catálogo completo.
       - run: npm test
+      # Daqui em diante, só ofertas das lojas com participação confirmada em config.json
+      # (afiliados.programasConfirmados); as demais entram quando forem confirmadas.
       - run: npm run pronto
-      # Abre cada link de compra ativo e confere se cai na página do produto (catálogo vazio: nada a verificar).
+        env:
+          SOMENTE_CONFIRMADOS: "1"
+      # Abre cada link de compra publicado e confere se cai na página do produto.
       - run: npm run checar-links
+        env:
+          SOMENTE_CONFIRMADOS: "1"
       - run: npm run build
+        env:
+          SOMENTE_CONFIRMADOS: "1"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

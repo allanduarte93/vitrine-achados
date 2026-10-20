@@ -303,8 +303,8 @@ ${secaoVitrine}
 </div></div></section>`;
 
   return {
-    titulo: `${config.nomeSite}: os achados mais procurados da Amazon, Mercado Livre e Shopee`,
-    descricao: config.descricaoSite,
+    titulo: `${config.nomeSite}: os achados mais procurados ${listaHero}`,
+    descricao: `Produtos populares ${listaHero} em um só lugar, com links conferidos${lojasHero.length > 1 ? " e comparação entre lojas quando é o mesmo produto" : ""}.`,
     conteudo,
     jsonld: [
       { "@context": "https://schema.org", "@type": "WebSite", name: config.nomeSite, url: `${config.siteUrl}/`, inLanguage: "pt-BR",
@@ -365,7 +365,7 @@ ${cabPagina({ titulo: esc(categoria.nome), sub: `${itens.length} ${itens.length 
 </div>`;
   return {
     titulo: `${categoria.nome}: produtos com links conferidos | ${config.nomeSite}`,
-    descricao: `Produtos de ${categoria.nome.toLowerCase()} disponíveis na Amazon, Mercado Livre e Shopee, com links conferidos e comparação entre lojas.`,
+    descricao: `Produtos de ${categoria.nome.toLowerCase()} com links conferidos. ${(() => { const l = [...new Set(itens.flatMap(({ ativas }) => ativas.map((o) => o.loja)))]; return `${l.length > 1 ? "Lojas" : "Loja"}: ${listaLojas(l)}.`; })()}`,
     conteudo,
     jsonld: [
       {
@@ -417,7 +417,11 @@ export const paginaProduto = ({ config, p, ativas, inativas, relacionados }) => 
     : "";
   const pontos = (p.pontosChave || []).filter(Boolean);
   const descricao = (p.descricao || "").trim();
-  const metaDesc = (descricao || `${p.nome}${p.marca ? ` (${p.marca})` : ""}: veja onde comprar na Amazon, Mercado Livre e Shopee com links conferidos.`).slice(0, 155);
+  const lojasPub = [...new Set(ativas.map((o) => o.loja))];
+  const rotuloLojas = `${lojasPub.length > 1 ? "Lojas" : "Loja"}: ${listaLojas(lojasPub)}`;
+  const sufixo = `: onde comprar, com link conferido. ${rotuloLojas}.`;
+  const cabe = 155 - sufixo.length;
+  const metaDesc = descricao ? descricao.slice(0, 155) : `${p.nome.length > cabe ? `${p.nome.slice(0, cabe - 1).trimEnd()}…` : p.nome}${sufixo}`;
 
   const conteudo = `
 <div class="container">
@@ -483,9 +487,9 @@ export const paginaProduto = ({ config, p, ativas, inativas, relacionados }) => 
   return { titulo: `${p.nome}: onde comprar | ${config.nomeSite}`, descricao: metaDesc, conteudo, jsonld };
 };
 
-export const paginaBusca = ({ config }) => ({
+export const paginaBusca = ({ config, lojas = ["amazon", "mercadolivre", "shopee"] }) => ({
   titulo: `Buscar produtos | ${config.nomeSite}`,
-  descricao: `Busque produtos com links conferidos da Amazon, do Mercado Livre e da Shopee.`,
+  descricao: `Busque produtos com links conferidos. ${lojas.length > 1 ? "Lojas" : "Loja"}: ${listaLojas(lojas)}.`,
   conteudo: `${cabPagina({ titulo: "Buscar produtos", sub: "Procure por nome, marca ou categoria entre os produtos com link conferido.", icn: "busca", tom: ["#e8edff", "#2546b8"] })}
 <div class="container" style="padding-top:24px">
   <form class="busca-pagina" action="/busca/" method="get" role="search" data-busca>
