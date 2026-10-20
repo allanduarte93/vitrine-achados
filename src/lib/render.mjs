@@ -238,17 +238,23 @@ export const paginaInicial = ({ config, destaques, categorias, todos }) => {
       c.total > 0 ? `<small>${c.total} ${c.total === 1 ? "produto" : "produtos"}</small>` : `<span class="tag-curadoria">Em curadoria</span>`
     }</a>`);
 
+  // Só cita as lojas com oferta ativa na vitrine; sem produtos, as três em que trabalhamos.
+  const ativasHome = new Set([...destaques, ...todos].flatMap((x) => x.ativas.map((o) => o.loja)));
+  const lojasHero = ["amazon", "mercadolivre", "shopee"].filter((l) => !ativasHome.size || ativasHome.has(l));
+  const nomesHero = lojasHero.map((l) => ({ amazon: "da Amazon", mercadolivre: "do Mercado Livre", shopee: "da Shopee" })[l]);
+  const listaHero = nomesHero.length > 1 ? `${nomesHero.slice(0, -1).join(", ")} e ${nomesHero.at(-1)}` : nomesHero[0];
+
   const conteudo = `
 <section class="hero"><div class="container hero-grade">
   <div>
     <span class="selo-topo">${icone("etiqueta", { tamanho: 18 })}Portal de descoberta de produtos</span>
     <h1>Os achados mais procurados, <em>em um só lugar</em>.</h1>
-    <p class="hero-sub">Encontre produtos populares da Amazon, do Mercado Livre e da Shopee, veja em quais lojas estão disponíveis e vá direto para a oferta. A gente indica; você compra na loja.</p>
+    <p class="hero-sub">Encontre produtos populares ${listaHero}, veja em quais lojas estão disponíveis e vá direto para a oferta. A gente indica; você compra na loja.</p>
     <div class="hero-acoes">
       <a class="btn btn-prim" href="${temProdutos ? "#t-destaques" : "#t-categorias"}">${temProdutos ? "Ver achados" : "Ver categorias"} ${icone("seta", { tamanho: 18 })}</a>
       <a class="btn btn-sec" href="/como-funciona/">Como funciona</a>
     </div>
-    <div class="hero-lojas"><span>Indicamos ofertas de</span>${["amazon", "mercadolivre", "shopee"].map(marcaLoja).join("")}</div>
+    <div class="hero-lojas"><span>Indicamos ofertas de</span>${lojasHero.map(marcaLoja).join("")}</div>
   </div>
   <div>${heroSvg()}</div>
 </div></section>

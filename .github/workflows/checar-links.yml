@@ -1,0 +1,24 @@
+# Verifica pela rede os links de compra do catálogo (não publica nada).
+# Roda quando o catálogo muda e sob demanda (Actions → Checar links → Run workflow).
+name: Checar links
+on:
+  push:
+    paths: [data/catalogo.json]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm run checar-links
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-links
+          path: data/relatorios/links-*.json
+          if-no-files-found: ignore

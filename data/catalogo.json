@@ -1,5 +1,404 @@
 {
   "versao": 1,
-  "atualizadoEm": null,
-  "produtos": []
+  "atualizadoEm": "2026-10-20T18:11:02.730Z",
+  "produtos": [
+    {
+      "id": "conjunto-fitness-feminino-legging-top-academia-suplex-zero-transparencia",
+      "nome": "Conjunto Fitness Feminino Legging + Top Academia Suplex Zero Transparência",
+      "categoria": "Esporte e Lazer",
+      "prioritario": true,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/4qGZ5xhoOm",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:25:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 59,
+          "precoColetadoEm": "2026-10-20T14:25:00-03:00"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "mochila-termica-grande-capacidade-cooler-portatil-piquenique-quente-frio-nao-col",
+      "nome": "Mochila Térmica Grande Capacidade Cooler Portátil Piquenique Quente Frio Não colocar gelo ou água",
+      "categoria": "Esporte e Lazer",
+      "prioritario": true,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/4fx8teiRjl",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:25:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 36.95,
+          "precoColetadoEm": "2026-10-20T14:25:00-03:00"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "creatina-monohidratada-pura-300g-dark-lab-100-pura-dark-lab",
+      "nome": "Creatina Monohidratada Pura 300g Dark Lab - 100% Pura",
+      "marca": "Dark Lab",
+      "categoria": "Saúde e Bem-estar",
+      "prioritario": true,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/5AtPUZgXis",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:25:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 39.9,
+          "precoColetadoEm": "2026-10-20T14:25:00-03:00"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "espremedor-eletrico-laranja-limao-frutas-fazer-sucos-recarregavel-usb-cozinha",
+      "nome": "Espremedor Elétrico Laranja Limão Frutas Fazer Sucos Recarregável Usb Cozinha",
+      "categoria": "Casa e Cozinha",
+      "prioritario": true,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/50ZzIGhB3r",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:25:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 61.69,
+          "precoColetadoEm": "2026-10-20T14:25:00-03:00"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "arvore-de-natal-pinheiro-210cm-600-galhos-cheia-premium-verde",
+      "nome": "Árvore De Natal Pinheiro 210cm 600 Galhos Cheia Premium Verde",
+      "categoria": "Casa e Cozinha",
+      "prioritario": true,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/4B0sIjkLki",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:25:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 64.9,
+          "precoColetadoEm": "2026-10-20T14:25:00-03:00"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "40-pecas-46-pecas-jogo-de-chave-catraca-caixa-de-ferramentas-para-reparo-de-carr",
+      "nome": "40 Peças / 46 Peças Jogo De Chave Catraca Caixa De Ferramentas para Reparo de Carros / Conjuntos de Chaves",
+      "categoria": "Ferramentas",
+      "prioritario": false,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/2LZE7XVM8A",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:25:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 28.99,
+          "precoColetadoEm": "2026-10-20T14:25:00-03:00"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "maquina-de-barbear-e-aparador-pelos-eletrico-3-em-1",
+      "nome": "Maquina De Barbear e Aparador Pelos Elétrico 3 Em 1",
+      "categoria": "Beleza e Cuidados",
+      "prioritario": false,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/2VseJqUinD",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:25:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 45.97,
+          "precoColetadoEm": "2026-10-20T14:25:00-03:00"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "mop-c-cabo-de-140-cm-2-refis-rodinhas-e-cesto-em-inox-balde-centrifuga-ch",
+      "nome": "Mop C/ cabo de 140 cm + 2 Refis - Rodinhas e Cesto Em Inox - Balde Centrífuga - CH",
+      "categoria": "Casa e Cozinha",
+      "prioritario": true,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/1LggvhZAA0",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:25:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 59.9,
+          "precoColetadoEm": "2026-10-20T14:25:00-03:00"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "carregador-portatil-mini-power-bank-10000mah-com-02-saidas-tipo-c-lightning",
+      "nome": "Carregador Portátil Mini Power Bank 10000mAh Com 02 Saídas Tipo-C / Lightning",
+      "categoria": "Eletrônicos",
+      "prioritario": true,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/1W0780YWp3",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:25:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 31.99,
+          "precoColetadoEm": "2026-10-20T14:25:00-03:00"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "pistola-de-massagem-muscular-portatil-eletrica-profissional-recarregavel-usb-com",
+      "nome": "Pistola de Massagem Muscular Portátil Elétrica Profissional Recarregável USB com Múltiplas Ponteiras para Relaxamento",
+      "categoria": "Saúde e Bem-estar",
+      "prioritario": false,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/1gJXKJXtU6",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:25:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 32.99,
+          "precoColetadoEm": "2026-10-20T14:25:00-03:00"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "la-roche-posay-cicaplast-baume-b5-tempo-de-aplicacao-dia-noite-tipo-de-pele-todo",
+      "nome": "La Roche-posay Cicaplast Baume B5+ Tempo de aplicação Dia/Noite Tipo de pele Todos os tipos de pele",
+      "marca": "La Roche-Posay",
+      "categoria": "Beleza e Cuidados",
+      "prioritario": true,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "mercadolivre",
+          "url": "https://meli.la/2L8U337",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:33:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 71.52,
+          "precoColetadoEm": "2026-10-20T14:33:00-03:00",
+          "identificador": "MLB24326256"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "locao-hidratante-corporal-sem-perfume-com-ceramidas-essenciais-e-acido-hialuroni",
+      "nome": "Loção Hidratante Corporal Sem Perfume, com Ceramidas Essenciais e Ácido Hialurônico, Textura Fluida CeraVe 473ml",
+      "marca": "CeraVe",
+      "categoria": "Beleza e Cuidados",
+      "prioritario": true,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "mercadolivre",
+          "url": "https://meli.la/2Eu2E8b",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:33:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 93.73,
+          "precoColetadoEm": "2026-10-20T14:33:00-03:00",
+          "identificador": "MLB21361292"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "creatina-growth-supplements-monohidratada-em-po-sem-sabor-x-250g-growth-suppleme",
+      "nome": "Creatina Growth Supplements Monohidratada em pó Sem sabor x 250g",
+      "marca": "Growth Supplements",
+      "categoria": "Saúde e Bem-estar",
+      "prioritario": false,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "mercadolivre",
+          "url": "https://meli.la/2TaMTC6",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:33:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 39.9,
+          "precoColetadoEm": "2026-10-20T14:33:00-03:00",
+          "identificador": "MLB19603205"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "proteina-max-titanium-whey-pro-concetrado-em-po-sabor-morango-x-1kg-max-titanium",
+      "nome": "Proteína Max Titanium Whey Pro Concetrado em pó sabor Morango x 1kg",
+      "marca": "Max Titanium",
+      "categoria": "Saúde e Bem-estar",
+      "prioritario": false,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "mercadolivre",
+          "url": "https://meli.la/2DbR5p4",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:33:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 96.9,
+          "precoColetadoEm": "2026-10-20T14:33:00-03:00",
+          "identificador": "MLB6087971"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "kit-10-potes-vidro-hermetico-vai-ao-forno-microondas-640ml-marmita-hermetico-fre",
+      "nome": "Kit 10 Potes Vidro Hermetico Vai Ao Forno Microondas 640ml Marmita Hermético Freezer Fitness Rishon",
+      "marca": "Rishon",
+      "categoria": "Casa e Cozinha",
+      "prioritario": false,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "mercadolivre",
+          "url": "https://meli.la/2WErdKB",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:33:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 104.9,
+          "precoColetadoEm": "2026-10-20T14:33:00-03:00",
+          "identificador": "MLB63904966"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "ventilador-de-mesa-30cm-super-power-mondial-60w-vsp-30-b-mondial",
+      "nome": "Ventilador de Mesa 30cm Super Power Mondial 60W VSP-30-B",
+      "marca": "Mondial",
+      "categoria": "Casa e Cozinha",
+      "prioritario": false,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "mercadolivre",
+          "url": "https://meli.la/1ovr4L1",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:33:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 130.9,
+          "precoColetadoEm": "2026-10-20T14:33:00-03:00",
+          "identificador": "MLB18932156"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "celular-samsung-galaxy-a17-com-ia-256gb-8gb-ram-cam-de-50mp-tela-de-6-7-nfc-ip54",
+      "nome": "Celular Samsung Galaxy A17 Com Ia, 256gb, 8gb Ram, Câm De 50mp, Tela De 6.7 , Nfc, Ip54 - Azul",
+      "marca": "Samsung",
+      "categoria": "Eletrônicos",
+      "prioritario": true,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "mercadolivre",
+          "url": "https://meli.la/13qLjsv",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:33:00-03:00",
+          "verificadoPor": "cowork",
+          "identificador": "MLB54982411"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "fone-de-ouvido-headphone-dapon-h02d-bluetooth-5-1-over-ear-22h-preto-dapon",
+      "nome": "Fone De Ouvido Headphone Dapon H02D Bluetooth 5.1 Over-ear 22h Preto",
+      "marca": "Dapon",
+      "categoria": "Eletrônicos",
+      "prioritario": false,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "mercadolivre",
+          "url": "https://meli.la/2e6rC2A",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:33:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 78.9,
+          "precoColetadoEm": "2026-10-20T14:33:00-03:00",
+          "identificador": "MLB24117280"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "patinete-infantil-3-rodas-com-led-dobravel-menino-menina",
+      "nome": "Patinete Infantil 3 Rodas com Led/Dobrável Menino/Menina",
+      "categoria": "Bebês e Infantil",
+      "prioritario": false,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "mercadolivre",
+          "url": "https://meli.la/17Brjd1",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:33:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 51.9,
+          "precoColetadoEm": "2026-10-20T14:33:00-03:00",
+          "identificador": "MLB25656186"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    },
+    {
+      "id": "bravecto-caes-20-40kg-1000mg-1-comp-mastigavel-msd-azul-msd",
+      "nome": "Bravecto Cães 20-40kg 1000mg 1 Comp. Mastigável Msd Azul",
+      "marca": "MSD",
+      "categoria": "Pets",
+      "prioritario": false,
+      "fonte": "Cowork 2026-10-20",
+      "ofertas": [
+        {
+          "loja": "mercadolivre",
+          "url": "https://meli.la/153k3Ma",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-20T14:33:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 185.73,
+          "precoColetadoEm": "2026-10-20T14:33:00-03:00",
+          "identificador": "MLB15982844"
+        }
+      ],
+      "atualizadoEm": "2026-10-20T18:11:02.730Z"
+    }
+  ]
 }

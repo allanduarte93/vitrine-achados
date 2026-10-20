@@ -233,7 +233,7 @@ test("versão institucional: catálogo vazio gera site legítimo, sem nada comer
   const saida = mkdtempSync(join(tmpdir(), "vitrine-inst-"));
   process.env.SITE_URL = "https://usuario.github.io/vitrine";
   try {
-    const r = build({ configPath: CFG, catalogoPath: "data/catalogo.json", saida, agora: AGORA });
+    const r = build({ configPath: CFG, catalogoPath: "test/fixtures/catalogo-vazio.json", saida, agora: AGORA });
     assert.equal(r.produtosPublicados, 0);
     for (const pag of ["index.html", "sobre/index.html", "como-funciona/index.html", "busca/index.html", "aviso-de-afiliados/index.html", "contato/index.html", "privacidade/index.html", "404.html"]) {
       const html = readFileSync(join(saida, pag), "utf8");
@@ -383,6 +383,53 @@ test("estrutura comercial com 30 produtos em 10 categorias", () => {
     assert.match(p, /Como Associado da Amazon/, "programa confirmado: declaração exibida");
     const locs = (ler("sitemap.xml").match(/<loc>/g) || []).length;
     assert.ok(locs >= 5 + 10 + 28, `sitemap com institucionais + categorias + produtos indexáveis (${locs})`);
+  } finally {
+    rmSync(saida, { recursive: true, force: true });
+  }
+});
+
+test("catálogo real do Cowork: 20 ofertas preservadas, preço só dentro da validade e sem alegar programa", () => {
+  const catalogo = JSON.parse(readFileSync("data/catalogo.json", "utf8"));
+  if (!catalogo.produtos.length) return;
+  const entrada = JSON.parse(readFileSync("entrada/status_produtos.json", "utf8"));
+  for (const st of entrada.prontos) {
+    const p = catalogo.produtos.find((x) => x.nome === st.nome);
+    assert.ok(p, `importado: ${st.nome}`);
+    assert.equal(p.ofertas[0].url, st.link_afiliado, "link de afiliado preservado byte a byte");
+  }
+  const config = JSON.parse(readFileSync("config.json", "utf8"));
+  assert.deepEqual(validarCatalogo(catalogo, config).erros, []);
+  assert.ok(Object.values(config.afiliados.programasConfirmados).every((v) => v === false), "nenhum programa marcado sem evidência");
+  const saida = mkdtempSync(join(tmpdir(), "vitrine-real-"));
+  try {
+    const dentro = new Date("2026-10-20T16:00:00-03:00");
+    const r = build({ catalogoPath: "data/catalogo.json", saida, agora: dentro });
+    assert.equal(r.produtosPublicados, catalogo.produtos.length);
+    const busca = JSON.parse(readFileSync(join(saida, "busca.json"), "utf8")).produtos;
+    assert.equal(busca.length, catalogo.produtos.length);
+    const html = readdirSync(join(saida, "produto")).map((d) => readFileSync(join(saida, "produto", d, "index.html"), "utf8")).join("\n");
+    for (const st of entrada.prontos) assert.ok(html.includes(`href="${st.link_afiliado}"`), `botão aponta para ${st.link_afiliado}`);
+    assert.doesNotMatch(html, /participamos dos programas|Associado da Amazon|aggregateRating|desconto/i);
+    const samsung = readFileSync(join(saida, "produto", catalogo.produtos.find((p) => /Galaxy A17/.test(p.nome)).id, "index.html"), "utf8");
+    assert.doesNotMatch(samsung.split("<main")[1].split("Relacionados")[0], /R\$\s?1\.?349/, "preço não confirmado não aparece");
+    rmSync(saida, { recursive: true, force: true });
+    build({ catalogoPath: "data/catalogo.json", saida, agora: new Date("2026-10-22T12:00:00-03:00") });
+    const vencido = JSON.parse(readFileSync(join(saida, "busca.json"), "utf8")).produtos;
+    assert.ok(vencido.every((p) => p.preco == null), "preço com mais de 24h some sozinho");
+  } finally {
+    rmSync(saida, { recursive: true, force: true });
+  }
+});
+
+test("home cita só as lojas com oferta ativa", () => {
+  const saida = mkdtempSync(join(tmpdir(), "vitrine-lojas-"));
+  const cat = join(saida, "c.json");
+  writeFileSync(cat, JSON.stringify({ versao: 1, produtos: [{ id: "x", nome: "Produto X", categoria: "Pets", ofertas: [{ loja: "shopee", url: "https://s.shopee.com.br/abc", ...V }] }] }));
+  try {
+    build({ configPath: CFG, catalogoPath: cat, saida: join(saida, "d"), agora: AGORA });
+    const hero = readFileSync(join(saida, "d", "index.html"), "utf8").split('class="hero-lojas"')[1].split("</div>")[0];
+    assert.match(hero, /Shopee/);
+    assert.doesNotMatch(hero, /Amazon|Mercado Livre/);
   } finally {
     rmSync(saida, { recursive: true, force: true });
   }
