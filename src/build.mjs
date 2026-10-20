@@ -10,7 +10,7 @@
 import { mkdirSync, writeFileSync, readFileSync, rmSync, cpSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { validarCatalogo, ofertasAtivas, produtoIndexavel, slugify, resumoCatalogo } from "./lib/catalogo.mjs";
+import { validarCatalogo, somenteConfirmadas, ofertasAtivas, produtoIndexavel, slugify, resumoCatalogo } from "./lib/catalogo.mjs";
 import { layout, paginaInicial, paginaCategoria, paginaProduto, paginaBusca, paginaComoFunciona, paginaSobre, paginaAvisoAfiliados, paginaContato, paginaPrivacidade, pagina404 } from "./lib/render.mjs";
 import { LOJAS } from "./lib/links.mjs";
 import { canonicalizarCategoria } from "./lib/categorias.mjs";
@@ -29,7 +29,8 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
   // Subcaminho (ex.: usuario.github.io/repositorio): prefixa links internos "/...".
   const base = new URL(config.siteUrl).pathname.replace(/\/+$/, "");
   const comBase = (html) => (base ? html.replace(/(href|src|action)="\/(?!\/)/g, `$1="${base}/`) : html);
-  const catalogo = lerJson(catalogoPath);
+  const lido = lerJson(catalogoPath);
+  const catalogo = process.env.SOMENTE_CONFIRMADOS === "1" ? somenteConfirmadas(lido, config) : lido;
   const { erros, avisos } = validarCatalogo(catalogo, config, agora);
   if (erros.length) {
     const e = new Error(`Catálogo com ${erros.length} erro(s):\n- ${erros.join("\n- ")}`);

@@ -28,6 +28,9 @@ jobs:
       AMAZON_TAG: ${{ vars.AMAZON_TAG }}
       # GitHub Pages não recebe POST: registro de cliques desligado até existir um endpoint.
       ENDPOINT_CLIQUES: ${{ vars.ENDPOINT_CLIQUES || '' }}
+      # Publica só as ofertas das lojas com participação confirmada em config.json
+      # (afiliados.programasConfirmados); as demais entram quando forem confirmadas.
+      SOMENTE_CONFIRMADOS: "1"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

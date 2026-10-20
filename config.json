@@ -4,10 +4,10 @@
   "siteUrl": "https://allanduarte93.github.io/vitrine-achados",
   "idioma": "pt-BR",
   "afiliados": {
-    "amazonTag": null,
+    "amazonTag": "vitrineachados-20",
     "mercadoLivreMattTool": null,
     "programasConfirmados": {
-      "amazon": false,
+      "amazon": true,
       "mercadolivre": false,
       "shopee": false
     }

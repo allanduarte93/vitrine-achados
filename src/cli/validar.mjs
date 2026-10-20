@@ -7,7 +7,7 @@
 import { readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { validarCatalogo, avaliarPublicacao } from "../lib/catalogo.mjs";
+import { validarCatalogo, avaliarPublicacao, somenteConfirmadas } from "../lib/catalogo.mjs";
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const args = process.argv.slice(2);
@@ -16,7 +16,14 @@ const caminho = args.find((a, i) => !a.startsWith("--") && args[i - 1] !== "--co
 const config = JSON.parse(readFileSync(resolve(RAIZ, opt("--config", "config.json")), "utf8"));
 if (process.env.SITE_URL) config.siteUrl = process.env.SITE_URL;
 if (process.env.AMAZON_TAG) config.afiliados = { ...config.afiliados, amazonTag: process.env.AMAZON_TAG };
-const catalogo = JSON.parse(readFileSync(resolve(RAIZ, caminho), "utf8"));
+const lido = JSON.parse(readFileSync(resolve(RAIZ, caminho), "utf8"));
+const recorte = process.env.SOMENTE_CONFIRMADOS === "1";
+const catalogo = recorte ? somenteConfirmadas(lido, config) : lido;
+if (recorte) {
+  const fora = {};
+  lido.produtos.forEach((p) => p.ofertas.forEach((o) => { if (config.afiliados?.programasConfirmados?.[o.loja] !== true) fora[o.loja] = (fora[o.loja] || 0) + 1; }));
+  console.log(`Publicação só com lojas confirmadas. Fora até a confirmação: ${Object.entries(fora).map(([l, n]) => `${l} (${n} ofertas)`).join(", ") || "nenhuma"}`);
+}
 
 const { erros, avisos } = validarCatalogo(catalogo, config);
 const { modo, pendencias, observacoes, resumo: r } = avaliarPublicacao(catalogo, config);

@@ -164,6 +164,19 @@ export const resumoCatalogo = (catalogo, config, agora = new Date()) => {
  *   (sem ela não dá para garantir que os links são da nossa conta).
  * Páginas comerciais continuam dependendo de links verificados (regra de estadoOferta).
  */
+/**
+ * Recorte para publicação: mantém só as ofertas das lojas com participação confirmada
+ * (config.afiliados.programasConfirmados) e descarta produtos que ficarem sem oferta.
+ * Ativado com SOMENTE_CONFIRMADOS=1 (workflow Publicar); a prévia local mostra tudo.
+ */
+export const somenteConfirmadas = (catalogo, config) => {
+  const ok = config.afiliados?.programasConfirmados || {};
+  const produtos = catalogo.produtos
+    .map((p) => ({ ...p, ofertas: (p.ofertas || []).filter((o) => ok[o.loja] === true) }))
+    .filter((p) => p.ofertas.length);
+  return { ...catalogo, produtos };
+};
+
 export const avaliarPublicacao = (catalogo, config, agora = new Date()) => {
   const { erros } = validarCatalogo(catalogo, config, agora);
   const r = resumoCatalogo(catalogo, config, agora);

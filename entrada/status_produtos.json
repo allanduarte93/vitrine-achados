@@ -8,7 +8,7 @@
       "url_oficial": "https://shopee.com.br/product/419739190/23694205612",
       "link_afiliado": "https://s.shopee.com.br/4qGZ5xhoOm",
       "programa": "Shopee Afiliados BR — ID 18356851019, Sub_id vitrineachados",
-      "preco": 59.0,
+      "preco": 59,
       "comissao_vista_no_portal": "26% extra + 3% Shopee",
       "prioridade": 1,
       "verificado_em": "2026-10-20T14:25:00-03:00"
@@ -241,9 +241,7 @@
       "comissao": "Pet Shop não aparece na tabela oficial — não confirmada",
       "prioridade": null,
       "verificado_em": "2026-10-20T14:33:00-03:00"
-    }
-  ],
-  "prontos_aguardando_importacao": [
+    },
     {
       "nome": "Echo Dot (Geração mais recente) | Smart speaker com Alexa, som vibrante e potente, Wi-Fi e Bluetooth | Cor Preta, com Acesso Antecipado à Alexa+",
       "loja": "Amazon",
@@ -257,7 +255,8 @@
       "comissao_sitestripe": "9,50% (Echo e Alexa)",
       "disponibilidade": "Em estoque",
       "prioridade": null,
-      "verificado_em": "2026-10-20T15:15:00-03:00"
+      "verificado_em": "2026-10-20T15:15:00-03:00",
+      "importado_em": "2026-10-20"
     },
     {
       "nome": "Amazon Fire TV Stick HD (modelo mais recente), Controle Remoto por Voz com Alexa, alimentado pela TV, com configuração simples e Acesso Antecipado à Alexa+",
@@ -272,7 +271,8 @@
       "comissao_sitestripe": "9,50% (Amazon Fire TV)",
       "disponibilidade": "Em estoque",
       "prioridade": null,
-      "verificado_em": "2026-10-20T15:15:00-03:00"
+      "verificado_em": "2026-10-20T15:15:00-03:00",
+      "importado_em": "2026-10-20"
     },
     {
       "nome": "CeraVe, Loção Hidratante Corporal, com textura Fluida e Ácido Hialurônico",
@@ -287,7 +287,8 @@
       "comissao_sitestripe": "13,00% (Beleza de Luxo)",
       "disponibilidade": "Em estoque",
       "prioridade": null,
-      "verificado_em": "2026-10-20T15:15:00-03:00"
+      "verificado_em": "2026-10-20T15:15:00-03:00",
+      "importado_em": "2026-10-20"
     },
     {
       "nome": "La Roche-Posay Cicaplast Baume B5+ Cuidado Multirreparador Calmante",
@@ -302,7 +303,8 @@
       "comissao_sitestripe": "13,00% (Beleza de Luxo)",
       "disponibilidade": "Em estoque",
       "prioridade": null,
-      "verificado_em": "2026-10-20T15:15:00-03:00"
+      "verificado_em": "2026-10-20T15:15:00-03:00",
+      "importado_em": "2026-10-20"
     },
     {
       "nome": "L'Oréal Paris Elseve Óleo Extraordinário Finalizador Capilar, Nutrição Profunda com 6 Óleos Preciosos, Anti-Frizz, Proteção Térmica até 230°C, Brilho Intenso para Todos os Tipos de Cabelo, 100ml",
@@ -317,7 +319,8 @@
       "comissao_sitestripe": "13,00% (Beleza)",
       "disponibilidade": "Em estoque",
       "prioridade": null,
-      "verificado_em": "2026-10-20T15:15:00-03:00"
+      "verificado_em": "2026-10-20T15:15:00-03:00",
+      "importado_em": "2026-10-20"
     },
     {
       "nome": "Sanduicheira Elétrica Cadence Click - 127V",
@@ -332,7 +335,8 @@
       "comissao_sitestripe": "8,00% (Cozinha)",
       "disponibilidade": "Em estoque",
       "prioridade": null,
-      "verificado_em": "2026-10-20T15:15:00-03:00"
+      "verificado_em": "2026-10-20T15:15:00-03:00",
+      "importado_em": "2026-10-20"
     },
     {
       "nome": "Electrolux, Pote Hermetico, 12 unidades, A23122901, cinza",
@@ -347,7 +351,8 @@
       "comissao_sitestripe": "8,00% (Casa)",
       "disponibilidade": "Em estoque",
       "prioridade": null,
-      "verificado_em": "2026-10-20T15:15:00-03:00"
+      "verificado_em": "2026-10-20T15:15:00-03:00",
+      "importado_em": "2026-10-20"
     },
     {
       "nome": "Bravecto® 250mg Antipulgas e Carrapatos para Cães de 4,5 a 10kg – 1 Comprimido Mastigável",
@@ -362,7 +367,8 @@
       "comissao_sitestripe": "11,00% (Pet Shop)",
       "disponibilidade": "Em estoque",
       "prioridade": null,
-      "verificado_em": "2026-10-20T15:15:00-03:00"
+      "verificado_em": "2026-10-20T15:15:00-03:00",
+      "importado_em": "2026-10-20"
     },
     {
       "nome": "Omo Sabão Líquido Lavagem Perfeita 5l - Tampa pode Variar",
@@ -377,7 +383,8 @@
       "comissao_sitestripe": "13,00% (Saúde e Cuidados Pessoais)",
       "disponibilidade": "(sem texto; botão Adicionar ao carrinho presente)",
       "prioridade": null,
-      "verificado_em": "2026-10-20T15:15:00-03:00"
+      "verificado_em": "2026-10-20T15:15:00-03:00",
+      "importado_em": "2026-10-20"
     },
     {
       "nome": "Mouse sem fio Logitech M170 com Design Ambidestro Compacto, Conexão USB e Pilha Inclusa - Preto",
@@ -392,7 +399,8 @@
       "comissao_sitestripe": "8,00% (Informática)",
       "disponibilidade": "Em estoque",
       "prioridade": null,
-      "verificado_em": "2026-10-20T15:15:00-03:00"
+      "verificado_em": "2026-10-20T15:15:00-03:00",
+      "importado_em": "2026-10-20"
     }
   ],
   "aguardando": [],
@@ -558,5 +566,5 @@
     "shopee": "conta ativa (ID 18356851019); site cadastrado como mídia 'Other' em 20/10/2026, sem selo Verificado",
     "mercadolivre": "conta ativa (etiqueta ad20260429184559); site vinculado como 'Otra red' em 20/10/2026; termos exigem análise do ML para sites — sem status visível"
   },
-  "observacao_amazon": "Os 10 links Amazon estão validados, mas ainda não foram importados para data/catalogo.json. Ao rodar 'npm run importar:cowork', mova-os para 'prontos' (o teste do repositório exige que todo item de 'prontos' esteja importado)."
+  "observacao_amazon": "Os 10 links Amazon (vitrineachados-20) foram importados para data/catalogo.json em 20/10/2026, conferidos byte a byte."
 }

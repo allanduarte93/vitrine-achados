@@ -4,7 +4,7 @@ import { mkdtempSync, readFileSync, writeFileSync, existsSync, readdirSync, rmSy
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { validarLinkAfiliado, normalizarLoja } from "../src/lib/links.mjs";
-import { estadoOferta, validarCatalogo, produtoIndexavel, avaliarPublicacao } from "../src/lib/catalogo.mjs";
+import { estadoOferta, validarCatalogo, produtoIndexavel, avaliarPublicacao, somenteConfirmadas } from "../src/lib/catalogo.mjs";
 import { normalizarPesquisa, mesclarCatalogo } from "../src/lib/importar.mjs";
 import { normalizarClique, agregar } from "../src/lib/cliques.mjs";
 import { build } from "../src/build.mjs";
@@ -369,7 +369,7 @@ test("estrutura comercial com 30 produtos em 10 categorias", () => {
   const saida = mkdtempSync(join(tmpdir(), "vitrine-30-"));
   const cfg = join(saida, "config.json");
   const base = JSON.parse(readFileSync("config.json", "utf8"));
-  writeFileSync(cfg, JSON.stringify({ ...base, siteUrl: "https://exemplo.invalid", afiliados: { ...base.afiliados, programasConfirmados: { amazon: true, mercadolivre: true, shopee: true } } }));
+  writeFileSync(cfg, JSON.stringify({ ...base, siteUrl: "https://exemplo.invalid", afiliados: { ...base.afiliados, amazonTag: null, programasConfirmados: { amazon: true, mercadolivre: true, shopee: true } } }));
   try {
     const r = build({ configPath: cfg, catalogoPath: "data/exemplo/catalogo-exemplo.json", saida: join(saida, "dist"), agora: AGORA });
     assert.equal(r.produtosPublicados, 29);
@@ -394,7 +394,7 @@ test("estrutura comercial com 30 produtos em 10 categorias", () => {
   }
 });
 
-test("catálogo real do Cowork: 20 ofertas preservadas, preço só dentro da validade e sem alegar programa", () => {
+test("catálogo real do Cowork: ofertas preservadas, preço só dentro da validade e sem alegar programa", () => {
   const catalogo = JSON.parse(readFileSync("data/catalogo.json", "utf8"));
   if (!catalogo.produtos.length) return;
   const entrada = JSON.parse(readFileSync("entrada/status_produtos.json", "utf8"));
@@ -405,7 +405,10 @@ test("catálogo real do Cowork: 20 ofertas preservadas, preço só dentro da val
   }
   const config = JSON.parse(readFileSync("config.json", "utf8"));
   assert.deepEqual(validarCatalogo(catalogo, config).erros, []);
-  assert.ok(Object.values(config.afiliados.programasConfirmados).every((v) => v === false), "nenhum programa marcado sem evidência");
+  const conf = config.afiliados.programasConfirmados;
+  assert.deepEqual(conf, { amazon: true, mercadolivre: false, shopee: false }, "só a Amazon tem evidência documentada (docs/autorizacao-programas.md)");
+  assert.equal(config.afiliados.amazonTag, "vitrineachados-20");
+  assert.ok(catalogo.produtos.flatMap((p) => p.ofertas).filter((o) => o.loja === "amazon").every((o) => /[?&]tag=vitrineachados-20(&|$)/.test(o.url) && o.preco == null), "Amazon: tag própria e nunca preço");
   const saida = mkdtempSync(join(tmpdir(), "vitrine-real-"));
   try {
     const dentro = new Date("2026-10-20T16:00:00-03:00");
@@ -414,8 +417,13 @@ test("catálogo real do Cowork: 20 ofertas preservadas, preço só dentro da val
     const busca = JSON.parse(readFileSync(join(saida, "busca.json"), "utf8")).produtos;
     assert.equal(busca.length, catalogo.produtos.length);
     const html = readdirSync(join(saida, "produto")).map((d) => readFileSync(join(saida, "produto", d, "index.html"), "utf8")).join("\n");
-    for (const st of entrada.prontos) assert.ok(html.includes(`href="${st.link_afiliado}"`), `botão aponta para ${st.link_afiliado}`);
-    assert.doesNotMatch(html, /participamos dos programas|Associado da Amazon|aggregateRating|desconto/i);
+    for (const st of entrada.prontos) assert.ok(html.includes(`href="${st.link_afiliado.replaceAll("&", "&amp;")}"`), `botão aponta para ${st.link_afiliado}`);
+    assert.doesNotMatch(html, /aggregateRating|desconto/i);
+    const paginas = readdirSync(join(saida, "produto")).map((d) => readFileSync(join(saida, "produto", d, "index.html"), "utf8"));
+    for (const pag of paginas) {
+      const temAmazon = /btn-amazon/.test(pag);
+      assert.equal(/Como Associado da Amazon, ganhamos com compras qualificadas/.test(pag.split("<footer")[0]), temAmazon, "declaração da Amazon junto aos botões da Amazon (e só neles)");
+    }
     const samsung = readFileSync(join(saida, "produto", catalogo.produtos.find((p) => /Galaxy A17/.test(p.nome)).id, "index.html"), "utf8");
     assert.doesNotMatch(samsung.split("<main")[1].split("Relacionados")[0], /R\$\s?1\.?349/, "preço não confirmado não aparece");
     rmSync(saida, { recursive: true, force: true });
@@ -437,6 +445,27 @@ test("home cita só as lojas com oferta ativa", () => {
     assert.match(hero, /Shopee/);
     assert.doesNotMatch(hero, /Amazon|Mercado Livre/);
   } finally {
+    rmSync(saida, { recursive: true, force: true });
+  }
+});
+
+test("publicação só com lojas confirmadas (SOMENTE_CONFIRMADOS=1)", () => {
+  const saida = mkdtempSync(join(tmpdir(), "vitrine-conf-"));
+  const cfg = join(saida, "config.json");
+  const base = JSON.parse(readFileSync(CFG, "utf8"));
+  writeFileSync(cfg, JSON.stringify({ ...base, afiliados: { ...base.afiliados, programasConfirmados: { amazon: false, mercadolivre: false, shopee: true } } }));
+  process.env.SOMENTE_CONFIRMADOS = "1";
+  try {
+    const r = build({ configPath: cfg, catalogoPath: "data/exemplo/catalogo-exemplo.json", saida: join(saida, "dist"), agora: AGORA });
+    const html = readdirSync(join(saida, "dist", "produto")).map((d) => readFileSync(join(saida, "dist", "produto", d, "index.html"), "utf8")).join("\n");
+    assert.ok(r.produtosPublicados > 0);
+    assert.match(html, /btn-shopee/);
+    assert.doesNotMatch(html, /btn-amazon|btn-mercadolivre|amazon\.com\.br\/dp|mercadolivre\.com/, "loja não confirmada não aparece na publicação");
+    const catalogo = JSON.parse(readFileSync("data/exemplo/catalogo-exemplo.json", "utf8"));
+    const recorte = somenteConfirmadas(catalogo, JSON.parse(readFileSync(cfg, "utf8")));
+    assert.equal(avaliarPublicacao(recorte, { ...JSON.parse(readFileSync(cfg, "utf8")), siteUrl: "https://a.b" }, AGORA).pendencias.filter((p) => /não está confirmada/.test(p)).length, 0);
+  } finally {
+    delete process.env.SOMENTE_CONFIRMADOS;
     rmSync(saida, { recursive: true, force: true });
   }
 });

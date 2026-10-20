@@ -10,14 +10,15 @@
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { ofertasAtivas } from "../lib/catalogo.mjs";
+import { ofertasAtivas, somenteConfirmadas } from "../lib/catalogo.mjs";
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const args = process.argv.slice(2);
 const caminho = args.find((a, i) => !a.startsWith("--") && args[i - 1] !== "--timeout") || "data/catalogo.json";
 const TIMEOUT = Number(args.includes("--timeout") ? args[args.indexOf("--timeout") + 1] : 15000);
 const config = JSON.parse(readFileSync(resolve(RAIZ, "config.json"), "utf8"));
-const catalogo = JSON.parse(readFileSync(resolve(RAIZ, caminho), "utf8"));
+const lido = JSON.parse(readFileSync(resolve(RAIZ, caminho), "utf8"));
+const catalogo = process.env.SOMENTE_CONFIRMADOS === "1" ? somenteConfirmadas(lido, config) : lido;
 
 const DOMINIO = { amazon: /(^|\.)amazon\.com\.br$/, mercadolivre: /(^|\.)mercadolivre\.com\.br$/, shopee: /(^|\.)shopee\.com\.br$/ };
 // Padrões de página de produto e de destinos ruins, por loja.
