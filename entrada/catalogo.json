@@ -1,0 +1,314 @@
+{
+  "fonte": "Cowork",
+  "dataValidacao": "2026-10-20T14:25:00-03:00",
+  "produtos": [
+    {
+      "nome": "Conjunto Fitness Feminino Legging + Top Academia Suplex Zero Transparência",
+      "categoria": "Moda",
+      "ofertas": [
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/4qGZ5xhoOm",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:25:00-03:00",
+          "preco": 59.0,
+          "data_preco": "2026-10-20T14:25:00-03:00"
+        }
+      ],
+      "prioridade": 1
+    },
+    {
+      "nome": "Mochila Térmica Grande Capacidade Cooler Portátil Piquenique Quente Frio Não colocar gelo ou água",
+      "categoria": "Esporte e Lazer",
+      "ofertas": [
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/4fx8teiRjl",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:25:00-03:00",
+          "preco": 36.95,
+          "data_preco": "2026-10-20T14:25:00-03:00"
+        }
+      ],
+      "prioridade": 2
+    },
+    {
+      "nome": "Creatina Monohidratada Pura 300g Dark Lab - 100% Pura",
+      "categoria": "Saúde e Bem-estar",
+      "ofertas": [
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/5AtPUZgXis",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:25:00-03:00",
+          "preco": 39.9,
+          "data_preco": "2026-10-20T14:25:00-03:00"
+        }
+      ],
+      "marca": "Dark Lab",
+      "prioridade": 3
+    },
+    {
+      "nome": "Espremedor Elétrico Laranja Limão Frutas Fazer Sucos Recarregável Usb Cozinha",
+      "categoria": "Casa e Cozinha",
+      "ofertas": [
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/50ZzIGhB3r",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:25:00-03:00",
+          "preco": 61.69,
+          "data_preco": "2026-10-20T14:25:00-03:00"
+        }
+      ],
+      "prioridade": 4
+    },
+    {
+      "nome": "Árvore De Natal Pinheiro 210cm 600 Galhos Cheia Premium Verde",
+      "categoria": "Casa e Cozinha",
+      "ofertas": [
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/4B0sIjkLki",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:25:00-03:00",
+          "preco": 64.9,
+          "data_preco": "2026-10-20T14:25:00-03:00"
+        }
+      ],
+      "prioridade": 9
+    },
+    {
+      "nome": "40 Peças / 46 Peças Jogo De Chave Catraca Caixa De Ferramentas para Reparo de Carros / Conjuntos de Chaves",
+      "categoria": "Ferramentas",
+      "ofertas": [
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/2LZE7XVM8A",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:25:00-03:00",
+          "preco": 28.99,
+          "data_preco": "2026-10-20T14:25:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Maquina De Barbear e Aparador Pelos Elétrico 3 Em 1",
+      "categoria": "Beleza e Cuidados",
+      "ofertas": [
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/2VseJqUinD",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:25:00-03:00",
+          "preco": 45.97,
+          "data_preco": "2026-10-20T14:25:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Mop C/ cabo de 140 cm + 2 Refis - Rodinhas e Cesto Em Inox - Balde Centrífuga - CH",
+      "categoria": "Casa e Cozinha",
+      "ofertas": [
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/1LggvhZAA0",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:25:00-03:00",
+          "preco": 59.9,
+          "data_preco": "2026-10-20T14:25:00-03:00"
+        }
+      ],
+      "prioridade": 8
+    },
+    {
+      "nome": "Carregador Portátil Mini Power Bank 10000mAh Com 02 Saídas Tipo-C / Lightning",
+      "categoria": "Eletrônicos",
+      "ofertas": [
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/1W0780YWp3",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:25:00-03:00",
+          "preco": 31.99,
+          "data_preco": "2026-10-20T14:25:00-03:00"
+        }
+      ],
+      "prioridade": 7
+    },
+    {
+      "nome": "Pistola de Massagem Muscular Portátil Elétrica Profissional Recarregável USB com Múltiplas Ponteiras para Relaxamento",
+      "categoria": "Saúde e Bem-estar",
+      "ofertas": [
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/1gJXKJXtU6",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:25:00-03:00",
+          "preco": 32.99,
+          "data_preco": "2026-10-20T14:25:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "La Roche-posay Cicaplast Baume B5+ Tempo de aplicação Dia/Noite Tipo de pele Todos os tipos de pele",
+      "categoria": "Beleza e Cuidados",
+      "ofertas": [
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://meli.la/2L8U337",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:33:00-03:00",
+          "mlb": "MLB24326256",
+          "preco": 71.52,
+          "data_preco": "2026-10-20T14:33:00-03:00"
+        }
+      ],
+      "marca": "La Roche-Posay",
+      "prioridade": 6
+    },
+    {
+      "nome": "Loção Hidratante Corporal Sem Perfume, com Ceramidas Essenciais e Ácido Hialurônico, Textura Fluida CeraVe 473ml",
+      "categoria": "Beleza e Cuidados",
+      "ofertas": [
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://meli.la/2Eu2E8b",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:33:00-03:00",
+          "mlb": "MLB21361292",
+          "preco": 93.73,
+          "data_preco": "2026-10-20T14:33:00-03:00"
+        }
+      ],
+      "marca": "CeraVe",
+      "prioridade": 5
+    },
+    {
+      "nome": "Creatina Growth Supplements Monohidratada em pó Sem sabor x 250g",
+      "categoria": "Saúde e Bem-estar",
+      "ofertas": [
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://meli.la/2TaMTC6",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:33:00-03:00",
+          "mlb": "MLB19603205",
+          "preco": 39.9,
+          "data_preco": "2026-10-20T14:33:00-03:00"
+        }
+      ],
+      "marca": "Growth Supplements"
+    },
+    {
+      "nome": "Proteína Max Titanium Whey Pro Concetrado em pó sabor Morango x 1kg",
+      "categoria": "Saúde e Bem-estar",
+      "ofertas": [
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://meli.la/2DbR5p4",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:33:00-03:00",
+          "mlb": "MLB6087971",
+          "preco": 96.9,
+          "data_preco": "2026-10-20T14:33:00-03:00"
+        }
+      ],
+      "marca": "Max Titanium"
+    },
+    {
+      "nome": "Kit 10 Potes Vidro Hermetico Vai Ao Forno Microondas 640ml Marmita Hermético Freezer Fitness Rishon",
+      "categoria": "Casa e Cozinha",
+      "ofertas": [
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://meli.la/2WErdKB",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:33:00-03:00",
+          "mlb": "MLB63904966",
+          "preco": 104.9,
+          "data_preco": "2026-10-20T14:33:00-03:00"
+        }
+      ],
+      "marca": "Rishon"
+    },
+    {
+      "nome": "Ventilador de Mesa 30cm Super Power Mondial 60W VSP-30-B",
+      "categoria": "Casa e Cozinha",
+      "ofertas": [
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://meli.la/1ovr4L1",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:33:00-03:00",
+          "mlb": "MLB18932156",
+          "preco": 130.9,
+          "data_preco": "2026-10-20T14:33:00-03:00"
+        }
+      ],
+      "marca": "Mondial"
+    },
+    {
+      "nome": "Celular Samsung Galaxy A17 Com Ia, 256gb, 8gb Ram, Câm De 50mp, Tela De 6.7 , Nfc, Ip54 - Azul",
+      "categoria": "Eletrônicos",
+      "ofertas": [
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://meli.la/13qLjsv",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:33:00-03:00",
+          "mlb": "MLB54982411"
+        }
+      ],
+      "marca": "Samsung",
+      "prioridade": 10
+    },
+    {
+      "nome": "Fone De Ouvido Headphone Dapon H02D Bluetooth 5.1 Over-ear 22h Preto",
+      "categoria": "Eletrônicos",
+      "ofertas": [
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://meli.la/2e6rC2A",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:33:00-03:00",
+          "mlb": "MLB24117280",
+          "preco": 78.9,
+          "data_preco": "2026-10-20T14:33:00-03:00"
+        }
+      ],
+      "marca": "Dapon"
+    },
+    {
+      "nome": "Patinete Infantil 3 Rodas com Led/Dobrável Menino/Menina",
+      "categoria": "Bebês e Brinquedos",
+      "ofertas": [
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://meli.la/17Brjd1",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:33:00-03:00",
+          "mlb": "MLB25656186",
+          "preco": 51.9,
+          "data_preco": "2026-10-20T14:33:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Bravecto Cães 20-40kg 1000mg 1 Comp. Mastigável Msd Azul",
+      "categoria": "Pet Shop",
+      "ofertas": [
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://meli.la/153k3Ma",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T14:33:00-03:00",
+          "mlb": "MLB15982844",
+          "preco": 185.73,
+          "data_preco": "2026-10-20T14:33:00-03:00"
+        }
+      ],
+      "marca": "MSD"
+    }
+  ]
+}
