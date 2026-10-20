@@ -43,6 +43,15 @@ Enquanto não houver resposta por escrito, `programasConfirmados` continua
 
 ## Amazon — Associados
 
+- **Solicitação sobre imagens:** ENVIADA em 20/10/2026 (~20:10 Brasília) pelo formulário
+  "Fale conosco" do Portal de Associados, assunto "Outras dúvidas e comentários".
+  Captcha resolvido pelo titular. Confirmação: "Obrigado! Seu e-mail foi enviado.
+  Responderemos o mais rápido possível, normalmente dentro de 24 horas."
+  Sem número de protocolo na tela; comprovante em
+  `docs/comprovantes/amazon-suporte-2026-10-20.jpg`. A resposta vai para o e-mail
+  primário da conta de Associado.
+  Perguntas: ferramenta oficial de links com imagem no Brasil; forma permitida de
+  exibir foto antes da API; uso de fotos licenciadas pelo fabricante.
 - Programa ativo (ID vitrineachados-20), sem pendência de autorização.
 - Imagens: pelas Políticas do Programa (abr/2026), imagens de produto só podem vir
   da Creators API / API de Divulgação de Produtos ou feeds aprovados, sem cache.
