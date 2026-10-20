@@ -385,6 +385,618 @@
           "data_preco": "2026-10-14T12:00:00-03:00"
         }
       ]
+    },
+    {
+      "nome": "Produto Exemplo 13",
+      "marca": "Marca Fictícia",
+      "categoria": "Saúde e Bem-estar",
+      "prioridade": null,
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 13. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "caracteristicas": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmo_produto": true,
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0EXEMPL13?tag=exemplo-20",
+          "validado": "sim"
+        },
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://mercadolivre.com/sec/EXEMPLO13",
+          "validado": "sim",
+          "preco": 103,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/EXEMPLO13",
+          "validado": "sim",
+          "preco": 98,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Produto Exemplo 14",
+      "marca": "Marca Fictícia",
+      "categoria": "Ferramentas",
+      "prioridade": null,
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 14. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "caracteristicas": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmo_produto": true,
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0EXEMPL14?tag=exemplo-20",
+          "validado": "sim"
+        },
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://mercadolivre.com/sec/EXEMPLO14",
+          "validado": "sim",
+          "preco": 104,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/EXEMPLO14",
+          "validado": "sim",
+          "preco": 99,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Produto Exemplo 15",
+      "marca": "Marca Fictícia",
+      "categoria": "Bebês e Infantil",
+      "prioridade": null,
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 15. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "caracteristicas": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmo_produto": true,
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0EXEMPL15?tag=exemplo-20",
+          "validado": "sim"
+        },
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://mercadolivre.com/sec/EXEMPLO15",
+          "validado": "sim",
+          "preco": 105,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/EXEMPLO15",
+          "validado": "sim",
+          "preco": 100,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Produto Exemplo 16",
+      "marca": "Marca Fictícia",
+      "categoria": "Pets",
+      "prioridade": null,
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 16. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "caracteristicas": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmo_produto": true,
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0EXEMPL16?tag=exemplo-20",
+          "validado": "sim"
+        },
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://mercadolivre.com/sec/EXEMPLO16",
+          "validado": "sim",
+          "preco": 106,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/EXEMPLO16",
+          "validado": "sim",
+          "preco": 101,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Produto Exemplo 17",
+      "marca": "Marca Fictícia",
+      "categoria": "Games",
+      "prioridade": null,
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 17. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "caracteristicas": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmo_produto": true,
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0EXEMPL17?tag=exemplo-20",
+          "validado": "sim"
+        },
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://mercadolivre.com/sec/EXEMPLO17",
+          "validado": "sim",
+          "preco": 107,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/EXEMPLO17",
+          "validado": "sim",
+          "preco": 102,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Produto Exemplo 18",
+      "marca": "Marca Fictícia",
+      "categoria": "Informática",
+      "prioridade": null,
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 18. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "caracteristicas": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmo_produto": true,
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0EXEMPL18?tag=exemplo-20",
+          "validado": "sim"
+        },
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://mercadolivre.com/sec/EXEMPLO18",
+          "validado": "sim",
+          "preco": 108,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/EXEMPLO18",
+          "validado": "sim",
+          "preco": 103,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Produto Exemplo 19",
+      "marca": "Marca Fictícia",
+      "categoria": "Saúde e Bem-estar",
+      "prioridade": null,
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 19. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "caracteristicas": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmo_produto": true,
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0EXEMPL19?tag=exemplo-20",
+          "validado": "sim"
+        },
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://mercadolivre.com/sec/EXEMPLO19",
+          "validado": "sim",
+          "preco": 109,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/EXEMPLO19",
+          "validado": "sim",
+          "preco": 104,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Produto Exemplo 20",
+      "marca": "Marca Fictícia",
+      "categoria": "Ferramentas",
+      "prioridade": null,
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 20. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "caracteristicas": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmo_produto": true,
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0EXEMPL20?tag=exemplo-20",
+          "validado": "sim"
+        },
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://mercadolivre.com/sec/EXEMPLO20",
+          "validado": "sim",
+          "preco": 110,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/EXEMPLO20",
+          "validado": "sim",
+          "preco": 105,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Produto Exemplo 21",
+      "marca": "Marca Fictícia",
+      "categoria": "Bebês e Infantil",
+      "prioridade": null,
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 21. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "caracteristicas": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmo_produto": true,
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0EXEMPL21?tag=exemplo-20",
+          "validado": "sim"
+        },
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://mercadolivre.com/sec/EXEMPLO21",
+          "validado": "sim",
+          "preco": 111,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/EXEMPLO21",
+          "validado": "sim",
+          "preco": 106,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Produto Exemplo 22",
+      "marca": "Marca Fictícia",
+      "categoria": "Pets",
+      "prioridade": null,
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 22. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "caracteristicas": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmo_produto": true,
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0EXEMPL22?tag=exemplo-20",
+          "validado": "sim"
+        },
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://mercadolivre.com/sec/EXEMPLO22",
+          "validado": "sim",
+          "preco": 112,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/EXEMPLO22",
+          "validado": "sim",
+          "preco": 107,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Produto Exemplo 23",
+      "marca": "Marca Fictícia",
+      "categoria": "Games",
+      "prioridade": null,
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 23. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "caracteristicas": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmo_produto": true,
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0EXEMPL23?tag=exemplo-20",
+          "validado": "sim"
+        },
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://mercadolivre.com/sec/EXEMPLO23",
+          "validado": "sim",
+          "preco": 113,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/EXEMPLO23",
+          "validado": "sim",
+          "preco": 108,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Produto Exemplo 24",
+      "marca": "Marca Fictícia",
+      "categoria": "Informática",
+      "prioridade": null,
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 24. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "caracteristicas": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmo_produto": true,
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0EXEMPL24?tag=exemplo-20",
+          "validado": "sim"
+        },
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://mercadolivre.com/sec/EXEMPLO24",
+          "validado": "sim",
+          "preco": 114,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/EXEMPLO24",
+          "validado": "sim",
+          "preco": 109,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Produto Exemplo 25",
+      "marca": "Marca Fictícia",
+      "categoria": "Saúde e Bem-estar",
+      "prioridade": null,
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 25. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "caracteristicas": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmo_produto": true,
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0EXEMPL25?tag=exemplo-20",
+          "validado": "sim"
+        },
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://mercadolivre.com/sec/EXEMPLO25",
+          "validado": "sim",
+          "preco": 115,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/EXEMPLO25",
+          "validado": "sim",
+          "preco": 110,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Produto Exemplo 26",
+      "marca": "Marca Fictícia",
+      "categoria": "Ferramentas",
+      "prioridade": null,
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 26. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "caracteristicas": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmo_produto": true,
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0EXEMPL26?tag=exemplo-20",
+          "validado": "sim"
+        },
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://mercadolivre.com/sec/EXEMPLO26",
+          "validado": "sim",
+          "preco": 116,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/EXEMPLO26",
+          "validado": "sim",
+          "preco": 111,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Produto Exemplo 27",
+      "marca": "Marca Fictícia",
+      "categoria": "Bebês e Infantil",
+      "prioridade": null,
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 27. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "caracteristicas": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmo_produto": true,
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0EXEMPL27?tag=exemplo-20",
+          "validado": "sim"
+        },
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://mercadolivre.com/sec/EXEMPLO27",
+          "validado": "sim",
+          "preco": 117,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/EXEMPLO27",
+          "validado": "sim",
+          "preco": 112,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Produto Exemplo 28",
+      "marca": "Marca Fictícia",
+      "categoria": "Pets",
+      "prioridade": null,
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 28. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "caracteristicas": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmo_produto": true,
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0EXEMPL28?tag=exemplo-20",
+          "validado": "sim"
+        },
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://mercadolivre.com/sec/EXEMPLO28",
+          "validado": "sim",
+          "preco": 118,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/EXEMPLO28",
+          "validado": "sim",
+          "preco": 113,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Produto Exemplo 29",
+      "marca": "Marca Fictícia",
+      "categoria": "Games",
+      "prioridade": null,
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 29. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "caracteristicas": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmo_produto": true,
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0EXEMPL29?tag=exemplo-20",
+          "validado": "sim"
+        },
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://mercadolivre.com/sec/EXEMPLO29",
+          "validado": "sim",
+          "preco": 119,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/EXEMPLO29",
+          "validado": "sim",
+          "preco": 114,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        }
+      ]
+    },
+    {
+      "nome": "Produto Exemplo 30",
+      "marca": "Marca Fictícia",
+      "categoria": "Informática",
+      "prioridade": null,
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 30. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "caracteristicas": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmo_produto": true,
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0EXEMPL30?tag=exemplo-20",
+          "validado": "sim"
+        },
+        {
+          "plataforma": "Mercado Livre",
+          "link": "https://mercadolivre.com/sec/EXEMPLO30",
+          "validado": "sim",
+          "preco": 120,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "plataforma": "Shopee",
+          "link": "https://s.shopee.com.br/EXEMPLO30",
+          "validado": "sim",
+          "preco": 115,
+          "data_preco": "2026-10-14T12:00:00-03:00"
+        }
+      ]
     }
   ]
 }

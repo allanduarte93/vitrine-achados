@@ -13,6 +13,7 @@ import { fileURLToPath } from "node:url";
 import { validarCatalogo, ofertasAtivas, produtoIndexavel, slugify, resumoCatalogo } from "./lib/catalogo.mjs";
 import { layout, paginaInicial, paginaCategoria, paginaProduto, paginaBusca, paginaComoFunciona, paginaSobre, paginaAvisoAfiliados, paginaContato, paginaPrivacidade, pagina404 } from "./lib/render.mjs";
 import { LOJAS } from "./lib/links.mjs";
+import { canonicalizarCategoria } from "./lib/categorias.mjs";
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -46,8 +47,10 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
     writeFileSync(f, comBase(html));
   };
 
+  const canonicas = config.categoriasVitrine || [];
   const itens = catalogo.produtos
-    .map((p) => {
+    .map((p0) => {
+      const p = { ...p0, categoria: canonicalizarCategoria(p0.categoria, canonicas) };
       const ativas = ofertasAtivas(p, config, agora);
       const inativas = p.ofertas.filter((o) => !ativas.some((a) => a.loja === o.loja));
       return { p, ativas, inativas, indexavel: produtoIndexavel(p, config, agora) };
@@ -61,10 +64,17 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
     if (!catMap.has(slug)) catMap.set(slug, { slug, nome: x.p.categoria, itens: [] });
     catMap.get(slug).itens.push(x);
   });
-  const categorias = [...catMap.values()]
-    .map((c) => ({ ...c, total: c.itens.length, indexavel: c.itens.some((x) => x.indexavel) }))
-    .sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
-  const navCats = categorias.map(({ slug, nome }) => ({ slug, nome }));
+  const comProdutos = [...catMap.values()].map((c) => ({ ...c, total: c.itens.length, indexavel: c.itens.some((x) => x.indexavel) }));
+  // As categorias da vitrine sempre existem (navegáveis); sem produtos ficam "em curadoria", noindex e fora do sitemap.
+  const vazias = canonicas
+    .filter((nome) => !catMap.has(slugify(nome)))
+    .map((nome) => ({ slug: slugify(nome), nome, itens: [], total: 0, indexavel: false }));
+  const ordem = (c) => {
+    const i = canonicas.findIndex((n) => slugify(n) === c.slug);
+    return i === -1 ? canonicas.length : i;
+  };
+  const categorias = [...comProdutos, ...vazias].sort((a, b) => ordem(a) - ordem(b) || a.nome.localeCompare(b.nome, "pt-BR"));
+  const navCats = categorias.map(({ slug, nome, total }) => ({ slug, nome, total }));
 
   const paginas = []; // {caminho, indexavel}
   const render = (caminho, pagina, indexavel = true) => {
@@ -73,8 +83,8 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
     paginas.push({ caminho, indexavel: indexavel && !exemplo });
   };
 
-  render("/", paginaInicial({ config, destaques: itens.filter((x) => x.p.prioritario).slice(0, 10), categorias, todos: itens.filter((x) => !x.p.prioritario), categoriasPlanejadas: config.categoriasVitrine || [] }));
-  categorias.forEach((c) => render(`/categoria/${c.slug}/`, paginaCategoria({ config, categoria: c, itens: c.itens }), c.indexavel));
+  render("/", paginaInicial({ config, destaques: itens.filter((x) => x.p.prioritario).slice(0, 10), categorias, todos: itens.filter((x) => !x.p.prioritario) }));
+  categorias.forEach((c) => render(`/categoria/${c.slug}/`, paginaCategoria({ config, categoria: c, itens: c.itens, outras: categorias.filter((o) => o.slug !== c.slug) }), c.indexavel));
   itens.forEach((x) => {
     const relacionados = (catMap.get(slugify(x.p.categoria))?.itens || []).filter((r) => r.p.id !== x.p.id).slice(0, 4);
     render(`/produto/${x.p.id}/`, paginaProduto({ config, p: x.p, ativas: x.ativas, inativas: x.inativas, relacionados }), x.indexavel);

@@ -201,11 +201,10 @@ const cabPagina = ({ titulo, sub, icn = "info", tom = ["#ffe7dc", "#c2410c"] }) 
 
 /* ---------------- Páginas ---------------- */
 
-export const paginaInicial = ({ config, destaques, categorias, todos, categoriasPlanejadas = [] }) => {
+export const paginaInicial = ({ config, destaques, categorias, todos }) => {
   const temProdutos = destaques.length + todos.length > 0;
   const vitrine = destaques.length ? destaques : todos.slice(0, 8);
-  const nomesReais = new Set(categorias.map((c) => c.nome.toLowerCase()));
-  const planejadas = categoriasPlanejadas.filter((n) => !nomesReais.has(n.toLowerCase()));
+  const comOferta = categorias.filter((c) => c.total > 0);
 
   const secaoVitrine = temProdutos
     ? `<section class="secao" aria-labelledby="t-destaques"><div class="container">
@@ -233,8 +232,11 @@ export const paginaInicial = ({ config, destaques, categorias, todos, categorias
   </div>
 </div></section>`;
 
-  const tilesReais = categorias.map((c) => `<a class="cat" href="/categoria/${c.slug}/">${bolhaCategoria(c.nome, 30)}<strong>${esc(c.nome)}</strong><small>${c.total} ${c.total === 1 ? "produto" : "produtos"}</small></a>`);
-  const tilesPlanejados = planejadas.map((n) => `<div class="cat">${bolhaCategoria(n, 30)}<strong>${esc(n)}</strong><span class="tag-curadoria">Em curadoria</span></div>`);
+  // Categorias com produtos primeiro; as vazias aparecem como "Em curadoria" (nunca com contagem de ofertas).
+  const tiles = [...comOferta, ...categorias.filter((c) => c.total === 0)].map((c) =>
+    `<a class="cat" href="/categoria/${c.slug}/">${bolhaCategoria(c.nome, 30)}<strong>${esc(c.nome)}</strong>${
+      c.total > 0 ? `<small>${c.total} ${c.total === 1 ? "produto" : "produtos"}</small>` : `<span class="tag-curadoria">Em curadoria</span>`
+    }</a>`);
 
   const conteudo = `
 <section class="hero"><div class="container hero-grade">
@@ -261,8 +263,8 @@ export const paginaInicial = ({ config, destaques, categorias, todos, categorias
 ${secaoVitrine}
 
 <section class="secao" aria-labelledby="t-categorias"><div class="container">
-  <div class="secao-cab"><div><p class="sobretitulo">Explore</p><h2 id="t-categorias">Categorias populares</h2><p>${categorias.length ? "Navegue pelas categorias com produtos conferidos." : "As categorias que estamos preparando. Cada uma ganha link assim que tiver produtos conferidos."}</p></div></div>
-  <div class="grade-cats">${[...tilesReais, ...tilesPlanejados].join("")}</div>
+  <div class="secao-cab"><div><p class="sobretitulo">Explore</p><h2 id="t-categorias">Categorias populares</h2><p>${!comOferta.length ? "As categorias que estamos preparando. Os produtos entram em cada uma assim que o link for conferido." : comOferta.length < categorias.length ? "Navegue pelas categorias. As marcadas como “Em curadoria” ainda não têm produtos com link conferido." : "Navegue pelas categorias com produtos conferidos."}</p></div></div>
+  <div class="grade-cats">${tiles.join("")}</div>
 </div></section>
 
 <section class="secao" aria-labelledby="t-compara"><div class="container compara">
@@ -316,8 +318,37 @@ const barraFiltros = (itens) => {
 </form>`;
 };
 
-export const paginaCategoria = ({ config, categoria, itens }) => {
+export const paginaCategoria = ({ config, categoria, itens, outras = [] }) => {
   const ic = iconeCategoria(categoria.nome);
+  if (!itens.length) {
+    const vizinhas = outras.filter((o) => o.total > 0).slice(0, 6);
+    return {
+      titulo: `${categoria.nome}: em curadoria | ${config.nomeSite}`,
+      descricao: `A categoria ${categoria.nome.toLowerCase()} da ${config.nomeSite} está em curadoria: ainda não há produtos com link conferido.`,
+      conteudo: `
+${cabPagina({ titulo: esc(categoria.nome), sub: "Categoria em curadoria: ainda não há produtos com link conferido aqui.", icn: ic, tom: TONS[ic] })}
+<div class="container">
+  <nav class="trilha" aria-label="Trilha"><a href="/">Início</a> › <span>${esc(categoria.nome)}</span></nav>
+  <div class="curadoria" style="margin-top:8px">
+    <div class="curadoria-txt">
+      <h2 style="font-size:24px">Estamos conferindo os produtos desta categoria</h2>
+      <p>Só publicamos um produto depois de conferir o link, o anúncio e a loja. Por isso esta página ainda não tem ofertas.</p>
+      <ul class="criterios">
+        <li>${icone("check", { tamanho: 16 })}Link de afiliado oficial, aberto e conferido</li>
+        <li>${icone("check", { tamanho: 16 })}Loja de destino identificada</li>
+        <li>${icone("check", { tamanho: 16 })}Informações tiradas do anúncio, sem notas inventadas</li>
+      </ul>
+      <p style="margin-top:18px"><a class="btn btn-sec" href="/busca/">${icone("busca", { tamanho: 18 })} Buscar produtos</a></p>
+    </div>
+    <div class="curadoria-arte" aria-hidden="true"><span class="bolha" style="width:140px;height:140px;border-radius:40px;display:grid;place-items:center;background:${(TONS[ic] || TONS.outros)[0]};color:${(TONS[ic] || TONS.outros)[1]}">${icone(ic, { tamanho: 64 })}</span></div>
+  </div>
+  ${vizinhas.length ? `<section class="secao" aria-labelledby="t-outras"><div class="secao-cab"><h2 id="t-outras">Categorias com produtos</h2></div><div class="grade-cats">${vizinhas
+    .map((o) => `<a class="cat" href="/categoria/${o.slug}/">${bolhaCategoria(o.nome, 30)}<strong>${esc(o.nome)}</strong><small>${o.total} ${o.total === 1 ? "produto" : "produtos"}</small></a>`)
+    .join("")}</div></section>` : ""}
+</div>`,
+      jsonld: [],
+    };
+  }
   const conteudo = `
 ${cabPagina({ titulo: esc(categoria.nome), sub: `${itens.length} ${itens.length === 1 ? "produto" : "produtos"} com link conferido em ${esc(categoria.nome.toLowerCase())}. Compare as lojas disponíveis e vá direto para a oferta.`, icn: ic, tom: TONS[ic] })}
 <div class="container">

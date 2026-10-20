@@ -8,6 +8,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { resolve, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 import { normalizarPesquisa, mesclarCatalogo } from "../lib/importar.mjs";
+import { canonicalizarCategoria } from "../lib/categorias.mjs";
 import { validarCatalogo, resumoCatalogo, estadoOferta } from "../lib/catalogo.mjs";
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -23,7 +24,9 @@ const config = JSON.parse(readFileSync(resolve(RAIZ, "config.json"), "utf8"));
 const fonte = JSON.parse(readFileSync(resolve(process.cwd(), entrada), "utf8"));
 const atual = JSON.parse(readFileSync(catPath, "utf8"));
 
-const { produtos, descartados, ignorados } = normalizarPesquisa(fonte);
+const lidos = normalizarPesquisa(fonte);
+const { descartados, ignorados } = lidos;
+const produtos = lidos.produtos.map((p) => ({ ...p, categoria: canonicalizarCategoria(p.categoria, config.categoriasVitrine || []) }));
 const { catalogo, novos, atualizados } = mesclarCatalogo(atual, produtos);
 const { erros, avisos } = validarCatalogo(catalogo, config);
 const r = resumoCatalogo(catalogo, config);

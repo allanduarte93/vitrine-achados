@@ -8,6 +8,8 @@ import { estadoOferta, validarCatalogo, produtoIndexavel, avaliarPublicacao } fr
 import { normalizarPesquisa, mesclarCatalogo } from "../src/lib/importar.mjs";
 import { normalizarClique, agregar } from "../src/lib/cliques.mjs";
 import { build } from "../src/build.mjs";
+import { classificar } from "../src/cli/checar-links.mjs";
+import { canonicalizarCategoria } from "../src/lib/categorias.mjs";
 import { criarServidor } from "../src/server.mjs";
 
 // Os testes não podem herdar as variáveis do workflow de publicação.
@@ -128,7 +130,7 @@ test("build: HTML indexável sem JS, só ofertas ativas, dados verdadeiros e sit
     const r = build({ configPath: CFG, catalogoPath: "data/exemplo/catalogo-exemplo.json", saida, agora: AGORA });
     const ler = (rel) => readFileSync(join(saida, rel), "utf8");
     const produtos = readdirSync(join(saida, "produto"));
-    assert.equal(produtos.length, 11, "produto sem oferta ativa não vira página");
+    assert.equal(produtos.length, 29, "produto sem oferta ativa não vira página");
     assert.ok(!produtos.includes("produto-exemplo-06-marca-ficticia"));
 
     const p2 = ler("produto/produto-exemplo-02-marca-ficticia/index.html");
@@ -240,12 +242,19 @@ test("versão institucional: catálogo vazio gera site legítimo, sem nada comer
       assert.doesNotMatch(html, /R\$\s?\d/, `${pag}: sem preço`);
       assert.doesNotMatch(html, /Produto Exemplo|Marca Fictícia|fictíci|Rode a importação/i, `${pag}: sem dado fictício nem texto interno`);
     }
-    assert.ok(!existsSync(join(saida, "produto")) && !existsSync(join(saida, "categoria")));
+    assert.ok(!existsSync(join(saida, "produto")), "sem produtos, nenhuma página de produto");
+    // Categorias planejadas são navegáveis, mas honestas: em curadoria, noindex, sem oferta.
+    for (const slug of ["eletronicos", "casa-e-cozinha", "pets"]) {
+      const cat = readFileSync(join(saida, "categoria", slug, "index.html"), "utf8");
+      assert.match(cat, /em curadoria/i);
+      assert.match(cat, /noindex, follow/);
+      assert.doesNotMatch(cat, /data-oferta|btn-amazon|btn-shopee|btn-mercadolivre|\d+ produtos? com link/);
+    }
     const home = readFileSync(join(saida, "index.html"), "utf8");
     assert.match(home, /Como funciona/);
     assert.match(home, /Vitrine em curadoria/);
     assert.match(home, /Categorias populares/);
-    assert.doesNotMatch(home, /href="[^"]*\/categoria\//, "categoria planejada não vira link sem produtos");
+    assert.doesNotMatch(home, /<small>\d+ produtos?<\/small>/, "categoria vazia nunca mostra contagem de ofertas");
     assert.match(home, /Em curadoria/);
     assert.match(home, /Exemplo ilustrativo/);
     assert.match(home, /<meta property="og:image" content="https:\/\/usuario\.github\.io\/vitrine\/assets\/og-image\.png">/);
@@ -290,7 +299,7 @@ test("busca: índice só com produtos publicados e URLs com subcaminho", () => {
   try {
     build({ configPath: CFG, catalogoPath: "data/exemplo/catalogo-exemplo.json", saida, agora: AGORA });
     const { produtos } = JSON.parse(readFileSync(join(saida, "busca.json"), "utf8"));
-    assert.equal(produtos.length, 11);
+    assert.equal(produtos.length, 29);
     assert.ok(produtos.every((p) => p.url.startsWith("/vitrine/produto/")));
     assert.ok(!produtos.some((p) => p.id.includes("exemplo-06")), "produto sem oferta ativa fica fora da busca");
     const cat = readFileSync(join(saida, "categoria/eletronicos/index.html"), "utf8");
@@ -322,5 +331,59 @@ test("CSS: .secao só define espaçamento vertical (não anula as margens do .co
   const css = readFileSync("assets/style.css", "utf8");
   for (const m of css.matchAll(/\.secao\s*\{([^}]*)\}/g)) {
     assert.doesNotMatch(m[1], /(^|;)\s*padding\s*:/, `regra .secao com padding abreviado: ${m[0]}`);
+  }
+});
+
+test("verificador de links: aceita página de produto da loja certa e recusa busca, login e outro domínio", () => {
+  assert.equal(classificar("amazon", "https://www.amazon.com.br/Produto-X/dp/B0ABCDEFGH?tag=x-20", 200).ok, true);
+  assert.equal(classificar("amazon", "https://www.amazon.com.br/s?k=fone", 200).ok, false);
+  assert.equal(classificar("amazon", "https://www.amazon.com.br/ap/signin?x=1", 200).ok, false);
+  assert.equal(classificar("amazon", "https://www.amazon.com.br/dp/B0ABCDEFGH", 404).ok, false);
+  assert.equal(classificar("amazon", "https://www.amazon.com.br/dp/B0ABCDEFGH", 503).ok, null, "bloqueio anti-robô é inconclusivo, não falha");
+  assert.equal(classificar("mercadolivre", "https://www.mercadolivre.com.br/fone-x/p/MLB12345678", 200).ok, true);
+  assert.equal(classificar("mercadolivre", "https://produto.mercadolivre.com.br/MLB-1234567-fone-_JM", 200).ok, true);
+  assert.equal(classificar("mercadolivre", "https://lista.mercadolivre.com.br/fone", 200).ok, false);
+  assert.equal(classificar("shopee", "https://shopee.com.br/Fone-X-i.123456.7891011", 200).ok, true);
+  assert.equal(classificar("shopee", "https://shopee.com.br/search?keyword=fone", 200).ok, false);
+  assert.equal(classificar("shopee", "https://golpe.com/shopee.com.br/x-i.1.2", 200).ok, false);
+  assert.equal(classificar("shopee", "https://shopee.com.br/x-i.1.2", 0).ok, false, "sem resposta é falha");
+});
+
+test("categorias: nomes de pesquisa caem na categoria canônica", () => {
+  const C = ["Eletrônicos", "Casa e Cozinha", "Beleza e Cuidados", "Saúde e Bem-estar", "Esporte e Lazer", "Ferramentas", "Bebês e Infantil", "Pets", "Games", "Informática"];
+  assert.equal(canonicalizarCategoria("Cozinha", C), "Casa e Cozinha");
+  assert.equal(canonicalizarCategoria("fones e áudio", C), "Eletrônicos");
+  assert.equal(canonicalizarCategoria("Notebook e escritório", C), "Informática");
+  assert.equal(canonicalizarCategoria("Cachorros", C), "Pets");
+  assert.equal(canonicalizarCategoria("eletrônicos", C), "Eletrônicos");
+  assert.equal(canonicalizarCategoria("Papelaria criativa", C), "Papelaria criativa", "sem correspondência mantém o nome");
+});
+
+test("estrutura comercial com 30 produtos em 10 categorias", () => {
+  const saida = mkdtempSync(join(tmpdir(), "vitrine-30-"));
+  const cfg = join(saida, "config.json");
+  const base = JSON.parse(readFileSync("config.json", "utf8"));
+  writeFileSync(cfg, JSON.stringify({ ...base, siteUrl: "https://exemplo.invalid", afiliados: { ...base.afiliados, programasConfirmados: { amazon: true, mercadolivre: true, shopee: true } } }));
+  try {
+    const r = build({ configPath: cfg, catalogoPath: "data/exemplo/catalogo-exemplo.json", saida: join(saida, "dist"), agora: AGORA });
+    assert.equal(r.produtosPublicados, 29);
+    assert.equal(r.categorias, 10);
+    const ler = (f) => readFileSync(join(saida, "dist", f), "utf8");
+    for (const slug of ["eletronicos", "casa-e-cozinha", "beleza-e-cuidados", "saude-e-bem-estar", "esporte-e-lazer", "ferramentas", "bebes-e-infantil", "pets", "games", "informatica"]) {
+      const html = ler(`categoria/${slug}/index.html`);
+      assert.match(html, /class="card"/, `${slug}: tem produtos`);
+      assert.match(html, /content="index, follow"/, `${slug}: indexável`);
+    }
+    const home = ler("index.html");
+    assert.equal((home.match(/<article class="card"/g) || []).length, 9, "home mostra os prioritários com link válido (o 06 não tem nenhum)");
+    assert.doesNotMatch(home, /Em curadoria/, "com todas as categorias abastecidas, nada em curadoria");
+    const p = ler("produto/produto-exemplo-20-marca-ficticia/index.html");
+    assert.equal((p.match(/data-oferta/g) || []).length, 3, "3 botões de loja");
+    assert.match(p, /Ver na Amazon/); assert.match(p, /Ver no Mercado Livre/); assert.match(p, /Ver na Shopee/);
+    assert.match(p, /Como Associado da Amazon/, "programa confirmado: declaração exibida");
+    const locs = (ler("sitemap.xml").match(/<loc>/g) || []).length;
+    assert.ok(locs >= 5 + 10 + 28, `sitemap com institucionais + categorias + produtos indexáveis (${locs})`);
+  } finally {
+    rmSync(saida, { recursive: true, force: true });
   }
 });

@@ -45,14 +45,14 @@ export const iconeCategoria = (nome = "") => {
   const regras = [
     [/eletron|audio|fone|celular|smart|tv/, "eletronicos"],
     [/informat|computador|notebook|escritorio/, "informatica"],
-    [/game|console|jogo/, "games"],
-    [/casa|cozinha|lar|decor|eletrodom/, "casa"],
+    [/\bgames?\b|console|videogame|\bjogos? (de )?(video|tabuleiro)/, "games"],
+    [/\bcasa\b|cozinha|\blar\b|decor|eletrodom|panela/, "casa"],
     [/beleza|cuidado|perfum|maquiag|cabelo/, "beleza"],
     [/saude|bem-estar|bem estar|fitness|suplement/, "saude"],
     [/esporte|lazer|academia|camping|bike/, "esporte"],
     [/ferrament|construc|jardim|automot/, "ferramentas"],
     [/bebe|infantil|crianca|brinquedo/, "bebes"],
-    [/pet|animal|cachorro|gato/, "pets"],
+    [/\bpets?\b|animal|cachorr|\bgat[oa]s?\b/, "pets"],
     [/moda|roupa|calcad|acessorio|bolsa/, "moda"],
     [/livro|papelaria|leitura/, "livros"],
   ];

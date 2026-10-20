@@ -90,7 +90,7 @@ Sem `validado`/`verified` **e** sem data (do item ou `dataValidacao` do arquivo)
 
 ## Testes
 
-`npm test`: 16 testes cobrindo regras de links, ativação de botões, preços, importação, cliques, build (HTML sem JS, sitemap, dados estruturados, subcaminho do GitHub Pages) e servidor.
+`npm test`: 21 testes cobrindo regras de links, ativação de botões, preços, importação, cliques, build (HTML sem JS, sitemap, dados estruturados, subcaminho do GitHub Pages) e servidor.
 
 ## Identidade visual
 
@@ -101,6 +101,16 @@ Sem `validado`/`verified` **e** sem data (do item ou `dataValidacao` do arquivo)
 - **Imagens de produto:** só aparecem com `imagem` + `imagemPermitida: true` no catálogo (caminho `/assets/produtos/arquivo.webp` ou URL autorizada pela loja/fabricante). Sem imagem autorizada, o card usa o ícone da categoria.
 - **PNGs de marca** (ícones e `og-image.png`): `node scripts/gerar-imagens.mjs` (precisa de Playwright/Chromium na máquina; os PNGs gerados ficam versionados).
 - **Categorias da home:** `config.categoriasVitrine`. Sem produtos, elas aparecem como "Em curadoria" e sem link; com produtos, viram links com contagem.
+
+## Ativar o modo comercial (roteiro)
+
+1. **Programa aprovado:** quando uma loja aprovar este site, marque `config.afiliados.programasConfirmados.<loja>: true`. Para a Amazon, crie também a variável `AMAZON_TAG` no repositório. Cada loja liberada é publicada sozinha, sem esperar as outras.
+2. **Catálogo:** salve a pesquisa do Cowork em `entrada/catalogo.json` e rode `npm run importar:cowork`. As categorias são encaixadas nas 10 canônicas (`config.categoriasVitrine`).
+3. **Conferência:** rode `npm run validar` (botões desativados e motivos) e `npm run checar-links` (abre cada link ativo e confere se cai na página do produto; 403/429/503 contam como "inconclusivo", não como falha).
+4. **Prévia local:** `npm run build && npm run servir`.
+5. **Publicação manual:** Actions → Publicar → `PUBLICAR`. O workflow roda os testes, o `pronto` (trava oferta de loja não confirmada) e o `checar-links`.
+
+**Categorias:** as 10 de `config.categoriasVitrine` sempre têm página. Sem produtos, a página diz "em curadoria", sai com `noindex`, fica fora do sitemap e nunca mostra contagem de ofertas.
 
 ## Entrada do Cowork
 

@@ -298,3 +298,11 @@ a.cat:hover { transform: translateY(-3px); box-shadow: var(--sombra-forte); }
 }
 .botao-ilustra { font-size: 12px; font-weight: 700; color: var(--suave); border: 2px dashed var(--linha); border-radius: 10px; padding: 7px 12px; white-space: nowrap; }
 .botao-ilustra.loja-amazon { border-color: #8b95a5; } .botao-ilustra.loja-mercadolivre { border-color: #e2cc00; } .botao-ilustra.loja-shopee { border-color: #ee8a73; }
+@media (max-width: 560px) {
+  .card .btn { font-size: 14px; padding: 10px 8px; min-height: 42px; }
+  .card-lojas { gap: 4px; }
+  .card-lojas .marca-loja { font-size: 11.5px; padding: 3px 8px; gap: 5px; }
+  .card-lojas .marca-loja i { width: 8px; height: 8px; }
+  .selo-lojas { font-size: 11px; padding: 3px 8px; }
+}
+@media (max-width: 359px) { .grade-prod { grid-template-columns: 1fr; } }

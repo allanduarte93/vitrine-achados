@@ -35,6 +35,8 @@ jobs:
           node-version: 22
       - run: npm test
       - run: npm run pronto
+      # Abre cada link de compra ativo e confere se cai na página do produto (catálogo vazio: nada a verificar).
+      - run: npm run checar-links
       - run: npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

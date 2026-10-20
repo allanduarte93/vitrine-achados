@@ -1,6 +1,6 @@
 {
   "versao": 1,
-  "atualizadoEm": "2026-10-14T23:17:53.477Z",
+  "atualizadoEm": "2026-10-20T17:23:18.591Z",
   "produtos": [
     {
       "id": "produto-exemplo-01-marca-ficticia",
@@ -44,7 +44,7 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": false,
-      "atualizadoEm": "2026-10-14T23:17:53.477Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
     },
     {
       "id": "produto-exemplo-02-marca-ficticia",
@@ -85,7 +85,7 @@
       ],
       "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 02. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-14T23:17:53.477Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
     },
     {
       "id": "produto-exemplo-03-marca-ficticia",
@@ -127,7 +127,7 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": false,
-      "atualizadoEm": "2026-10-14T23:17:53.477Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
     },
     {
       "id": "produto-exemplo-04-marca-ficticia",
@@ -166,7 +166,7 @@
       ],
       "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 04. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-14T23:17:53.477Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
     },
     {
       "id": "produto-exemplo-05-marca-ficticia",
@@ -208,7 +208,7 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": false,
-      "atualizadoEm": "2026-10-14T23:17:53.477Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
     },
     {
       "id": "produto-exemplo-06-marca-ficticia",
@@ -228,7 +228,7 @@
       ],
       "descricao": "Texto curto.",
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-14T23:17:53.477Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
     },
     {
       "id": "produto-exemplo-07-marca-ficticia",
@@ -272,7 +272,7 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": false,
-      "atualizadoEm": "2026-10-14T23:17:53.477Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
     },
     {
       "id": "produto-exemplo-08-marca-ficticia",
@@ -311,7 +311,7 @@
       ],
       "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 08. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-14T23:17:53.477Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
     },
     {
       "id": "produto-exemplo-09-marca-ficticia",
@@ -355,7 +355,7 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": false,
-      "atualizadoEm": "2026-10-14T23:17:53.477Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
     },
     {
       "id": "produto-exemplo-10-marca-ficticia",
@@ -394,7 +394,7 @@
       ],
       "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 10. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-14T23:17:53.477Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
     },
     {
       "id": "produto-exemplo-11-marca-ficticia",
@@ -438,7 +438,7 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": false,
-      "atualizadoEm": "2026-10-14T23:17:53.477Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
     },
     {
       "id": "produto-exemplo-12-marca-ficticia",
@@ -477,7 +477,781 @@
       ],
       "descricao": "Texto curto.",
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-14T23:17:53.477Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+    },
+    {
+      "id": "produto-exemplo-13-marca-ficticia",
+      "nome": "Produto Exemplo 13",
+      "marca": "Marca Fictícia",
+      "categoria": "Saúde e Bem-estar",
+      "prioritario": false,
+      "fonte": "Cowork (EXEMPLO FICTÍCIO) 2026-10-14",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0EXEMPL13?tag=exemplo-20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork"
+        },
+        {
+          "loja": "mercadolivre",
+          "url": "https://mercadolivre.com/sec/EXEMPLO13",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 103,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/EXEMPLO13",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 98,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        }
+      ],
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 13. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "pontosChave": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmoProdutoConfirmado": true,
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+    },
+    {
+      "id": "produto-exemplo-14-marca-ficticia",
+      "nome": "Produto Exemplo 14",
+      "marca": "Marca Fictícia",
+      "categoria": "Ferramentas",
+      "prioritario": false,
+      "fonte": "Cowork (EXEMPLO FICTÍCIO) 2026-10-14",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0EXEMPL14?tag=exemplo-20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork"
+        },
+        {
+          "loja": "mercadolivre",
+          "url": "https://mercadolivre.com/sec/EXEMPLO14",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 104,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/EXEMPLO14",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 99,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        }
+      ],
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 14. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "pontosChave": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmoProdutoConfirmado": true,
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+    },
+    {
+      "id": "produto-exemplo-15-marca-ficticia",
+      "nome": "Produto Exemplo 15",
+      "marca": "Marca Fictícia",
+      "categoria": "Bebês e Infantil",
+      "prioritario": false,
+      "fonte": "Cowork (EXEMPLO FICTÍCIO) 2026-10-14",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0EXEMPL15?tag=exemplo-20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork"
+        },
+        {
+          "loja": "mercadolivre",
+          "url": "https://mercadolivre.com/sec/EXEMPLO15",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 105,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/EXEMPLO15",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 100,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        }
+      ],
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 15. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "pontosChave": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmoProdutoConfirmado": true,
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+    },
+    {
+      "id": "produto-exemplo-16-marca-ficticia",
+      "nome": "Produto Exemplo 16",
+      "marca": "Marca Fictícia",
+      "categoria": "Pets",
+      "prioritario": false,
+      "fonte": "Cowork (EXEMPLO FICTÍCIO) 2026-10-14",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0EXEMPL16?tag=exemplo-20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork"
+        },
+        {
+          "loja": "mercadolivre",
+          "url": "https://mercadolivre.com/sec/EXEMPLO16",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 106,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/EXEMPLO16",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 101,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        }
+      ],
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 16. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "pontosChave": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmoProdutoConfirmado": true,
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+    },
+    {
+      "id": "produto-exemplo-17-marca-ficticia",
+      "nome": "Produto Exemplo 17",
+      "marca": "Marca Fictícia",
+      "categoria": "Games",
+      "prioritario": false,
+      "fonte": "Cowork (EXEMPLO FICTÍCIO) 2026-10-14",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0EXEMPL17?tag=exemplo-20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork"
+        },
+        {
+          "loja": "mercadolivre",
+          "url": "https://mercadolivre.com/sec/EXEMPLO17",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 107,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/EXEMPLO17",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 102,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        }
+      ],
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 17. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "pontosChave": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmoProdutoConfirmado": true,
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+    },
+    {
+      "id": "produto-exemplo-18-marca-ficticia",
+      "nome": "Produto Exemplo 18",
+      "marca": "Marca Fictícia",
+      "categoria": "Informática",
+      "prioritario": false,
+      "fonte": "Cowork (EXEMPLO FICTÍCIO) 2026-10-14",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0EXEMPL18?tag=exemplo-20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork"
+        },
+        {
+          "loja": "mercadolivre",
+          "url": "https://mercadolivre.com/sec/EXEMPLO18",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 108,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/EXEMPLO18",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 103,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        }
+      ],
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 18. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "pontosChave": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmoProdutoConfirmado": true,
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+    },
+    {
+      "id": "produto-exemplo-19-marca-ficticia",
+      "nome": "Produto Exemplo 19",
+      "marca": "Marca Fictícia",
+      "categoria": "Saúde e Bem-estar",
+      "prioritario": false,
+      "fonte": "Cowork (EXEMPLO FICTÍCIO) 2026-10-14",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0EXEMPL19?tag=exemplo-20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork"
+        },
+        {
+          "loja": "mercadolivre",
+          "url": "https://mercadolivre.com/sec/EXEMPLO19",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 109,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/EXEMPLO19",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 104,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        }
+      ],
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 19. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "pontosChave": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmoProdutoConfirmado": true,
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+    },
+    {
+      "id": "produto-exemplo-20-marca-ficticia",
+      "nome": "Produto Exemplo 20",
+      "marca": "Marca Fictícia",
+      "categoria": "Ferramentas",
+      "prioritario": false,
+      "fonte": "Cowork (EXEMPLO FICTÍCIO) 2026-10-14",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0EXEMPL20?tag=exemplo-20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork"
+        },
+        {
+          "loja": "mercadolivre",
+          "url": "https://mercadolivre.com/sec/EXEMPLO20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 110,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/EXEMPLO20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 105,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        }
+      ],
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 20. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "pontosChave": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmoProdutoConfirmado": true,
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+    },
+    {
+      "id": "produto-exemplo-21-marca-ficticia",
+      "nome": "Produto Exemplo 21",
+      "marca": "Marca Fictícia",
+      "categoria": "Bebês e Infantil",
+      "prioritario": false,
+      "fonte": "Cowork (EXEMPLO FICTÍCIO) 2026-10-14",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0EXEMPL21?tag=exemplo-20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork"
+        },
+        {
+          "loja": "mercadolivre",
+          "url": "https://mercadolivre.com/sec/EXEMPLO21",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 111,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/EXEMPLO21",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 106,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        }
+      ],
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 21. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "pontosChave": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmoProdutoConfirmado": true,
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+    },
+    {
+      "id": "produto-exemplo-22-marca-ficticia",
+      "nome": "Produto Exemplo 22",
+      "marca": "Marca Fictícia",
+      "categoria": "Pets",
+      "prioritario": false,
+      "fonte": "Cowork (EXEMPLO FICTÍCIO) 2026-10-14",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0EXEMPL22?tag=exemplo-20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork"
+        },
+        {
+          "loja": "mercadolivre",
+          "url": "https://mercadolivre.com/sec/EXEMPLO22",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 112,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/EXEMPLO22",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 107,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        }
+      ],
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 22. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "pontosChave": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmoProdutoConfirmado": true,
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+    },
+    {
+      "id": "produto-exemplo-23-marca-ficticia",
+      "nome": "Produto Exemplo 23",
+      "marca": "Marca Fictícia",
+      "categoria": "Games",
+      "prioritario": false,
+      "fonte": "Cowork (EXEMPLO FICTÍCIO) 2026-10-14",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0EXEMPL23?tag=exemplo-20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork"
+        },
+        {
+          "loja": "mercadolivre",
+          "url": "https://mercadolivre.com/sec/EXEMPLO23",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 113,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/EXEMPLO23",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 108,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        }
+      ],
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 23. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "pontosChave": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmoProdutoConfirmado": true,
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+    },
+    {
+      "id": "produto-exemplo-24-marca-ficticia",
+      "nome": "Produto Exemplo 24",
+      "marca": "Marca Fictícia",
+      "categoria": "Informática",
+      "prioritario": false,
+      "fonte": "Cowork (EXEMPLO FICTÍCIO) 2026-10-14",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0EXEMPL24?tag=exemplo-20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork"
+        },
+        {
+          "loja": "mercadolivre",
+          "url": "https://mercadolivre.com/sec/EXEMPLO24",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 114,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/EXEMPLO24",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 109,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        }
+      ],
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 24. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "pontosChave": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmoProdutoConfirmado": true,
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+    },
+    {
+      "id": "produto-exemplo-25-marca-ficticia",
+      "nome": "Produto Exemplo 25",
+      "marca": "Marca Fictícia",
+      "categoria": "Saúde e Bem-estar",
+      "prioritario": false,
+      "fonte": "Cowork (EXEMPLO FICTÍCIO) 2026-10-14",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0EXEMPL25?tag=exemplo-20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork"
+        },
+        {
+          "loja": "mercadolivre",
+          "url": "https://mercadolivre.com/sec/EXEMPLO25",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 115,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/EXEMPLO25",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 110,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        }
+      ],
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 25. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "pontosChave": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmoProdutoConfirmado": true,
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+    },
+    {
+      "id": "produto-exemplo-26-marca-ficticia",
+      "nome": "Produto Exemplo 26",
+      "marca": "Marca Fictícia",
+      "categoria": "Ferramentas",
+      "prioritario": false,
+      "fonte": "Cowork (EXEMPLO FICTÍCIO) 2026-10-14",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0EXEMPL26?tag=exemplo-20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork"
+        },
+        {
+          "loja": "mercadolivre",
+          "url": "https://mercadolivre.com/sec/EXEMPLO26",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 116,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/EXEMPLO26",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 111,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        }
+      ],
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 26. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "pontosChave": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmoProdutoConfirmado": true,
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+    },
+    {
+      "id": "produto-exemplo-27-marca-ficticia",
+      "nome": "Produto Exemplo 27",
+      "marca": "Marca Fictícia",
+      "categoria": "Bebês e Infantil",
+      "prioritario": false,
+      "fonte": "Cowork (EXEMPLO FICTÍCIO) 2026-10-14",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0EXEMPL27?tag=exemplo-20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork"
+        },
+        {
+          "loja": "mercadolivre",
+          "url": "https://mercadolivre.com/sec/EXEMPLO27",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 117,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/EXEMPLO27",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 112,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        }
+      ],
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 27. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "pontosChave": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmoProdutoConfirmado": true,
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+    },
+    {
+      "id": "produto-exemplo-28-marca-ficticia",
+      "nome": "Produto Exemplo 28",
+      "marca": "Marca Fictícia",
+      "categoria": "Pets",
+      "prioritario": false,
+      "fonte": "Cowork (EXEMPLO FICTÍCIO) 2026-10-14",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0EXEMPL28?tag=exemplo-20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork"
+        },
+        {
+          "loja": "mercadolivre",
+          "url": "https://mercadolivre.com/sec/EXEMPLO28",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 118,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/EXEMPLO28",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 113,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        }
+      ],
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 28. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "pontosChave": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmoProdutoConfirmado": true,
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+    },
+    {
+      "id": "produto-exemplo-29-marca-ficticia",
+      "nome": "Produto Exemplo 29",
+      "marca": "Marca Fictícia",
+      "categoria": "Games",
+      "prioritario": false,
+      "fonte": "Cowork (EXEMPLO FICTÍCIO) 2026-10-14",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0EXEMPL29?tag=exemplo-20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork"
+        },
+        {
+          "loja": "mercadolivre",
+          "url": "https://mercadolivre.com/sec/EXEMPLO29",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 119,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/EXEMPLO29",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 114,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        }
+      ],
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 29. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "pontosChave": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmoProdutoConfirmado": true,
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+    },
+    {
+      "id": "produto-exemplo-30-marca-ficticia",
+      "nome": "Produto Exemplo 30",
+      "marca": "Marca Fictícia",
+      "categoria": "Informática",
+      "prioritario": false,
+      "fonte": "Cowork (EXEMPLO FICTÍCIO) 2026-10-14",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0EXEMPL30?tag=exemplo-20",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork"
+        },
+        {
+          "loja": "mercadolivre",
+          "url": "https://mercadolivre.com/sec/EXEMPLO30",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 120,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        },
+        {
+          "loja": "shopee",
+          "url": "https://s.shopee.com.br/EXEMPLO30",
+          "linkVerificado": true,
+          "verificadoEm": "2026-10-14T12:00:00-03:00",
+          "verificadoPor": "cowork",
+          "preco": 115,
+          "precoColetadoEm": "2026-10-14T12:00:00-03:00"
+        }
+      ],
+      "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 30. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
+      "pontosChave": [
+        "Característica fictícia 1",
+        "Característica fictícia 2",
+        "Característica fictícia 3"
+      ],
+      "mesmoProdutoConfirmado": true,
+      "atualizadoEm": "2026-10-20T17:23:18.591Z"
     }
   ]
 }

@@ -16,7 +16,8 @@
     "relatorio": "node src/cli/relatorio.mjs",
     "test": "node --test",
     "importar:cowork": "node src/cli/importar.mjs entrada/catalogo.json",
-    "pronto": "node src/cli/validar.mjs --estrito"
+    "pronto": "node src/cli/validar.mjs --estrito",
+    "checar-links": "node src/cli/checar-links.mjs"
   },
   "license": "UNLICENSED"
 }
