@@ -309,6 +309,156 @@
         }
       ],
       "marca": "MSD"
+    },
+    {
+      "id": "amazon-b09b8vgcr8",
+      "nome": "Echo Dot (Geração mais recente) | Smart speaker com Alexa, som vibrante e potente, Wi-Fi e Bluetooth | Cor Preta, com Acesso Antecipado à Alexa+",
+      "marca": "Amazon",
+      "categoria": "Eletrônicos",
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B09B8VGCR8?th=1&linkCode=ll2&tag=vitrineachados-20&linkId=6cf715bdf4647fd89b4ecce8cc5c5582&ref_=as_li_ss_tl",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T15:15:00-03:00",
+          "asin": "B09B8VGCR8"
+        }
+      ]
+    },
+    {
+      "id": "amazon-b0dvk166sv",
+      "nome": "Amazon Fire TV Stick HD (modelo mais recente), Controle Remoto por Voz com Alexa, alimentado pela TV, com configuração simples e Acesso Antecipado à Alexa+",
+      "marca": "Amazon",
+      "categoria": "Eletrônicos",
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0DVK166SV?&linkCode=ll2&tag=vitrineachados-20&linkId=4964e99bda2dc295e9354a60dcf1f952&ref_=as_li_ss_tl",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T15:15:00-03:00",
+          "asin": "B0DVK166SV"
+        }
+      ]
+    },
+    {
+      "id": "amazon-b07rk4hst7",
+      "nome": "CeraVe, Loção Hidratante Corporal, com textura Fluida e Ácido Hialurônico",
+      "marca": "CeraVe",
+      "categoria": "Beleza e Cuidados",
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B07RK4HST7?&linkCode=ll2&tag=vitrineachados-20&linkId=b0f7596dbc40261cfcb279935bdd7a84&ref_=as_li_ss_tl",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T15:15:00-03:00",
+          "asin": "B07RK4HST7"
+        }
+      ]
+    },
+    {
+      "id": "amazon-b072mk7bn2",
+      "nome": "La Roche-Posay Cicaplast Baume B5+ Cuidado Multirreparador Calmante",
+      "marca": "La Roche-Posay",
+      "categoria": "Beleza e Cuidados",
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B072MK7BN2?&linkCode=ll2&tag=vitrineachados-20&linkId=b632af5b3fb70875dc4b194007ed0bda&ref_=as_li_ss_tl",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T15:15:00-03:00",
+          "asin": "B072MK7BN2"
+        }
+      ]
+    },
+    {
+      "id": "amazon-b07h113tpq",
+      "nome": "L'Oréal Paris Elseve Óleo Extraordinário Finalizador Capilar, Nutrição Profunda com 6 Óleos Preciosos, Anti-Frizz, Proteção Térmica até 230°C, Brilho Intenso para Todos os Tipos de Cabelo, 100ml",
+      "marca": "L'Oréal Paris",
+      "categoria": "Beleza e Cuidados",
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B07H113TPQ?&linkCode=ll2&tag=vitrineachados-20&linkId=e055a9477456b3b2f6ee2de99b35714a&ref_=as_li_ss_tl",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T15:15:00-03:00",
+          "asin": "B07H113TPQ"
+        }
+      ]
+    },
+    {
+      "id": "amazon-b0cdj4l7cz",
+      "nome": "Sanduicheira Elétrica Cadence Click - 127V",
+      "marca": "Cadence",
+      "categoria": "Casa e Cozinha",
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B0CDJ4L7CZ?&linkCode=ll2&tag=vitrineachados-20&linkId=22f8d768b21a3d2b7b3ecdb8c6a902e8&ref_=as_li_ss_tl",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T15:15:00-03:00",
+          "asin": "B0CDJ4L7CZ"
+        }
+      ]
+    },
+    {
+      "id": "amazon-b09xjl4b9h",
+      "nome": "Electrolux, Pote Hermetico, 12 unidades, A23122901, cinza",
+      "marca": "Electrolux",
+      "categoria": "Casa e Cozinha",
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B09XJL4B9H?&linkCode=ll2&tag=vitrineachados-20&linkId=b3cb7da4b63f2c046882269572dfd66e&ref_=as_li_ss_tl",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T15:15:00-03:00",
+          "asin": "B09XJL4B9H"
+        }
+      ]
+    },
+    {
+      "id": "amazon-b07j4j9xkz",
+      "nome": "Bravecto® 250mg Antipulgas e Carrapatos para Cães de 4,5 a 10kg – 1 Comprimido Mastigável",
+      "marca": "MSD",
+      "categoria": "Pet Shop",
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B07J4J9XKZ?&linkCode=ll2&tag=vitrineachados-20&linkId=a926ab404ba0bfb5e52a49cb972aba68&ref_=as_li_ss_tl",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T15:15:00-03:00",
+          "asin": "B07J4J9XKZ"
+        }
+      ]
+    },
+    {
+      "id": "amazon-b07dyhdxx8",
+      "nome": "Omo Sabão Líquido Lavagem Perfeita 5l - Tampa pode Variar",
+      "marca": "Omo",
+      "categoria": "Casa e Cozinha",
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B07DYHDXX8?&linkCode=ll2&tag=vitrineachados-20&linkId=1916ed8745c01e0878c9d93ea074de3c&ref_=as_li_ss_tl",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T15:15:00-03:00",
+          "asin": "B07DYHDXX8"
+        }
+      ]
+    },
+    {
+      "id": "amazon-b074l9l5kz",
+      "nome": "Mouse sem fio Logitech M170 com Design Ambidestro Compacto, Conexão USB e Pilha Inclusa - Preto",
+      "marca": "Logitech",
+      "categoria": "Informática",
+      "ofertas": [
+        {
+          "plataforma": "Amazon",
+          "link": "https://www.amazon.com.br/dp/B074L9L5KZ?&linkCode=ll2&tag=vitrineachados-20&linkId=9c77acf729cc229c3c48f19708194813&ref_=as_li_ss_tl",
+          "validado": "sim",
+          "validadoEm": "2026-10-20T15:15:00-03:00",
+          "asin": "B074L9L5KZ"
+        }
+      ]
     }
   ]
 }
