@@ -241,7 +241,9 @@
       "comissao": "Pet Shop não aparece na tabela oficial — não confirmada",
       "prioridade": null,
       "verificado_em": "2026-10-20T14:33:00-03:00"
-    },
+    }
+  ],
+  "prontos_aguardando_importacao": [
     {
       "nome": "Echo Dot (Geração mais recente) | Smart speaker com Alexa, som vibrante e potente, Wi-Fi e Bluetooth | Cor Preta, com Acesso Antecipado à Alexa+",
       "loja": "Amazon",
@@ -555,5 +557,6 @@
     "amazon": "conta ativa; site cadastrado na lista de sites em 20/10/2026; ID vitrineachados-20 criado em 20/10/2026; o portal não mostra etapa de aprovação por site",
     "shopee": "conta ativa (ID 18356851019); site cadastrado como mídia 'Other' em 20/10/2026, sem selo Verificado",
     "mercadolivre": "conta ativa (etiqueta ad20260429184559); site vinculado como 'Otra red' em 20/10/2026; termos exigem análise do ML para sites — sem status visível"
-  }
+  },
+  "observacao_amazon": "Os 10 links Amazon estão validados, mas ainda não foram importados para data/catalogo.json. Ao rodar 'npm run importar:cowork', mova-os para 'prontos' (o teste do repositório exige que todo item de 'prontos' esteja importado)."
 }
