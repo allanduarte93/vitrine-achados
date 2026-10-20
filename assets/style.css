@@ -334,3 +334,25 @@ a.cat:hover { transform: translateY(-3px); box-shadow: var(--sombra-forte); }
 .tabela-rolagem { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .tabela-rolagem .tabela-compara { min-width: 520px; }
 .tabela-compara th[scope="row"] { text-align: left; font-weight: 700; color: var(--ink); }
+
+/* Ficha visual para produtos sem foto autorizada: tipo + fatos conferidos no anúncio */
+.sem-foto.ficha { gap: 8px; background: radial-gradient(120% 90% at 50% 0%, var(--fundo, #eef1fb) 0%, #fff 62%); }
+.sem-foto.ficha .sem-foto-ic { width: 58px; height: 58px; border-radius: 18px; background: #fff; box-shadow: 0 1px 2px rgba(20,33,90,.08), inset 0 0 0 1px rgba(20,33,90,.06); }
+.sem-foto-tipo { font-size: .86rem; font-weight: 600; color: var(--traco, var(--ink)); line-height: 1.2; max-width: 92%; }
+.sem-foto-fatos { list-style: none; margin: 2px 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 96%; }
+.sem-foto-fatos li { font-size: .78rem; font-weight: 700; color: var(--ink); background: #fff; border: 1px solid var(--linha); border-radius: 8px; padding: 3px 8px; white-space: nowrap; }
+.sem-foto.ficha .sem-foto-nota { border: 0; background: transparent; padding: 0; font-size: .7rem; }
+.produto-img .sem-foto.ficha { gap: 12px; }
+.produto-img .sem-foto.ficha .sem-foto-ic { width: 96px; height: 96px; border-radius: 28px; }
+.produto-img .sem-foto-tipo { font-size: 1.1rem; }
+.produto-img .sem-foto-fatos li { font-size: .92rem; padding: 5px 12px; }
+.card-img:has(.ficha) { aspect-ratio: 4 / 3; }
+.produto-img:has(.ficha) { aspect-ratio: auto; }
+.produto-img .sem-foto.ficha { padding: 32px 20px; min-height: 280px; }
+@media (max-width: 600px) {
+  .produto-img .sem-foto.ficha { padding: 22px 14px; min-height: 0; gap: 9px; }
+  .produto-img .sem-foto.ficha .sem-foto-ic { width: 72px; height: 72px; border-radius: 22px; }
+  .produto-img .sem-foto-marca { font-size: 1.3rem; }
+  .produto-img .sem-foto-tipo { font-size: 1rem; }
+  .produto-img .sem-foto-fatos li { font-size: .85rem; padding: 4px 10px; }
+}

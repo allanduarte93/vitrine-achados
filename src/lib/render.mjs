@@ -51,10 +51,13 @@ const marcaLoja = (loja) => `<span class="marca-loja ${loja}"><i></i>${esc(LOJAS
 const semFoto = (p, tamanho) => {
   const ic = iconeCategoria(p.categoria);
   const [fundo, traco] = TONS[ic] || TONS.outros;
-  return `<div class="sem-foto" style="--fundo:${fundo};--traco:${traco}">
-  <span class="sem-foto-ic">${icone(ic, { tamanho })}</span>
+  const destaques = (Array.isArray(p.destaques) ? p.destaques : []).slice(0, 3);
+  return `<div class="sem-foto${p.tipo || destaques.length ? " ficha" : ""}" style="--fundo:${fundo};--traco:${traco}">
+  <span class="sem-foto-ic" aria-hidden="true">${icone(ic, { tamanho })}</span>
   ${p.marca ? `<strong class="sem-foto-marca">${esc(p.marca)}</strong>` : ""}
-  <span class="sem-foto-nota">${icone("externo", { tamanho: 14 })}Fotos oficiais na loja</span>
+  ${p.tipo ? `<span class="sem-foto-tipo">${esc(p.tipo)}</span>` : ""}
+  ${destaques.length ? `<ul class="sem-foto-fatos">${destaques.map((d) => `<li>${esc(d)}</li>`).join("")}</ul>` : ""}
+  <span class="sem-foto-nota">${icone("externo", { tamanho: 13 })}Fotos na página da loja</span>
 </div>`;
 };
 

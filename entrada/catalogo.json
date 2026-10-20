@@ -361,6 +361,11 @@
         "Controle de casa inteligente compatível e rotinas com o sensor de temperatura interno",
         "Botão para desligar o microfone",
         "Pode ser pareado com outros Echo compatíveis ou com o Fire TV"
+      ],
+      "tipo": "Smart speaker com Alexa",
+      "destaques": [
+        "Wi-Fi e Bluetooth",
+        "Cor preta"
       ]
     },
     {
@@ -384,6 +389,11 @@
         "Controle remoto por voz com Alexa e botões de volume e liga/desliga",
         "Aplicativos como Prime Video, Netflix, YouTube, Disney+, HBO Max e Globoplay",
         "Jogos por nuvem com Xbox Game Pass (exige assinatura e controle compatível)"
+      ],
+      "tipo": "Streaming para a TV",
+      "destaques": [
+        "Porta HDMI",
+        "Controle por voz"
       ]
     },
     {
@@ -407,6 +417,11 @@
         "Textura fluida, que não deixa a pele oleosa",
         "Sem perfume e hipoalergênica, segundo o fabricante",
         "Indicada para peles secas a extrassecas"
+      ],
+      "tipo": "Loção hidratante corporal",
+      "destaques": [
+        "473 ml",
+        "3 ceramidas"
       ]
     },
     {
@@ -430,6 +445,11 @@
         "Uso em rosto, corpo e lábios, para toda a família",
         "Livre de fragrâncias e hipoalergênico, segundo o fabricante",
         "Textura leve, sem resíduo oleoso"
+      ],
+      "tipo": "Creme multirreparador",
+      "destaques": [
+        "40 ml",
+        "Pantenol 5%"
       ]
     },
     {
@@ -453,6 +473,11 @@
         "Proteção térmica de até 230 °C, segundo o fabricante",
         "Uso como leave-in (cabelo úmido) ou finalizador (cabelo seco)",
         "Indicado para todos os tipos de cabelo"
+      ],
+      "tipo": "Óleo finalizador capilar",
+      "destaques": [
+        "100 ml",
+        "Proteção térmica"
       ]
     },
     {
@@ -476,6 +501,11 @@
         "Botão liga/desliga com luz indicadora",
         "Chapas antiaderentes: superior com grill e inferior lisa",
         "Alça embutida e base para guardar o fio"
+      ],
+      "tipo": "Sanduicheira elétrica",
+      "destaques": [
+        "127 V",
+        "750 W"
       ]
     },
     {
@@ -499,6 +529,11 @@
         "Vedação com anel de silicone",
         "Tampa com marcador de data",
         "Empilháveis; podem ir à lava-louças, segundo o anúncio"
+      ],
+      "tipo": "Potes herméticos",
+      "destaques": [
+        "12 unidades",
+        "Livre de BPA"
       ]
     },
     {
@@ -522,6 +557,11 @@
         "Princípio ativo: fluralaner",
         "Uma dose para 12 semanas de proteção, segundo o fabricante",
         "Siga a bula e a orientação do veterinário"
+      ],
+      "tipo": "Antipulgas para cães",
+      "destaques": [
+        "4,5 a 10 kg",
+        "12 semanas"
       ]
     },
     {
@@ -545,6 +585,11 @@
         "Sem fosfato, com ativos biodegradáveis (segundo a marca)",
         "Aroma tradicional",
         "A cor da tampa pode variar"
+      ],
+      "tipo": "Sabão líquido para roupas",
+      "destaques": [
+        "5 litros",
+        "Sem fosfato"
       ]
     },
     {
@@ -568,6 +613,11 @@
         "Pilha inclusa; até 12 meses de duração informada",
         "Design ambidestro e compacto",
         "Compatível com Windows, macOS, Linux, ChromeOS, iPadOS e Android"
+      ],
+      "tipo": "Mouse sem fio",
+      "destaques": [
+        "Receptor USB",
+        "Pilha inclusa"
       ]
     }
   ]

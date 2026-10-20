@@ -136,6 +136,11 @@ export const normalizarPesquisa = (fonte) => {
       const fonteImg = pick(item, "imagemFonte", "imagem_fonte", "imageSource");
       if (fonteImg) atual.imagemFonte = String(fonteImg).trim();
     }
+    // Ficha visual (sem foto): tipo do produto e até 3 fatos curtos conferidos no anúncio.
+    const tipo = pick(item, "tipo", "tipoProduto");
+    if (tipo && !atual.tipo) atual.tipo = String(tipo).trim();
+    const destaques = toArray(pick(item, "destaques", "highlights"));
+    if (destaques.length && !atual.destaques) atual.destaques = destaques.slice(0, 3);
     const mesmo = pick(item, "mesmoProdutoConfirmado", "mesmo_produto", "sameProduct");
     if (mesmo !== undefined) atual.mesmoProdutoConfirmado = truthy(mesmo);
 
@@ -198,6 +203,8 @@ export const mesclarCatalogo = (catalogo, importados, agoraISO = new Date().toIS
       prioritario: imp.prioritario || atual.prioritario,
       descricao: atual.descricao || imp.descricao,
       pontosChave: atual.pontosChave || imp.pontosChave,
+      ...((atual.tipo || imp.tipo) ? { tipo: atual.tipo || imp.tipo } : {}),
+      ...((atual.destaques || imp.destaques) ? { destaques: atual.destaques || imp.destaques } : {}),
       ofertas: [...ofertas.values()],
       atualizadoEm: agoraISO,
     };

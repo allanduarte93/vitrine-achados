@@ -542,3 +542,14 @@ test("importação de imagem: só https e só autorizada com marcação explíci
   assert.equal(produtos[1].imagemPermitida, false);
   assert.equal(produtos[2].imagem, undefined);
 });
+
+test("ficha sem foto: tipo e destaques curtos são validados e renderizados", () => {
+  const cfg = { afiliados: { amazonTag: "x-20" }, precoValidadeHoras: 24 };
+  const base = { id: "p-x", nome: "Produto X", categoria: "Casa", ofertas: [] };
+  assert.equal(validarCatalogo({ produtos: [{ ...base, tipo: "Mouse sem fio", destaques: ["Receptor USB", "Pilha inclusa"] }] }, cfg).erros.length, 0);
+  assert.ok(validarCatalogo({ produtos: [{ ...base, destaques: ["a", "b", "c", "d"] }] }, cfg).erros.some((e) => /destaques/.test(e)));
+  assert.ok(validarCatalogo({ produtos: [{ ...base, destaques: ["um texto longo demais para caber na ficha"] }] }, cfg).erros.some((e) => /destaques/.test(e)));
+  const { produtos } = normalizarPesquisa({ produtos: [{ nome: "Produto Y", tipo: "Sabão líquido", destaques: ["5 litros", "Sem fosfato"] }] });
+  assert.equal(produtos[0].tipo, "Sabão líquido");
+  assert.deepEqual(produtos[0].destaques, ["5 litros", "Sem fosfato"]);
+});

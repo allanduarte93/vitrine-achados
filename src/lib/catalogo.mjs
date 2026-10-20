@@ -24,7 +24,7 @@ export const slugify = (s) =>
 
 const CAMPOS_PRODUTO = new Set([
   "id", "nome", "marca", "categoria", "prioritario", "descricao", "pontosChave",
-  "imagem", "imagemPermitida", "imagemFonte", "fonte", "mesmoProdutoConfirmado", "ofertas", "atualizadoEm",
+  "imagem", "imagemPermitida", "imagemFonte", "tipo", "destaques", "fonte", "mesmoProdutoConfirmado", "ofertas", "atualizadoEm",
 ]);
 const CAMPOS_OFERTA = new Set([
   "loja", "url", "linkVerificado", "verificadoEm", "verificadoPor", "preco",
@@ -104,6 +104,10 @@ export const validarCatalogo = (catalogo, config, agora = new Date()) => {
         );
       }
     });
+    if (p.destaques != null && (!Array.isArray(p.destaques) || p.destaques.length > 3 || p.destaques.some((d) => typeof d !== "string" || !d.trim() || d.length > 24))) {
+      erros.push(`${ref}: 'destaques' deve ser uma lista de até 3 textos curtos (até 24 caracteres)`);
+    }
+    if (p.tipo != null && (typeof p.tipo !== "string" || p.tipo.length > 40)) erros.push(`${ref}: 'tipo' deve ter até 40 caracteres`);
     if (p.imagem && p.imagemPermitida !== true) {
       avisos.push(`${ref}: imagem ignorada — marque imagemPermitida só se o uso for autorizado pela loja/fabricante`);
     }
