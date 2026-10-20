@@ -500,3 +500,45 @@ test("meta descrição (produto, categoria, home, busca) cita só as lojas publi
     rmSync(saida, { recursive: true, force: true });
   }
 });
+
+test("vitrine publicada: guias só com produtos publicados, sem categorias vazias, arquivos estáticos e texto de loja única", () => {
+  const saida = mkdtempSync(join(tmpdir(), "vitrine-guias-"));
+  const cfg = join(saida, "config.json");
+  const base = JSON.parse(readFileSync("config.json", "utf8"));
+  writeFileSync(cfg, JSON.stringify({ ...base, siteUrl: "https://exemplo.invalid" }));
+  process.env.SOMENTE_CONFIRMADOS = "1";
+  try {
+    const r = build({ configPath: cfg, catalogoPath: "data/catalogo.json", saida: join(saida, "dist"), agora: new Date("2026-10-20T16:00:00-03:00") });
+    const dist = join(saida, "dist");
+    const guias = JSON.parse(readFileSync("data/guias.json", "utf8")).guias;
+    const publicados = new Set(readdirSync(join(dist, "produto")));
+    const esperados = guias.filter((g) => g.produtos.every((id) => publicados.has(id)));
+    assert.equal(r.guias, esperados.length);
+    esperados.forEach((g) => assert.ok(existsSync(join(dist, "guias", g.slug, "index.html")), g.slug));
+    // Nenhuma categoria publicada sem produto.
+    for (const d of readdirSync(join(dist, "categoria"))) {
+      assert.match(readFileSync(join(dist, "categoria", d, "index.html"), "utf8"), /\/produto\//, `categoria vazia: ${d}`);
+    }
+    for (const f of readdirSync("static")) assert.ok(existsSync(join(dist, f)), `estático ${f}`);
+    const conf = Object.entries(base.afiliados.programasConfirmados).filter(([, v]) => v);
+    const home = readFileSync(join(dist, "index.html"), "utf8");
+    if (conf.length === 1) {
+      assert.doesNotMatch(home, /Compare lojas|veja em quais lojas/);
+    }
+  } finally {
+    delete process.env.SOMENTE_CONFIRMADOS;
+    rmSync(saida, { recursive: true, force: true });
+  }
+});
+
+test("importação de imagem: só https e só autorizada com marcação explícita", () => {
+  const { produtos } = normalizarPesquisa({ produtos: [
+    { nome: "Produto A", imagem: "https://x.example/a.webp", imagemPermitida: true, imagemFonte: "programa" },
+    { nome: "Produto B", imagem: "https://x.example/b.webp" },
+    { nome: "Produto C", imagem: "http://x.example/c.webp", imagemPermitida: true },
+  ] });
+  assert.equal(produtos[0].imagemPermitida, true);
+  assert.equal(produtos[0].imagemFonte, "programa");
+  assert.equal(produtos[1].imagemPermitida, false);
+  assert.equal(produtos[2].imagem, undefined);
+});

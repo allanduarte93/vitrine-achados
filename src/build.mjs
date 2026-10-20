@@ -7,11 +7,11 @@
  * Só produtos com pelo menos uma oferta ativa (link válido e verificado) viram página.
  * Páginas sem conteúdo próprio suficiente saem com noindex e ficam fora do sitemap.
  */
-import { mkdirSync, writeFileSync, readFileSync, rmSync, cpSync } from "node:fs";
+import { mkdirSync, writeFileSync, readFileSync, rmSync, cpSync, existsSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { validarCatalogo, somenteConfirmadas, ofertasAtivas, produtoIndexavel, slugify, resumoCatalogo } from "./lib/catalogo.mjs";
-import { layout, paginaInicial, paginaCategoria, paginaProduto, paginaBusca, paginaComoFunciona, paginaSobre, paginaAvisoAfiliados, paginaContato, paginaPrivacidade, pagina404 } from "./lib/render.mjs";
+import { layout, paginaInicial, paginaCategoria, paginaProduto, paginaBusca, paginaComoFunciona, paginaSobre, paginaAvisoAfiliados, paginaContato, paginaPrivacidade, pagina404, paginaGuias, paginaGuia } from "./lib/render.mjs";
 import { LOJAS } from "./lib/links.mjs";
 import { canonicalizarCategoria } from "./lib/categorias.mjs";
 
@@ -19,7 +19,7 @@ const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 export const lerJson = (caminho) => JSON.parse(readFileSync(resolve(RAIZ, caminho), "utf8"));
 
-export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", configPath = "config.json", exemplo = false, agora = new Date() } = {}) => {
+export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", configPath = "config.json", guiasPath = "data/guias.json", exemplo = false, agora = new Date() } = {}) => {
   const config = lerJson(configPath);
   // Overrides por ambiente (usados no workflow de publicação, sem editar config.json).
   if (process.env.SITE_URL) config.siteUrl = process.env.SITE_URL;
@@ -66,10 +66,11 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
     catMap.get(slug).itens.push(x);
   });
   const comProdutos = [...catMap.values()].map((c) => ({ ...c, total: c.itens.length, indexavel: c.itens.some((x) => x.indexavel) }));
-  // As categorias da vitrine sempre existem (navegáveis); sem produtos ficam "em curadoria", noindex e fora do sitemap.
-  const vazias = canonicas
-    .filter((nome) => !catMap.has(slugify(nome)))
-    .map((nome) => ({ slug: slugify(nome), nome, itens: [], total: 0, indexavel: false }));
+  // Vitrine sem nenhum produto (versão institucional): as categorias planejadas aparecem "em curadoria", noindex.
+  // Com produtos publicados, a navegação comercial mostra só categorias abastecidas (nada de página vazia).
+  const vazias = comProdutos.length
+    ? []
+    : canonicas.map((nome) => ({ slug: slugify(nome), nome, itens: [], total: 0, indexavel: false }));
   const ordem = (c) => {
     const i = canonicas.findIndex((n) => slugify(n) === c.slug);
     return i === -1 ? canonicas.length : i;
@@ -77,19 +78,26 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
   const categorias = [...comProdutos, ...vazias].sort((a, b) => ordem(a) - ordem(b) || a.nome.localeCompare(b.nome, "pt-BR"));
   const navCats = categorias.map(({ slug, nome, total }) => ({ slug, nome, total }));
 
+  // Guias editoriais: só entram se TODOS os produtos citados estiverem publicados (nada de guia apontando para oferta oculta).
+  const porId = new Map(itens.map((x) => [x.p.id, x]));
+  const guiasDados = !exemplo && existsSync(resolve(RAIZ, guiasPath)) ? lerJson(guiasPath).guias || [] : [];
+  const guias = guiasDados.filter((g) => g.slug && Array.isArray(g.produtos) && g.produtos.length && g.produtos.every((id) => porId.has(id)));
+
   const paginas = []; // {caminho, indexavel}
   const render = (caminho, pagina, indexavel = true) => {
-    const html = layout({ config, caminho, indexavel, exemplo, categorias: navCats, ...pagina });
+    const html = layout({ config, caminho, indexavel, exemplo, categorias: navCats, temGuias: guias.length > 0, ...pagina });
     escrever(caminho === "/" ? "index.html" : `${caminho.replace(/^\//, "")}index.html`, html);
     paginas.push({ caminho, indexavel: indexavel && !exemplo });
   };
 
-  render("/", paginaInicial({ config, destaques: itens.filter((x) => x.p.prioritario).slice(0, 10), categorias, todos: itens.filter((x) => !x.p.prioritario) }));
+  render("/", paginaInicial({ config, destaques: itens.filter((x) => x.p.prioritario).slice(0, 10), categorias, todos: itens.filter((x) => !x.p.prioritario), guias }));
   categorias.forEach((c) => render(`/categoria/${c.slug}/`, paginaCategoria({ config, categoria: c, itens: c.itens, outras: categorias.filter((o) => o.slug !== c.slug) }), c.indexavel));
   itens.forEach((x) => {
     const relacionados = (catMap.get(slugify(x.p.categoria))?.itens || []).filter((r) => r.p.id !== x.p.id).slice(0, 4);
     render(`/produto/${x.p.id}/`, paginaProduto({ config, p: x.p, ativas: x.ativas, inativas: x.inativas, relacionados }), x.indexavel);
   });
+  guias.forEach((g) => render(`/guias/${g.slug}/`, paginaGuia({ config, guia: g, itens: g.produtos.map((id) => porId.get(id)) })));
+  if (guias.length) render("/guias/", paginaGuias({ config, guias }));
   render("/como-funciona/", paginaComoFunciona({ config }));
   const lojasPublicadas = [...new Set(itens.flatMap((x) => x.ativas.map((o) => o.loja)))];
   render("/busca/", paginaBusca({ config, ...(lojasPublicadas.length ? { lojas: lojasPublicadas } : {}) }), false);
@@ -97,7 +105,7 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
   render("/aviso-de-afiliados/", paginaAvisoAfiliados({ config }));
   render("/contato/", paginaContato({ config }));
   render("/privacidade/", paginaPrivacidade({ config }), false);
-  writeFileSync(join(out, "404.html"), comBase(layout({ config, caminho: "/404", indexavel: false, exemplo, categorias: navCats, ...pagina404({ config }) })));
+  writeFileSync(join(out, "404.html"), comBase(layout({ config, caminho: "/404", indexavel: false, exemplo, categorias: navCats, temGuias: guias.length > 0, ...pagina404({ config }) })));
 
   const hoje = agora.toISOString().slice(0, 10);
   const urls = paginas.filter((x) => x.indexavel);
@@ -112,6 +120,8 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
     exemplo ? "User-agent: *\nDisallow: /\n" : `User-agent: *\nAllow: /\n\nSitemap: ${config.siteUrl}/sitemap.xml\n`
   );
   cpSync(resolve(RAIZ, "assets"), join(out, "assets"), { recursive: true });
+  // Arquivos servidos na raiz do site (verificação do Search Console, chave do IndexNow).
+  if (!exemplo && existsSync(resolve(RAIZ, "static"))) cpSync(resolve(RAIZ, "static"), out, { recursive: true });
   const indice = itens.map(({ p, ativas }) => {
     const comPreco = ativas.filter((o) => o.estado.mostrarPreco);
     return {
@@ -132,6 +142,7 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
     indexaveis: urls.length,
     produtosPublicados: itens.length,
     categorias: categorias.length,
+    guias: guias.length,
     resumo: resumoCatalogo(catalogo, config, agora),
     saida: out,
   };

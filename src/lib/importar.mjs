@@ -128,6 +128,14 @@ export const normalizarPesquisa = (fonte) => {
     if (desc && !atual.descricao) atual.descricao = String(desc).trim();
     const pontos = toArray(pick(item, "pontosChave", "pontos_chave", "caracteristicas", "características", "features", "bullets"));
     if (pontos.length && !atual.pontosChave) atual.pontosChave = pontos;
+    // Imagem só entra com autorização explícita e fonte registrada (ex.: materiais do programa de afiliados).
+    const imagem = pick(item, "imagem", "image", "imagemUrl", "foto");
+    if (imagem && !atual.imagem && /^https:\/\//.test(String(imagem).trim())) {
+      atual.imagem = String(imagem).trim();
+      atual.imagemPermitida = truthy(pick(item, "imagemPermitida", "imagem_permitida", "imageAllowed")) === true;
+      const fonteImg = pick(item, "imagemFonte", "imagem_fonte", "imageSource");
+      if (fonteImg) atual.imagemFonte = String(fonteImg).trim();
+    }
     const mesmo = pick(item, "mesmoProdutoConfirmado", "mesmo_produto", "sameProduct");
     if (mesmo !== undefined) atual.mesmoProdutoConfirmado = truthy(mesmo);
 

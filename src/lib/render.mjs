@@ -47,14 +47,25 @@ const bolhaCategoria = (nome, tamanho = 28) => {
 
 const marcaLoja = (loja) => `<span class="marca-loja ${loja}"><i></i>${esc(LOJAS[loja].nome)}</span>`;
 
+// Sem foto autorizada: painel original com ícone da categoria e a marca — não imita foto do produto.
+const semFoto = (p, tamanho) => {
+  const ic = iconeCategoria(p.categoria);
+  const [fundo, traco] = TONS[ic] || TONS.outros;
+  return `<div class="sem-foto" style="--fundo:${fundo};--traco:${traco}">
+  <span class="sem-foto-ic">${icone(ic, { tamanho })}</span>
+  ${p.marca ? `<strong class="sem-foto-marca">${esc(p.marca)}</strong>` : ""}
+  <span class="sem-foto-nota">${icone("externo", { tamanho: 14 })}Fotos oficiais na loja</span>
+</div>`;
+};
+
 const imagemProduto = (p, tamanho = 64) =>
   p.imagem && p.imagemPermitida === true
-    ? `<img src="${esc(p.imagem)}" alt="${esc(p.nome)}" width="600" height="600" loading="lazy" decoding="async">`
-    : `<div class="sem-foto">${bolhaCategoria(p.categoria, tamanho)}</div>`;
+    ? `<img src="${esc(p.imagem)}" alt="${esc(p.nome)}" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer">`
+    : semFoto(p, tamanho);
 
 /* ---------------- Layout ---------------- */
 
-export const layout = ({ config, titulo, descricao, caminho, conteudo, jsonld = [], indexavel = true, exemplo = false, categorias = [] }) => {
+export const layout = ({ config, titulo, descricao, caminho, conteudo, jsonld = [], indexavel = true, exemplo = false, categorias = [], temGuias = false }) => {
   const url = `${config.siteUrl}${caminho}`;
   const robots = indexavel && !exemplo ? "index, follow" : "noindex, follow";
   const og = `${config.siteUrl}/assets/og-image.png`;
@@ -130,6 +141,7 @@ ${conteudo}
           <li><a href="/">Início</a></li>
           <li><a href="/busca/">Buscar produtos</a></li>
           <li><a href="/como-funciona/">Como funciona</a></li>
+          ${temGuias ? `<li><a href="/guias/">Guias de compra</a></li>` : ""}
           ${categorias.slice(0, 4).map((c) => `<li><a href="/categoria/${c.slug}/">${esc(c.nome)}</a></li>`).join("")}
         </ul>
       </div>
@@ -190,8 +202,8 @@ const COMPROMISSOS = [
 
 const blocoComoFunciona = () => `<ol class="passos">
   <li class="passo"><span class="bolha">${icone("lupaCheck", { tamanho: 26 })}</span><h3>Selecionamos e conferimos</h3><p>Escolhemos produtos procurados e checamos o link, o anúncio e a loja antes de publicar.</p></li>
-  <li class="passo"><span class="bolha">${icone("comparar", { tamanho: 26 })}</span><h3>Você compara</h3><p>Veja em quais lojas o produto está disponível e, quando é o mesmo item, compare o preço consultado.</p></li>
-  <li class="passo"><span class="bolha">${icone("loja", { tamanho: 26 })}</span><h3>Compra na loja</h3><p>O botão leva direto à página do produto na Amazon, no Mercado Livre ou na Shopee. Pagamento e entrega são com a loja.</p></li>
+  <li class="passo"><span class="bolha">${icone("comparar", { tamanho: 26 })}</span><h3>Você confere</h3><p>Leia o resumo e os pontos principais tirados do anúncio oficial e, quando o mesmo item está em mais de uma loja, compare onde comprar.</p></li>
+  <li class="passo"><span class="bolha">${icone("loja", { tamanho: 26 })}</span><h3>Compra na loja</h3><p>O botão leva direto à página do produto na loja. Preço final, pagamento e entrega são conferidos e feitos com a loja.</p></li>
 </ol>`;
 
 const cabPagina = ({ titulo, sub, icn = "info", tom = ["#ffe7dc", "#c2410c"] }) => `<section class="cab-pagina"><div class="container cab-pagina-in">
@@ -201,14 +213,15 @@ const cabPagina = ({ titulo, sub, icn = "info", tom = ["#ffe7dc", "#c2410c"] }) 
 
 /* ---------------- Páginas ---------------- */
 
-export const paginaInicial = ({ config, destaques, categorias, todos }) => {
+export const paginaInicial = ({ config, destaques, categorias, todos, guias = [] }) => {
   const temProdutos = destaques.length + todos.length > 0;
-  const vitrine = destaques.length ? destaques : todos.slice(0, 8);
+  const umaLoja = new Set([...destaques, ...todos].flatMap((x) => x.ativas.map((o) => o.loja))).size === 1;
+  const vitrine = destaques.length ? destaques : todos.slice(0, 12);
   const comOferta = categorias.filter((c) => c.total > 0);
 
   const secaoVitrine = temProdutos
     ? `<section class="secao" aria-labelledby="t-destaques"><div class="container">
-  <div class="secao-cab"><div><p class="sobretitulo">Vitrine</p><h2 id="t-destaques">Achados em destaque</h2><p>Produtos com link conferido. Toque para ver as lojas disponíveis.</p></div><a class="btn btn-sec" href="/busca/">Ver todos ${icone("seta", { tamanho: 18 })}</a></div>
+  <div class="secao-cab"><div><p class="sobretitulo">Vitrine</p><h2 id="t-destaques">Achados em destaque</h2><p>${umaLoja ? "Produtos com link conferido e informações tiradas do anúncio oficial." : "Produtos com link conferido. Toque para ver as lojas disponíveis."}</p></div><a class="btn btn-sec" href="/busca/">Ver todos ${icone("seta", { tamanho: 18 })}</a></div>
   <div class="grade-prod">${vitrine.map(({ p, ativas }) => cardProduto(p, ativas)).join("")}</div>
 </div></section>`
     : `<section class="secao" aria-labelledby="t-curadoria"><div class="container">
@@ -244,36 +257,8 @@ export const paginaInicial = ({ config, destaques, categorias, todos }) => {
   const nomesHero = lojasHero.map((l) => ({ amazon: "da Amazon", mercadolivre: "do Mercado Livre", shopee: "da Shopee" })[l]);
   const listaHero = nomesHero.length > 1 ? `${nomesHero.slice(0, -1).join(", ")} e ${nomesHero.at(-1)}` : nomesHero[0];
 
-  const conteudo = `
-<section class="hero"><div class="container hero-grade">
-  <div>
-    <span class="selo-topo">${icone("etiqueta", { tamanho: 18 })}Portal de descoberta de produtos</span>
-    <h1>Os achados mais procurados, <em>em um só lugar</em>.</h1>
-    <p class="hero-sub">Encontre produtos populares ${listaHero}, veja em quais lojas estão disponíveis e vá direto para a oferta. A gente indica; você compra na loja.</p>
-    <div class="hero-acoes">
-      <a class="btn btn-prim" href="${temProdutos ? "#t-destaques" : "#t-categorias"}">${temProdutos ? "Ver achados" : "Ver categorias"} ${icone("seta", { tamanho: 18 })}</a>
-      <a class="btn btn-sec" href="/como-funciona/">Como funciona</a>
-    </div>
-    <div class="hero-lojas"><span>Indicamos ofertas de</span>${lojasHero.map(marcaLoja).join("")}</div>
-  </div>
-  <div>${heroSvg()}</div>
-</div></section>
-
-<div class="container"><div class="beneficios">
-  <div class="beneficio"><span class="bolha">${icone("escudo", { tamanho: 24 })}</span><div><strong>Links conferidos</strong><span>Só publicamos ofertas com link verificado.</span></div></div>
-  <div class="beneficio"><span class="bolha">${icone("comparar", { tamanho: 24 })}</span><div><strong>Compare lojas</strong><span>Veja onde o mesmo produto está disponível.</span></div></div>
-  <div class="beneficio"><span class="bolha">${icone("loja", { tamanho: 24 })}</span><div><strong>Compra na loja</strong><span>Pagamento e entrega direto com a loja.</span></div></div>
-  <div class="beneficio"><span class="bolha">${icone("cofre", { tamanho: 24 })}</span><div><strong>Sem custo extra</strong><span>Você paga o mesmo preço da loja.</span></div></div>
-</div></div>
-
-${secaoVitrine}
-
-<section class="secao" aria-labelledby="t-categorias"><div class="container">
-  <div class="secao-cab"><div><p class="sobretitulo">Explore</p><h2 id="t-categorias">Categorias populares</h2><p>${!comOferta.length ? "As categorias que estamos preparando. Os produtos entram em cada uma assim que o link for conferido." : comOferta.length < categorias.length ? "Navegue pelas categorias. As marcadas como “Em curadoria” ainda não têm produtos com link conferido." : "Navegue pelas categorias com produtos conferidos."}</p></div></div>
-  <div class="grade-cats">${tiles.join("")}</div>
-</div></section>
-
-<section class="secao" aria-labelledby="t-compara"><div class="container compara">
+  // Comparação entre lojas só faz sentido com mais de uma loja publicada (ou na versão institucional, como explicação).
+  const secaoCompara = ativasHome.size === 1 ? "" : `<section class="secao" aria-labelledby="t-compara"><div class="container compara">
   <div>
     <p class="sobretitulo">Comparação</p>
     <h2 id="t-compara">Mesmo produto, lojas diferentes</h2>
@@ -289,7 +274,46 @@ ${secaoVitrine}
     ${["amazon", "mercadolivre", "shopee"].map((l) => `<div class="linha-loja"><div style="display:grid;gap:6px">${marcaLoja(l)}<span class="linha-skel" style="width:110px"></span></div><span class="botao-ilustra loja-${l}" aria-hidden="true">botão da loja</span></div>`).join("")}
     <figcaption class="rotulo-ilustrativo">Exemplo ilustrativo de como a comparação aparece</figcaption>
   </figure>
+</div></section>`;
+  const secaoGuias = guias.length
+    ? `<section class="secao" aria-labelledby="t-guias"><div class="container">
+  <div class="secao-cab"><div><p class="sobretitulo">Guias</p><h2 id="t-guias">Antes de comprar</h2><p>Comparativos feitos com as informações dos anúncios, para ajudar na escolha.</p></div><a class="btn btn-sec" href="/guias/">Todos os guias ${icone("seta", { tamanho: 18 })}</a></div>
+  <div class="grade-guias">${guias.map(cardGuia).join("")}</div>
+</div></section>`
+    : "";
+
+  const conteudo = `
+<section class="hero"><div class="container hero-grade">
+  <div>
+    <span class="selo-topo">${icone("etiqueta", { tamanho: 18 })}Portal de descoberta de produtos</span>
+    <h1>Os achados mais procurados, <em>em um só lugar</em>.</h1>
+    <p class="hero-sub">Encontre produtos populares ${listaHero}${umaLoja ? ", leia o essencial de cada um" : ", veja em quais lojas estão disponíveis"} e vá direto para a oferta. A gente indica; você compra na loja.</p>
+    <div class="hero-acoes">
+      <a class="btn btn-prim" href="${temProdutos ? "#t-destaques" : "#t-categorias"}">${temProdutos ? "Ver achados" : "Ver categorias"} ${icone("seta", { tamanho: 18 })}</a>
+      <a class="btn btn-sec" href="/como-funciona/">Como funciona</a>
+    </div>
+    <div class="hero-lojas"><span>Indicamos ofertas de</span>${lojasHero.map(marcaLoja).join("")}</div>
+  </div>
+  <div>${heroSvg()}</div>
 </div></section>
+
+<div class="container"><div class="beneficios">
+  <div class="beneficio"><span class="bolha">${icone("escudo", { tamanho: 24 })}</span><div><strong>Links conferidos</strong><span>Só publicamos ofertas com link verificado.</span></div></div>
+  <div class="beneficio"><span class="bolha">${icone(umaLoja ? "lupaCheck" : "comparar", { tamanho: 24 })}</span><div>${umaLoja ? "<strong>Informação do anúncio</strong><span>Resumo e pontos principais tirados do anúncio oficial.</span>" : "<strong>Compare lojas</strong><span>Veja onde o mesmo produto está disponível.</span>"}</div></div>
+  <div class="beneficio"><span class="bolha">${icone("loja", { tamanho: 24 })}</span><div><strong>Compra na loja</strong><span>Pagamento e entrega direto com a loja.</span></div></div>
+  <div class="beneficio"><span class="bolha">${icone("cofre", { tamanho: 24 })}</span><div><strong>Sem custo extra</strong><span>Você paga o mesmo preço da loja.</span></div></div>
+</div></div>
+
+${secaoVitrine}
+
+${secaoGuias}
+
+<section class="secao" aria-labelledby="t-categorias"><div class="container">
+  <div class="secao-cab"><div><p class="sobretitulo">Explore</p><h2 id="t-categorias">Categorias populares</h2><p>${!comOferta.length ? "As categorias que estamos preparando. Os produtos entram em cada uma assim que o link for conferido." : comOferta.length < categorias.length ? "Navegue pelas categorias. As marcadas como “Em curadoria” ainda não têm produtos com link conferido." : "Navegue pelas categorias com produtos conferidos."}</p></div></div>
+  <div class="grade-cats">${tiles.join("")}</div>
+</div></section>
+
+${secaoCompara}
 
 <section class="secao" aria-labelledby="t-como"><div class="container">
   <div class="secao-cab"><div><p class="sobretitulo">Simples assim</p><h2 id="t-como">Como funciona</h2></div><a class="btn btn-sec" href="/como-funciona/">Saiba mais ${icone("seta", { tamanho: 18 })}</a></div>
@@ -485,6 +509,83 @@ export const paginaProduto = ({ config, p, ativas, inativas, relacionados }) => 
     });
   }
   return { titulo: `${p.nome}: onde comprar | ${config.nomeSite}`, descricao: metaDesc, conteudo, jsonld };
+};
+
+/* ---------------- Guias editoriais ---------------- */
+
+const cardGuia = (g) => `<a class="card-guia" href="/guias/${esc(g.slug)}/">
+  <span class="card-guia-ic">${icone(iconeCategoria(g.categoria || ""), { tamanho: 26 })}</span>
+  <strong>${esc(g.titulo)}</strong>
+  <span>${esc(g.resumo)}</span>
+  <span class="card-guia-ler">Ler o guia ${icone("seta", { tamanho: 16 })}</span>
+</a>`;
+
+export const paginaGuias = ({ config, guias }) => ({
+  titulo: `Guias de compra | ${config.nomeSite}`,
+  descricao: `Guias e comparativos da ${config.nomeSite} feitos com as informações dos anúncios oficiais, para ajudar a escolher antes de comprar.`,
+  conteudo: `${cabPagina({ titulo: "Guias de compra", sub: "Comparativos feitos com as informações dos anúncios oficiais. Sem notas inventadas, sem avaliações de terceiros.", icn: "lupaCheck", tom: ["#e8edff", "#2546b8"] })}
+<div class="container secao"><div class="grade-guias">${guias.map(cardGuia).join("")}</div></div>`,
+});
+
+export const paginaGuia = ({ config, guia, itens }) => {
+  const secoes = (guia.secoes || [])
+    .map((sec) => `<section><h2>${esc(sec.titulo)}</h2>${(sec.paragrafos || []).map((t) => `<p>${esc(t)}</p>`).join("")}${
+      sec.lista?.length ? `<ul class="pontos">${sec.lista.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}</section>`)
+    .join("\n");
+  const tabela = guia.tabela?.colunas?.length
+    ? `<section><h2>${esc(guia.tabela.titulo || "Lado a lado")}</h2><div class="tabela-rolagem"><table class="tabela-compara"><thead><tr>${guia.tabela.colunas
+        .map((c) => `<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${guia.tabela.linhas
+        .map((l) => `<tr>${l.map((c, i) => (i === 0 ? `<th scope="row">${esc(c)}</th>` : `<td>${esc(c)}</td>`)).join("")}</tr>`).join("")}</tbody></table></div></section>`
+    : "";
+  const url = `${config.siteUrl}/guias/${guia.slug}/`;
+  return {
+    titulo: `${guia.titulo} | ${config.nomeSite}`,
+    descricao: guia.resumo,
+    conteudo: `
+<div class="container">
+  <nav class="trilha" aria-label="Trilha"><a href="/">Início</a> › <a href="/guias/">Guias</a> › <span>${esc(guia.titulo)}</span></nav>
+  <article class="guia">
+    <header class="guia-cab">
+      <p class="sobretitulo">Guia de compra</p>
+      <h1>${esc(guia.titulo)}</h1>
+      <p class="guia-intro">${esc(guia.introducao)}</p>
+      <p class="guia-meta">Atualizado em ${esc(guia.atualizadoEm)} · Informações conferidas nos anúncios oficiais</p>
+    </header>
+    <div class="texto guia-texto">
+      ${secoes}
+      ${tabela}
+    </div>
+    <section class="secao" aria-labelledby="t-guia-prod"><div class="secao-cab"><h2 id="t-guia-prod">Produtos citados neste guia</h2></div>
+      <div class="grade-prod">${itens.map(({ p, ativas }) => cardProduto(p, ativas)).join("")}</div>
+    </section>
+    <p class="fonte">${esc(guia.nota || "Este guia resume o que os fabricantes e as lojas informam nos anúncios. Confirme detalhes, preço e disponibilidade na página da loja antes de comprar.")}</p>
+  </article>
+</div>`,
+    jsonld: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: guia.titulo,
+        description: guia.resumo,
+        datePublished: guia.publicadoEm || guia.atualizadoEm,
+        dateModified: guia.atualizadoEm,
+        inLanguage: "pt-BR",
+        mainEntityOfPage: url,
+        author: { "@type": "Organization", name: config.nomeSite, url: `${config.siteUrl}/` },
+        publisher: { "@type": "Organization", name: config.nomeSite, logo: { "@type": "ImageObject", url: `${config.siteUrl}/assets/icon-512.png` } },
+        image: `${config.siteUrl}/assets/og-image.png`,
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Início", item: `${config.siteUrl}/` },
+          { "@type": "ListItem", position: 2, name: "Guias", item: `${config.siteUrl}/guias/` },
+          { "@type": "ListItem", position: 3, name: guia.titulo, item: url },
+        ],
+      },
+    ],
+  };
 };
 
 export const paginaBusca = ({ config, lojas = ["amazon", "mercadolivre", "shopee"] }) => ({

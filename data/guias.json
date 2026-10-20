@@ -1,0 +1,101 @@
+{
+  "_nota": "Guias editoriais. Cada guia só é publicado se todos os produtos de 'produtos' estiverem publicados. Fatos tirados dos anúncios oficiais conferidos em 20/10/2026; sem notas, avaliações ou preços.",
+  "guias": [
+    {
+      "slug": "echo-dot-ou-fire-tv-stick",
+      "titulo": "Echo Dot ou Fire TV Stick HD: qual aparelho com Alexa combina com a sua casa",
+      "resumo": "Os dois aparelhos da Amazon têm Alexa, mas resolvem coisas diferentes: um é caixa de som inteligente, o outro leva streaming para a TV. Veja o que cada um faz.",
+      "categoria": "Eletrônicos",
+      "publicadoEm": "2026-10-20",
+      "atualizadoEm": "2026-10-20",
+      "produtos": ["amazon-b09b8vgcr8", "amazon-b0dvk166sv"],
+      "introducao": "Echo Dot e Fire TV Stick HD aparecem juntos em muitas buscas porque os dois têm a Alexa. Mas eles não substituem um ao outro: o Echo Dot é uma caixa de som inteligente para qualquer cômodo, e o Fire TV Stick HD transforma a TV em uma central de aplicativos de streaming. Este guia separa o que cada um faz, segundo os anúncios oficiais.",
+      "secoes": [
+        {
+          "titulo": "Echo Dot: música, rotinas e casa inteligente por voz",
+          "paragrafos": [
+            "O Echo Dot é um alto-falante compacto com a Alexa. Ele toca música e podcasts de serviços como Amazon Music, Apple Music e Spotify e também funciona como caixa de som Bluetooth.",
+            "No dia a dia, ele responde a comandos de voz para timers, alarmes, previsão do tempo e perguntas rápidas. Com aparelhos de casa inteligente compatíveis, controla luzes, tomadas e outros dispositivos, e o sensor de temperatura interno permite criar rotinas, como ligar o ar-condicionado quando o cômodo esquenta."
+          ],
+          "lista": [
+            "Faz sentido para quem quer ouvir música e usar a Alexa sem depender da TV.",
+            "Tem botão para desligar o microfone.",
+            "Pode ser pareado com outros Echo compatíveis ou com o Fire TV."
+          ]
+        },
+        {
+          "titulo": "Fire TV Stick HD: streaming na TV com controle por voz",
+          "paragrafos": [
+            "O Fire TV Stick HD se conecta à porta HDMI da TV e reúne aplicativos como Prime Video, Netflix, YouTube, Disney+, HBO Max e Globoplay em uma única tela. Segundo o anúncio, ele é alimentado pela própria TV com o cabo USB-C incluso.",
+            "O controle remoto tem botão de voz com Alexa para buscar o que assistir e botões para ligar a TV e ajustar o volume de aparelhos compatíveis. O anúncio também cita jogos por nuvem com o Xbox Game Pass, que exige assinatura e controle compatível."
+          ],
+          "lista": [
+            "Faz sentido para quem tem uma TV sem aplicativos ou com sistema lento.",
+            "Precisa de uma porta HDMI livre na TV.",
+            "A Alexa fica no controle remoto, não em uma caixa de som."
+          ]
+        },
+        {
+          "titulo": "Dá para usar os dois juntos?",
+          "paragrafos": [
+            "Sim. Os anúncios informam que o Echo Dot pode ser pareado com o Fire TV para montar um sistema de som para a TV. Se a dúvida é por onde começar, pense no uso principal: música e comandos de voz pela casa pedem o Echo Dot; filmes e séries na TV pedem o Fire TV Stick HD."
+          ]
+        }
+      ],
+      "tabela": {
+        "titulo": "Lado a lado",
+        "colunas": ["", "Echo Dot", "Fire TV Stick HD"],
+        "linhas": [
+          ["O que é", "Alto-falante inteligente", "Aparelho de streaming para TV"],
+          ["Onde a Alexa fica", "No próprio aparelho", "No controle remoto por voz"],
+          ["Conexão", "Wi-Fi e Bluetooth", "Porta HDMI da TV"],
+          ["Uso principal", "Música, rotinas e casa inteligente", "Filmes, séries e TV ao vivo por aplicativos"]
+        ]
+      }
+    },
+    {
+      "slug": "cerave-locao-ou-cicaplast-baume-b5",
+      "titulo": "Loção CeraVe ou Cicaplast Baume B5+: para que serve cada um",
+      "resumo": "Um é loção hidratante para o corpo; o outro, creme multirreparador para pele sensibilizada. Compare fórmula, tamanho e uso indicado pelos fabricantes.",
+      "categoria": "Beleza e Cuidados",
+      "publicadoEm": "2026-10-20",
+      "atualizadoEm": "2026-10-20",
+      "produtos": ["amazon-b07rk4hst7", "amazon-b072mk7bn2"],
+      "introducao": "A loção hidratante da CeraVe e o Cicaplast Baume B5+ da La Roche-Posay estão entre os cuidados com a pele mais procurados, e às vezes são vistos como equivalentes. Pelas informações dos fabricantes, eles têm propostas diferentes: hidratação diária do corpo, de um lado, e reparação de pele sensibilizada, do outro.",
+      "secoes": [
+        {
+          "titulo": "Loção hidratante corporal CeraVe",
+          "paragrafos": [
+            "É uma loção de textura fluida, vendida em embalagem de 473 ml, pensada para o corpo inteiro. A fórmula reúne três ceramidas essenciais e ácido hialurônico, ingredientes que ajudam a manter a umidade natural da pele.",
+            "O fabricante indica o produto para peles secas a extrassecas e informa que a fórmula é sem perfume e hipoalergênica."
+          ]
+        },
+        {
+          "titulo": "Cicaplast Baume B5+ La Roche-Posay",
+          "paragrafos": [
+            "É um creme multirreparador em bisnaga de 40 ml. A fórmula combina pantenol a 5%, madecassoside e o complexo prebiótico Tribioma, e a marca indica o uso em áreas sensibilizadas do rosto, do corpo e dos lábios, para toda a família, incluindo bebês.",
+            "O anúncio informa que o produto é livre de fragrâncias, hipoalergênico e testado dermatologicamente, com textura leve e sem resíduo oleoso."
+          ]
+        },
+        {
+          "titulo": "Como pensar na escolha",
+          "paragrafos": [
+            "Pelo tamanho e pela proposta, a loção CeraVe atende a hidratação diária de áreas grandes, como braços e pernas. O Cicaplast, em embalagem menor, é indicado pela marca para pontos específicos de pele sensibilizada. Muita gente usa os dois em momentos diferentes.",
+            "Este guia não substitui orientação profissional: em caso de irritação, lesões ou condições de pele, procure um dermatologista."
+          ]
+        }
+      ],
+      "tabela": {
+        "titulo": "Lado a lado",
+        "colunas": ["", "Loção CeraVe", "Cicaplast Baume B5+"],
+        "linhas": [
+          ["Tipo", "Loção hidratante corporal", "Creme multirreparador"],
+          ["Embalagem", "473 ml", "40 ml"],
+          ["Ativos citados", "3 ceramidas e ácido hialurônico", "Pantenol 5%, madecassoside e Tribioma"],
+          ["Onde usar (fabricante)", "Corpo", "Rosto, corpo e lábios"],
+          ["Perfume", "Sem perfume", "Livre de fragrâncias"]
+        ]
+      }
+    }
+  ]
+}

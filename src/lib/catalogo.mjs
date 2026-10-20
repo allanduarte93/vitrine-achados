@@ -24,7 +24,7 @@ export const slugify = (s) =>
 
 const CAMPOS_PRODUTO = new Set([
   "id", "nome", "marca", "categoria", "prioritario", "descricao", "pontosChave",
-  "imagem", "imagemPermitida", "fonte", "mesmoProdutoConfirmado", "ofertas", "atualizadoEm",
+  "imagem", "imagemPermitida", "imagemFonte", "fonte", "mesmoProdutoConfirmado", "ofertas", "atualizadoEm",
 ]);
 const CAMPOS_OFERTA = new Set([
   "loja", "url", "linkVerificado", "verificadoEm", "verificadoPor", "preco",
