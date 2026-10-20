@@ -26,9 +26,12 @@ Enquanto não houver resposta por escrito, `programasConfirmados` continua
 - **Canal:** Central de Ajuda do Afiliado > Fale conosco por e-mail (formulário)
   > Cadastro/conta > Outras dúvidas > descrição livre
 - **Prazo informado no formulário:** até 3 dias úteis
-- **Status:** formulário preenchido (ID de afiliado 18356851019); o envio exige
-  um quebra-cabeça de verificação, que precisa ser resolvido pelo titular da conta.
-  Protocolo será registrado aqui quando o envio for concluído.
+- **Status:** ENVIADO em 20/10/2026, ~18:54 (Brasília), pela conta allanduarte280
+  (ID de afiliado 18356851019). O quebra-cabeça de verificação foi resolvido pelo
+  titular da conta. Tela de confirmação: "Enviado com sucesso — A sua solicitação
+  foi enviada com sucesso." O formulário **não exibe número de protocolo**; o
+  comprovante é a captura `docs/comprovantes/shopee-solicitacao-2026-10-20.jpg`.
+  A resposta deve chegar pelo contato cadastrado na conta de afiliado.
 - **Pedido:** (1) confirmar se o site está autorizado/aprovado como Mídia de Afiliado
   (cadastrado em "Informação de Mídia" como "Outro", sem selo de verificado);
   (2) se as imagens do Portal de Afiliados podem ser usadas no site junto aos links.
