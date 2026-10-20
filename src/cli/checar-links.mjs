@@ -81,6 +81,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     if (c.ok === null) inconclusivos++;
     linhas.push({ produto: p.id, loja: o.loja, ok: c.ok, motivo: c.motivo || "", final: r.final, cadeia: r.cadeia });
     console.log(`${c.ok ? "OK   " : c.ok === null ? "AVISO" : "FALHA"} ${p.id} · ${o.loja} → ${c.ok ? r.final : c.motivo}`);
+    if (!c.ok) console.log(`      destino: ${r.final}\n      cadeia: ${r.cadeia.join(" → ")}`);
   }
   mkdirSync(resolve(RAIZ, "data/relatorios"), { recursive: true });
   const rel = resolve(RAIZ, `data/relatorios/links-${new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-")}.json`);
