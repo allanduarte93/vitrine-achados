@@ -20,6 +20,21 @@ const dataHora = (iso) =>
 
 export const AVISO_CURTO = "Links de afiliado: podemos receber comissão por compras feitas por eles, sem custo extra para você.";
 export const AVISO_AMAZON = "Como Associado da Amazon, ganhamos com compras qualificadas.";
+/** Programas de afiliados cuja participação DESTE site foi confirmada (config.afiliados.programasConfirmados). */
+export const programasConfirmados = (config) =>
+  Object.entries(config.afiliados?.programasConfirmados || {}).filter(([, ok]) => ok === true).map(([loja]) => loja);
+const listaLojas = (lojas) => {
+  const nomes = lojas.map((l) => LOJAS[l]?.nome || l);
+  return nomes.length <= 1 ? nomes.join("") : `${nomes.slice(0, -1).join(", ")} e ${nomes.at(-1)}`;
+};
+/** Declaração da Amazon: só quando a participação do site no Associados estiver confirmada. */
+const declaracaoAmazon = (config) => (programasConfirmados(config).includes("amazon") ? AVISO_AMAZON : "");
+const fraseProgramas = (config) => {
+  const lojas = programasConfirmados(config);
+  return lojas.length
+    ? `Participamos dos programas de afiliados: ${listaLojas(lojas)}.`
+    : "A participação deste site nos programas de afiliados das lojas está em análise. Enquanto não houver aprovação, não publicamos links de afiliado dessas lojas.";
+};
 const NAO_SOMOS_LOJA = "A Vitrine Achados indica produtos de outras lojas. Não vendemos, não processamos pagamentos e não fazemos entregas: a compra é feita direto no site da loja.";
 
 const jsonLd = (data) => `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`;
@@ -129,11 +144,11 @@ ${conteudo}
       </div>
       <div>
         <h3>Transparência</h3>
-        <p>${esc(AVISO_CURTO)} ${esc(AVISO_AMAZON)} Preços e disponibilidade são definidos pelas lojas e podem mudar a qualquer momento.</p>
+        <p>${esc(AVISO_CURTO)} ${esc(declaracaoAmazon(config))} Preços e disponibilidade são definidos pelas lojas e podem mudar a qualquer momento.</p>
       </div>
     </div>
     <div class="rodape-base">
-      <span>© ${new Date().getFullYear()} ${esc(config.nomeSite)}. Amazon, Mercado Livre e Shopee são marcas de seus respectivos donos; não temos vínculo oficial com elas além dos programas de afiliados.</span>
+      <span>© ${new Date().getFullYear()} ${esc(config.nomeSite)}. Amazon, Mercado Livre e Shopee são marcas de seus respectivos donos; não temos vínculo oficial com essas lojas${programasConfirmados(config).length ? " além dos programas de afiliados" : ""}.</span>
     </div>
   </div>
 </footer>
@@ -384,7 +399,7 @@ export const paginaProduto = ({ config, p, ativas, inativas, relacionados }) => 
         <ul class="garantias">
           <li>${icone("externo", { tamanho: 18 })}<span>O botão abre a página do produto no site oficial da loja.</span></li>
           <li>${icone("cadeado", { tamanho: 18 })}<span>Pagamento, entrega e trocas são feitos com a loja.</span></li>
-          <li>${icone("cofre", { tamanho: 18 })}<span>${esc(AVISO_CURTO)} ${ativas.some((o) => o.loja === "amazon") ? esc(AVISO_AMAZON) : ""}</span></li>
+          <li>${icone("cofre", { tamanho: 18 })}<span>${esc(AVISO_CURTO)} ${ativas.some((o) => o.loja === "amazon") ? esc(declaracaoAmazon(config)) : ""}</span></li>
         </ul>
       </section>
     </div>
@@ -457,7 +472,7 @@ export const paginaComoFunciona = ({ config }) => ({
     <h2>Quem vende o produto?</h2>
     <p>${esc(NAO_SOMOS_LOJA)}</p>
     <h2>Como o site se mantém</h2>
-    <p>Participamos dos programas de afiliados da Amazon, do Mercado Livre e da Shopee. ${esc(AVISO_CURTO)} Veja o <a href="/aviso-de-afiliados/">aviso de afiliados</a>.</p>
+    <p>${esc(fraseProgramas(config))} ${esc(AVISO_CURTO)} Veja o <a href="/aviso-de-afiliados/">aviso de afiliados</a>.</p>
   </div>
 </div>`,
 });
@@ -475,7 +490,7 @@ export const paginaSobre = ({ config }) => ({
     <li>Mostramos em quais lojas o produto está e, quando é o mesmo item, comparamos.</li>
   </ul>
   <h2>O que não fazemos</h2>
-  <p>${esc(NAO_SOMOS_LOJA)} Também não publicamos avaliações, notas ou números de vendas, e não temos parceria oficial com as lojas além dos programas de afiliados.</p>
+  <p>${esc(NAO_SOMOS_LOJA)} Também não publicamos avaliações, notas ou números de vendas, e não temos parceria oficial com as lojas${programasConfirmados(config).length ? " além dos programas de afiliados" : ""}.</p>
   <h2>Nossos critérios</h2>
   <ul>${COMPROMISSOS.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>
   <h2>Como o site se mantém</h2>
@@ -487,13 +502,13 @@ export const paginaSobre = ({ config }) => ({
 
 export const paginaAvisoAfiliados = ({ config }) => ({
   titulo: `Aviso de afiliados | ${config.nomeSite}`,
-  descricao: `Como a ${config.nomeSite} participa dos programas de afiliados da Amazon, do Mercado Livre e da Shopee.`,
+  descricao: `Como a ${config.nomeSite} trabalha com links de afiliado e como isso afeta você.`,
   conteudo: `${cabPagina({ titulo: "Aviso de afiliados", sub: "Transparência sobre como ganhamos dinheiro.", icn: "escudo", tom: ["#e3f6ec", "#0f7a4a"] })}
 <div class="container secao texto" style="padding-top:24px">
   <div class="caixa">
     <p style="margin-top:0">${esc(AVISO_CURTO)}</p>
-    <p><strong>${esc(AVISO_AMAZON)}</strong></p>
-    <p style="margin-bottom:0">Também participamos dos programas de afiliados do Mercado Livre e da Shopee.</p>
+    ${declaracaoAmazon(config) ? `<p><strong>${esc(declaracaoAmazon(config))}</strong></p>` : ""}
+    <p style="margin-bottom:0">${esc(fraseProgramas(config))}</p>
   </div>
   <h2>O que isso significa para você</h2>
   <ul>

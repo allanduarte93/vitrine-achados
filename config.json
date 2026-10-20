@@ -5,7 +5,12 @@
   "idioma": "pt-BR",
   "afiliados": {
     "amazonTag": null,
-    "mercadoLivreMattTool": null
+    "mercadoLivreMattTool": null,
+    "programasConfirmados": {
+      "amazon": false,
+      "mercadolivre": false,
+      "shopee": false
+    }
   },
   "precoValidadeHoras": 24,
   "endpointCliques": "",

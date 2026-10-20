@@ -172,6 +172,12 @@ export const avaliarPublicacao = (catalogo, config, agora = new Date()) => {
   const observacoes = [];
   if (!/^https:\/\//.test(config.siteUrl || "") || /exemplo\.invalid/.test(config.siteUrl)) pendencias.push("siteUrl ainda não é o endereço público real");
   if (!config.contato?.email && !config.contato?.url) pendencias.push("nenhum canal de contato em config.contato");
+  const confirmados = config.afiliados?.programasConfirmados || {};
+  for (const [loja, v] of Object.entries(r.porLoja)) {
+    if (v.ativas > 0 && confirmados[loja] !== true) {
+      pendencias.push(`há ofertas ativas de ${loja} e a participação do site nesse programa não está confirmada (config.afiliados.programasConfirmados.${loja})`);
+    }
+  }
   if ((r.porLoja.amazon?.ativas || 0) > 0 && !config.afiliados?.amazonTag) {
     pendencias.push("há ofertas da Amazon ativas e a tag de Associado não está configurada (AMAZON_TAG)");
   }

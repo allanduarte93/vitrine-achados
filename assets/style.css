@@ -99,7 +99,7 @@ h3 { font-weight: 700; }
 .hero-arte { width: 100%; height: auto; display: block; }
 
 /* ---------- Seções ---------- */
-.secao { padding: 56px 0; }
+.secao { padding-block: 56px; } /* só vertical: o horizontal vem do .container */
 .secao + .secao { padding-top: 8px; }
 .secao-cab { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
 .secao-cab p { margin: 0; color: var(--suave); max-width: 640px; }
@@ -272,7 +272,7 @@ a.cat:hover { transform: translateY(-3px); box-shadow: var(--sombra-forte); }
   .grade-prod { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 }
 @media (max-width: 560px) {
-  .secao { padding: 40px 0; }
+  .secao { padding-block: 40px; }
   .grade-cats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .beneficios { grid-template-columns: 1fr; margin-top: -24px; }
   .curadoria-txt { padding: 24px; }

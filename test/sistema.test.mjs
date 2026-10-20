@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync, readFileSync, existsSync, readdirSync, rmSync } from "node:fs";
+import { mkdtempSync, readFileSync, writeFileSync, existsSync, readdirSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { validarLinkAfiliado, normalizarLoja } from "../src/lib/links.mjs";
@@ -134,7 +134,8 @@ test("build: HTML indexável sem JS, só ofertas ativas, dados verdadeiros e sit
     const p2 = ler("produto/produto-exemplo-02-marca-ficticia/index.html");
     assert.match(p2, /<h1>Produto Exemplo 02<\/h1>/);
     assert.match(p2, /<link rel="canonical" href="https:\/\/exemplo\.invalid\/produto\/produto-exemplo-02-marca-ficticia\/">/);
-    assert.match(p2, /Como Associado da Amazon/);
+    assert.doesNotMatch(p2, /Como Associado da Amazon/, "sem participação confirmada, sem declaração da Amazon");
+    assert.match(p2, /Links de afiliado: podemos receber comissão/);
     assert.match(p2, /Menor preço consultado/);
     const links = [...p2.matchAll(/<a class="btn btn-(\w+)" href="([^"]+)"[^>]*rel="([^"]+)"/g)];
     assert.equal(links.length, 3);
@@ -234,6 +235,7 @@ test("versão institucional: catálogo vazio gera site legítimo, sem nada comer
     assert.equal(r.produtosPublicados, 0);
     for (const pag of ["index.html", "sobre/index.html", "como-funciona/index.html", "busca/index.html", "aviso-de-afiliados/index.html", "contato/index.html", "privacidade/index.html", "404.html"]) {
       const html = readFileSync(join(saida, pag), "utf8");
+      assert.doesNotMatch(html, /Associado da Amazon|participamos dos programas|além dos programas de afiliados/i, `${pag}: sem alegar participação não confirmada`);
       assert.doesNotMatch(html, /data-oferta|btn-amazon|btn-shopee|btn-mercadolivre/, `${pag}: sem botão de compra`);
       assert.doesNotMatch(html, /R\$\s?\d/, `${pag}: sem preço`);
       assert.doesNotMatch(html, /Produto Exemplo|Marca Fictícia|fictíci|Rode a importação/i, `${pag}: sem dado fictício nem texto interno`);
@@ -250,7 +252,10 @@ test("versão institucional: catálogo vazio gera site legítimo, sem nada comer
     assert.deepEqual(JSON.parse(readFileSync(join(saida, "busca.json"), "utf8")).produtos, []);
     assert.ok(existsSync(join(saida, "como-funciona/index.html")) && existsSync(join(saida, "busca/index.html")));
     for (const f of ["assets/og-image.png", "assets/icon-512.png", "assets/favicon.svg", "assets/fonts/plus-jakarta-sans-latin-800-normal.woff2"]) assert.ok(existsSync(join(saida, f)), f);
-    assert.match(readFileSync(join(saida, "aviso-de-afiliados/index.html"), "utf8"), /Como Associado da Amazon, ganhamos com compras qualificadas/);
+    const aviso = readFileSync(join(saida, "aviso-de-afiliados/index.html"), "utf8");
+    assert.match(aviso, /Links de afiliado: podemos receber comissão/, "aviso geral mantido");
+    assert.match(aviso, /está em análise/);
+    assert.doesNotMatch(aviso, /participamos dos programas/i);
     assert.match(readFileSync(join(saida, "contato/index.html"), "utf8"), /href="https:\/\/exemplo\.invalid\/contato"/);
     const locs = [...readFileSync(join(saida, "sitemap.xml"), "utf8").matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
     assert.deepEqual(locs.sort(), ["https://usuario.github.io/vitrine/", "https://usuario.github.io/vitrine/aviso-de-afiliados/", "https://usuario.github.io/vitrine/como-funciona/", "https://usuario.github.io/vitrine/contato/", "https://usuario.github.io/vitrine/sobre/"]);
@@ -261,7 +266,8 @@ test("versão institucional: catálogo vazio gera site legítimo, sem nada comer
 });
 
 test("publicação: institucional liberado; comercial exige tag da Amazon; URL e contato obrigatórios", () => {
-  const base = { siteUrl: "https://usuario.github.io/vitrine", contato: { url: "https://x.test" }, afiliados: { amazonTag: null }, precoValidadeHoras: 24 };
+  const TODOS = { amazon: true, mercadolivre: true, shopee: true };
+  const base = { siteUrl: "https://usuario.github.io/vitrine", contato: { url: "https://x.test" }, afiliados: { amazonTag: null, programasConfirmados: TODOS }, precoValidadeHoras: 24 };
   const vazio = { produtos: [] };
   assert.deepEqual(avaliarPublicacao(vazio, base, AGORA).pendencias, []);
   assert.equal(avaliarPublicacao(vazio, base, AGORA).modo, "institucional");
@@ -271,7 +277,9 @@ test("publicação: institucional liberado; comercial exige tag da Amazon; URL e
   const r = avaliarPublicacao(comAmazon, base, AGORA);
   assert.equal(r.modo, "comercial");
   assert.ok(r.pendencias.some((p) => /AMAZON_TAG/.test(p)));
-  assert.deepEqual(avaliarPublicacao(comAmazon, { ...base, afiliados: { amazonTag: "abc-20" } }, AGORA).pendencias, []);
+  assert.deepEqual(avaliarPublicacao(comAmazon, { ...base, afiliados: { amazonTag: "abc-20", programasConfirmados: TODOS } }, AGORA).pendencias, []);
+  const naoConfirmado = avaliarPublicacao(comAmazon, { ...base, afiliados: { amazonTag: "abc-20", programasConfirmados: { amazon: false } } }, AGORA);
+  assert.ok(naoConfirmado.pendencias.some((p) => /não está confirmada/.test(p)), "oferta de programa não confirmado bloqueia");
   const soShopee = { produtos: [{ id: "b", nome: "Produto B", categoria: "Casa", ofertas: [{ loja: "shopee", url: "https://s.shopee.com.br/x", ...V }] }] };
   assert.deepEqual(avaliarPublicacao(soShopee, base, AGORA).pendencias, [], "sem Amazon, a tag não é exigida");
 });
@@ -291,5 +299,28 @@ test("busca: índice só com produtos publicados e URLs com subcaminho", () => {
   } finally {
     delete process.env.SITE_URL;
     rmSync(saida, { recursive: true, force: true });
+  }
+});
+
+test("declaração da Amazon aparece só com participação confirmada", () => {
+  const saida = mkdtempSync(join(tmpdir(), "vitrine-amz-"));
+  const cfg = join(saida, "config.json");
+  const base = JSON.parse(readFileSync(CFG, "utf8"));
+  writeFileSync(cfg, JSON.stringify({ ...base, afiliados: { ...base.afiliados, programasConfirmados: { amazon: true, mercadolivre: true, shopee: false } } }));
+  try {
+    build({ configPath: cfg, catalogoPath: "data/exemplo/catalogo-exemplo.json", saida: join(saida, "dist"), agora: AGORA });
+    const ler = (f) => readFileSync(join(saida, "dist", f), "utf8");
+    assert.match(ler("index.html"), /Como Associado da Amazon, ganhamos com compras qualificadas/);
+    assert.match(ler("aviso-de-afiliados/index.html"), /Participamos dos programas de afiliados: Amazon e Mercado Livre\./);
+    assert.match(ler("produto/produto-exemplo-02-marca-ficticia/index.html"), /Como Associado da Amazon/);
+  } finally {
+    rmSync(saida, { recursive: true, force: true });
+  }
+});
+
+test("CSS: .secao só define espaçamento vertical (não anula as margens do .container)", () => {
+  const css = readFileSync("assets/style.css", "utf8");
+  for (const m of css.matchAll(/\.secao\s*\{([^}]*)\}/g)) {
+    assert.doesNotMatch(m[1], /(^|;)\s*padding\s*:/, `regra .secao com padding abreviado: ${m[0]}`);
   }
 });

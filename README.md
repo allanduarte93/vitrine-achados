@@ -82,6 +82,7 @@ Sem `validado`/`verified` **e** sem data (do item ou `dataValidacao` do arquivo)
 | `siteUrl` | URL pública, usada em canonical e sitemap: `https://allanduarte93.github.io/vitrine-achados` |
 | `afiliados.amazonTag` | Tag de Associado. Os links da Amazon com tag diferente são recusados |
 | `afiliados.mercadoLivreMattTool` | Opcional, confere `matt_tool` nos links longos |
+| `afiliados.programasConfirmados` | `amazon`, `mercadolivre`, `shopee`: marque `true` **só depois que a loja aprovar este site** no programa. Controla a declaração "Como Associado da Amazon…" e as frases de participação; oferta ativa de programa não confirmado bloqueia a publicação |
 | `precoValidadeHoras` | Idade máxima do preço exibido |
 | `contato` | `email` e/ou `url` exibidos na página de contato (hoje: Issues do repositório) |
 | `verificacao` | Códigos de verificação do Google Search Console (`google`) e do Bing (`bing`), inseridos como meta tag |
