@@ -398,14 +398,14 @@ ${secaoGuias}
 };
 
 // Filtros no navegador: loja, categoria (opcional) e ordenação só por critérios verificáveis.
+// Sem ordenação por preço: preços valem 24h, a Amazon não exibe preço e cada produto tem uma loja só.
 const barraFiltros = (itens, { categorias = false } = {}) => {
   const lojas = [...new Set(itens.flatMap(({ ativas }) => ativas.map((o) => o.loja)))];
   const cats = categorias ? [...new Map(itens.map(({ p }) => [slugify(p.categoria), p.categoria])).entries()] : [];
-  const temPreco = itens.some(({ ativas }) => ativas.some((o) => o.estado.mostrarPreco));
   return `<form class="barra-filtros" data-filtros hidden>
   ${cats.length > 1 ? `<label class="filtro-cat">Categoria <select name="categoria"><option value="">Todas</option>${cats.map(([slug, nome]) => `<option value="${esc(slug)}">${esc(nome)}</option>`).join("")}</select></label>` : ""}
   ${lojas.length > 1 ? `<fieldset class="filtro-lojas"><legend class="sr">Lojas</legend>${lojas.map((l) => `<label class="chip-filtro"><input type="checkbox" name="loja" value="${l}" checked> ${esc(LOJAS[l].nome)}</label>`).join("")}</fieldset>` : lojas.map((l) => `<input type="hidden" name="loja" value="${l}">`).join("")}
-  <label>Ordenar <select name="ordem"><option value="padrao">Com foto primeiro</option><option value="nome">Nome (A-Z)</option>${temPreco ? `<option value="preco">Menor preço consultado</option>` : ""}</select></label>
+  <label>Ordenar <select name="ordem"><option value="padrao">Com foto primeiro</option><option value="nome">Nome (A-Z)</option></select></label>
   <span class="contagem" data-contagem aria-live="polite">${itens.length} ${itens.length === 1 ? "produto" : "produtos"}</span>
 </form>`;
 };
@@ -687,7 +687,7 @@ export const paginaBusca = ({ config, lojas = ["amazon", "mercadolivre", "shopee
   <form class="barra-filtros" data-filtros-busca hidden>
     ${categorias.length > 1 ? `<label class="filtro-cat">Categoria <select name="categoria"><option value="">Todas</option>${categorias.map((c) => `<option value="${esc(c.slug)}">${esc(c.nome)}</option>`).join("")}</select></label>` : ""}
     ${lojas.length > 1 ? `<fieldset class="filtro-lojas"><legend class="sr">Lojas</legend>${lojas.map((l) => `<label class="chip-filtro"><input type="checkbox" name="loja" value="${l}" checked> ${esc(LOJAS[l].nome)}</label>`).join("")}</fieldset>` : ""}
-    <label>Ordenar <select name="ordem"><option value="padrao">Com foto primeiro</option><option value="nome">Nome (A-Z)</option><option value="preco">Menor preço consultado</option></select></label>
+    <label>Ordenar <select name="ordem"><option value="padrao">Com foto primeiro</option><option value="nome">Nome (A-Z)</option></select></label>
   </form>
   <div data-resultados aria-live="polite"><noscript><p class="vazio">A busca precisa de JavaScript. Você também pode navegar pelas categorias na página inicial.</p></noscript></div>
   <p class="aviso-botoes">${esc(AVISO_CURTO)} ${lojas.includes("amazon") ? esc(declaracaoAmazon(config)) : ""}</p>

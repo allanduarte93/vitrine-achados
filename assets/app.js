@@ -42,10 +42,6 @@
         if (!c.hidden) visiveis++;
       });
       cards.slice().sort(function (a, b) {
-        if (ordem === "preco") {
-          var pa = parseFloat(a.getAttribute("data-preco")) || Infinity, pb = parseFloat(b.getAttribute("data-preco")) || Infinity;
-          if (pa !== pb) return pa - pb;
-        }
         if (ordem === "nome") return a.getAttribute("data-nome").localeCompare(b.getAttribute("data-nome"), "pt-BR");
         return a.getAttribute("data-ordem") - b.getAttribute("data-ordem");
       }).forEach(function (c) { grade.appendChild(c); });
@@ -84,7 +80,7 @@
       return '<article class="card' + (p.imagem ? " com-foto" : "") + '"><a class="card-img" href="' + escapar(p.url) + '" tabindex="-1" aria-hidden="true">' + foto + "</a>" +
         '<div class="card-corpo"><span class="card-cat">' + escapar(p.categoria) + '</span><h3><a href="' + escapar(p.url) + '">' + escapar(p.nome) + "</a></h3>" +
         (p.marca ? '<span class="card-marca">' + escapar(p.marca) + "</span>" : "") +
-        (p.preco ? '<span class="card-preco"><strong>' + p.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) + "</strong>preço consultado</span>" : "") +
+        (p.preco && p.precoEm ? '<span class="card-preco"><strong>' + p.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) + "</strong>consultado em " + new Date(p.precoEm).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit", timeZone: "America/Sao_Paulo" }) + "</span>" : "") +
         '<p class="card-loja">' + (unica ? loja(unica) + "<span>compra concluída na loja</span>" : (p.ofertas || []).map(loja).join("")) + "</p>" + acao + "</div></article>";
     };
     fetch(new URL("busca.json", raiz)).then(function (r) { return r.json(); }).then(function (dados) {
@@ -108,7 +104,6 @@
           var okLoja = !temLojas || (p.ofertas || []).some(function (o) { return marcadas.indexOf(o.loja) > -1; });
           return okCat && okLoja;
         }).sort(function (a, b) {
-          if (ordem === "preco") return (a.preco || Infinity) - (b.preco || Infinity) || a.nome.localeCompare(b.nome, "pt-BR");
           if (ordem === "nome") return a.nome.localeCompare(b.nome, "pt-BR");
           return Number(!!b.imagem) - Number(!!a.imagem) || Number(!!b.prioritario) - Number(!!a.prioritario) || a.nome.localeCompare(b.nome, "pt-BR");
         });

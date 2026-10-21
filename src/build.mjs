@@ -171,6 +171,8 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
       ofertas: ativas.map((o) => ({ loja: o.loja, nome: LOJAS[o.loja].nome, url: o.url })),
       ...(p.prioritario ? { prioritario: true } : {}),
       preco: comPreco.length ? Math.min(...comPreco.map((o) => o.preco)) : null,
+      // Preço só com a data da consulta (mesma regra das páginas).
+      ...(comPreco.length ? { precoEm: comPreco.reduce((a, b) => (b.preco < a.preco ? b : a)).precoColetadoEm } : {}),
       url: `${base}/produto/${p.id}/`,
       // Foto só entra no índice da busca se o uso for autorizado (mesma regra das páginas).
       ...(p.imagem && p.imagemPermitida === true ? { imagem: p.imagem } : {}),

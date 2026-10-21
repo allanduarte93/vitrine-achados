@@ -709,6 +709,7 @@ test("versão premium: publicidade visível, botão direto com loja identificada
       assert.match(rel, /sponsored/);
       assert.match(nomeLoja, /^(Amazon|Mercado Livre) \(abre em nova aba\)$/);
     }
+    for (const f of ["index.html", "busca/index.html", ...readdirSync(join(saida, "categoria")).map((c) => `categoria/${c}/index.html`)]) assert.doesNotMatch(ler(f), /option value="preco"/, `${f}: sem ordenação por preço`);
     assert.doesNotMatch(home, /desconto|avalia(ç|c)(ão|oes)|estrelas|últimas unidades|frete grátis|só hoje/i, "sem urgência ou dados inventados");
     const idx = JSON.parse(ler("busca.json")).produtos;
     for (const p of idx) for (const o of p.ofertas) assert.ok(urlsCatalogo.has(o.url.replaceAll("&", "&amp;")), "busca usa os mesmos links");
@@ -720,6 +721,18 @@ test("versão premium: publicidade visível, botão direto com loja identificada
     assert.match(prod, /Você conclui a compra no site (da Amazon|do Mercado Livre)/);
   } finally {
     delete process.env.SOMENTE_CONFIRMADOS;
+    rmSync(saida, { recursive: true, force: true });
+  }
+});
+
+test("busca: preço no índice sempre acompanha a data da consulta", () => {
+  const saida = mkdtempSync(join(tmpdir(), "vitrine-precoem-"));
+  try {
+    build({ configPath: CFG, catalogoPath: "data/exemplo/catalogo-exemplo.json", saida, agora: AGORA });
+    const idx = JSON.parse(readFileSync(join(saida, "busca.json"), "utf8")).produtos;
+    assert.ok(idx.some((p) => p.preco != null));
+    for (const p of idx) if (p.preco != null) assert.ok(p.precoEm, `${p.id}: preço com data`);
+  } finally {
     rmSync(saida, { recursive: true, force: true });
   }
 });

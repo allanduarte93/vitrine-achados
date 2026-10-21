@@ -26,10 +26,12 @@ for (const [nome, vp] of [["desktop", { width: 1366, height: 900 }], ["celular",
     largura: document.documentElement.scrollWidth,
   }));
   // As fotos são lazy: rola a página para carregar todas antes de conferir.
+  await pg.evaluate(() => { document.documentElement.style.scrollBehavior = "auto"; });
   await pg.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 500) { scrollTo(0, y); await new Promise((r) => setTimeout(r, 120)); } });
   await pg.waitForLoadState("networkidle");
   home.fotos = await pg.evaluate(() => [...document.querySelectorAll(".card-img img")].map((i) => ({ src: i.currentSrc, ok: i.complete && i.naturalWidth > 0 })));
-  await pg.evaluate(() => scrollTo(0, 0));
+  await pg.evaluate(() => { document.documentElement.style.scrollBehavior = "auto"; scrollTo(0, 0); });
+  await pg.waitForTimeout(400);
   await pg.screenshot({ path: `${SAIDA}/home-${nome}.png`, fullPage: nome === "desktop" });
   rel.paginas.push({ pagina: "/", viewport: nome, ...home, fotos: home.fotos.length, fotosOk: home.fotos.filter((f) => f.ok).length });
   if (home.cards !== produtos.length) falhas.push(`${nome}: home com ${home.cards} cards, índice com ${produtos.length}`);
@@ -65,6 +67,7 @@ for (const [nome, vp] of [["desktop", { width: 1366, height: 900 }], ["celular",
   await pg.goto(`${BASE}/busca/?q=creatina`, { waitUntil: "networkidle" });
   const busca = await pg.evaluate(() => document.querySelectorAll("[data-resultados] .card").length);
   if (!busca) falhas.push(`${nome}: busca "creatina" sem resultado`);
+  if (await pg.$('option[value="preco"]')) falhas.push(`${nome}: ordenação por preço ainda publicada na busca`);
   await pg.screenshot({ path: `${SAIDA}/busca-${nome}.png`, fullPage: false });
   if (erros.length) falhas.push(`${nome}: erros de JavaScript: ${erros.join("; ")}`);
   await pg.close();
