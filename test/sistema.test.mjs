@@ -601,3 +601,32 @@ test("checagem de links não gera clique de afiliado na Amazon", () => {
   assert.doesNotMatch(u, /tag=|linkId|linkCode/);
   assert.equal(urlParaChecagem("shopee", "https://s.shopee.com.br/x"), "https://s.shopee.com.br/x");
 });
+
+test("fotos: só imagens autorizadas entram nas páginas e no índice da busca", () => {
+  const saida = mkdtempSync(join(tmpdir(), "vitrine-img-"));
+  const cfg = join(saida, "config.json");
+  const base = JSON.parse(readFileSync("config.json", "utf8"));
+  writeFileSync(cfg, JSON.stringify({ ...base, siteUrl: "https://exemplo.invalid" }));
+  const cat = JSON.parse(readFileSync("data/catalogo.json", "utf8"));
+  const amz = cat.produtos.filter((p) => p.ofertas.some((o) => o.loja === "amazon"));
+  amz[0].imagem = "https://img.exemplo.invalid/autorizada.jpg"; amz[0].imagemPermitida = true; amz[0].imagemFonte = "teste";
+  amz[1].imagem = "https://img.exemplo.invalid/sem-licenca.jpg"; delete amz[1].imagemPermitida;
+  const catPath = join(saida, "catalogo.json");
+  writeFileSync(catPath, JSON.stringify(cat));
+  process.env.SOMENTE_CONFIRMADOS = "1";
+  try {
+    build({ configPath: cfg, catalogoPath: catPath, saida: join(saida, "dist"), agora: new Date("2026-10-21T12:00:00-03:00") });
+    const dist = join(saida, "dist");
+    const home = readFileSync(join(dist, "index.html"), "utf8");
+    const prod = readFileSync(join(dist, "produto", amz[0].id, "index.html"), "utf8");
+    const busca = JSON.parse(readFileSync(join(dist, "busca.json"), "utf8"));
+    assert.match(home, /autorizada\.jpg/);
+    assert.match(prod, /autorizada\.jpg/);
+    assert.doesNotMatch(home + prod, /sem-licenca\.jpg/);
+    assert.equal(busca.produtos.find((p) => p.id === amz[0].id).imagem, "https://img.exemplo.invalid/autorizada.jpg");
+    assert.equal(busca.produtos.find((p) => p.id === amz[1].id).imagem, undefined);
+  } finally {
+    delete process.env.SOMENTE_CONFIRMADOS;
+    rmSync(saida, { recursive: true, force: true });
+  }
+});

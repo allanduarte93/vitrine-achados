@@ -77,7 +77,7 @@
       }
       resultados.innerHTML = '<p class="sub">' + achados.length + (achados.length === 1 ? " produto" : " produtos") + (termo ? " para “" + escapar(termo) + "”" : "") + '</p><div class="grade-prod">' +
         achados.map(function (p) {
-          return '<article class="card"><div class="card-corpo"><span class="card-cat">' + escapar(p.categoria) + '</span><h3><a href="' + escapar(p.url) + '">' + escapar(p.nome) + "</a></h3>" +
+          return '<article class="card">' + (p.imagem ? '<div class="card-img"><img src="' + escapar(p.imagem) + '" alt="' + escapar(p.nome) + '" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer"></div>' : "") + '<div class="card-corpo"><span class="card-cat">' + escapar(p.categoria) + '</span><h3><a href="' + escapar(p.url) + '">' + escapar(p.nome) + "</a></h3>" +
             (p.marca ? '<span class="card-marca">' + escapar(p.marca) + "</span>" : "") +
             (p.preco ? '<span class="card-preco">a partir de<strong>' + p.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) + "</strong>preço consultado</span>" : "") +
             '<div class="card-lojas">' + p.lojas.map(function (l) { return '<span class="marca-loja">' + escapar(l) + "</span>"; }).join("") + "</div>" +

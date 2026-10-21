@@ -155,6 +155,8 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
       lojas: ativas.map((o) => LOJAS[o.loja].nome),
       preco: comPreco.length ? Math.min(...comPreco.map((o) => o.preco)) : null,
       url: `${base}/produto/${p.id}/`,
+      // Foto só entra no índice da busca se o uso for autorizado (mesma regra das páginas).
+      ...(p.imagem && p.imagemPermitida === true ? { imagem: p.imagem } : {}),
     };
   });
   writeFileSync(join(out, "busca.json"), JSON.stringify({ base, produtos: indice }));
