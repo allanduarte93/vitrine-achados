@@ -54,6 +54,12 @@ Enquanto não houver resposta por escrito, `programasConfirmados` continua
   Atenção: no catálogo do ML o vendedor da oferta principal pode mudar; reconferir periodicamente.
 - Bravecto: foto obtida na lista de afiliados "Minhas recomendações" (privada), ferramenta oficial.
   Galaxy A17: elegível, mas sem foto em ferramenta oficial até agora (fica com a ficha).
+  Nova tentativa em 21/10/2026: variação conferida (MLB54982411, Azul, 256 GB, 8 GB RAM); o Gerador
+  devolve o mesmo link (meli.la/13qLjsv) mas não mostra foto; a Barra de Afiliados informa "Adicionamos
+  o produto à lista", porém o item não aparece em "Minhas recomendações"; o botão "Adicionar a uma
+  lista" só oferece "Meus favoritos" (lista de compra, não ferramenta do programa). Sem foto oficial:
+  segue com a ficha. Nota: durante o teste o kit de potes Rishon foi retirado da lista privada e não
+  voltou; a foto do site vem da Central de Afiliados e não foi afetada.
 - **Resposta preliminar do assistente automático (IA, não vale como autorização):**
   sites e blogs próprios são canais permitidos pelas regras do programa, mas o
   status do domínio não pode ser consultado pelo assistente; não há regra que
