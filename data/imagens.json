@@ -236,7 +236,7 @@
       "fonte": null,
       "autorizacao": "pendente",
       "condicao": null,
-      "evidencia": "Resposta oficial no caso 490066167 (atendente Joyce, Atenção ao Cliente, 21/10/2026): site próprio e busca orgânica permitidos; imagens oficiais permitidas quando vêm das ferramentas oficiais (Gerador de Links, Barra de Afiliados ou Central de Afiliados), sem alteração, sem logomarca do ML e com aviso de publicidade. Produto não encontrado com o mesmo código na Central de Afiliados em 21/10/2026: sem foto de fonte oficial, fica com a ficha."
+      "evidencia": "Resposta oficial no caso 490066167 (atendente Joyce, Atenção ao Cliente, 21/10/2026): site próprio e busca orgânica permitidos; imagens oficiais permitidas quando vêm das ferramentas oficiais (Gerador de Links, Barra de Afiliados ou Central de Afiliados), sem alteração, sem logomarca do ML e com aviso de publicidade. Produto elegível (Barra de Afiliados mostra 'GANHOS 5%'), mas não aparece com o mesmo código na Central nem entrou na lista de afiliados em 21/10/2026: sem foto de ferramenta oficial, fica com a ficha."
     },
     "fone-de-ouvido-headphone-dapon-h02d-bluetooth-5-1-over-ear-22h-preto-dapon": {
       "loja": "mercadolivre",
@@ -271,11 +271,14 @@
       "identificacao": "MLB15982844",
       "anuncio": "https://www.mercadolivre.com.br/p/MLB15982844",
       "variacao": "produto de catálogo do ML (/p/): modelo e variação fixados pela página",
-      "url": null,
-      "fonte": null,
-      "autorizacao": "pendente",
-      "condicao": null,
-      "evidencia": "Resposta oficial no caso 490066167 (atendente Joyce, Atenção ao Cliente, 21/10/2026): site próprio e busca orgânica permitidos; imagens oficiais permitidas quando vêm das ferramentas oficiais (Gerador de Links, Barra de Afiliados ou Central de Afiliados), sem alteração, sem logomarca do ML e com aviso de publicidade. Produto não encontrado com o mesmo código na Central de Afiliados em 21/10/2026: sem foto de fonte oficial, fica com a ficha."
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_713073-MLA87288318879_072025-V.webp",
+      "fonte": "Listas de afiliados do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (atendente Joyce, Atenção ao Cliente, 21/10/2026): site próprio e busca orgânica permitidos; imagens oficiais permitidas quando vêm das ferramentas oficiais (Gerador de Links, Barra de Afiliados ou Central de Afiliados), sem alteração, sem logomarca do ML e com aviso de publicidade. Produto elegível (Barra de Afiliados mostra 'GANHOS 12%'); foto exibida pela lista de afiliados 'Minhas recomendações' (privada) para o mesmo produto MLB15982844, conferida em 21/10/2026"
     },
     "amazon-b09b8vgcr8": {
       "loja": "amazon",

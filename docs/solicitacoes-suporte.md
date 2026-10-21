@@ -45,6 +45,15 @@ Enquanto não houver resposta por escrito, `programasConfirmados` continua
   apareceram com o mesmo código: seguem sem foto. A página do produto pediu captcha, então a
   reputação do vendedor não foi conferida pela página; os 10 links são de produtos de catálogo
   (/p/MLB…) já validados em 20/10.
+- **Conformidade dos 10 produtos ML (conferida em 21/10/2026, depois do captcha resolvido pelo titular):**
+  todos "Novo" na página do produto; termômetro do vendedor no nível 5 (verde) em todos; links do
+  Gerador idênticos aos do site (10/10); os 10 elegíveis (a Barra de Afiliados mostra o percentual de
+  ganho em todos que foram abertos, inclusive Galaxy A17 e Bravecto). Vendedores: La Roche-Posay,
+  CeraVe, Growth Supplements, Max Titanium, Rishon, Dapon (lojas oficiais), hpesjols (ventilador),
+  JPLCOMERCIAL (Galaxy A17), ATENTU (patinete), ZezinhoPetshop (Bravecto). Nenhum suspenso.
+  Atenção: no catálogo do ML o vendedor da oferta principal pode mudar; reconferir periodicamente.
+- Bravecto: foto obtida na lista de afiliados "Minhas recomendações" (privada), ferramenta oficial.
+  Galaxy A17: elegível, mas sem foto em ferramenta oficial até agora (fica com a ficha).
 - **Resposta preliminar do assistente automático (IA, não vale como autorização):**
   sites e blogs próprios são canais permitidos pelas regras do programa, mas o
   status do domínio não pode ser consultado pelo assistente; não há regra que
