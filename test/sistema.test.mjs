@@ -386,11 +386,13 @@ test("estrutura comercial com 30 produtos em 10 categorias", () => {
       assert.match(html, /content="index, follow"/, `${slug}: indexável`);
     }
     const home = ler("index.html");
-    assert.equal((home.match(/<article class="card"/g) || []).length, 9, "home mostra os prioritários com link válido (o 06 não tem nenhum)");
+    assert.equal((home.match(/<article class="card[ "]/g) || []).length, r.produtosPublicados, "home mostra todos os produtos publicados (o 06, sem link válido, fica fora)");
     assert.doesNotMatch(home, /Em curadoria/, "com todas as categorias abastecidas, nada em curadoria");
     const p = ler("produto/produto-exemplo-20-marca-ficticia/index.html");
-    assert.equal((p.match(/data-oferta/g) || []).length, 3, "3 botões de loja");
-    assert.match(p, /Ver na Amazon/); assert.match(p, /Ver no Mercado Livre/); assert.match(p, /Ver na Shopee/);
+    const ofertas = p.split('id="ofertas"')[1].split("</section>")[0];
+    assert.equal((ofertas.match(/data-oferta/g) || []).length, 3, "3 botões de loja");
+    for (const loja of ["Amazon", "Mercado Livre", "Shopee"]) assert.match(ofertas, new RegExp(`Ver produto na loja<span class="sr"> ${loja}`), `botão identifica a loja ${loja}`);
+    assert.match(ofertas, /Você conclui a compra no site da Amazon/);
     assert.match(p, /Como Associado da Amazon/, "programa confirmado: declaração exibida");
     const locs = (ler("sitemap.xml").match(/<loc>/g) || []).length;
     assert.ok(locs >= 5 + 10 + 28, `sitemap com institucionais + categorias + produtos indexáveis (${locs})`);
@@ -683,6 +685,39 @@ test("fotos do catálogo real: registro cobre os 30 e nada sem licença é publi
     const html = readdirSync(join(saida, "produto")).map((d) => readFileSync(join(saida, "produto", d, "index.html"), "utf8")).join("\n");
     const imgs = [...html.matchAll(/<img src="([^"]+)"/g)].map((m) => m[1]).filter((u) => !u.includes("/assets/"));
     for (const u of imgs) assert.ok(liberadas.some((e) => e.url === u), `publicada só foto liberada: ${u}`);
+  } finally {
+    delete process.env.SOMENTE_CONFIRMADOS;
+    rmSync(saida, { recursive: true, force: true });
+  }
+});
+
+test("versão premium: publicidade visível, botão direto com loja identificada e mesmos links em toda parte", () => {
+  const saida = mkdtempSync(join(tmpdir(), "vitrine-premium-"));
+  process.env.SOMENTE_CONFIRMADOS = "1";
+  try {
+    const r = build({ catalogoPath: "data/catalogo.json", saida, agora: new Date("2026-10-21T12:00:00-03:00") });
+    const ler = (f) => readFileSync(join(saida, f), "utf8");
+    const home = ler("index.html");
+    assert.match(home, /class="faixa-pub"[\s\S]*Publicidade[\s\S]*links de afiliado[\s\S]*aviso-de-afiliados/, "faixa de publicidade no topo");
+    assert.equal((home.match(/<article class="card[ "]/g) || []).length, r.produtosPublicados, "home lista todos os publicados");
+    const catalogo = JSON.parse(readFileSync("data/catalogo.json", "utf8"));
+    const urlsCatalogo = new Set(catalogo.produtos.flatMap((p) => p.ofertas.map((o) => o.url.replaceAll("&", "&amp;"))));
+    const botoes = [...home.matchAll(/<a class="btn btn-prim btn-loja" href="([^"]+)" target="_blank" rel="([^"]+)"[^>]*data-loja="(\w+)">Ver produto na loja<span class="sr"> ([^<]+)<\/span>/g)];
+    assert.ok(botoes.length > 0);
+    for (const [, url, rel, , nomeLoja] of botoes) {
+      assert.ok(urlsCatalogo.has(url), `botão usa o link de afiliado original: ${url}`);
+      assert.match(rel, /sponsored/);
+      assert.match(nomeLoja, /^(Amazon|Mercado Livre) \(abre em nova aba\)$/);
+    }
+    assert.doesNotMatch(home, /desconto|avalia(ç|c)(ão|oes)|estrelas|últimas unidades|frete grátis|só hoje/i, "sem urgência ou dados inventados");
+    const idx = JSON.parse(ler("busca.json")).produtos;
+    for (const p of idx) for (const o of p.ofertas) assert.ok(urlsCatalogo.has(o.url.replaceAll("&", "&amp;")), "busca usa os mesmos links");
+    assert.ok(idx.every((p) => p.ofertas.every((o) => o.loja !== "shopee")), "Shopee fora da publicação");
+    const pid = readdirSync(join(saida, "produto"))[0];
+    const prod = ler(`produto/${pid}/index.html`);
+    assert.match(prod, /class="barra-compra"/);
+    assert.match(prod, /não vende nem processa pagamentos/);
+    assert.match(prod, /Você conclui a compra no site (da Amazon|do Mercado Livre)/);
   } finally {
     delete process.env.SOMENTE_CONFIRMADOS;
     rmSync(saida, { recursive: true, force: true });

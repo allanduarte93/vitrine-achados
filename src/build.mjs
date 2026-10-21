@@ -27,6 +27,7 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
   if (process.env.SITE_URL) config.siteUrl = process.env.SITE_URL;
   if (process.env.AMAZON_TAG) config.afiliados = { ...config.afiliados, amazonTag: process.env.AMAZON_TAG };
   if (process.env.ENDPOINT_CLIQUES !== undefined) config.endpointCliques = process.env.ENDPOINT_CLIQUES;
+  if (process.env.CF_WEB_ANALYTICS_TOKEN) config.metricas = { ...config.metricas, cloudflareToken: process.env.CF_WEB_ANALYTICS_TOKEN };
   config.siteUrl = String(config.siteUrl || "").replace(/\/+$/, "");
   // Subcaminho (ex.: usuario.github.io/repositorio): prefixa links internos "/...".
   const base = new URL(config.siteUrl).pathname.replace(/\/+$/, "");
@@ -97,9 +98,10 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
   const textosCategoria = !exemplo && existsSync(resolve(RAIZ, categoriasPath)) ? lerJson(categoriasPath).categorias || {} : {};
   const guiasDoProduto = (id) => guias.filter((g) => g.produtos.includes(id));
 
+  const lojasPublicadas = [...new Set(itens.flatMap((x) => x.ativas.map((o) => o.loja)))];
   const paginas = []; // {caminho, indexavel}
   const render = (caminho, pagina, indexavel = true) => {
-    const html = layout({ config, caminho, indexavel, exemplo, categorias: navCats, temGuias: guias.length > 0, ...pagina });
+    const html = layout({ config, caminho, indexavel, exemplo, categorias: navCats, temGuias: guias.length > 0, lojas: lojasPublicadas, ...pagina });
     escrever(caminho === "/" ? "index.html" : `${caminho.replace(/^\//, "")}index.html`, html);
     paginas.push({ caminho, indexavel: indexavel && !exemplo });
   };
@@ -108,13 +110,17 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
   categorias.forEach((c) => render(`/categoria/${c.slug}/`, paginaCategoria({ config, categoria: c, itens: c.itens, outras: categorias.filter((o) => o.slug !== c.slug), intro: textosCategoria[c.slug] || null, guias: guias.filter((g) => g.produtos.some((id) => slugify(porId.get(id).p.categoria) === c.slug)) }), c.indexavel));
   itens.forEach((x) => {
     const relacionados = (catMap.get(slugify(x.p.categoria))?.itens || []).filter((r) => r.p.id !== x.p.id).slice(0, 4);
-    render(`/produto/${x.p.id}/`, paginaProduto({ config, p: x.p, ativas: x.ativas, inativas: x.inativas, relacionados, guias: guiasDoProduto(x.p.id) }), x.indexavel);
+    // Completa com produtos de outras categorias (com foto primeiro) para nunca terminar a página sem próximos passos.
+    const outros = itens
+      .filter((r) => r.p.id !== x.p.id && !relacionados.includes(r))
+      .sort((a, b) => Number(!!(b.p.imagem && b.p.imagemPermitida)) - Number(!!(a.p.imagem && a.p.imagemPermitida)))
+      .slice(0, Math.max(0, 4 - relacionados.length));
+    render(`/produto/${x.p.id}/`, paginaProduto({ config, p: x.p, ativas: x.ativas, inativas: x.inativas, relacionados, outros, guias: guiasDoProduto(x.p.id) }), x.indexavel);
   });
   guias.forEach((g) => render(`/guias/${g.slug}/`, paginaGuia({ config, guia: g, itens: g.produtos.map((id) => porId.get(id)), outrosGuias: guias.filter((o) => o.slug !== g.slug).slice(0, 4) })));
   if (guias.length) render("/guias/", paginaGuias({ config, guias }));
   render("/como-funciona/", paginaComoFunciona({ config }));
-  const lojasPublicadas = [...new Set(itens.flatMap((x) => x.ativas.map((o) => o.loja)))];
-  render("/busca/", paginaBusca({ config, ...(lojasPublicadas.length ? { lojas: lojasPublicadas } : {}) }), false);
+  render("/busca/", paginaBusca({ config, categorias: navCats.filter((c) => c.total > 0), ...(lojasPublicadas.length ? { lojas: lojasPublicadas } : {}) }), false);
   render("/sobre/", paginaSobre({ config }));
   render("/aviso-de-afiliados/", paginaAvisoAfiliados({ config }));
   render("/contato/", paginaContato({ config }));
@@ -160,6 +166,10 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
       marca: p.marca || "",
       categoria: p.categoria,
       lojas: ativas.map((o) => LOJAS[o.loja].nome),
+      categoriaSlug: slugify(p.categoria),
+      // Ofertas publicadas (mesmos links de afiliado das páginas), para o botão direto na busca.
+      ofertas: ativas.map((o) => ({ loja: o.loja, nome: LOJAS[o.loja].nome, url: o.url })),
+      ...(p.prioritario ? { prioritario: true } : {}),
       preco: comPreco.length ? Math.min(...comPreco.map((o) => o.preco)) : null,
       url: `${base}/produto/${p.id}/`,
       // Foto só entra no índice da busca se o uso for autorizado (mesma regra das páginas).

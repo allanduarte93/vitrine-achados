@@ -33,5 +33,9 @@
     "Pets",
     "Games",
     "Informática"
-  ]
+  ],
+  "metricas": {
+    "cloudflareToken": null,
+    "_nota": "Token público do Cloudflare Web Analytics (sem cookies). Também pode vir da variável de repositório CF_WEB_ANALYTICS_TOKEN no workflow Publicar."
+  }
 }

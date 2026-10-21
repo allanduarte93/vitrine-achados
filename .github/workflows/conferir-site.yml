@@ -1,0 +1,44 @@
+# Depois de cada publicação: confere o site PÚBLICO num navegador real (fotos, botões, divulgação)
+# e guarda capturas e relatório no ramo "conferencia". Não publica nada e não clica em links de afiliado.
+name: Conferir site público
+on:
+  workflow_run:
+    workflows: [Publicar]
+    types: [completed]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: conferencia
+  cancel-in-progress: false
+jobs:
+  conferir:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: ${{ vars.SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm i --no-save --no-package-lock playwright@1.48.2 && npx playwright install --with-deps chromium
+      # O GitHub Pages pode levar alguns segundos para servir a versão nova.
+      - run: sleep 45
+      - id: conferir
+        run: node scripts/conferir-publico.mjs saida-conferencia
+        continue-on-error: true
+      - name: Guardar capturas no ramo conferencia
+        if: always()
+        run: |
+          cd saida-conferencia
+          git init -q -b conferencia
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          git fetch -q origin conferencia && git reset -q --soft origin/conferencia || true
+          git add -A
+          git commit -q -m "conferência do site público ${{ github.sha }}" || exit 0
+          git push -q origin HEAD:conferencia
+      - if: steps.conferir.outcome == 'failure'
+        run: echo "A conferência encontrou falhas (veja o relatório acima)." && exit 1

@@ -28,6 +28,8 @@ jobs:
       AMAZON_TAG: ${{ vars.AMAZON_TAG }}
       # GitHub Pages não recebe POST: registro de cliques desligado até existir um endpoint.
       ENDPOINT_CLIQUES: ${{ vars.ENDPOINT_CLIQUES || '' }}
+      # Medição sem cookies (Cloudflare Web Analytics): token público, opcional.
+      CF_WEB_ANALYTICS_TOKEN: ${{ vars.CF_WEB_ANALYTICS_TOKEN || '' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
