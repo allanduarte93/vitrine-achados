@@ -54,6 +54,24 @@ export const classificar = (loja, urlFinal, status, { corpo = "", identificador 
   return { ok: true };
 };
 
+/**
+ * URL usada na checagem pela rede. Para a Amazon, abre a página do produto SEM os
+ * parâmetros de afiliado (tag, linkCode, linkId, ref_): assim a verificação automática
+ * não gera cliques no ID de Associado. A tag continua sendo conferida offline
+ * (validarLinkAfiliado). Para as demais lojas o link curto é o próprio redirecionamento.
+ */
+export const urlParaChecagem = (loja, url) => {
+  if (loja !== "amazon") return url;
+  try {
+    const u = new URL(url);
+    ["tag", "linkCode", "linkId", "ref_", "ref", "language", "th", "psc", "camp", "creative", "creativeASIN", "ascsubtag"].forEach((k) => u.searchParams.delete(k));
+    u.pathname = u.pathname.replace(/\/ref=[^/]*$/, "");
+    return u.toString().replace(/\?$/, "");
+  } catch {
+    return url;
+  }
+};
+
 const seguir = async (url) => {
   const cadeia = [];
   let atual = url;
@@ -90,7 +108,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   let falhas = 0;
   let inconclusivos = 0;
   for (const { p, o } of alvos) {
-    const r = await seguir(o.url);
+    const r = await seguir(urlParaChecagem(o.loja, o.url));
     const c = classificar(o.loja, r.final, r.status, { corpo: r.corpo, identificador: o.identificador });
     if (c.ok === false) falhas++;
     if (c.ok === null) inconclusivos++;

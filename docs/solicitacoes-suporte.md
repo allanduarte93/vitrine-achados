@@ -14,6 +14,16 @@ Enquanto não houver resposta por escrito, `programasConfirmados` continua
 - **Pedido:** (1) confirmar se o site está autorizado a divulgar links de afiliado
   (etiqueta ad20260429184559; site vinculado como "Otra red", sem status);
   (2) se é permitido exibir imagens dos produtos junto aos links e de qual fonte oficial.
+- **RESPOSTA OFICIAL (20/10/2026, atendente "Kaio", Atenção ao Cliente — caso finalizado):**
+  permitido divulgar em espaços públicos: redes sociais (Facebook, Instagram, X, YouTube,
+  Pinterest, TikTok), **canais próprios: blogs e sites pessoais**, e grupos/canais públicos de
+  WhatsApp e Telegram. **Não permitido: "Buscadores como Google ou Bing (SEO ou anúncios
+  pagos)"**, mídia offline e envio direto ao comprador. A pergunta sobre imagens **não foi
+  respondida**.
+  **Consequência:** o site é um canal próprio permitido, mas a vitrine depende de busca
+  orgânica, que a resposta lista como não permitida. Mercado Livre continua DESLIGADO
+  (`programasConfirmados.mercadolivre = false`) até esclarecimento por escrito sobre páginas
+  de site próprio indexadas no Google e sobre imagens.
 - **Resposta preliminar do assistente automático (IA, não vale como autorização):**
   sites e blogs próprios são canais permitidos pelas regras do programa, mas o
   status do domínio não pode ser consultado pelo assistente; não há regra que
@@ -59,3 +69,15 @@ Enquanto não houver resposta por escrito, `programasConfirmados` continua
   20/10/2026) oferece apenas link de texto (curto/completo); o menu Ferramentas não
   tem banners nem widgets de imagem. Alternativa permitida: fotos próprias ou
   imagens com licença escrita do fabricante.
+
+## Medição (21/10/2026)
+
+- **Amazon, só o ID vitrineachados-20, últimos 30 dias (21/09–20/10, atualizado 21/10 01:39):**
+  44 cliques, 0 pedidos, R$ 0,00 em comissões. Atenção: até 21/10 o verificador automático de
+  links abria o link completo com a tag em cada Publicar/push do catálogo, então parte desses
+  cliques é do próprio sistema. Corrigido em 21/10: a checagem abre a página do produto sem
+  parâmetros de afiliado.
+- **Google Search Console:** 0 cliques, 0 impressões; relatório de indexação "dados em
+  processamento"; sitemap enviado em 20/10 com status "Não foi possível buscar o sitemap";
+  inspeção da página inicial: "O Google não reconhece o URL". Indexação da página inicial
+  solicitada em 21/10 (fila de rastreamento prioritário).

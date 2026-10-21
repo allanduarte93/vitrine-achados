@@ -9,7 +9,7 @@ import { normalizarPesquisa, mesclarCatalogo } from "../src/lib/importar.mjs";
 import { normalizarClique, agregar } from "../src/lib/cliques.mjs";
 import { build } from "../src/build.mjs";
 import { avaliarGuias, similaridade, validarPerguntas } from "../src/lib/guias.mjs";
-import { classificar } from "../src/cli/checar-links.mjs";
+import { classificar, urlParaChecagem } from "../src/cli/checar-links.mjs";
 import { canonicalizarCategoria } from "../src/lib/categorias.mjs";
 import { criarServidor } from "../src/server.mjs";
 
@@ -593,4 +593,11 @@ test("feed Atom e IndexNow: feed válido no build e chave publicada", () => {
     delete process.env.SOMENTE_CONFIRMADOS;
     rmSync(saida, { recursive: true, force: true });
   }
+});
+
+test("checagem de links não gera clique de afiliado na Amazon", () => {
+  const u = urlParaChecagem("amazon", "https://www.amazon.com.br/dp/B09B8VGCR8?&linkCode=ll2&tag=vitrineachados-20&linkId=abc&ref_=as_li_ss_tl");
+  assert.equal(u, "https://www.amazon.com.br/dp/B09B8VGCR8");
+  assert.doesNotMatch(u, /tag=|linkId|linkCode/);
+  assert.equal(urlParaChecagem("shopee", "https://s.shopee.com.br/x"), "https://s.shopee.com.br/x");
 });
