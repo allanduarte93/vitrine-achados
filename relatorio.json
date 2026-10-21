@@ -1,0 +1,205 @@
+{
+  "data": "2026-10-21T20:42:26.370Z",
+  "site": "https://allanduarte93.github.io/vitrine-achados",
+  "paginas": [
+    {
+      "pagina": "/",
+      "viewport": "desktop",
+      "cards": 20,
+      "fotos": 9,
+      "faixa": true,
+      "largura": 1366,
+      "fotosOk": 9
+    },
+    {
+      "pagina": "celular-samsung-galaxy-a17-com-ia-256gb-8gb-ram-cam-de-50mp-tela-de-6-7-nfc-ip54",
+      "foto": null,
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "la-roche-posay-cicaplast-baume-b5-tempo-de-aplicacao-dia-noite-tipo-de-pele-todo",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_695558-MLA119937437423_102026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "locao-hidratante-corporal-sem-perfume-com-ceramidas-essenciais-e-acido-hialuroni",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_744669-MLA110746875502_052026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "amazon-b0dvk166sv",
+      "foto": null,
+      "botoes": [
+        "amazon"
+      ]
+    },
+    {
+      "pagina": "bravecto-caes-20-40kg-1000mg-1-comp-mastigavel-msd-azul-msd",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_713073-MLA87288318879_072025-V.webp",
+        "ok": true,
+        "w": 640
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "amazon-b07j4j9xkz",
+      "foto": null,
+      "botoes": [
+        "amazon"
+      ]
+    },
+    {
+      "pagina": "amazon-b07rk4hst7",
+      "foto": null,
+      "botoes": [
+        "amazon"
+      ]
+    },
+    {
+      "pagina": "creatina-growth-supplements-monohidratada-em-po-sem-sabor-x-250g-growth-suppleme",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_662415-MLA97812910758_112025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "amazon-b09b8vgcr8",
+      "foto": null,
+      "botoes": [
+        "amazon"
+      ]
+    },
+    {
+      "pagina": "amazon-b09xjl4b9h",
+      "foto": null,
+      "botoes": [
+        "amazon"
+      ]
+    },
+    {
+      "pagina": "fone-de-ouvido-headphone-dapon-h02d-bluetooth-5-1-over-ear-22h-preto-dapon",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_673950-MLA99394598783_112025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "kit-10-potes-vidro-hermetico-vai-ao-forno-microondas-640ml-marmita-hermetico-fre",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_895409-MLA117834564002_102026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "amazon-b07h113tpq",
+      "foto": null,
+      "botoes": [
+        "amazon"
+      ]
+    },
+    {
+      "pagina": "amazon-b072mk7bn2",
+      "foto": null,
+      "botoes": [
+        "amazon"
+      ]
+    },
+    {
+      "pagina": "amazon-b074l9l5kz",
+      "foto": null,
+      "botoes": [
+        "amazon"
+      ]
+    },
+    {
+      "pagina": "amazon-b07dyhdxx8",
+      "foto": null,
+      "botoes": [
+        "amazon"
+      ]
+    },
+    {
+      "pagina": "patinete-infantil-3-rodas-com-led-dobravel-menino-menina",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_944838-MLA99549576346_122025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "proteina-max-titanium-whey-pro-concetrado-em-po-sabor-morango-x-1kg-max-titanium",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_608162-MLA112813208483_062026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "amazon-b0cdj4l7cz",
+      "foto": null,
+      "botoes": [
+        "amazon"
+      ]
+    },
+    {
+      "pagina": "ventilador-de-mesa-30cm-super-power-mondial-60w-vsp-30-b-mondial",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_620576-MLA99958768953_112025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "/",
+      "viewport": "celular",
+      "cards": 20,
+      "fotos": 9,
+      "faixa": true,
+      "largura": 390,
+      "fotosOk": 9
+    }
+  ],
+  "falhas": [],
+  "resumo": {
+    "produtos": 20,
+    "comFotoNoIndice": 9
+  }
+}
