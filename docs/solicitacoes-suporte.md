@@ -24,6 +24,12 @@ Enquanto não houver resposta por escrito, `programasConfirmados` continua
   orgânica, que a resposta lista como não permitida. Mercado Livre continua DESLIGADO
   (`programasConfirmados.mercadolivre = false`) até esclarecimento por escrito sobre páginas
   de site próprio indexadas no Google e sobre imagens.
+- **RÉPLICA ENVIADA (21/10/2026, autorizada pelo titular)** no mesmo caso ("Pronto! Você
+  enviou sua mensagem"; comprovante `docs/comprovantes/ml-resposta-2026-10-21.jpg`), pedindo
+  confirmação expressa por escrito: (1) se o site próprio pode receber visitantes da busca
+  orgânica do Google; (2) se a restrição a "buscadores" se refere a anúncios pagos, a
+  manipulação de SEO ou também à indexação natural; (3) se é permitido usar imagens oficiais
+  dos produtos, de qual fonte e em quais condições. Aguardando resposta.
 - **Resposta preliminar do assistente automático (IA, não vale como autorização):**
   sites e blogs próprios são canais permitidos pelas regras do programa, mas o
   status do domínio não pode ser consultado pelo assistente; não há regra que
@@ -81,3 +87,18 @@ Enquanto não houver resposta por escrito, `programasConfirmados` continua
   processamento"; sitemap enviado em 20/10 com status "Não foi possível buscar o sitemap";
   inspeção da página inicial: "O Google não reconhece o URL". Indexação da página inicial
   solicitada em 21/10 (fila de rastreamento prioritário).
+
+## Diagnóstico do sitemap no Search Console (21/10/2026)
+
+- Status no Search Console: "Não foi possível buscar o sitemap" (enviado 20/10, reenviado 21/10).
+- Verificações no site publicado: `/vitrine-achados/sitemap.xml` responde HTTP 200, sem
+  redirecionamento, `Content-Type: application/xml`, XML válido, sem BOM, 25 URLs, todas
+  dentro do prefixo da propriedade (`https://allanduarte93.github.io/vitrine-achados/`).
+  As 25 páginas respondem 200, sem `noindex`, sem `X-Robots-Tag`, com canonical igual à URL.
+  `robots.txt` na raiz do host retorna 404 (para o Google, isso significa "sem bloqueio").
+- **Teste em tempo real do Google no próprio sitemap: "O URL está disponível para o Google"**
+  (comprovante `docs/comprovantes/gsc-sitemap-teste-real-2026-10-21.jpg`).
+- Conclusão: não há falha técnica no site; o status vermelho é o estado inicial de uma
+  propriedade nova que o Google ainda não processou. Nenhuma correção ou republicação necessária.
+- Indexação solicitada (fila prioritária): página inicial (21/10), `/guias/` e
+  `/guias/fire-tv-stick-hd-o-que-saber/` (21/10).
