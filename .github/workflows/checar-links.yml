@@ -3,7 +3,7 @@
 name: Checar links
 on:
   push:
-    paths: [data/catalogo.json]
+    paths: [data/catalogo.json, data/imagens.json]
   workflow_dispatch:
 permissions:
   contents: read
@@ -16,6 +16,8 @@ jobs:
         with:
           node-version: 22
       - run: npm run checar-links
+      - run: npm run checar-fotos
+        if: always()
       - if: always()
         uses: actions/upload-artifact@v4
         with:

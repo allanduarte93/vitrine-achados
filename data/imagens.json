@@ -1,0 +1,367 @@
+{
+  "versao": 1,
+  "atualizadoEm": "2026-10-21",
+  "regra": "Foto só aparece com autorizacao 'autorizada', ou 'condicional' com a loja da condição confirmada em config.afiliados.programasConfirmados (na prévia local, condicional também aparece). A url precisa ser a mesma do catálogo e a identificação precisa bater com a oferta do produto.",
+  "produtos": {
+    "conjunto-fitness-feminino-legging-top-academia-suplex-zero-transparencia": {
+      "loja": "shopee",
+      "identificacao": "419739190.23694205612",
+      "anuncio": "https://shopee.com.br/product/419739190/23694205612",
+      "variacao": "cor e tamanho escolhidos no anúncio; o link não fixa a variação",
+      "url": "https://down-bs-br.img.susercontent.com/br-11134201-820lr-mu2phi62akg2c0.webp",
+      "fonte": "Portal de Afiliados Shopee (materiais do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "shopee",
+        "motivo": "Termos 2.2 licenciam os materiais do Programa só em Mídia de Afiliado aprovada pela Shopee; aprovação do site pedida em 20/10/2026, sem resposta"
+      },
+      "evidencia": "Termos do Programa de Afiliados Shopee, itens 1.3, 1.4 e 2.2; foto conferida no Portal de Afiliados em 20/10/2026 (docs/solicitacoes-suporte.md)"
+    },
+    "mochila-termica-grande-capacidade-cooler-portatil-piquenique-quente-frio-nao-col": {
+      "loja": "shopee",
+      "identificacao": "916652740.18598298511",
+      "anuncio": "https://shopee.com.br/product/916652740/18598298511",
+      "variacao": "variação não verificada",
+      "url": "https://down-bs-br.img.susercontent.com/br-11134207-820li-mristuh3mmth64.webp",
+      "fonte": "Portal de Afiliados Shopee (materiais do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "shopee",
+        "motivo": "Termos 2.2 licenciam os materiais do Programa só em Mídia de Afiliado aprovada pela Shopee; aprovação do site pedida em 20/10/2026, sem resposta"
+      },
+      "evidencia": "Termos do Programa de Afiliados Shopee, itens 1.3, 1.4 e 2.2; foto conferida no Portal de Afiliados em 20/10/2026 (docs/solicitacoes-suporte.md)"
+    },
+    "creatina-monohidratada-pura-300g-dark-lab-100-pura-dark-lab": {
+      "loja": "shopee",
+      "identificacao": "1242044379.18699254225",
+      "anuncio": "https://shopee.com.br/product/1242044379/18699254225",
+      "variacao": "variação não verificada",
+      "url": "https://down-bs-br.img.susercontent.com/br-11134207-820l8-ms0du9lcw8p1d3.webp",
+      "fonte": "Portal de Afiliados Shopee (materiais do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "shopee",
+        "motivo": "Termos 2.2 licenciam os materiais do Programa só em Mídia de Afiliado aprovada pela Shopee; aprovação do site pedida em 20/10/2026, sem resposta"
+      },
+      "evidencia": "Termos do Programa de Afiliados Shopee, itens 1.3, 1.4 e 2.2; foto conferida no Portal de Afiliados em 20/10/2026 (docs/solicitacoes-suporte.md)"
+    },
+    "espremedor-eletrico-laranja-limao-frutas-fazer-sucos-recarregavel-usb-cozinha": {
+      "loja": "shopee",
+      "identificacao": "807597901.23497309877",
+      "anuncio": "https://shopee.com.br/product/807597901/23497309877",
+      "variacao": "variação não verificada",
+      "url": "https://down-bs-br.img.susercontent.com/sg-11134201-8259f-msgkvfvn2sju02.webp",
+      "fonte": "Portal de Afiliados Shopee (materiais do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "shopee",
+        "motivo": "Termos 2.2 licenciam os materiais do Programa só em Mídia de Afiliado aprovada pela Shopee; aprovação do site pedida em 20/10/2026, sem resposta"
+      },
+      "evidencia": "Termos do Programa de Afiliados Shopee, itens 1.3, 1.4 e 2.2; foto conferida no Portal de Afiliados em 20/10/2026 (docs/solicitacoes-suporte.md)"
+    },
+    "arvore-de-natal-pinheiro-210cm-600-galhos-cheia-premium-verde": {
+      "loja": "shopee",
+      "identificacao": "419081850.22893267017",
+      "anuncio": "https://shopee.com.br/product/419081850/22893267017",
+      "variacao": "o anúncio tem variações de tamanho (preço de R$ 64,90 a R$ 119,90 na coleta); a foto principal pode não ser a de 210 cm",
+      "url": "https://down-bs-br.img.susercontent.com/br-11134207-820ll-mseahc66bsp164.webp",
+      "fonte": "Portal de Afiliados Shopee (materiais do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "shopee",
+        "motivo": "Termos 2.2 licenciam os materiais do Programa só em Mídia de Afiliado aprovada pela Shopee; aprovação do site pedida em 20/10/2026, sem resposta"
+      },
+      "evidencia": "Termos do Programa de Afiliados Shopee, itens 1.3, 1.4 e 2.2; foto conferida no Portal de Afiliados em 20/10/2026 (docs/solicitacoes-suporte.md)"
+    },
+    "40-pecas-46-pecas-jogo-de-chave-catraca-caixa-de-ferramentas-para-reparo-de-carr": {
+      "loja": "shopee",
+      "identificacao": "832036467.22892833180",
+      "anuncio": "https://shopee.com.br/product/832036467/22892833180",
+      "variacao": "o anúncio oferece duas versões (40 e 46 peças); o link abre o anúncio, não uma versão específica",
+      "url": "https://down-bs-br.img.susercontent.com/br-11134207-820l9-mqt86n8incape7.webp",
+      "fonte": "Portal de Afiliados Shopee (materiais do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "shopee",
+        "motivo": "Termos 2.2 licenciam os materiais do Programa só em Mídia de Afiliado aprovada pela Shopee; aprovação do site pedida em 20/10/2026, sem resposta"
+      },
+      "evidencia": "Termos do Programa de Afiliados Shopee, itens 1.3, 1.4 e 2.2; foto conferida no Portal de Afiliados em 20/10/2026 (docs/solicitacoes-suporte.md)"
+    },
+    "maquina-de-barbear-e-aparador-pelos-eletrico-3-em-1": {
+      "loja": "shopee",
+      "identificacao": "415175805.20103606180",
+      "anuncio": "https://shopee.com.br/product/415175805/20103606180",
+      "variacao": "variação não verificada",
+      "url": "https://down-bs-br.img.susercontent.com/04527aa2d9d6a2e8d2b68d715f079947.webp",
+      "fonte": "Portal de Afiliados Shopee (materiais do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "shopee",
+        "motivo": "Termos 2.2 licenciam os materiais do Programa só em Mídia de Afiliado aprovada pela Shopee; aprovação do site pedida em 20/10/2026, sem resposta"
+      },
+      "evidencia": "Termos do Programa de Afiliados Shopee, itens 1.3, 1.4 e 2.2; foto conferida no Portal de Afiliados em 20/10/2026 (docs/solicitacoes-suporte.md)"
+    },
+    "mop-c-cabo-de-140-cm-2-refis-rodinhas-e-cesto-em-inox-balde-centrifuga-ch": {
+      "loja": "shopee",
+      "identificacao": "1367299138.21499491641",
+      "anuncio": "https://shopee.com.br/product/1367299138/21499491641",
+      "variacao": "variação não verificada",
+      "url": "https://down-bs-br.img.susercontent.com/br-11134207-820m0-mqm69hmdu3uo02.webp",
+      "fonte": "Portal de Afiliados Shopee (materiais do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "shopee",
+        "motivo": "Termos 2.2 licenciam os materiais do Programa só em Mídia de Afiliado aprovada pela Shopee; aprovação do site pedida em 20/10/2026, sem resposta"
+      },
+      "evidencia": "Termos do Programa de Afiliados Shopee, itens 1.3, 1.4 e 2.2; foto conferida no Portal de Afiliados em 20/10/2026 (docs/solicitacoes-suporte.md)"
+    },
+    "carregador-portatil-mini-power-bank-10000mah-com-02-saidas-tipo-c-lightning": {
+      "loja": "shopee",
+      "identificacao": "408715442.22499247158",
+      "anuncio": "https://shopee.com.br/product/408715442/22499247158",
+      "variacao": "o anúncio oferece saída Tipo-C ou Lightning; o link não fixa a versão",
+      "url": "https://down-bs-br.img.susercontent.com/sg-11134201-81zvk-mik9ovwbhszk62.webp",
+      "fonte": "Portal de Afiliados Shopee (materiais do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "shopee",
+        "motivo": "Termos 2.2 licenciam os materiais do Programa só em Mídia de Afiliado aprovada pela Shopee; aprovação do site pedida em 20/10/2026, sem resposta"
+      },
+      "evidencia": "Termos do Programa de Afiliados Shopee, itens 1.3, 1.4 e 2.2; foto conferida no Portal de Afiliados em 20/10/2026 (docs/solicitacoes-suporte.md)"
+    },
+    "pistola-de-massagem-muscular-portatil-eletrica-profissional-recarregavel-usb-com": {
+      "loja": "shopee",
+      "identificacao": "391739739.17460396643",
+      "anuncio": "https://shopee.com.br/product/391739739/17460396643",
+      "variacao": "variação não verificada",
+      "url": "https://down-bs-br.img.susercontent.com/sg-11134201-8225c-mhjox6ltdn9ef0.webp",
+      "fonte": "Portal de Afiliados Shopee (materiais do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "shopee",
+        "motivo": "Termos 2.2 licenciam os materiais do Programa só em Mídia de Afiliado aprovada pela Shopee; aprovação do site pedida em 20/10/2026, sem resposta"
+      },
+      "evidencia": "Termos do Programa de Afiliados Shopee, itens 1.3, 1.4 e 2.2; foto conferida no Portal de Afiliados em 20/10/2026 (docs/solicitacoes-suporte.md)"
+    },
+    "la-roche-posay-cicaplast-baume-b5-tempo-de-aplicacao-dia-noite-tipo-de-pele-todo": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB24326256",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB24326256",
+      "variacao": "produto de catálogo do ML (/p/): modelo e variação fixados pela página",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Pergunta sobre imagens enviada no caso 490066167 (réplica de 21/10/2026), sem resposta. Assistente do ML: reutilizar fotos dos anúncios exige autorização de quem detém os direitos (docs/solicitacoes-suporte.md)"
+    },
+    "locao-hidratante-corporal-sem-perfume-com-ceramidas-essenciais-e-acido-hialuroni": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB21361292",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB21361292",
+      "variacao": "produto de catálogo do ML (/p/): modelo e variação fixados pela página",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Pergunta sobre imagens enviada no caso 490066167 (réplica de 21/10/2026), sem resposta. Assistente do ML: reutilizar fotos dos anúncios exige autorização de quem detém os direitos (docs/solicitacoes-suporte.md)"
+    },
+    "creatina-growth-supplements-monohidratada-em-po-sem-sabor-x-250g-growth-suppleme": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB19603205",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB19603205",
+      "variacao": "produto de catálogo do ML (/p/): modelo e variação fixados pela página",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Pergunta sobre imagens enviada no caso 490066167 (réplica de 21/10/2026), sem resposta. Assistente do ML: reutilizar fotos dos anúncios exige autorização de quem detém os direitos (docs/solicitacoes-suporte.md)"
+    },
+    "proteina-max-titanium-whey-pro-concetrado-em-po-sabor-morango-x-1kg-max-titanium": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB6087971",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB6087971",
+      "variacao": "produto de catálogo do ML (/p/): modelo e variação fixados pela página",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Pergunta sobre imagens enviada no caso 490066167 (réplica de 21/10/2026), sem resposta. Assistente do ML: reutilizar fotos dos anúncios exige autorização de quem detém os direitos (docs/solicitacoes-suporte.md)"
+    },
+    "kit-10-potes-vidro-hermetico-vai-ao-forno-microondas-640ml-marmita-hermetico-fre": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB63904966",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB63904966",
+      "variacao": "produto de catálogo do ML (/p/): modelo e variação fixados pela página",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Pergunta sobre imagens enviada no caso 490066167 (réplica de 21/10/2026), sem resposta. Assistente do ML: reutilizar fotos dos anúncios exige autorização de quem detém os direitos (docs/solicitacoes-suporte.md)"
+    },
+    "ventilador-de-mesa-30cm-super-power-mondial-60w-vsp-30-b-mondial": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB18932156",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB18932156",
+      "variacao": "produto de catálogo do ML (/p/): modelo e variação fixados pela página",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Pergunta sobre imagens enviada no caso 490066167 (réplica de 21/10/2026), sem resposta. Assistente do ML: reutilizar fotos dos anúncios exige autorização de quem detém os direitos (docs/solicitacoes-suporte.md)"
+    },
+    "celular-samsung-galaxy-a17-com-ia-256gb-8gb-ram-cam-de-50mp-tela-de-6-7-nfc-ip54": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB54982411",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB54982411",
+      "variacao": "produto de catálogo do ML (/p/): modelo e variação fixados pela página",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Pergunta sobre imagens enviada no caso 490066167 (réplica de 21/10/2026), sem resposta. Assistente do ML: reutilizar fotos dos anúncios exige autorização de quem detém os direitos (docs/solicitacoes-suporte.md)"
+    },
+    "fone-de-ouvido-headphone-dapon-h02d-bluetooth-5-1-over-ear-22h-preto-dapon": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB24117280",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB24117280",
+      "variacao": "produto de catálogo do ML (/p/): modelo e variação fixados pela página",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Pergunta sobre imagens enviada no caso 490066167 (réplica de 21/10/2026), sem resposta. Assistente do ML: reutilizar fotos dos anúncios exige autorização de quem detém os direitos (docs/solicitacoes-suporte.md)"
+    },
+    "patinete-infantil-3-rodas-com-led-dobravel-menino-menina": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB25656186",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB25656186",
+      "variacao": "produto de catálogo do ML (/p/): modelo e variação fixados pela página",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Pergunta sobre imagens enviada no caso 490066167 (réplica de 21/10/2026), sem resposta. Assistente do ML: reutilizar fotos dos anúncios exige autorização de quem detém os direitos (docs/solicitacoes-suporte.md)"
+    },
+    "bravecto-caes-20-40kg-1000mg-1-comp-mastigavel-msd-azul-msd": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB15982844",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB15982844",
+      "variacao": "produto de catálogo do ML (/p/): modelo e variação fixados pela página",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Pergunta sobre imagens enviada no caso 490066167 (réplica de 21/10/2026), sem resposta. Assistente do ML: reutilizar fotos dos anúncios exige autorização de quem detém os direitos (docs/solicitacoes-suporte.md)"
+    },
+    "amazon-b09b8vgcr8": {
+      "loja": "amazon",
+      "identificacao": "B09B8VGCR8",
+      "anuncio": "https://www.amazon.com.br/dp/B09B8VGCR8",
+      "variacao": "ASIN fixa o modelo e a variação",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+    },
+    "amazon-b0dvk166sv": {
+      "loja": "amazon",
+      "identificacao": "B0DVK166SV",
+      "anuncio": "https://www.amazon.com.br/dp/B0DVK166SV",
+      "variacao": "ASIN fixa o modelo e a variação",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+    },
+    "amazon-b07rk4hst7": {
+      "loja": "amazon",
+      "identificacao": "B07RK4HST7",
+      "anuncio": "https://www.amazon.com.br/dp/B07RK4HST7",
+      "variacao": "ASIN fixa o modelo e a variação",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+    },
+    "amazon-b072mk7bn2": {
+      "loja": "amazon",
+      "identificacao": "B072MK7BN2",
+      "anuncio": "https://www.amazon.com.br/dp/B072MK7BN2",
+      "variacao": "ASIN fixa o modelo e a variação",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+    },
+    "amazon-b07h113tpq": {
+      "loja": "amazon",
+      "identificacao": "B07H113TPQ",
+      "anuncio": "https://www.amazon.com.br/dp/B07H113TPQ",
+      "variacao": "ASIN fixa o modelo e a variação",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+    },
+    "amazon-b0cdj4l7cz": {
+      "loja": "amazon",
+      "identificacao": "B0CDJ4L7CZ",
+      "anuncio": "https://www.amazon.com.br/dp/B0CDJ4L7CZ",
+      "variacao": "ASIN fixa o modelo e a variação",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+    },
+    "amazon-b09xjl4b9h": {
+      "loja": "amazon",
+      "identificacao": "B09XJL4B9H",
+      "anuncio": "https://www.amazon.com.br/dp/B09XJL4B9H",
+      "variacao": "ASIN fixa o modelo e a variação",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+    },
+    "amazon-b07j4j9xkz": {
+      "loja": "amazon",
+      "identificacao": "B07J4J9XKZ",
+      "anuncio": "https://www.amazon.com.br/dp/B07J4J9XKZ",
+      "variacao": "ASIN fixa o modelo e a variação",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+    },
+    "amazon-b07dyhdxx8": {
+      "loja": "amazon",
+      "identificacao": "B07DYHDXX8",
+      "anuncio": "https://www.amazon.com.br/dp/B07DYHDXX8",
+      "variacao": "ASIN fixa o modelo e a variação",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+    },
+    "amazon-b074l9l5kz": {
+      "loja": "amazon",
+      "identificacao": "B074L9L5KZ",
+      "anuncio": "https://www.amazon.com.br/dp/B074L9L5KZ",
+      "variacao": "ASIN fixa o modelo e a variação",
+      "url": null,
+      "fonte": null,
+      "autorizacao": "pendente",
+      "condicao": null,
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+    }
+  }
+}

@@ -5,7 +5,29 @@ Regra do site: uma foto só aparece se o produto tiver `imagem` + `imagemPermiti
 nas categorias, na busca e na página do produto. Sem autorização, o site mostra a ficha do
 produto (tipo + fatos do anúncio). Nada de foto genérica, inventada ou gerada por IA.
 
-Situação em 21/10/2026: **0 de 10 produtos Amazon com foto real publicada.**
+Fonte de verdade por produto: **`data/imagens.json`**, com url, fonte, identificação (ASIN, MLB ou
+loja.item da Shopee), variação, autorização e evidência. O build só mostra a foto quando o registro
+do próprio produto a libera, com a mesma url e identificação igual à da oferta. Se algo não bater,
+o produto fica com a ficha visual, nunca com a foto de outro item. Uma licença `condicional` (ex.:
+Shopee, válida só em Mídia de Afiliado aprovada) aparece na prévia, mas só é publicada quando a
+loja da condição estiver confirmada em `config.afiliados.programasConfirmados`.
+`npm run checar-fotos` (workflow "Checar links") confere se cada foto liberada responde como
+imagem e se pertence ao anúncio.
+
+Situação em 21/10/2026: **0 de 30 fotos publicadas** (a versão publicada tem só a Amazon).
+
+| Loja | Produtos | Foto real disponível | Autorização | Publicada |
+|---|---|---|---|---|
+| Amazon | 10 | não | pendente: só pela Creators API (exige 10 vendas em 30 dias) ou por licença do fabricante (pedidos abaixo) | não |
+| Shopee | 10 | sim (Portal de Afiliados) | condicional: Termos 2.2 só em Mídia aprovada; aprovação do site pedida em 20/10 | não (Shopee não confirmada) |
+| Mercado Livre | 10 | não | pendente: pergunta no caso 490066167 sem resposta; sem licença das fotos dos anúncios | não |
+
+Variações a observar na Shopee: jogo de chaves (40 ou 46 peças no mesmo anúncio), power bank
+(Tipo-C ou Lightning), árvore de Natal (tamanhos diferentes no anúncio) e conjunto fitness
+(cor/tamanho). O link abre o anúncio, não uma variação, então a foto principal pode mostrar outra
+versão. Isso está registrado em `variacao`.
+
+### Amazon (detalhe dos pedidos)
 
 Pedidos de licença enviados em 21/10/2026 (e-mail do titular, allan.duarte93@gmail.com), todos
 pedindo autorização gratuita e por escrito e arquivos oficiais ou acesso a banco de imagens.

@@ -630,3 +630,59 @@ test("fotos: só imagens autorizadas entram nas páginas e no índice da busca",
     rmSync(saida, { recursive: true, force: true });
   }
 });
+
+test("fotos: registro decide; nunca foto de outro produto nem licença condicional na publicação", async () => {
+  const { aplicarRegistroImagens } = await import("../src/lib/imagens.mjs");
+  const cfg = { afiliados: { programasConfirmados: { amazon: true, shopee: false } } };
+  const prod = (id, loja, identificador, imagem) => ({ id, nome: id, categoria: "Pets", ofertas: [{ loja, url: "x", identificador }], ...(imagem ? { imagem, imagemPermitida: true } : {}) });
+  const cat = { produtos: [
+    prod("a", "amazon", "B000000001"),
+    prod("b", "amazon", "B000000002"),
+    prod("c", "shopee", undefined, "https://img/c.webp"),
+    prod("d", "amazon", "B000000004", "https://img/d.webp"),
+    prod("e", "amazon", "B000000005", "https://img/e-catalogo.webp"),
+  ] };
+  const reg = { produtos: {
+    a: { loja: "amazon", identificacao: "B000000001", url: "https://img/a.webp", fonte: "Licença do fabricante", autorizacao: "autorizada" },
+    b: { loja: "amazon", identificacao: "B000000099", url: "https://img/b.webp", fonte: "x", autorizacao: "autorizada" },
+    c: { loja: "shopee", identificacao: "1.2", url: "https://img/c.webp", fonte: "Portal", autorizacao: "condicional", condicao: { loja: "shopee" } },
+    e: { loja: "amazon", identificacao: "B000000005", url: "https://img/e-registro.webp", autorizacao: "autorizada" },
+  } };
+  const foto = (r, id) => r.catalogo.produtos.find((p) => p.id === id).imagem;
+  const previa = aplicarRegistroImagens(cat, reg, cfg);
+  assert.equal(foto(previa, "a"), "https://img/a.webp", "autorizada aparece");
+  assert.equal(foto(previa, "b"), undefined, "identificação de outro produto: sem foto");
+  assert.equal(foto(previa, "c"), "https://img/c.webp", "condicional aparece na prévia");
+  assert.equal(foto(previa, "d"), undefined, "foto sem registro não aparece");
+  assert.equal(foto(previa, "e"), undefined, "url diferente do registro não aparece");
+  assert.equal(previa.avisos.length, 3);
+  const pub = aplicarRegistroImagens(cat, reg, cfg, { publicacao: true });
+  assert.equal(foto(pub, "c"), undefined, "condicional sem a loja confirmada não é publicada");
+  const pubOk = aplicarRegistroImagens(cat, reg, { afiliados: { programasConfirmados: { shopee: true } } }, { publicacao: true });
+  assert.equal(foto(pubOk, "c"), "https://img/c.webp", "com a loja confirmada, publica");
+});
+
+test("fotos do catálogo real: registro cobre os 30 e nada sem licença é publicado", () => {
+  const catalogo = JSON.parse(readFileSync("data/catalogo.json", "utf8"));
+  const reg = JSON.parse(readFileSync("data/imagens.json", "utf8"));
+  for (const p of catalogo.produtos) {
+    const e = reg.produtos[p.id];
+    assert.ok(e, `registro para ${p.id}`);
+    assert.ok(e.identificacao && e.variacao && e.evidencia, `${p.id}: identificação, variação e evidência preenchidas`);
+    assert.ok(["autorizada", "condicional", "pendente", "bloqueada"].includes(e.autorizacao));
+    if (e.autorizacao === "autorizada" || e.autorizacao === "condicional") assert.ok(e.url && e.fonte, `${p.id}: foto liberada exige url e fonte`);
+  }
+  const saida = mkdtempSync(join(tmpdir(), "vitrine-fotos-"));
+  process.env.SOMENTE_CONFIRMADOS = "1";
+  try {
+    build({ catalogoPath: "data/catalogo.json", saida, agora: new Date("2026-10-21T12:00:00-03:00") });
+    const conf = JSON.parse(readFileSync("config.json", "utf8")).afiliados.programasConfirmados;
+    const liberadas = Object.values(reg.produtos).filter((e) => e.url && (e.autorizacao === "autorizada" || (e.autorizacao === "condicional" && conf[e.condicao?.loja])));
+    const html = readdirSync(join(saida, "produto")).map((d) => readFileSync(join(saida, "produto", d, "index.html"), "utf8")).join("\n");
+    const imgs = [...html.matchAll(/<img src="([^"]+)"/g)].map((m) => m[1]).filter((u) => !u.includes("/assets/"));
+    for (const u of imgs) assert.ok(liberadas.some((e) => e.url === u), `publicada só foto liberada: ${u}`);
+  } finally {
+    delete process.env.SOMENTE_CONFIRMADOS;
+    rmSync(saida, { recursive: true, force: true });
+  }
+});

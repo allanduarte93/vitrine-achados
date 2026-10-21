@@ -18,6 +18,7 @@
     "importar:cowork": "node src/cli/importar.mjs entrada/catalogo.json",
     "pronto": "node src/cli/validar.mjs --estrito",
     "checar-links": "node src/cli/checar-links.mjs",
+    "checar-fotos": "node src/cli/checar-fotos.mjs",
     "indexnow": "node src/cli/indexnow.mjs"
   },
   "license": "UNLICENSED"

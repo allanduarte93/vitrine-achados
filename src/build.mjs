@@ -14,6 +14,7 @@ import { validarCatalogo, somenteConfirmadas, ofertasAtivas, produtoIndexavel, s
 import { layout, paginaInicial, paginaCategoria, paginaProduto, paginaBusca, paginaComoFunciona, paginaSobre, paginaAvisoAfiliados, paginaContato, paginaPrivacidade, pagina404, paginaGuias, paginaGuia } from "./lib/render.mjs";
 import { LOJAS } from "./lib/links.mjs";
 import { canonicalizarCategoria } from "./lib/categorias.mjs";
+import { aplicarRegistroImagens } from "./lib/imagens.mjs";
 import { avaliarGuias } from "./lib/guias.mjs";
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -30,8 +31,14 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
   // Subcaminho (ex.: usuario.github.io/repositorio): prefixa links internos "/...".
   const base = new URL(config.siteUrl).pathname.replace(/\/+$/, "");
   const comBase = (html) => (base ? html.replace(/(href|src|action)="\/(?!\/)/g, `$1="${base}/`) : html);
+  const publicacao = process.env.SOMENTE_CONFIRMADOS === "1";
   const lido = lerJson(catalogoPath);
-  const catalogo = process.env.SOMENTE_CONFIRMADOS === "1" ? somenteConfirmadas(lido, config) : lido;
+  const recortado = publicacao ? somenteConfirmadas(lido, config) : lido;
+  // Fotos: o registro ao lado do catálogo (data/imagens.json) decide o que pode aparecer.
+  const registroPath = catalogoPath.replace(/catalogo\.json$/, "imagens.json");
+  const registro = registroPath !== catalogoPath && existsSync(resolve(RAIZ, registroPath)) ? lerJson(registroPath) : null;
+  const fotos = registro ? aplicarRegistroImagens(recortado, registro, config, { publicacao }) : { catalogo: recortado, avisos: [] };
+  const catalogo = fotos.catalogo;
   const { erros, avisos } = validarCatalogo(catalogo, config, agora);
   if (erros.length) {
     const e = new Error(`Catálogo com ${erros.length} erro(s):\n- ${erros.join("\n- ")}`);
@@ -168,7 +175,7 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
     categorias: categorias.length,
     guias: guias.length,
     guiasRejeitados,
-    avisos: [...avisos, ...avisosGuias],
+    avisos: [...fotos.avisos, ...avisos, ...avisosGuias],
     resumo: resumoCatalogo(catalogo, config, agora),
     saida: out,
   };
