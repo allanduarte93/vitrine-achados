@@ -61,3 +61,17 @@ jobs:
     steps:
       - id: deploy
         uses: actions/deploy-pages@v4
+
+  # Depois do deploy: avisa os buscadores do IndexNow sobre as URLs do sitemap publicado.
+  avisar-buscadores:
+    needs: deploy
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    env:
+      SITE_URL: ${{ vars.SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm run indexnow

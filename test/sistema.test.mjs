@@ -8,6 +8,7 @@ import { estadoOferta, validarCatalogo, produtoIndexavel, avaliarPublicacao, som
 import { normalizarPesquisa, mesclarCatalogo } from "../src/lib/importar.mjs";
 import { normalizarClique, agregar } from "../src/lib/cliques.mjs";
 import { build } from "../src/build.mjs";
+import { avaliarGuias, similaridade, validarPerguntas } from "../src/lib/guias.mjs";
 import { classificar } from "../src/cli/checar-links.mjs";
 import { canonicalizarCategoria } from "../src/lib/categorias.mjs";
 import { criarServidor } from "../src/server.mjs";
@@ -512,8 +513,8 @@ test("vitrine publicada: guias só com produtos publicados, sem categorias vazia
     const dist = join(saida, "dist");
     const guias = JSON.parse(readFileSync("data/guias.json", "utf8")).guias;
     const publicados = new Set(readdirSync(join(dist, "produto")));
-    const esperados = guias.filter((g) => g.produtos.every((id) => publicados.has(id)));
-    assert.equal(r.guias, esperados.length);
+    const esperados = guias.filter((g) => g.status === "aprovado" && g.produtos.every((id) => publicados.has(id)));
+    assert.equal(r.guias, esperados.length, JSON.stringify(r.guiasRejeitados));
     esperados.forEach((g) => assert.ok(existsSync(join(dist, "guias", g.slug, "index.html")), g.slug));
     // Nenhuma categoria publicada sem produto.
     for (const d of readdirSync(join(dist, "categoria"))) {
@@ -552,4 +553,44 @@ test("ficha sem foto: tipo e destaques curtos são validados e renderizados", ()
   const { produtos } = normalizarPesquisa({ produtos: [{ nome: "Produto Y", tipo: "Sabão líquido", destaques: ["5 litros", "Sem fosfato"] }] });
   assert.equal(produtos[0].tipo, "Sabão líquido");
   assert.deepEqual(produtos[0].destaques, ["5 litros", "Sem fosfato"]);
+});
+
+test("portão de qualidade: barra rascunho, texto curto, alegações proibidas e repetição", () => {
+  const base = {
+    slug: "guia-x", status: "aprovado", titulo: "Guia X", resumo: "r".repeat(100), introducao: "Introdução do guia com contexto suficiente para o leitor entender a escolha. ".repeat(4),
+    secoes: [{ titulo: "A", paragrafos: ["palavra ".repeat(200)] }, { titulo: "B", paragrafos: ["outra coisa ".repeat(100)] }],
+    produtos: ["p1"], atualizadoEm: "2026-10-20", fonteFatos: "Anúncios oficiais",
+  };
+  const ctx = { publicados: new Set(["p1"]), agora: new Date("2026-10-20") };
+  assert.equal(avaliarGuias([base], ctx).aprovados.length, 1);
+  assert.match(avaliarGuias([{ ...base, status: "rascunho" }], ctx).rejeitados[0].motivos.join(), /status/);
+  assert.match(avaliarGuias([{ ...base, secoes: base.secoes.slice(0, 1) }], ctx).rejeitados[0].motivos.join(), /seções/);
+  assert.match(avaliarGuias([{ ...base, introducao: base.introducao + " Nós testamos por um mês." }], ctx).rejeitados[0].motivos.join(), /teste pessoal/);
+  assert.match(avaliarGuias([{ ...base, produtos: ["p2"] }], ctx).rejeitados[0].motivos.join(), /não publicados/);
+  const dup = avaliarGuias([base, { ...base, slug: "guia-y" }], ctx);
+  assert.equal(dup.aprovados.length, 1);
+  assert.match(dup.rejeitados[0].motivos.join(), /repetitivo|duplicado/);
+  assert.ok(similaridade("a b c d e f g h", "a b c d e f g h") > 0.9);
+  assert.ok(validarPerguntas([{ pergunta: "Tem desconto hoje?", resposta: "Sim, menor preço garantido na loja." }], "p").length > 0);
+});
+
+test("feed Atom e IndexNow: feed válido no build e chave publicada", () => {
+  const saida = mkdtempSync(join(tmpdir(), "vitrine-feed-"));
+  const cfg = join(saida, "config.json");
+  writeFileSync(cfg, JSON.stringify({ ...JSON.parse(readFileSync("config.json", "utf8")), siteUrl: "https://exemplo.invalid" }));
+  process.env.SOMENTE_CONFIRMADOS = "1";
+  try {
+    const r = build({ configPath: cfg, saida: join(saida, "dist"), agora: new Date("2026-10-20T16:00:00-03:00") });
+    const feed = readFileSync(join(saida, "dist", "feed.xml"), "utf8");
+    assert.match(feed, /^<\?xml/);
+    assert.match(feed, /<feed xmlns="http:\/\/www.w3.org\/2005\/Atom"/);
+    const sitemap = readFileSync(join(saida, "dist", "sitemap.xml"), "utf8");
+    const produtosIdx = (sitemap.match(/\/produto\//g) || []).length;
+    assert.equal((feed.match(/<entry>/g) || []).length, r.guias + produtosIdx);
+    assert.match(readFileSync(join(saida, "dist", "index.html"), "utf8"), /application\/atom\+xml/);
+    assert.ok(readdirSync("static").some((f) => /^[a-f0-9]{32}\.txt$/.test(f)));
+  } finally {
+    delete process.env.SOMENTE_CONFIRMADOS;
+    rmSync(saida, { recursive: true, force: true });
+  }
 });

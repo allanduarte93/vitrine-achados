@@ -7,15 +7,18 @@
       "resumo": "Os dois aparelhos da Amazon têm Alexa, mas resolvem coisas diferentes: um é caixa de som inteligente, o outro leva streaming para a TV. Veja o que cada um faz.",
       "categoria": "Eletrônicos",
       "publicadoEm": "2026-10-20",
-      "atualizadoEm": "2026-10-20",
-      "produtos": ["amazon-b09b8vgcr8", "amazon-b0dvk166sv"],
+      "atualizadoEm": "2026-10-21",
+      "produtos": [
+        "amazon-b09b8vgcr8",
+        "amazon-b0dvk166sv"
+      ],
       "introducao": "Echo Dot e Fire TV Stick HD aparecem juntos em muitas buscas porque os dois têm a Alexa. Mas eles não substituem um ao outro: o Echo Dot é uma caixa de som inteligente para qualquer cômodo, e o Fire TV Stick HD transforma a TV em uma central de aplicativos de streaming. Este guia separa o que cada um faz, segundo os anúncios oficiais.",
       "secoes": [
         {
           "titulo": "Echo Dot: música, rotinas e casa inteligente por voz",
           "paragrafos": [
-            "O Echo Dot é um alto-falante compacto com a Alexa. Ele toca música e podcasts de serviços como Amazon Music, Apple Music e Spotify e também funciona como caixa de som Bluetooth.",
-            "No dia a dia, ele responde a comandos de voz para timers, alarmes, previsão do tempo e perguntas rápidas. Com aparelhos de casa inteligente compatíveis, controla luzes, tomadas e outros dispositivos, e o sensor de temperatura interno permite criar rotinas, como ligar o ar-condicionado quando o cômodo esquenta."
+            "O Echo Dot é uma caixa de som compacta com a Alexa embutida. Serve para ouvir música e podcasts dos principais serviços ou como caixa Bluetooth do celular.",
+            "No dia a dia, ele atende comandos de voz para alarmes, timers e previsão do tempo, e conversa com lâmpadas, tomadas e outros aparelhos de casa inteligente compatíveis. Como tem sensor de temperatura, dá para montar rotinas automáticas, por exemplo ligar o ar-condicionado quando o quarto passar de certa temperatura."
           ],
           "lista": [
             "Faz sentido para quem quer ouvir música e usar a Alexa sem depender da TV.",
@@ -26,13 +29,20 @@
         {
           "titulo": "Fire TV Stick HD: streaming na TV com controle por voz",
           "paragrafos": [
-            "O Fire TV Stick HD se conecta à porta HDMI da TV e reúne aplicativos como Prime Video, Netflix, YouTube, Disney+, HBO Max e Globoplay em uma única tela. Segundo o anúncio, ele é alimentado pela própria TV com o cabo USB-C incluso.",
-            "O controle remoto tem botão de voz com Alexa para buscar o que assistir e botões para ligar a TV e ajustar o volume de aparelhos compatíveis. O anúncio também cita jogos por nuvem com o Xbox Game Pass, que exige assinatura e controle compatível."
+            "O Fire TV Stick HD é um pequeno aparelho que fica escondido atrás da TV, ligado na entrada HDMI. Ele junta em um só menu os serviços de vídeo mais usados, como Netflix, Prime Video, YouTube e Globoplay, e dispensa a tomada: a energia vem da porta USB da própria TV.",
+            "A Alexa, neste caso, mora no controle remoto. Basta segurar o botão e pedir um filme ou série. O mesmo controle liga a TV e ajusta o volume de aparelhos compatíveis. O anúncio ainda menciona jogos na nuvem pelo Xbox Game Pass, que depende de assinatura e controle próprio."
           ],
           "lista": [
             "Faz sentido para quem tem uma TV sem aplicativos ou com sistema lento.",
             "Precisa de uma porta HDMI livre na TV.",
             "A Alexa fica no controle remoto, não em uma caixa de som."
+          ]
+        },
+        {
+          "titulo": "E a Alexa+?",
+          "paragrafos": [
+            "Os anúncios atuais dos dois aparelhos informam acesso antecipado à Alexa+, a versão mais nova da assistente. No Brasil, a Amazon anunciou a Alexa+ em junho de 2026, incluída na assinatura Prime e com opção de assinatura avulsa para quem não é assinante.",
+            "Na prática, isso não muda a escolha entre os dois: a Alexa+ chega tanto pela caixa de som quanto pelo controle remoto. As condições de uso e de assinatura podem mudar, então confira a página oficial da Amazon antes de decidir."
           ]
         },
         {
@@ -44,14 +54,42 @@
       ],
       "tabela": {
         "titulo": "Lado a lado",
-        "colunas": ["", "Echo Dot", "Fire TV Stick HD"],
+        "colunas": [
+          "",
+          "Echo Dot",
+          "Fire TV Stick HD"
+        ],
         "linhas": [
-          ["O que é", "Alto-falante inteligente", "Aparelho de streaming para TV"],
-          ["Onde a Alexa fica", "No próprio aparelho", "No controle remoto por voz"],
-          ["Conexão", "Wi-Fi e Bluetooth", "Porta HDMI da TV"],
-          ["Uso principal", "Música, rotinas e casa inteligente", "Filmes, séries e TV ao vivo por aplicativos"]
+          [
+            "O que é",
+            "Alto-falante inteligente",
+            "Aparelho de streaming para TV"
+          ],
+          [
+            "Onde a Alexa fica",
+            "No próprio aparelho",
+            "No controle remoto por voz"
+          ],
+          [
+            "Conexão",
+            "Wi-Fi e Bluetooth",
+            "Porta HDMI da TV"
+          ],
+          [
+            "Uso principal",
+            "Música, rotinas e casa inteligente",
+            "Filmes, séries e TV ao vivo por aplicativos"
+          ]
         ]
-      }
+      },
+      "status": "aprovado",
+      "fonteFatos": "Fatos tirados dos anúncios oficiais conferidos em 20/10/2026",
+      "fontes": [
+        {
+          "titulo": "Tecnoblog — Alexa+: veja quais dispositivos são compatíveis",
+          "url": "https://tecnoblog.net/noticias/alexa-veja-quais-dispositivos-sao-compativeis-ou-nao/"
+        }
+      ]
     },
     {
       "slug": "cerave-locao-ou-cicaplast-baume-b5",
@@ -59,22 +97,32 @@
       "resumo": "Um é loção hidratante para o corpo; o outro, creme multirreparador para pele sensibilizada. Compare fórmula, tamanho e uso indicado pelos fabricantes.",
       "categoria": "Beleza e Cuidados",
       "publicadoEm": "2026-10-20",
-      "atualizadoEm": "2026-10-20",
-      "produtos": ["amazon-b07rk4hst7", "amazon-b072mk7bn2"],
+      "atualizadoEm": "2026-10-21",
+      "produtos": [
+        "amazon-b07rk4hst7",
+        "amazon-b072mk7bn2"
+      ],
       "introducao": "A loção hidratante da CeraVe e o Cicaplast Baume B5+ da La Roche-Posay estão entre os cuidados com a pele mais procurados, e às vezes são vistos como equivalentes. Pelas informações dos fabricantes, eles têm propostas diferentes: hidratação diária do corpo, de um lado, e reparação de pele sensibilizada, do outro.",
       "secoes": [
         {
           "titulo": "Loção hidratante corporal CeraVe",
           "paragrafos": [
-            "É uma loção de textura fluida, vendida em embalagem de 473 ml, pensada para o corpo inteiro. A fórmula reúne três ceramidas essenciais e ácido hialurônico, ingredientes que ajudam a manter a umidade natural da pele.",
-            "O fabricante indica o produto para peles secas a extrassecas e informa que a fórmula é sem perfume e hipoalergênica."
+            "A proposta da CeraVe é a hidratação diária de áreas grandes. O frasco de 473 ml com válvula dura bastante no uso em braços, pernas e tronco, e a textura é leve, de espalhar rápido.",
+            "Na fórmula, a marca destaca a combinação de três tipos de ceramida com ácido hialurônico. Ela é voltada a quem tem pele seca ou muito seca e, de acordo com a CeraVe, não leva perfume e é hipoalergênica."
           ]
         },
         {
           "titulo": "Cicaplast Baume B5+ La Roche-Posay",
           "paragrafos": [
-            "É um creme multirreparador em bisnaga de 40 ml. A fórmula combina pantenol a 5%, madecassoside e o complexo prebiótico Tribioma, e a marca indica o uso em áreas sensibilizadas do rosto, do corpo e dos lábios, para toda a família, incluindo bebês.",
-            "O anúncio informa que o produto é livre de fragrâncias, hipoalergênico e testado dermatologicamente, com textura leve e sem resíduo oleoso."
+            "O Cicaplast vem em bisnaga pequena, de 40 ml, porque o uso previsto é localizado: pontos de pele sensibilizada, ressecada ou irritada. A La Roche-Posay reúne no creme pantenol em concentração de 5%, madecassoside e um complexo prebiótico chamado Tribioma.",
+            "A marca recomenda aplicar em rosto, corpo e lábios, inclusive em crianças, e afirma que o produto não tem fragrância e passou por testes dermatológicos. A textura é mais encorpada que a de uma loção, mas não deixa a pele oleosa."
+          ]
+        },
+        {
+          "titulo": "O que os ingredientes citados fazem, em termos gerais",
+          "paragrafos": [
+            "Ceramidas são lipídios que já existem na camada mais externa da pele e ajudam a formar a barreira que segura a água. Por isso aparecem com frequência em hidratantes para pele seca. O ácido hialurônico é um umectante: atrai e retém água na superfície da pele.",
+            "O pantenol é a forma de pró-vitamina B5 usada em cosméticos, também com ação umectante e calmante. O madecassoside é um ativo extraído da Centella asiatica, comum em produtos para pele sensibilizada. Essas descrições são gerais; o efeito em cada pessoa depende do tipo de pele e do uso correto."
           ]
         },
         {
@@ -87,15 +135,239 @@
       ],
       "tabela": {
         "titulo": "Lado a lado",
-        "colunas": ["", "Loção CeraVe", "Cicaplast Baume B5+"],
+        "colunas": [
+          "",
+          "Loção CeraVe",
+          "Cicaplast Baume B5+"
+        ],
         "linhas": [
-          ["Tipo", "Loção hidratante corporal", "Creme multirreparador"],
-          ["Embalagem", "473 ml", "40 ml"],
-          ["Ativos citados", "3 ceramidas e ácido hialurônico", "Pantenol 5%, madecassoside e Tribioma"],
-          ["Onde usar (fabricante)", "Corpo", "Rosto, corpo e lábios"],
-          ["Perfume", "Sem perfume", "Livre de fragrâncias"]
+          [
+            "Tipo",
+            "Loção hidratante corporal",
+            "Creme multirreparador"
+          ],
+          [
+            "Embalagem",
+            "473 ml",
+            "40 ml"
+          ],
+          [
+            "Ativos citados",
+            "3 ceramidas e ácido hialurônico",
+            "Pantenol 5%, madecassoside e Tribioma"
+          ],
+          [
+            "Onde usar (fabricante)",
+            "Corpo",
+            "Rosto, corpo e lábios"
+          ],
+          [
+            "Perfume",
+            "Sem perfume",
+            "Livre de fragrâncias"
+          ]
         ]
-      }
+      },
+      "status": "aprovado",
+      "fonteFatos": "Fatos tirados dos anúncios oficiais conferidos em 20/10/2026",
+      "perguntas": [
+        {
+          "pergunta": "Posso usar a loção CeraVe e o Cicaplast juntos?",
+          "resposta": "Os fabricantes não indicam conflito entre os dois. Muita gente usa a loção no corpo todo e reserva o Cicaplast para pontos específicos de pele sensibilizada. Em caso de dúvida ou irritação, procure um dermatologista."
+        },
+        {
+          "pergunta": "Qual dos dois tem perfume?",
+          "resposta": "Nenhum dos dois, segundo os fabricantes: a loção CeraVe é sem perfume e o Cicaplast Baume B5+ é livre de fragrâncias."
+        },
+        {
+          "pergunta": "O Cicaplast pode ser usado em bebês?",
+          "resposta": "O anúncio informa uso para toda a família, incluindo bebês. Antes de usar em crianças pequenas, leia a embalagem e converse com o pediatra."
+        }
+      ]
+    },
+    {
+      "slug": "fire-tv-stick-hd-o-que-saber",
+      "status": "aprovado",
+      "titulo": "Fire TV Stick HD (modelo mais recente): o que saber antes de comprar",
+      "resumo": "Do que você precisa para instalar, quais aplicativos funcionam, a limitação de apps de fora da loja e a diferença para os modelos 4K, segundo o anúncio.",
+      "categoria": "Eletrônicos",
+      "publicadoEm": "2026-10-21",
+      "atualizadoEm": "2026-10-21",
+      "produtos": [
+        "amazon-b0dvk166sv"
+      ],
+      "fonteFatos": "Fatos do anúncio oficial na Amazon.com.br (conferido em 21/10/2026) e da cobertura do lançamento no Brasil",
+      "introducao": "O Fire TV Stick HD é o aparelho mais simples da linha de streaming da Amazon: um pequeno dispositivo que entra na porta HDMI da TV e reúne os aplicativos de vídeo em uma única tela. O modelo mais recente mudou em pontos que pesam na compra, como a alimentação pela própria TV e a restrição a aplicativos da loja oficial. Este guia reúne o que o anúncio e a cobertura do lançamento informam, para você saber se ele resolve o seu caso.",
+      "secoes": [
+        {
+          "titulo": "Do que você precisa para usar",
+          "paragrafos": [
+            "São três itens: uma TV com entrada HDMI livre, uma rede Wi-Fi e uma conta Amazon para fazer a configuração. O modelo é compatível com Wi-Fi 6, mas também funciona em redes mais antigas.",
+            "A novidade está na energia. Segundo o anúncio, o aparelho é alimentado pela porta USB da própria TV, com o cabo USB-C que vem na caixa, sem adaptador de tomada. Isso deixa a instalação mais limpa atrás da TV."
+          ],
+          "lista": [
+            "TV com entrada HDMI livre (não precisa ser smart)",
+            "Wi-Fi em casa",
+            "Porta USB na TV para alimentar o aparelho com o cabo incluso"
+          ]
+        },
+        {
+          "titulo": "Quais aplicativos funcionam",
+          "paragrafos": [
+            "O anúncio cita os principais serviços de streaming, como Prime Video, Netflix, YouTube, Disney+, HBO Max e Globoplay. Os aplicativos de cada serviço são gratuitos para baixar, mas a maioria exige assinatura própria.",
+            "O ponto de atenção: este modelo impede a instalação de aplicativos de fontes desconhecidas. Só estão disponíveis os apps da Amazon Appstore. Segundo a cobertura do lançamento, isso acontece porque o aparelho usa o Vega OS, sistema da própria Amazon que não é baseado no Android. Quem pretendia instalar aplicativos por fora da loja deve considerar outro aparelho."
+          ]
+        },
+        {
+          "titulo": "Imagem, controle e jogos",
+          "paragrafos": [
+            "A imagem é em Full HD: o anúncio informa 1080p ou 720p, até 60 quadros por segundo. Para quem tem TV 4K e quer aproveitar a resolução, a Amazon vende outros modelos da linha Fire TV.",
+            "O controle remoto tem botão de voz com a Alexa, além de botões para ligar a TV e ajustar o volume de aparelhos compatíveis. O anúncio também cita jogos por nuvem com o Xbox Game Pass, que exigem assinatura e um controle compatível."
+          ]
+        },
+        {
+          "titulo": "Para quem faz sentido",
+          "paragrafos": [
+            "Faz sentido para quem tem uma TV sem aplicativos, uma smart TV antiga e lenta, ou quer levar os serviços de streaming para uma TV secundária, como a do quarto. Para quem precisa de 4K ou de aplicativos fora da loja da Amazon, vale olhar outras opções antes de comprar."
+          ]
+        }
+      ],
+      "tabela": {
+        "titulo": "Ficha rápida",
+        "colunas": [
+          "",
+          "Fire TV Stick HD"
+        ],
+        "linhas": [
+          [
+            "Conexão com a TV",
+            "HDMI"
+          ],
+          [
+            "Energia",
+            "Porta USB da TV, cabo USB-C incluso"
+          ],
+          [
+            "Imagem",
+            "1080p ou 720p, até 60 fps"
+          ],
+          [
+            "Wi-Fi",
+            "Compatível com Wi-Fi 6"
+          ],
+          [
+            "Aplicativos",
+            "Somente Amazon Appstore"
+          ],
+          [
+            "Controle",
+            "Voz com Alexa, liga/desliga e volume da TV"
+          ]
+        ]
+      },
+      "perguntas": [
+        {
+          "pergunta": "O Fire TV Stick HD funciona em TV de tubo ou sem HDMI?",
+          "resposta": "Não. Ele precisa de uma entrada HDMI na TV. TVs sem HDMI exigiriam um conversor, que não vem na caixa e não é citado no anúncio."
+        },
+        {
+          "pergunta": "Preciso pagar mensalidade para usar o Fire TV Stick?",
+          "resposta": "O aparelho não cobra mensalidade, mas a maioria dos serviços de streaming, como Netflix, Prime Video e Disney+, exige assinatura própria."
+        }
+      ],
+      "fontes": [
+        {
+          "titulo": "Tecnoblog — Amazon lança novo Fire TV Stick HD com Vega OS no Brasil",
+          "url": "https://tecnoblog.net/noticias/amazon-lanca-novo-fire-tv-stick-hd-com-vega-os-no-brasil/"
+        }
+      ]
+    },
+    {
+      "slug": "sanduicheira-cadence-click-127v",
+      "status": "aprovado",
+      "titulo": "Sanduicheira Cadence Click 127 V: voltagem, potência e cuidados antes de comprar",
+      "resumo": "A versão do anúncio é só 127 V. Veja potência, tamanho, como funcionam as chapas e os cuidados com a tomada antes de comprar.",
+      "categoria": "Casa e Cozinha",
+      "publicadoEm": "2026-10-21",
+      "atualizadoEm": "2026-10-21",
+      "produtos": [
+        "amazon-b0cdj4l7cz"
+      ],
+      "fonteFatos": "Fatos do anúncio oficial na Amazon.com.br (conferido em 21/10/2026)",
+      "introducao": "A Cadence Click é uma sanduicheira compacta muito procurada por quem quer um aparelho simples para o café da manhã ou o lanche da tarde. As dúvidas mais comuns antes da compra são práticas: se ela é bivolt, quanta energia consome, se dá para fazer misto-quente com aparência de grill e como limpar. Este guia responde a essas perguntas com o que o anúncio informa.",
+      "secoes": [
+        {
+          "titulo": "Primeiro passo: confira a tensão da tomada",
+          "paragrafos": [
+            "A versão deste anúncio é 127 V, e não bivolt. Em boa parte do Brasil as tomadas são 127 V, mas há cidades e imóveis com 220 V. Ligar um aparelho de 127 V em 220 V pode queimá-lo, então confirme a tensão antes de comprar.",
+            "Se a sua casa tem 220 V, procure especificamente a versão 220 V do produto em outro anúncio, conferindo a tensão no título e na ficha técnica."
+          ]
+        },
+        {
+          "titulo": "Potência e consumo de energia",
+          "paragrafos": [
+            "O anúncio informa 750 W de potência. Para ter uma ideia do consumo, basta multiplicar a potência pelo tempo de uso: 750 W ligados por 10 minutos correspondem a 0,125 kWh. O valor na conta depende da tarifa da sua distribuidora e de quantas vezes o aparelho é usado no mês.",
+            "Como as sanduicheiras esquentam rápido e ficam ligadas por pouco tempo, o consumo tende a ser pequeno no orçamento da casa. Desligar o aparelho logo depois do uso ajuda, e o botão liga/desliga com luz indicadora facilita isso."
+          ]
+        },
+        {
+          "titulo": "Chapas, tamanho e limpeza",
+          "paragrafos": [
+            "As chapas são antiaderentes. A superior tem frisos no estilo grill, que marcam o pão, e a inferior é lisa. Segundo o anúncio, esse formato facilita a limpeza, já que o recheio que escorre fica na chapa lisa.",
+            "As dimensões informadas são 22,3 × 21,5 × 7,8 cm, o que a torna fácil de guardar em armário. Os pés embutidos dão firmeza na bancada e a base tem espaço para enrolar o fio."
+          ],
+          "lista": [
+            "Espere a sanduicheira esfriar antes de limpar",
+            "Use pano macio ou esponja não abrasiva para preservar o antiaderente",
+            "Evite utensílios de metal sobre as chapas"
+          ]
+        },
+        {
+          "titulo": "Para quem faz sentido",
+          "paragrafos": [
+            "Para quem quer um aparelho pequeno e direto ao ponto, para preparar um ou dois sanduíches por vez. Quem precisa preparar muitos lanches de uma vez, ou tem tomada 220 V, deve conferir outros modelos e versões antes de decidir."
+          ]
+        }
+      ],
+      "tabela": {
+        "titulo": "Ficha rápida",
+        "colunas": [
+          "",
+          "Cadence Click (anúncio)"
+        ],
+        "linhas": [
+          [
+            "Tensão",
+            "127 V (não é bivolt)"
+          ],
+          [
+            "Potência",
+            "750 W"
+          ],
+          [
+            "Dimensões",
+            "22,3 × 21,5 × 7,8 cm"
+          ],
+          [
+            "Chapas",
+            "Antiaderentes; superior com grill, inferior lisa"
+          ],
+          [
+            "Liga/desliga",
+            "Botão com luz indicadora"
+          ]
+        ]
+      },
+      "perguntas": [
+        {
+          "pergunta": "A Cadence Click deste anúncio funciona em 220 V?",
+          "resposta": "Não. A versão anunciada é 127 V. Para tomadas 220 V, procure a versão 220 V do produto e confira a tensão no título e na ficha técnica antes de comprar."
+        },
+        {
+          "pergunta": "Como calcular quanto a sanduicheira gasta de energia?",
+          "resposta": "Multiplique a potência pelo tempo de uso: 750 W por 10 minutos dão 0,125 kWh. Depois multiplique pelo valor do kWh na sua conta de luz e pelo número de usos no mês."
+        }
+      ]
     }
   ]
 }

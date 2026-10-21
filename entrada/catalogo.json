@@ -366,6 +366,20 @@
       "destaques": [
         "Wi-Fi e Bluetooth",
         "Cor preta"
+      ],
+      "perguntas": [
+        {
+          "pergunta": "O Echo Dot funciona com a Alexa+?",
+          "resposta": "O anúncio atual do Echo Dot informa acesso antecipado à Alexa+. No Brasil, a Amazon lançou a Alexa+ em junho de 2026, incluída na assinatura Prime; confira as condições atuais na página oficial da Amazon."
+        },
+        {
+          "pergunta": "Dá para usar o Echo Dot como caixa de som do celular?",
+          "resposta": "Sim. Segundo o anúncio, além de tocar música de serviços como Amazon Music, Apple Music e Spotify, ele funciona como caixa de som via Bluetooth."
+        },
+        {
+          "pergunta": "O Echo Dot controla lâmpadas e tomadas inteligentes?",
+          "resposta": "Controla aparelhos de casa inteligente compatíveis com a Alexa, como lâmpadas e tomadas. O sensor de temperatura interno também permite criar rotinas automáticas."
+        }
       ]
     },
     {
@@ -394,6 +408,24 @@
       "destaques": [
         "Porta HDMI",
         "Controle por voz"
+      ],
+      "perguntas": [
+        {
+          "pergunta": "O Fire TV Stick HD precisa de tomada?",
+          "resposta": "Segundo o anúncio, não: ele é alimentado pela porta USB da própria TV, com o cabo USB-C que vem na caixa, sem adaptador de energia."
+        },
+        {
+          "pergunta": "Dá para instalar aplicativos de fora da loja no Fire TV Stick HD?",
+          "resposta": "Não. O anúncio informa que este modelo impede a instalação de aplicativos de fontes desconhecidas: só estão disponíveis os apps da Amazon Appstore."
+        },
+        {
+          "pergunta": "Funciona em TV que não é smart?",
+          "resposta": "Funciona em TVs com entrada HDMI livre. Você também precisa de Wi-Fi (o modelo é compatível com Wi-Fi 6) para usar os aplicativos de streaming."
+        },
+        {
+          "pergunta": "Qual a resolução do Fire TV Stick HD?",
+          "resposta": "O anúncio informa imagem em 1080p ou 720p, até 60 quadros por segundo. Para 4K, a Amazon vende outros modelos da linha Fire TV."
+        }
       ]
     },
     {
@@ -422,6 +454,16 @@
       "destaques": [
         "473 ml",
         "3 ceramidas"
+      ],
+      "perguntas": [
+        {
+          "pergunta": "A loção CeraVe tem perfume?",
+          "resposta": "Segundo o fabricante, a fórmula é sem perfume e hipoalergênica."
+        },
+        {
+          "pergunta": "Para que tipo de pele é indicada?",
+          "resposta": "O fabricante indica a loção para peles secas a extrassecas. A embalagem deste anúncio tem 473 ml, pensada para uso no corpo."
+        }
       ]
     },
     {
@@ -450,6 +492,20 @@
       "destaques": [
         "40 ml",
         "Pantenol 5%"
+      ],
+      "perguntas": [
+        {
+          "pergunta": "Onde posso usar o Cicaplast Baume B5+?",
+          "resposta": "A La Roche-Posay indica o uso em áreas sensibilizadas do rosto, do corpo e dos lábios."
+        },
+        {
+          "pergunta": "O Cicaplast Baume B5+ pode ser usado em bebês?",
+          "resposta": "O anúncio informa uso para toda a família, incluindo bebês. Antes de usar em crianças pequenas, leia as orientações da embalagem e converse com o pediatra."
+        },
+        {
+          "pergunta": "O Cicaplast tem fragrância?",
+          "resposta": "Segundo o anúncio, a fórmula é livre de fragrâncias, hipoalergênica e testada dermatologicamente."
+        }
       ]
     },
     {
@@ -478,6 +534,16 @@
       "destaques": [
         "100 ml",
         "Proteção térmica"
+      ],
+      "perguntas": [
+        {
+          "pergunta": "O Óleo Extraordinário é para usar no cabelo molhado ou seco?",
+          "resposta": "Nos dois. O fabricante indica o uso como leave-in no cabelo úmido ou como finalizador no cabelo seco."
+        },
+        {
+          "pergunta": "O Elseve Óleo Extraordinário protege do calor?",
+          "resposta": "Segundo o fabricante, a fórmula oferece proteção térmica de até 230 °C contra secador e chapinha."
+        }
       ]
     },
     {
@@ -506,6 +572,20 @@
       "destaques": [
         "127 V",
         "750 W"
+      ],
+      "perguntas": [
+        {
+          "pergunta": "A sanduicheira Cadence Click deste anúncio é bivolt?",
+          "resposta": "Não. Este anúncio é da versão 127 V. Confira a tensão da sua tomada antes de comprar: ligar um aparelho 127 V em 220 V pode danificá-lo."
+        },
+        {
+          "pergunta": "Qual a potência e o tamanho da Cadence Click?",
+          "resposta": "O anúncio informa 750 W de potência e dimensões de 22,3 × 21,5 × 7,8 cm."
+        },
+        {
+          "pergunta": "Precisa tirar da tomada para desligar?",
+          "resposta": "Não. Ela tem botão liga/desliga com luz indicadora, segundo o anúncio."
+        }
       ]
     },
     {
@@ -534,6 +614,20 @@
       "destaques": [
         "12 unidades",
         "Livre de BPA"
+      ],
+      "perguntas": [
+        {
+          "pergunta": "Os potes Electrolux podem ir ao micro-ondas e à lava-louças?",
+          "resposta": "Segundo o anúncio, sim: os potes são indicados como seguros para micro-ondas e podem ser lavados na lava-louças. Confira as orientações de temperatura na embalagem."
+        },
+        {
+          "pergunta": "Os potes são livres de BPA?",
+          "resposta": "Sim. O anúncio informa que os potes são feitos de polipropileno livre de BPA."
+        },
+        {
+          "pergunta": "Quantos potes vêm no kit?",
+          "resposta": "O kit A23122901 tem 12 potes herméticos na cor cinza, com tampa de abertura fácil, marcador de data e vedação com anel de silicone."
+        }
       ]
     },
     {
@@ -562,6 +656,16 @@
       "destaques": [
         "4,5 a 10 kg",
         "12 semanas"
+      ],
+      "perguntas": [
+        {
+          "pergunta": "Para qual peso de cão é o Bravecto 250 mg?",
+          "resposta": "Este comprimido é indicado para cães de 4,5 a 10 kg. Para outros pesos existem apresentações diferentes; a escolha deve seguir a bula e o veterinário."
+        },
+        {
+          "pergunta": "Quanto tempo dura a proteção do Bravecto?",
+          "resposta": "Segundo o fabricante, uma dose protege contra pulgas e carrapatos por 12 semanas. Siga sempre a bula e a orientação do médico-veterinário."
+        }
       ]
     },
     {
@@ -590,6 +694,16 @@
       "destaques": [
         "5 litros",
         "Sem fosfato"
+      ],
+      "perguntas": [
+        {
+          "pergunta": "O Omo Lavagem Perfeita líquido tem fosfato?",
+          "resposta": "Segundo a marca, a fórmula é sem fosfato e tem ativos biodegradáveis."
+        },
+        {
+          "pergunta": "Qual o tamanho da embalagem?",
+          "resposta": "O anúncio é do galão de 5 litros, com aroma tradicional. A cor da tampa pode variar."
+        }
       ]
     },
     {
@@ -618,6 +732,20 @@
       "destaques": [
         "Receptor USB",
         "Pilha inclusa"
+      ],
+      "perguntas": [
+        {
+          "pergunta": "O mouse Logitech M170 funciona no Mac?",
+          "resposta": "Sim. Segundo a Logitech, ele é compatível com Windows, macOS, Linux, ChromeOS, iPadOS e Android."
+        },
+        {
+          "pergunta": "Precisa instalar algum programa?",
+          "resposta": "Não. Ele se conecta pelo receptor USB de 2,4 GHz e funciona ao conectar, sem instalação."
+        },
+        {
+          "pergunta": "Quanto dura a pilha do M170?",
+          "resposta": "A pilha vem inclusa e, segundo o fabricante, dura até 12 meses com o modo de economia de energia."
+        }
       ]
     }
   ]

@@ -14,12 +14,13 @@ import { validarCatalogo, somenteConfirmadas, ofertasAtivas, produtoIndexavel, s
 import { layout, paginaInicial, paginaCategoria, paginaProduto, paginaBusca, paginaComoFunciona, paginaSobre, paginaAvisoAfiliados, paginaContato, paginaPrivacidade, pagina404, paginaGuias, paginaGuia } from "./lib/render.mjs";
 import { LOJAS } from "./lib/links.mjs";
 import { canonicalizarCategoria } from "./lib/categorias.mjs";
+import { avaliarGuias } from "./lib/guias.mjs";
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 export const lerJson = (caminho) => JSON.parse(readFileSync(resolve(RAIZ, caminho), "utf8"));
 
-export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", configPath = "config.json", guiasPath = "data/guias.json", exemplo = false, agora = new Date() } = {}) => {
+export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", configPath = "config.json", guiasPath = "data/guias.json", categoriasPath = "data/categorias.json", exemplo = false, agora = new Date() } = {}) => {
   const config = lerJson(configPath);
   // Overrides por ambiente (usados no workflow de publicação, sem editar config.json).
   if (process.env.SITE_URL) config.siteUrl = process.env.SITE_URL;
@@ -81,7 +82,13 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
   // Guias editoriais: só entram se TODOS os produtos citados estiverem publicados (nada de guia apontando para oferta oculta).
   const porId = new Map(itens.map((x) => [x.p.id, x]));
   const guiasDados = !exemplo && existsSync(resolve(RAIZ, guiasPath)) ? lerJson(guiasPath).guias || [] : [];
-  const guias = guiasDados.filter((g) => g.slug && Array.isArray(g.produtos) && g.produtos.length && g.produtos.every((id) => porId.has(id)));
+  const { aprovados: guias, rejeitados: guiasRejeitados, avisos: avisosGuias } = avaliarGuias(guiasDados, {
+    publicados: new Set(porId.keys()),
+    descricoes: itens.map((x) => x.p.descricao || "").filter(Boolean),
+    agora,
+  });
+  const textosCategoria = !exemplo && existsSync(resolve(RAIZ, categoriasPath)) ? lerJson(categoriasPath).categorias || {} : {};
+  const guiasDoProduto = (id) => guias.filter((g) => g.produtos.includes(id));
 
   const paginas = []; // {caminho, indexavel}
   const render = (caminho, pagina, indexavel = true) => {
@@ -91,12 +98,12 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
   };
 
   render("/", paginaInicial({ config, destaques: itens.filter((x) => x.p.prioritario).slice(0, 10), categorias, todos: itens.filter((x) => !x.p.prioritario), guias }));
-  categorias.forEach((c) => render(`/categoria/${c.slug}/`, paginaCategoria({ config, categoria: c, itens: c.itens, outras: categorias.filter((o) => o.slug !== c.slug) }), c.indexavel));
+  categorias.forEach((c) => render(`/categoria/${c.slug}/`, paginaCategoria({ config, categoria: c, itens: c.itens, outras: categorias.filter((o) => o.slug !== c.slug), intro: textosCategoria[c.slug] || null, guias: guias.filter((g) => g.produtos.some((id) => slugify(porId.get(id).p.categoria) === c.slug)) }), c.indexavel));
   itens.forEach((x) => {
     const relacionados = (catMap.get(slugify(x.p.categoria))?.itens || []).filter((r) => r.p.id !== x.p.id).slice(0, 4);
-    render(`/produto/${x.p.id}/`, paginaProduto({ config, p: x.p, ativas: x.ativas, inativas: x.inativas, relacionados }), x.indexavel);
+    render(`/produto/${x.p.id}/`, paginaProduto({ config, p: x.p, ativas: x.ativas, inativas: x.inativas, relacionados, guias: guiasDoProduto(x.p.id) }), x.indexavel);
   });
-  guias.forEach((g) => render(`/guias/${g.slug}/`, paginaGuia({ config, guia: g, itens: g.produtos.map((id) => porId.get(id)) })));
+  guias.forEach((g) => render(`/guias/${g.slug}/`, paginaGuia({ config, guia: g, itens: g.produtos.map((id) => porId.get(id)), outrosGuias: guias.filter((o) => o.slug !== g.slug).slice(0, 4) })));
   if (guias.length) render("/guias/", paginaGuias({ config, guias }));
   render("/como-funciona/", paginaComoFunciona({ config }));
   const lojasPublicadas = [...new Set(itens.flatMap((x) => x.ativas.map((o) => o.loja)))];
@@ -115,6 +122,22 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
       .map((u) => `  <url><loc>${config.siteUrl}${u.caminho}</loc><lastmod>${hoje}</lastmod></url>`)
       .join("\n")}\n</urlset>\n`
   );
+  // Feed Atom: guias e páginas de produto indexáveis (mais recentes primeiro).
+  const xml = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const iso = (d) => new Date(d || agora).toISOString();
+  const entradas = [
+    ...guias.map((g) => ({ titulo: g.titulo, url: `${config.siteUrl}/guias/${g.slug}/`, resumo: g.resumo, atualizado: g.atualizadoEm, publicado: g.publicadoEm || g.atualizadoEm })),
+    ...itens.filter((x) => x.indexavel).map((x) => ({ titulo: x.p.nome, url: `${config.siteUrl}/produto/${x.p.id}/`, resumo: (x.p.descricao || "").slice(0, 280), atualizado: x.p.atualizadoEm, publicado: x.p.atualizadoEm })),
+  ].sort((a, b) => new Date(b.atualizado || 0) - new Date(a.atualizado || 0));
+  const feedAtualizado = entradas.length ? iso(entradas[0].atualizado) : iso(agora);
+  if (!exemplo) {
+    writeFileSync(
+      join(out, "feed.xml"),
+      `<?xml version="1.0" encoding="utf-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="pt-BR">\n  <title>${xml(config.nomeSite)}: novidades</title>\n  <subtitle>Guias de compra e produtos com links conferidos.</subtitle>\n  <link href="${config.siteUrl}/feed.xml" rel="self" type="application/atom+xml"/>\n  <link href="${config.siteUrl}/" rel="alternate" type="text/html"/>\n  <id>${config.siteUrl}/</id>\n  <updated>${feedAtualizado}</updated>\n  <author><name>${xml(config.nomeSite)}</name></author>\n${entradas
+        .map((e) => `  <entry>\n    <title>${xml(e.titulo)}</title>\n    <link href="${e.url}" rel="alternate" type="text/html"/>\n    <id>${e.url}</id>\n    <published>${iso(e.publicado)}</published>\n    <updated>${iso(e.atualizado)}</updated>\n    <summary>${xml(e.resumo)}</summary>\n  </entry>`)
+        .join("\n")}\n</feed>\n`
+    );
+  }
   writeFileSync(
     join(out, "robots.txt"),
     exemplo ? "User-agent: *\nDisallow: /\n" : `User-agent: *\nAllow: /\n\nSitemap: ${config.siteUrl}/sitemap.xml\n`
@@ -137,12 +160,13 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
   writeFileSync(join(out, "busca.json"), JSON.stringify({ base, produtos: indice }));
 
   return {
-    avisos,
     paginas: paginas.length,
     indexaveis: urls.length,
     produtosPublicados: itens.length,
     categorias: categorias.length,
     guias: guias.length,
+    guiasRejeitados,
+    avisos: [...avisos, ...avisosGuias],
     resumo: resumoCatalogo(catalogo, config, agora),
     saida: out,
   };
@@ -164,6 +188,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     console.log(`\n${r.paginas} páginas geradas (${r.indexaveis} indexáveis) em ${r.saida}`);
     console.log(`Produtos publicados: ${r.produtosPublicados}/${r.resumo.produtos} · categorias: ${r.categorias}`);
     console.log(`Ofertas ativas por loja: ${JSON.stringify(r.resumo.porLoja)}`);
+    console.log(`Guias publicados: ${r.guias}`);
+    r.guiasRejeitados.forEach((g) => console.log(`guia NÃO publicado: ${g.slug} — ${g.motivos.join("; ")}`));
   } catch (e) {
     console.error(e.message);
     process.exit(1);

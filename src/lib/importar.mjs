@@ -141,6 +141,10 @@ export const normalizarPesquisa = (fonte) => {
     if (tipo && !atual.tipo) atual.tipo = String(tipo).trim();
     const destaques = toArray(pick(item, "destaques", "highlights"));
     if (destaques.length && !atual.destaques) atual.destaques = destaques.slice(0, 3);
+    const perguntas = pick(item, "perguntas", "faq");
+    if (Array.isArray(perguntas) && perguntas.length && !atual.perguntas) {
+      atual.perguntas = perguntas.filter((q) => q && q.pergunta && q.resposta).map((q) => ({ pergunta: String(q.pergunta).trim(), resposta: String(q.resposta).trim() }));
+    }
     const mesmo = pick(item, "mesmoProdutoConfirmado", "mesmo_produto", "sameProduct");
     if (mesmo !== undefined) atual.mesmoProdutoConfirmado = truthy(mesmo);
 
@@ -205,6 +209,7 @@ export const mesclarCatalogo = (catalogo, importados, agoraISO = new Date().toIS
       pontosChave: atual.pontosChave || imp.pontosChave,
       ...((atual.tipo || imp.tipo) ? { tipo: atual.tipo || imp.tipo } : {}),
       ...((atual.destaques || imp.destaques) ? { destaques: atual.destaques || imp.destaques } : {}),
+      ...((imp.perguntas || atual.perguntas) ? { perguntas: imp.perguntas || atual.perguntas } : {}),
       ofertas: [...ofertas.values()],
       atualizadoEm: agoraISO,
     };

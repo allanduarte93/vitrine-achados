@@ -356,3 +356,16 @@ a.cat:hover { transform: translateY(-3px); box-shadow: var(--sombra-forte); }
   .produto-img .sem-foto-tipo { font-size: 1rem; }
   .produto-img .sem-foto-fatos li { font-size: .85rem; padding: 4px 10px; }
 }
+
+/* Perguntas frequentes, introdução de categoria e fontes */
+.faq { display: grid; gap: 10px; }
+.faq details { background: #fff; border: 1px solid var(--linha); border-radius: 12px; padding: 0 16px; }
+.faq summary { cursor: pointer; font-weight: 700; color: var(--ink); padding: 14px 24px 14px 0; list-style: none; position: relative; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 0; top: 12px; font-size: 1.2rem; color: var(--suave); }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { margin: 0 0 14px; }
+.cat-intro { max-width: 820px; margin: 4px 0 22px; color: var(--texto, #3b4a63); }
+.cat-intro p { margin: 0 0 10px; line-height: 1.6; }
+.fontes { padding-left: 18px; }
+.fontes li { margin: 4px 0; overflow-wrap: anywhere; }

@@ -1,0 +1,29 @@
+# Auditoria semanal do site publicado (não publica nada).
+# Confere: testes, links de compra das lojas confirmadas, sitemap/feed no ar,
+# guias barrados pelo portão de qualidade e conteúdo sem revisão há muito tempo.
+name: Auditoria semanal
+
+on:
+  schedule:
+    - cron: "17 11 * * 1"   # segundas, 08:17 em Brasília
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  auditoria:
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: ${{ vars.SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
+      SOMENTE_CONFIRMADOS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
+        env:
+          SOMENTE_CONFIRMADOS: ""
+      - run: npm run checar-links
+      - run: node src/cli/auditoria.mjs

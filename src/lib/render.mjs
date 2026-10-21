@@ -90,6 +90,7 @@ export const layout = ({ config, titulo, descricao, caminho, conteudo, jsonld = 
 <meta name="description" content="${esc(descricao)}">
 <meta name="robots" content="${robots}">
 <link rel="canonical" href="${esc(url)}">
+<link rel="alternate" type="application/atom+xml" title="${esc(config.nomeSite)}: novidades" href="/feed.xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${esc(config.nomeSite)}">
 <meta property="og:title" content="${esc(titulo)}">
@@ -351,7 +352,7 @@ const barraFiltros = (itens) => {
 </form>`;
 };
 
-export const paginaCategoria = ({ config, categoria, itens, outras = [] }) => {
+export const paginaCategoria = ({ config, categoria, itens, outras = [], intro = null, guias = [] }) => {
   const ic = iconeCategoria(categoria.nome);
   if (!itens.length) {
     const vizinhas = outras.filter((o) => o.total > 0).slice(0, 6);
@@ -383,16 +384,19 @@ ${cabPagina({ titulo: esc(categoria.nome), sub: "Categoria em curadoria: ainda n
     };
   }
   const conteudo = `
-${cabPagina({ titulo: esc(categoria.nome), sub: `${itens.length} ${itens.length === 1 ? "produto" : "produtos"} com link conferido em ${esc(categoria.nome.toLowerCase())}. Compare as lojas disponíveis e vá direto para a oferta.`, icn: ic, tom: TONS[ic] })}
+${cabPagina({ titulo: esc(categoria.nome), sub: `${itens.length} ${itens.length === 1 ? "produto" : "produtos"} com link conferido em ${esc(categoria.nome.toLowerCase())}. ${new Set(itens.flatMap(({ ativas }) => ativas.map((o) => o.loja))).size > 1 ? "Compare as lojas disponíveis" : "Veja o essencial de cada um"} e vá direto para a oferta.`, icn: ic, tom: TONS[ic] })}
 <div class="container">
   <nav class="trilha" aria-label="Trilha"><a href="/">Início</a> › <span>${esc(categoria.nome)}</span></nav>
+  ${intro && intro.paragrafos?.length ? `<section class="cat-intro" aria-label="Sobre a categoria">${intro.paragrafos.map((t) => `<p>${esc(t)}</p>`).join("")}</section>` : ""}
   ${barraFiltros(itens)}
   <div class="grade-prod" data-grade>${itens.map(({ p, ativas }) => cardProduto(p, ativas)).join("")}</div>
   <p class="aviso-botoes">${esc(AVISO_CURTO)}</p>
+  ${intro && intro.dicas?.length ? `<section class="secao texto" aria-labelledby="t-dicas"><h2 id="t-dicas">${esc(intro.tituloDicas || "Antes de escolher")}</h2><ul class="pontos">${intro.dicas.map((t) => `<li>${esc(t)}</li>`).join("")}</ul></section>` : ""}
+  ${guias.length ? `<section class="secao" aria-labelledby="t-guias-cat"><div class="secao-cab"><h2 id="t-guias-cat">Guias de ${esc(categoria.nome.toLowerCase())}</h2></div><div class="grade-guias">${guias.map(cardGuia).join("")}</div></section>` : ""}
 </div>`;
   return {
     titulo: `${categoria.nome}: produtos com links conferidos | ${config.nomeSite}`,
-    descricao: `Produtos de ${categoria.nome.toLowerCase()} com links conferidos. ${(() => { const l = [...new Set(itens.flatMap(({ ativas }) => ativas.map((o) => o.loja)))]; return `${l.length > 1 ? "Lojas" : "Loja"}: ${listaLojas(l)}.`; })()}`,
+    descricao: intro?.descricao || `Produtos de ${categoria.nome.toLowerCase()} com links conferidos. ${(() => { const l = [...new Set(itens.flatMap(({ ativas }) => ativas.map((o) => o.loja)))]; return `${l.length > 1 ? "Lojas" : "Loja"}: ${listaLojas(l)}.`; })()}`,
     conteudo,
     jsonld: [
       {
@@ -412,7 +416,7 @@ ${cabPagina({ titulo: esc(categoria.nome), sub: `${itens.length} ${itens.length 
   };
 };
 
-export const paginaProduto = ({ config, p, ativas, inativas, relacionados }) => {
+export const paginaProduto = ({ config, p, ativas, inativas, relacionados, guias = [] }) => {
   const catSlug = slugify(p.categoria);
   const comparaveis = p.mesmoProdutoConfirmado === true ? ativas.filter((o) => o.estado.mostrarPreco) : [];
   const menor = comparaveis.length >= 2 ? Math.min(...comparaveis.map((o) => o.preco)) : null;
@@ -443,6 +447,7 @@ export const paginaProduto = ({ config, p, ativas, inativas, relacionados }) => 
         .join("")}</tbody></table><p class="nota">Preços consultados nas lojas; podem mudar a qualquer momento.</p></section>`
     : "";
   const pontos = (p.pontosChave || []).filter(Boolean);
+  const perguntas = Array.isArray(p.perguntas) ? p.perguntas : [];
   const descricao = (p.descricao || "").trim();
   const lojasPub = [...new Set(ativas.map((o) => o.loja))];
   const rotuloLojas = `${lojasPub.length > 1 ? "Lojas" : "Loja"}: ${listaLojas(lojasPub)}`;
@@ -476,8 +481,10 @@ export const paginaProduto = ({ config, p, ativas, inativas, relacionados }) => 
     ${descricao ? `<section aria-labelledby="t-sobre"><h2 id="t-sobre">Sobre o produto</h2><p>${esc(descricao)}</p></section>` : ""}
     ${pontos.length ? `<section aria-labelledby="t-pontos"><h2 id="t-pontos">Destaques do anúncio</h2><ul class="pontos">${pontos.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></section>` : ""}
     ${tabela}
+    ${perguntas.length ? `<section aria-labelledby="t-faq"><h2 id="t-faq">Perguntas frequentes</h2><div class="faq">${perguntas.map((q) => `<details><summary>${esc(q.pergunta)}</summary><p>${esc(q.resposta)}</p></details>`).join("")}</div></section>` : ""}
     <p class="fonte">Informações conferidas a partir dos anúncios das lojas${p.fonte ? ` (${esc(p.fonte)})` : ""}. Confirme detalhes, preço e frete na loja antes de comprar.</p>
   </div>
+  ${guias.length ? `<section class="secao" aria-labelledby="t-guias-rel"><div class="secao-cab"><h2 id="t-guias-rel">Guias que citam este produto</h2></div><div class="grade-guias">${guias.map(cardGuia).join("")}</div></section>` : ""}
   ${relacionados.length ? `<section class="secao" aria-labelledby="t-rel"><div class="secao-cab"><h2 id="t-rel">Mais em ${esc(p.categoria)}</h2></div><div class="grade-prod">${relacionados.map(({ p: r, ativas: a }) => cardProduto(r, a)).join("")}</div></section>` : ""}
 </div>`;
 
@@ -492,6 +499,13 @@ export const paginaProduto = ({ config, p, ativas, inativas, relacionados }) => 
       ],
     },
   ];
+  if (perguntas.length) {
+    jsonld.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: perguntas.map((q) => ({ "@type": "Question", name: q.pergunta, acceptedAnswer: { "@type": "Answer", text: q.resposta } })),
+    });
+  }
   // Product só com ofertas de preço exibido (dados verdadeiros e visíveis na página).
   const comPreco = ativas.filter((o) => o.estado.mostrarPreco);
   if (comPreco.length) {
@@ -530,7 +544,7 @@ export const paginaGuias = ({ config, guias }) => ({
 <div class="container secao"><div class="grade-guias">${guias.map(cardGuia).join("")}</div></div>`,
 });
 
-export const paginaGuia = ({ config, guia, itens }) => {
+export const paginaGuia = ({ config, guia, itens, outrosGuias = [] }) => {
   const secoes = (guia.secoes || [])
     .map((sec) => `<section><h2>${esc(sec.titulo)}</h2>${(sec.paragrafos || []).map((t) => `<p>${esc(t)}</p>`).join("")}${
       sec.lista?.length ? `<ul class="pontos">${sec.lista.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}</section>`)
@@ -552,15 +566,18 @@ export const paginaGuia = ({ config, guia, itens }) => {
       <p class="sobretitulo">Guia de compra</p>
       <h1>${esc(guia.titulo)}</h1>
       <p class="guia-intro">${esc(guia.introducao)}</p>
-      <p class="guia-meta">Atualizado em ${esc(guia.atualizadoEm)} · Informações conferidas nos anúncios oficiais</p>
+      <p class="guia-meta">Atualizado em ${esc(guia.atualizadoEm)} · ${esc(guia.fonteFatos || "Informações conferidas nos anúncios oficiais")}</p>
     </header>
     <div class="texto guia-texto">
       ${secoes}
       ${tabela}
+      ${guia.perguntas?.length ? `<section aria-labelledby="t-guia-faq"><h2 id="t-guia-faq">Perguntas frequentes</h2><div class="faq">${guia.perguntas.map((q) => `<details><summary>${esc(q.pergunta)}</summary><p>${esc(q.resposta)}</p></details>`).join("")}</div></section>` : ""}
+      ${guia.fontes?.length ? `<section aria-labelledby="t-guia-fontes"><h2 id="t-guia-fontes">Fontes consultadas</h2><ul class="fontes">${guia.fontes.map((f) => `<li><a href="${esc(f.url)}" rel="nofollow noopener" target="_blank">${esc(f.titulo)}</a></li>`).join("")}</ul></section>` : ""}
     </div>
     <section class="secao" aria-labelledby="t-guia-prod"><div class="secao-cab"><h2 id="t-guia-prod">Produtos citados neste guia</h2></div>
       <div class="grade-prod">${itens.map(({ p, ativas }) => cardProduto(p, ativas)).join("")}</div>
     </section>
+    ${outrosGuias.length ? `<section class="secao" aria-labelledby="t-outros-guias"><div class="secao-cab"><h2 id="t-outros-guias">Outros guias</h2></div><div class="grade-guias">${outrosGuias.map(cardGuia).join("")}</div></section>` : ""}
     <p class="fonte">${esc(guia.nota || "Este guia resume o que os fabricantes e as lojas informam nos anúncios. Confirme detalhes, preço e disponibilidade na página da loja antes de comprar.")}</p>
   </article>
 </div>`,

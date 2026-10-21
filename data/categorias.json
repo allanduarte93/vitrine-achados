@@ -1,0 +1,35 @@
+{
+  "_nota": "Textos de introdução das categorias. Só aparecem em categorias com produtos publicados.",
+  "categorias": {
+    "eletronicos": {
+      "descricao": "Echo Dot, Fire TV Stick HD e outros eletrônicos com link conferido, com o que os anúncios oficiais informam sobre cada um.",
+      "paragrafos": ["Aqui ficam os aparelhos de casa conectada e streaming. Antes de comprar, vale pensar no uso principal: música e comandos de voz pela casa pedem uma caixa de som inteligente; filmes e séries na TV pedem um aparelho de streaming."],
+      "tituloDicas": "Antes de escolher",
+      "dicas": ["Confira se a sua TV tem entrada HDMI livre, no caso de aparelhos de streaming", "Veja quais serviços de streaming você assina: o aparelho não inclui as assinaturas", "Para controlar lâmpadas e tomadas por voz, elas precisam ser compatíveis com a Alexa"]
+    },
+    "casa-e-cozinha": {
+      "descricao": "Sanduicheira, potes herméticos e sabão líquido com link conferido. Voltagem, capacidade e cuidados, segundo os anúncios oficiais.",
+      "paragrafos": ["Produtos para o dia a dia da cozinha e da lavanderia. Nos eletroportáteis, o primeiro ponto a conferir é a tensão da tomada: muitos modelos são vendidos em versões separadas de 127 V e 220 V."],
+      "tituloDicas": "Antes de escolher",
+      "dicas": ["Confirme a voltagem do aparelho no título e na ficha técnica", "Em potes, veja se o anúncio indica uso em micro-ondas, freezer e lava-louças", "Em produtos de limpeza, siga a dosagem indicada na embalagem"]
+    },
+    "beleza-e-cuidados": {
+      "descricao": "CeraVe, La Roche-Posay e L'Oréal Paris com link conferido. Indicações, ativos e tamanhos informados pelos fabricantes.",
+      "paragrafos": ["Hidratantes e cuidados com a pele e o cabelo. As descrições trazem as indicações dos próprios fabricantes; em caso de irritação, lesões ou condições de pele, procure um dermatologista."],
+      "tituloDicas": "Antes de escolher",
+      "dicas": ["Veja para qual tipo de pele ou cabelo o fabricante indica o produto", "Compare o tamanho da embalagem com a área de uso (corpo inteiro ou pontos específicos)", "Se você tem sensibilidade, prefira fórmulas sem perfume e confira a lista de ingredientes"]
+    },
+    "pets": {
+      "descricao": "Produtos para pets com link conferido. Medicamentos veterinários devem seguir a bula e a orientação do médico-veterinário.",
+      "paragrafos": ["Antipulgas e carrapaticidas são medicamentos veterinários: a apresentação correta depende do peso do animal, e o uso deve seguir a bula e a orientação de um médico-veterinário."],
+      "tituloDicas": "Antes de comprar",
+      "dicas": ["Pese o animal e confira a faixa de peso indicada na embalagem", "Leia a bula e as contraindicações", "Em caso de dúvida, consulte o médico-veterinário"]
+    },
+    "informatica": {
+      "descricao": "Mouse e acessórios de informática com link conferido. Compatibilidade, conexão e bateria, segundo os fabricantes.",
+      "paragrafos": ["Acessórios para computador e notebook. Os pontos que mais pesam na escolha são a compatibilidade com o seu sistema, o tipo de conexão e a duração da pilha ou bateria."],
+      "tituloDicas": "Antes de escolher",
+      "dicas": ["Confira se o acessório é compatível com o seu sistema (Windows, macOS, ChromeOS...)", "Veja se a conexão é por receptor USB ou Bluetooth e se você tem porta livre", "Mouses ambidestros servem para canhotos e destros"]
+    }
+  }
+}
