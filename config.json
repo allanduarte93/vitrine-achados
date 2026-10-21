@@ -8,7 +8,7 @@
     "mercadoLivreMattTool": null,
     "programasConfirmados": {
       "amazon": true,
-      "mercadolivre": false,
+      "mercadolivre": true,
       "shopee": false
     }
   },

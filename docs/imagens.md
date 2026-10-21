@@ -14,13 +14,13 @@ loja da condição estiver confirmada em `config.afiliados.programasConfirmados`
 `npm run checar-fotos` (workflow "Checar links") confere se cada foto liberada responde como
 imagem e se pertence ao anúncio.
 
-Situação em 21/10/2026: **0 de 30 fotos publicadas** (a versão publicada tem só a Amazon).
+Situação em 21/10/2026: **8 de 30 fotos liberadas** (Mercado Livre); Amazon e Shopee seguem sem foto.
 
 | Loja | Produtos | Foto real disponível | Autorização | Publicada |
 |---|---|---|---|---|
 | Amazon | 10 | não | pendente: só pela Creators API (exige 10 vendas em 30 dias) ou por licença do fabricante (pedidos abaixo) | não |
 | Shopee | 10 | sim (Portal de Afiliados) | condicional: Termos 2.2 só em Mídia aprovada; aprovação do site pedida em 20/10 | não (Shopee não confirmada) |
-| Mercado Livre | 10 | não | pendente: pergunta no caso 490066167 sem resposta; sem licença das fotos dos anúncios | não |
+| Mercado Livre | 10 | 8 (Central de Afiliados) | autorizada por escrito no caso 490066167 (21/10): imagens das ferramentas oficiais; registro `condicional` ao ML ativo | 8 (a partir da publicação de 21/10) |
 
 Variações a observar na Shopee: jogo de chaves (40 ou 46 peças no mesmo anúncio), power bank
 (Tipo-C ou Lightning), árvore de Natal (tamanhos diferentes no anúncio) e conjunto fitness

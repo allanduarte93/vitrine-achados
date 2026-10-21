@@ -29,7 +29,22 @@ Enquanto não houver resposta por escrito, `programasConfirmados` continua
   confirmação expressa por escrito: (1) se o site próprio pode receber visitantes da busca
   orgânica do Google; (2) se a restrição a "buscadores" se refere a anúncios pagos, a
   manipulação de SEO ou também à indexação natural; (3) se é permitido usar imagens oficiais
-  dos produtos, de qual fonte e em quais condições. Aguardando resposta.
+  dos produtos, de qual fonte e em quais condições.
+- **SEGUNDA RESPOSTA OFICIAL (21/10/2026, atendente "Joyce", Atenção ao Cliente)**, lida no caso
+  em 21/10/2026: (1) **sim**, o site pode receber visitantes da busca orgânica do Google, desde que
+  esteja declarado no perfil de afiliado; (2) a restrição a buscadores vale para (a) anúncios pagos
+  e (b) uso da marca ML/manipulação de SEO para simular site oficial; **a indexação natural (c) não
+  é proibida**; (3) **sim**, imagens oficiais podem ser usadas, vindas das ferramentas oficiais
+  (Gerador de Links, Barra de Afiliados ou Central de Afiliados), sem alterar o item ou a marca,
+  sem logomarca do ML no site, só produtos novos de vendedores com reputação verde e com aviso de
+  publicidade visível.
+  **Consequência:** Mercado Livre ATIVADO (`programasConfirmados.mercadolivre = true`). Fotos:
+  8 dos 10 produtos foram encontrados com o mesmo código MLB na Central de Afiliados e Criadores
+  (busca "Produtos selecionados para você"); a foto registrada é a que a Central exibe no cartão
+  do produto, usada sem alteração. Galaxy A17 (MLB54982411) e Bravecto 20–40 kg (MLB15982844) não
+  apareceram com o mesmo código: seguem sem foto. A página do produto pediu captcha, então a
+  reputação do vendedor não foi conferida pela página; os 10 links são de produtos de catálogo
+  (/p/MLB…) já validados em 20/10.
 - **Resposta preliminar do assistente automático (IA, não vale como autorização):**
   sites e blogs próprios são canais permitidos pelas regras do programa, mas o
   status do domínio não pode ser consultado pelo assistente; não há regra que

@@ -411,7 +411,7 @@ test("catálogo real do Cowork: ofertas preservadas, preço só dentro da valida
   const config = JSON.parse(readFileSync("config.json", "utf8"));
   assert.deepEqual(validarCatalogo(catalogo, config).erros, []);
   const conf = config.afiliados.programasConfirmados;
-  assert.deepEqual(conf, { amazon: true, mercadolivre: false, shopee: false }, "só a Amazon tem evidência documentada (docs/autorizacao-programas.md)");
+  assert.deepEqual(conf, { amazon: true, mercadolivre: true, shopee: false }, "Amazon e Mercado Livre têm evidência documentada (docs/autorizacao-programas.md); Shopee aguarda aprovação");
   assert.equal(config.afiliados.amazonTag, "vitrineachados-20");
   assert.ok(catalogo.produtos.flatMap((p) => p.ofertas).filter((o) => o.loja === "amazon").every((o) => /[?&]tag=vitrineachados-20(&|$)/.test(o.url) && o.preco == null), "Amazon: tag própria e nunca preço");
   const saida = mkdtempSync(join(tmpdir(), "vitrine-real-"));
@@ -494,7 +494,8 @@ test("meta descrição (produto, categoria, home, busca) cita só as lojas publi
       assert.ok(meta.replace(/&(#\d+|\w+);/g, "x").length <= 160, `meta curta: ${meta}`);
       if (!conf.includes("shopee")) assert.doesNotMatch(meta, /Shopee/, f);
       if (!conf.includes("mercadolivre")) assert.doesNotMatch(meta, /Mercado Livre/, f);
-      assert.doesNotMatch(html, /s\.shopee\.com\.br|meli\.la/, "loja não confirmada fora do HTML publicado");
+      if (!conf.includes("shopee")) assert.doesNotMatch(html, /s\.shopee\.com\.br/, "loja não confirmada fora do HTML publicado");
+      if (!conf.includes("mercadolivre")) assert.doesNotMatch(html, /meli\.la/, "loja não confirmada fora do HTML publicado");
     }
   } finally {
     delete process.env.SOMENTE_CONFIRMADOS;
@@ -617,7 +618,8 @@ test("fotos: só imagens autorizadas entram nas páginas e no índice da busca",
   try {
     build({ configPath: cfg, catalogoPath: catPath, saida: join(saida, "dist"), agora: new Date("2026-10-21T12:00:00-03:00") });
     const dist = join(saida, "dist");
-    const home = readFileSync(join(dist, "index.html"), "utf8");
+    // A página inicial mostra só parte da vitrine; a categoria do produto lista todos.
+    const home = readdirSync(join(dist, "categoria")).map((d) => readFileSync(join(dist, "categoria", d, "index.html"), "utf8")).join("\n");
     const prod = readFileSync(join(dist, "produto", amz[0].id, "index.html"), "utf8");
     const busca = JSON.parse(readFileSync(join(dist, "busca.json"), "utf8"));
     assert.match(home, /autorizada\.jpg/);

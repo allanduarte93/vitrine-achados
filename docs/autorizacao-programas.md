@@ -7,7 +7,7 @@ Dados da conta: informados pelo Cowork em `entrada/status_produtos.json` (campo 
 |---|---|---|---|---|
 | Amazon | ativa; ID `vitrineachados-20` criado para este site | sim, na lista de sites da conta | não antes de publicar: a análise acontece depois das vendas | **sim**: `amazon: true` |
 | Shopee | ativa (ID 18356851019) | sim, como mídia "Other", sem selo Verificado | **sim**: os termos exigem mídia aprovada | **não**: falta a aprovação |
-| Mercado Livre | ativa (etiqueta ad20260429184559) | sim, como "Otra red" | **sim**: sites passam por análise do ML | **não**: falta o resultado da análise |
+| Mercado Livre | ativa (etiqueta ad20260429184559) | sim, como "Otra red" | **sim**: sites passam por análise do ML | **sim**: confirmação por escrito no caso 490066167 (21/10/2026) |
 
 ## Amazon: confirmado
 
@@ -26,11 +26,12 @@ Dados da conta: informados pelo Cowork em `entrada/status_produtos.json` (campo 
 - A falta do selo "Verificado" não prova proibição, e o link gerado não prova autorização.
 - **O que falta:** o painel de afiliados mostrando a mídia `allanduarte93.github.io/vitrine-achados` como aprovada, ou uma confirmação por escrito da Shopee.
 
-## Mercado Livre: bloqueado
+## Mercado Livre: confirmado por escrito (21/10/2026)
 
 - Segundo o Cowork, os termos do Programa de Afiliados e Criadores submetem sites à análise do ML. A página oficial também fala em vincular os canais e aguardar aprovação. Fonte: [página oficial do programa](https://www.mercadolivre.com.br/l/afiliados-home).
-- O painel não mostra status para o canal cadastrado.
-- **O que falta:** o painel mostrando o site como aprovado, ou uma confirmação por escrito do ML.
+- O painel não mostra status para o canal cadastrado, mas o ML respondeu por escrito no caso 490066167 (atendente Joyce, Atenção ao Cliente, 21/10/2026): o site próprio declarado no perfil pode receber visitantes da busca orgânica do Google; a restrição a buscadores vale para anúncios pagos e uso indevido da marca/manipulação de SEO, não para a indexação natural; imagens oficiais podem ser usadas se vierem das ferramentas oficiais (Gerador de Links, Barra de Afiliados ou Central de Afiliados), sem alteração.
+- Condições informadas: não usar a logomarca do ML nem se apresentar como loja oficial; divulgar só produtos novos de vendedores com reputação verde; manter o aviso de publicidade visível.
+- Resultado: `programasConfirmados.mercadolivre = true` desde 21/10/2026. Detalhes em `docs/solicitacoes-suporte.md`.
 
 ## Como a publicação usa isto
 
