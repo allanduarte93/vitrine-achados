@@ -112,8 +112,7 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
     const relacionados = (catMap.get(slugify(x.p.categoria))?.itens || []).filter((r) => r.p.id !== x.p.id).slice(0, 4);
     // Completa com produtos de outras categorias (com foto primeiro) para nunca terminar a página sem próximos passos.
     const outros = itens
-      .filter((r) => r.p.id !== x.p.id && !relacionados.includes(r))
-      .sort((a, b) => Number(!!(b.p.imagem && b.p.imagemPermitida)) - Number(!!(a.p.imagem && a.p.imagemPermitida)))
+      .filter((r) => r.p.id !== x.p.id && !relacionados.includes(r) && r.p.imagem && r.p.imagemPermitida)
       .slice(0, Math.max(0, 4 - relacionados.length));
     render(`/produto/${x.p.id}/`, paginaProduto({ config, p: x.p, ativas: x.ativas, inativas: x.inativas, relacionados, outros, guias: guiasDoProduto(x.p.id) }), x.indexavel);
   });
@@ -167,6 +166,8 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
       categoria: p.categoria,
       lojas: ativas.map((o) => LOJAS[o.loja].nome),
       categoriaSlug: slugify(p.categoria),
+      ...(p.tipo ? { tipo: p.tipo } : {}),
+      pontos: (p.pontosChave || []).filter(Boolean).slice(0, 2),
       // Ofertas publicadas (mesmos links de afiliado das páginas), para o botão direto na busca.
       ofertas: ativas.map((o) => ({ loja: o.loja, nome: LOJAS[o.loja].nome, url: o.url })),
       ...(p.prioritario ? { prioritario: true } : {}),

@@ -201,7 +201,7 @@ export const cardProduto = (p, ativas) => {
   const acao = unica
     ? `<a class="btn btn-prim btn-loja" href="${esc(unica.url)}" target="_blank" rel="sponsored nofollow noopener" data-oferta data-produto="${esc(p.id)}" data-loja="${unica.loja}">Ver produto na loja<span class="sr"> ${esc(LOJAS[unica.loja].nome)} (abre em nova aba)</span> ${icone("externo", { tamanho: 16 })}</a>`
     : `<a class="btn btn-prim" href="${detalhe}">Comparar ${ativas.length} lojas</a>`;
-  return `<article class="card${temFoto(p) ? " com-foto" : ""}" data-produto="${esc(p.id)}" data-lojas="${ativas.map((o) => o.loja).join(" ")}" data-preco="${menor ? menor.preco : ""}" data-nome="${esc(p.nome.toLowerCase())}" data-categoria="${esc(slugify(p.categoria))}">
+  return `<article class="card${temFoto(p) ? " com-foto" : ""}" data-filtravel data-produto="${esc(p.id)}" data-lojas="${ativas.map((o) => o.loja).join(" ")}" data-preco="${menor ? menor.preco : ""}" data-nome="${esc(p.nome.toLowerCase())}" data-categoria="${esc(slugify(p.categoria))}">
   <a class="card-img" href="${detalhe}" tabindex="-1" aria-hidden="true">${imagemProduto(p, 40, { compacto: true })}${ativas.length > 1 ? `<span class="selo-lojas">${icone("comparar", { tamanho: 14 })}${ativas.length} lojas</span>` : ""}</a>
   <div class="card-corpo">
     <span class="card-cat">${esc(p.categoria)}</span>
@@ -213,6 +213,40 @@ export const cardProduto = (p, ativas) => {
     ${unica ? `<a class="card-detalhes" href="${detalhe}">Detalhes do produto</a>` : ""}
   </div>
 </article>`;
+};
+
+// Recomendação editorial (produto sem foto autorizada): sem quadrado vazio — tipo, pontos do anúncio,
+// loja e acesso direto. Não simula fotografia.
+export const itemRecomendado = (p, ativas) => {
+  const unica = ativas.length === 1 ? ativas[0] : null;
+  const detalhe = `/produto/${p.id}/`;
+  const pontos = (p.pontosChave || []).filter(Boolean).slice(0, 2);
+  const ic = iconeCategoria(p.categoria);
+  const [fundo, traco] = TONS[ic] || TONS.outros;
+  return `<article class="rec" data-filtravel data-produto="${esc(p.id)}" data-lojas="${ativas.map((o) => o.loja).join(" ")}" data-nome="${esc(p.nome.toLowerCase())}" data-categoria="${esc(slugify(p.categoria))}">
+  <span class="rec-ic" style="background:${fundo};color:${traco}" aria-hidden="true">${icone(ic, { tamanho: 22 })}</span>
+  <div class="rec-txt">
+    <span class="rec-meta">${esc(p.categoria)}${p.marca ? ` · ${esc(p.marca)}` : ""}</span>
+    <h3><a href="${detalhe}">${esc(p.nome)}</a></h3>
+    ${p.tipo ? `<p class="rec-tipo">${esc(p.tipo)}</p>` : ""}
+    ${pontos.length ? `<ul class="rec-pontos">${pontos.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
+  </div>
+  <div class="rec-acao">
+    ${unica ? `<p class="card-loja">${marcaLoja(unica.loja)}<span>fotos e preço na loja</span></p>
+    <a class="btn btn-prim btn-loja" href="${esc(unica.url)}" target="_blank" rel="sponsored nofollow noopener" data-oferta data-produto="${esc(p.id)}" data-loja="${unica.loja}">Ver produto na loja<span class="sr"> ${esc(LOJAS[unica.loja].nome)} (abre em nova aba)</span> ${icone("externo", { tamanho: 16 })}</a>
+    <a class="card-detalhes" href="${detalhe}">Detalhes do produto</a>`
+    : `<p class="card-loja">${ativas.map((o) => marcaLoja(o.loja)).join("")}</p><a class="btn btn-prim" href="${detalhe}">Comparar ${ativas.length} lojas</a>`}
+  </div>
+</article>`;
+};
+
+const separarPorFoto = (itens) => [itens.filter(({ p }) => temFoto(p)), itens.filter(({ p }) => !temFoto(p))];
+
+// Grade de fotos + lista editorial dos sem foto (mesma página, nada escondido).
+const vitrineMista = (itens, { tituloLista = "Mais recomendações" } = {}) => {
+  const [com, sem] = separarPorFoto(itens);
+  return `${com.length ? `<div class="grade-prod${com.length % 3 === 0 && com.length % 4 !== 0 ? " grade-3" : ""}" data-grade>${com.map(({ p, ativas }) => cardProduto(p, ativas)).join("")}</div>` : ""}
+  ${sem.length ? `${com.length ? `<h3 class="lista-tit">${esc(tituloLista)} <small>foto na página da loja</small></h3>` : ""}<div class="lista-rec">${sem.map(({ p, ativas }) => itemRecomendado(p, ativas)).join("")}</div>` : ""}`;
 };
 
 const COMPROMISSOS = [
@@ -242,13 +276,18 @@ export const paginaInicial = ({ config, destaques, categorias, todos, guias = []
   const vitrine = [...destaques, ...todos].sort((x, y) => Number(temFoto(y.p)) - Number(temFoto(x.p)) || Number(!!y.p.prioritario) - Number(!!x.p.prioritario) || x.p.nome.localeCompare(y.p.nome, "pt-BR"));
   const comOferta = categorias.filter((c) => c.total > 0);
 
+  const [comFotoItens, semFotoItens] = separarPorFoto(vitrine);
+  const temAmazon = vitrine.some(({ ativas }) => ativas.some((o) => o.loja === "amazon"));
   const secaoVitrine = temProdutos
-    ? `<section class="secao secao-vitrine" aria-labelledby="t-destaques"><div class="container">
-  <div class="secao-cab"><div><h2 id="t-destaques">Todos os achados</h2><p>${vitrine.length} produtos com link oficial conferido${umaLoja ? "" : ". Filtre por categoria ou loja"}.</p></div></div>
-  ${barraFiltros(vitrine, { categorias: true })}
-  <div class="grade-prod" data-grade>${vitrine.map(({ p, ativas }) => cardProduto(p, ativas)).join("")}</div>
-  <p class="aviso-botoes">${esc(AVISO_CURTO)} ${vitrine.some(({ ativas }) => ativas.some((o) => o.loja === "amazon")) ? esc(declaracaoAmazon(config)) : ""}</p>
-</div></section>`
+    ? `${comFotoItens.length ? `<section class="secao secao-vitrine" aria-labelledby="t-destaques"><div class="container">
+  <div class="secao-cab"><div><h2 id="t-destaques">Destaques da vitrine</h2><p>Fotos dos anúncios oficiais, link conferido e compra direto na loja.</p></div><a class="btn btn-sec" href="/busca/">Buscar e filtrar os ${vitrine.length} ${icone("seta", { tamanho: 18 })}</a></div>
+  <div class="grade-prod grade-destaque">${comFotoItens.map(({ p, ativas }) => cardProduto(p, ativas)).join("")}</div>
+</div></section>` : ""}
+${semFotoItens.length ? `<section class="secao secao-rec" aria-labelledby="t-rec"><div class="container">
+  <div class="secao-cab"><div><h2 id="t-rec">${comFotoItens.length ? "Mais recomendações" : "Recomendações"}</h2><p>Produtos com link oficial conferido e os pontos principais do anúncio. As fotos estão na página de cada loja.</p></div></div>
+  <div class="lista-rec">${semFotoItens.map(({ p, ativas }) => itemRecomendado(p, ativas)).join("")}</div>
+</div></section>` : ""}
+<div class="container"><p class="aviso-botoes aviso-vitrine">${esc(AVISO_CURTO)} ${temAmazon ? esc(declaracaoAmazon(config)) : ""}</p></div>`
     : `<section class="secao" aria-labelledby="t-curadoria"><div class="container">
   <div class="secao-cab"><div><p class="sobretitulo">Vitrine</p><h2 id="t-curadoria">Vitrine em curadoria</h2><p>Os primeiros achados entram aqui assim que cada link for conferido. Preferimos uma vitrine menor e verdadeira a uma cheia de ofertas sem checagem.</p></div></div>
   <div class="curadoria">
@@ -357,7 +396,7 @@ ${secaoCompara}
     <h1>Achados conferidos. <em>Você compra direto na loja.</em></h1>
     <p class="hero-sub">Produtos ${listaHero} com link oficial verificado${comFoto ? ", fotos autorizadas" : ""} e o essencial de cada anúncio. A ${esc(config.nomeSite)} recomenda; pagamento e entrega são feitos pela loja.</p>
     <div class="hero-acoes">
-      <a class="btn btn-prim" href="#t-destaques">Ver os ${vitrine.length} achados ${icone("seta", { tamanho: 18 })}</a>
+      <a class="btn btn-prim" href="${comFotoItens.length ? "#t-destaques" : "#t-rec"}">Ver os achados ${icone("seta", { tamanho: 18 })}</a>
       ${guias.length ? `<a class="btn btn-sec" href="/guias/">Guias de compra</a>` : ""}
     </div>
     <ul class="hero-confianca">
@@ -367,7 +406,9 @@ ${secaoCompara}
     </ul>
     <div class="hero-lojas"><span>Lojas:</span>${lojasHero.map(marcaLoja).join("")}</div>
   </div>
-  <div class="hero-arte-box" aria-hidden="true">${heroSvg()}</div>
+  ${comFotoItens.length >= 4
+    ? `<div class="hero-fotos">${comFotoItens.slice(0, 4).map(({ p }) => `<a href="/produto/${p.id}/" class="hero-foto" tabindex="-1" aria-hidden="true"><img src="${esc(p.imagem)}" alt="" width="300" height="300" decoding="async" referrerpolicy="no-referrer"></a>`).join("")}</div>`
+    : `<div class="hero-arte-box" aria-hidden="true">${heroSvg()}</div>`}
 </div></section>
 
 ${secaoVitrine}
@@ -447,7 +488,7 @@ ${cabPagina({ titulo: esc(categoria.nome), sub: `${itens.length} ${itens.length 
   <nav class="trilha" aria-label="Trilha"><a href="/">Início</a> › <span>${esc(categoria.nome)}</span></nav>
   ${intro && intro.paragrafos?.length ? `<section class="cat-intro" aria-label="Sobre a categoria">${intro.paragrafos.map((t) => `<p>${esc(t)}</p>`).join("")}</section>` : ""}
   ${barraFiltros(itens)}
-  <div class="grade-prod" data-grade>${itens.map(({ p, ativas }) => cardProduto(p, ativas)).join("")}</div>
+  ${vitrineMista(itens, { tituloLista: `Mais em ${categoria.nome}` })}
   <p class="aviso-botoes">${esc(AVISO_CURTO)}</p>
   ${intro && intro.dicas?.length ? `<section class="secao texto" aria-labelledby="t-dicas"><h2 id="t-dicas">${esc(intro.tituloDicas || "Antes de escolher")}</h2><ul class="pontos">${intro.dicas.map((t) => `<li>${esc(t)}</li>`).join("")}</ul></section>` : ""}
   ${guias.length ? `<section class="secao" aria-labelledby="t-guias-cat"><div class="secao-cab"><h2 id="t-guias-cat">Guias de ${esc(categoria.nome.toLowerCase())}</h2></div><div class="grade-guias">${guias.map(cardGuia).join("")}</div></section>` : ""}
@@ -517,10 +558,12 @@ export const paginaProduto = ({ config, p, ativas, inativas, relacionados, guias
   const conteudo = `
 <div class="container">
   <nav class="trilha" aria-label="Trilha"><a href="/">Início</a> › <a href="/categoria/${catSlug}/">${esc(p.categoria)}</a> › <span class="trilha-atual">${esc(p.nome)}</span></nav>
-  <article class="produto-grade">
-    <div class="produto-img">${imagemProduto(p, 80, { prioridade: true })}${temFoto(p) ? `<span class="foto-fonte">Foto: ${esc(p.imagemFonte || "loja")}</span>` : ""}</div>
+  <article class="produto-grade${temFoto(p) ? "" : " sem-imagem"}">
+    ${temFoto(p)
+      ? `<div class="produto-img">${imagemProduto(p, 80, { prioridade: true })}<span class="foto-fonte">Foto: ${esc(p.imagemFonte || "loja")}</span></div>`
+      : `<div class="produto-ficha">${bolhaCategoria(p.categoria, 30)}<div><span class="card-cat">${esc(p.categoria)}${p.marca ? ` · ${esc(p.marca)}` : ""}</span>${p.tipo ? `<strong>${esc(p.tipo)}</strong>` : ""}<small>${icone("externo", { tamanho: 13 })} Sem foto autorizada aqui: veja as fotos na página da loja.</small></div></div>`}
     <div class="produto-info">
-      <span class="card-cat">${esc(p.categoria)}</span>
+      ${temFoto(p) ? `<span class="card-cat">${esc(p.categoria)}</span>` : ""}
       <h1>${esc(p.nome)}</h1>
       <p class="produto-meta">${p.marca ? `<span>Marca: <strong>${esc(p.marca)}</strong></span>` : ""}<span class="ok">${icone("escudo", { tamanho: 16 })}${ativas.length} ${ativas.length === 1 ? "loja com link conferido" : "lojas com link conferido"}</span></p>
       <section class="ofertas" id="ofertas" aria-labelledby="t-onde">
@@ -544,8 +587,8 @@ export const paginaProduto = ({ config, p, ativas, inativas, relacionados, guias
     <p class="fonte">Informações conferidas a partir dos anúncios das lojas${p.fonte ? ` (${esc(p.fonte)})` : ""}. Confirme detalhes, preço e frete na loja antes de comprar.</p>
   </div>
   ${guias.length ? `<section class="secao" aria-labelledby="t-guias-rel"><div class="secao-cab"><h2 id="t-guias-rel">Guias que citam este produto</h2></div><div class="grade-guias">${guias.map(cardGuia).join("")}</div></section>` : ""}
-  ${relacionados.length ? `<section class="secao" aria-labelledby="t-rel"><div class="secao-cab"><h2 id="t-rel">Mais em ${esc(p.categoria)}</h2><a class="btn btn-sec" href="/categoria/${catSlug}/">Ver categoria ${icone("seta", { tamanho: 18 })}</a></div><div class="grade-prod">${relacionados.map(({ p: r, ativas: a }) => cardProduto(r, a)).join("")}</div></section>` : ""}
-  ${outros.length ? `<section class="secao" aria-labelledby="t-outros"><div class="secao-cab"><h2 id="t-outros">Outros achados</h2><a class="btn btn-sec" href="/#t-destaques">Ver todos ${icone("seta", { tamanho: 18 })}</a></div><div class="grade-prod">${outros.map(({ p: r, ativas: a }) => cardProduto(r, a)).join("")}</div></section>` : ""}
+  ${relacionados.length ? `<section class="secao" aria-labelledby="t-rel"><div class="secao-cab"><h2 id="t-rel">Mais em ${esc(p.categoria)}</h2><a class="btn btn-sec" href="/categoria/${catSlug}/">Ver categoria ${icone("seta", { tamanho: 18 })}</a></div>${vitrineMista(relacionados, { tituloLista: "Também nesta categoria" })}</section>` : ""}
+  ${outros.length ? `<section class="secao" aria-labelledby="t-outros"><div class="secao-cab"><h2 id="t-outros">Outros achados</h2><a class="btn btn-sec" href="/busca/">Ver todos ${icone("seta", { tamanho: 18 })}</a></div>${vitrineMista(outros, { tituloLista: "Mais recomendações" })}</section>` : ""}
 </div>
 <div class="barra-compra" aria-label="Comprar">
   <span class="barra-compra-txt">${ativas.length === 1 ? `Compra concluída ${esc(ARTIGO[ativas[0].loja] ? `no site ${ARTIGO[ativas[0].loja]}` : "na loja")}` : `Disponível em ${ativas.length} lojas`}</span>

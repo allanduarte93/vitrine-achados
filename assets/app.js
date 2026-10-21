@@ -24,9 +24,9 @@
   }
 
   // 2) Filtros (categoria, loja e ordenação verificável) nas grades de produtos.
-  var ligarFiltros = function (form, grade) {
+  var ligarFiltros = function (form) {
     form.hidden = false;
-    var cards = Array.prototype.slice.call(grade.querySelectorAll(".card"));
+    var cards = Array.prototype.slice.call(document.querySelectorAll("[data-filtravel]"));
     cards.forEach(function (c, i) { c.setAttribute("data-ordem", i); });
     var aplicar = function () {
       var marcadas = form.querySelectorAll('input[name="loja"]:checked, input[type="hidden"][name="loja"]');
@@ -44,7 +44,7 @@
       cards.slice().sort(function (a, b) {
         if (ordem === "nome") return a.getAttribute("data-nome").localeCompare(b.getAttribute("data-nome"), "pt-BR");
         return a.getAttribute("data-ordem") - b.getAttribute("data-ordem");
-      }).forEach(function (c) { grade.appendChild(c); });
+      }).forEach(function (c) { c.parentNode.appendChild(c); });
       var cont = form.querySelector("[data-contagem]");
       if (cont) cont.textContent = visiveis + (visiveis === 1 ? " produto" : " produtos");
     };
@@ -52,8 +52,7 @@
     return aplicar;
   };
   var form = document.querySelector("[data-filtros]");
-  var grade = document.querySelector("[data-grade]");
-  if (form && grade) ligarFiltros(form, grade);
+  if (form) ligarFiltros(form);
 
   // 3) Busca (roda no navegador, sobre o índice publicado). Mesmo card da vitrine.
   var resultados = document.querySelector("[data-resultados]");
@@ -83,6 +82,16 @@
         (p.preco && p.precoEm ? '<span class="card-preco"><strong>' + p.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) + "</strong>consultado em " + new Date(p.precoEm).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit", timeZone: "America/Sao_Paulo" }) + "</span>" : "") +
         '<p class="card-loja">' + (unica ? loja(unica) + "<span>compra concluída na loja</span>" : (p.ofertas || []).map(loja).join("")) + "</p>" + acao + "</div></article>";
     };
+    var rec = function (p) {
+      var unica = p.ofertas && p.ofertas.length === 1 ? p.ofertas[0] : null;
+      var loja = function (o) { return '<span class="marca-loja ' + escapar(o.loja) + '"><i></i>' + escapar(o.nome) + "</span>"; };
+      return '<article class="rec"><div class="rec-txt"><span class="rec-meta">' + escapar(p.categoria) + (p.marca ? " · " + escapar(p.marca) : "") + '</span><h3><a href="' + escapar(p.url) + '">' + escapar(p.nome) + "</a></h3>" +
+        (p.tipo ? '<p class="rec-tipo">' + escapar(p.tipo) + "</p>" : "") +
+        ((p.pontos || []).length ? '<ul class="rec-pontos">' + p.pontos.map(function (x) { return "<li>" + escapar(x) + "</li>"; }).join("") + "</ul>" : "") +
+        '</div><div class="rec-acao">' + (unica
+          ? '<p class="card-loja">' + loja(unica) + '<span>fotos e preço na loja</span></p><a class="btn btn-prim btn-loja" href="' + escapar(unica.url) + '" target="_blank" rel="sponsored nofollow noopener" data-oferta data-produto="' + escapar(p.id) + '" data-loja="' + escapar(unica.loja) + '">Ver produto na loja<span class="sr"> ' + escapar(unica.nome) + " (abre em nova aba)</span> " + ext + '</a><a class="card-detalhes" href="' + escapar(p.url) + '">Detalhes do produto</a>'
+          : '<p class="card-loja">' + (p.ofertas || []).map(loja).join("") + '</p><a class="btn btn-prim" href="' + escapar(p.url) + '">Comparar ' + (p.ofertas || []).length + " lojas</a>") + "</div></article>";
+    };
     fetch(new URL("busca.json", raiz)).then(function (r) { return r.json(); }).then(function (dados) {
       var lista = dados.produtos || [];
       if (!lista.length) {
@@ -111,7 +120,10 @@
           resultados.innerHTML = '<p class="vazio">Nenhum produto encontrado' + (termo ? " para “" + escapar(termo) + "”" : "") + '. Tente outro termo, ajuste os filtros ou <a href="./">veja todos</a>.</p>';
           return;
         }
-        resultados.innerHTML = '<p class="sub">' + vis.length + (vis.length === 1 ? " produto" : " produtos") + (termo ? " para “" + escapar(termo) + "”" : "") + '</p><div class="grade-prod">' + vis.map(card).join("") + "</div>";
+        var comFoto = vis.filter(function (p) { return p.imagem; }), semFoto = vis.filter(function (p) { return !p.imagem; });
+        resultados.innerHTML = '<p class="sub">' + vis.length + (vis.length === 1 ? " produto" : " produtos") + (termo ? " para “" + escapar(termo) + "”" : "") + "</p>" +
+          (comFoto.length ? '<div class="grade-prod">' + comFoto.map(card).join("") + "</div>" : "") +
+          (semFoto.length ? (comFoto.length ? '<h3 class="lista-tit">Mais resultados <small>foto na página da loja</small></h3>' : "") + '<div class="lista-rec">' + semFoto.map(rec).join("") + "</div>" : "");
       };
       if (filtros) { filtros.hidden = false; filtros.addEventListener("change", mostrar); }
       mostrar();

@@ -20,7 +20,8 @@ for (const [nome, vp] of [["desktop", { width: 1366, height: 900 }], ["celular",
   pg.on("pageerror", (e) => erros.push(e.message));
   await pg.goto(`${BASE}/`, { waitUntil: "networkidle" });
   const home = await pg.evaluate(() => ({
-    cards: document.querySelectorAll("article.card").length,
+    cards: document.querySelectorAll("article.card, article.rec").length,
+    destaquesSemFoto: document.querySelectorAll(".grade-destaque .sem-foto").length,
     fotos: [...document.querySelectorAll(".card-img img")].map((i) => ({ src: i.currentSrc, ok: i.complete && i.naturalWidth > 0 })),
     faixa: !!document.querySelector(".faixa-pub"),
     largura: document.documentElement.scrollWidth,
@@ -32,9 +33,11 @@ for (const [nome, vp] of [["desktop", { width: 1366, height: 900 }], ["celular",
   home.fotos = await pg.evaluate(() => [...document.querySelectorAll(".card-img img")].map((i) => ({ src: i.currentSrc, ok: i.complete && i.naturalWidth > 0 })));
   await pg.evaluate(() => { document.documentElement.style.scrollBehavior = "auto"; scrollTo(0, 0); });
   await pg.waitForTimeout(400);
-  await pg.screenshot({ path: `${SAIDA}/home-${nome}.png`, fullPage: nome === "desktop" });
+  await pg.screenshot({ path: `${SAIDA}/home-${nome}-primeira-tela.png` });
+  await pg.screenshot({ path: `${SAIDA}/home-${nome}-inteira.png`, fullPage: true });
   rel.paginas.push({ pagina: "/", viewport: nome, ...home, fotos: home.fotos.length, fotosOk: home.fotos.filter((f) => f.ok).length });
-  if (home.cards !== produtos.length) falhas.push(`${nome}: home com ${home.cards} cards, índice com ${produtos.length}`);
+  if (home.cards !== produtos.length) falhas.push(`${nome}: home com ${home.cards} produtos, índice com ${produtos.length}`);
+  if (home.destaquesSemFoto) falhas.push(`${nome}: ${home.destaquesSemFoto} destaque(s) sem foto na vitrine principal`);
   if (!home.faixa) falhas.push(`${nome}: sem faixa de publicidade`);
   if (home.largura > vp.width) falhas.push(`${nome}: rolagem horizontal (${home.largura}px)`);
   home.fotos.filter((f) => !f.ok).forEach((f) => falhas.push(`${nome}: foto não carregou na home: ${f.src}`));
@@ -62,6 +65,32 @@ for (const [nome, vp] of [["desktop", { width: 1366, height: 900 }], ["celular",
     if (r.botoes.some((x) => x.loja === "amazon") && !r.amazonDecl) falhas.push(`${p.id}: sem declaração da Amazon`);
     if (nome === "desktop") rel.paginas.push({ pagina: p.id, foto: r.foto, botoes: r.botoes.map((x) => x.loja) });
   }
+  const semFoto = produtos.find((p) => !p.imagem);
+  if (semFoto) { await pg.goto(`${BASE}${semFoto.url.replace(idx.base, "")}`, { waitUntil: "networkidle" }); await pg.screenshot({ path: `${SAIDA}/produto-sem-foto-${nome}.png`, fullPage: true }); }
+  await pg.goto(`${BASE}/categoria/beleza-e-cuidados/`, { waitUntil: "networkidle" });
+  await pg.screenshot({ path: `${SAIDA}/categoria-${nome}.png`, fullPage: true });
+  // Jornada do comprador: chega, busca, filtra, abre a ficha e encontra o botão da loja (sem clicar no link de afiliado).
+  await pg.goto(`${BASE}/`, { waitUntil: "networkidle" });
+  await pg.fill("#q", "hidratante");
+  await Promise.all([pg.waitForNavigation({ waitUntil: "networkidle" }), pg.press("#q", "Enter")]);
+  await pg.waitForSelector("[data-resultados] .card, [data-resultados] .rec", { timeout: 15000 }).catch(() => {});
+  const achados = await pg.$$eval("[data-resultados] .card, [data-resultados] .rec", (c) => c.map((x) => x.querySelector("h3 a")?.getAttribute("href")));
+  if (achados.length < 2) falhas.push(`${nome}: jornada — busca "hidratante" achou ${achados.length}`);
+  await pg.screenshot({ path: `${SAIDA}/jornada-busca-${nome}.png` });
+  if (achados[0]) {
+    await pg.click("[data-resultados] h3 a");
+    await pg.waitForLoadState("networkidle");
+    const ficha = await pg.evaluate(() => ({ h1: !!document.querySelector("h1"), botao: !!document.querySelector("#ofertas a[data-oferta]"), onde: /Você conclui a compra no site/.test(document.body.innerText) }));
+    if (!ficha.h1 || !ficha.botao || !ficha.onde) falhas.push(`${nome}: jornada — ficha sem título, botão de loja ou explicação da compra`);
+    await pg.screenshot({ path: `${SAIDA}/jornada-ficha-${nome}.png` });
+  }
+  // Links internos da home: nenhum quebrado.
+  await pg.goto(`${BASE}/`, { waitUntil: "networkidle" });
+  const internos = await pg.$$eval("a[href]", (as) => [...new Set(as.map((a) => a.href).filter((h) => h.startsWith(location.origin) && !h.includes("#")))]);
+  for (const u of internos) { const st = (await fetch(u)).status; if (st !== 200) falhas.push(`${nome}: link interno ${u} → HTTP ${st}`); }
+  await pg.evaluate(() => { document.documentElement.style.scrollBehavior = "auto"; scrollTo(0, document.body.scrollHeight); });
+  await pg.waitForTimeout(300);
+  await pg.screenshot({ path: `${SAIDA}/rodape-${nome}.png` });
   const comFoto = produtos.find((p) => p.imagem);
   if (comFoto) { await pg.goto(`${BASE}${comFoto.url.replace(idx.base, "")}`, { waitUntil: "networkidle" }); await pg.screenshot({ path: `${SAIDA}/produto-com-foto-${nome}.png`, fullPage: false }); }
   await pg.goto(`${BASE}/busca/?q=creatina`, { waitUntil: "networkidle" });

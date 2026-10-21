@@ -382,11 +382,11 @@ test("estrutura comercial com 30 produtos em 10 categorias", () => {
     const ler = (f) => readFileSync(join(saida, "dist", f), "utf8");
     for (const slug of ["eletronicos", "casa-e-cozinha", "beleza-e-cuidados", "saude-e-bem-estar", "esporte-e-lazer", "ferramentas", "bebes-e-infantil", "pets", "games", "informatica"]) {
       const html = ler(`categoria/${slug}/index.html`);
-      assert.match(html, /class="card"/, `${slug}: tem produtos`);
+      assert.match(html, /class="(card|rec)[ "]/, `${slug}: tem produtos`);
       assert.match(html, /content="index, follow"/, `${slug}: indexável`);
     }
     const home = ler("index.html");
-    assert.equal((home.match(/<article class="card[ "]/g) || []).length, r.produtosPublicados, "home mostra todos os produtos publicados (o 06, sem link válido, fica fora)");
+    assert.equal((home.match(/<article class="(card[ "]|rec")/g) || []).length, r.produtosPublicados, "home mostra todos os produtos publicados (o 06, sem link válido, fica fora)");
     assert.doesNotMatch(home, /Em curadoria/, "com todas as categorias abastecidas, nada em curadoria");
     const p = ler("produto/produto-exemplo-20-marca-ficticia/index.html");
     const ofertas = p.split('id="ofertas"')[1].split("</section>")[0];
@@ -699,7 +699,10 @@ test("versão premium: publicidade visível, botão direto com loja identificada
     const ler = (f) => readFileSync(join(saida, f), "utf8");
     const home = ler("index.html");
     assert.match(home, /class="faixa-pub"[\s\S]*Publicidade[\s\S]*links de afiliado[\s\S]*aviso-de-afiliados/, "faixa de publicidade no topo");
-    assert.equal((home.match(/<article class="card[ "]/g) || []).length, r.produtosPublicados, "home lista todos os publicados");
+    assert.equal((home.match(/<article class="(card[ "]|rec")/g) || []).length, r.produtosPublicados, "home lista todos os publicados (fotos + recomendações)");
+    const cardsHome = [...home.matchAll(/<article class="card[^"]*"/g)].map((m) => m[0]);
+    assert.ok(cardsHome.every((c) => c.includes("com-foto")), "vitrine principal só com produtos que têm foto real");
+    assert.doesNotMatch(home.split('id="t-rec"')[0], /class="sem-foto/, "nenhum quadrado sem foto nos destaques");
     const catalogo = JSON.parse(readFileSync("data/catalogo.json", "utf8"));
     const urlsCatalogo = new Set(catalogo.produtos.flatMap((p) => p.ofertas.map((o) => o.url.replaceAll("&", "&amp;"))));
     const botoes = [...home.matchAll(/<a class="btn btn-prim btn-loja" href="([^"]+)" target="_blank" rel="([^"]+)"[^>]*data-loja="(\w+)">Ver produto na loja<span class="sr"> ([^<]+)<\/span>/g)];
