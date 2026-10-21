@@ -492,3 +492,4 @@ a.cat:hover { transform: none; box-shadow: var(--sombra); border-color: #d6dae6;
   .card .btn-loja { white-space: nowrap; font-size: 12.5px; gap: 4px; }
   .card .btn-loja .ico { display: none; }
 }
+.hero-confianca li { flex: none; }   /* na faixa rolável do celular, os selos não encolhem nem se sobrepõem */
