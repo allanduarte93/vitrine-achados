@@ -113,7 +113,7 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
     // Completa com produtos de outras categorias (com foto primeiro) para nunca terminar a página sem próximos passos.
     const outros = itens
       .filter((r) => r.p.id !== x.p.id && !relacionados.includes(r) && r.p.imagem && r.p.imagemPermitida)
-      .slice(0, Math.max(0, 4 - relacionados.length));
+      .slice(0, 4); // sempre uma linha cheia de fotos (4 no desktop, 2x2 no celular)
     render(`/produto/${x.p.id}/`, paginaProduto({ config, p: x.p, ativas: x.ativas, inativas: x.inativas, relacionados, outros, guias: guiasDoProduto(x.p.id) }), x.indexavel);
   });
   guias.forEach((g) => render(`/guias/${g.slug}/`, paginaGuia({ config, guia: g, itens: g.produtos.map((id) => porId.get(id)), outrosGuias: guias.filter((o) => o.slug !== g.slug).slice(0, 4) })));

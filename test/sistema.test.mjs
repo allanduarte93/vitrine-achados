@@ -723,6 +723,8 @@ test("versão premium: publicidade visível, botão direto com loja identificada
     const pid = readdirSync(join(saida, "produto"))[0];
     const prod = ler(`produto/${pid}/index.html`);
     assert.match(prod, /class="barra-compra"/);
+    const outros = prod.split('id="t-outros"')[1];
+    if (outros) assert.equal((outros.split("</section>")[0].match(/<article class="card com-foto"/g) || []).length, 4, "Outros achados: linha cheia de 4 fotos");
     assert.match(prod, /não vende nem processa pagamentos/);
     assert.match(prod, /Você conclui a compra no site (da Amazon|do Mercado Livre)/);
   } finally {
