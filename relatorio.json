@@ -1,11 +1,12 @@
 {
-  "data": "2026-10-21T20:55:16.654Z",
+  "data": "2026-10-21T21:16:06.305Z",
   "site": "https://allanduarte93.github.io/vitrine-achados",
   "paginas": [
     {
       "pagina": "/",
       "viewport": "desktop",
       "cards": 20,
+      "destaquesSemFoto": 0,
       "fotos": 9,
       "faixa": true,
       "largura": 1366,
@@ -191,6 +192,7 @@
       "pagina": "/",
       "viewport": "celular",
       "cards": 20,
+      "destaquesSemFoto": 0,
       "fotos": 9,
       "faixa": true,
       "largura": 390,
