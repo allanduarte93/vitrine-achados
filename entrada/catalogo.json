@@ -11,7 +11,7 @@
           "link": "https://s.shopee.com.br/4qGZ5xhoOm",
           "validado": "sim",
           "validadoEm": "2026-10-20T14:25:00-03:00",
-          "preco": 59.0,
+          "preco": 59,
           "data_preco": "2026-10-20T14:25:00-03:00"
         }
       ],
@@ -195,7 +195,20 @@
         }
       ],
       "marca": "La Roche-Posay",
-      "prioridade": 6
+      "prioridade": 6,
+      "tipo": "Creme multirreparador",
+      "destaques": [
+        "Tubo de 40 mL",
+        "Uso dia e noite"
+      ],
+      "descricao": "Bálsamo multirreparador da linha Cicaplast Baume B5+, da La Roche-Posay, indicado para pele sensível e irritada. Segundo o anúncio oficial, tem pantenol e ácido hialurônico, fragrância neutra, não é comedogênico e pode ser aplicado de dia ou à noite no rosto, pescoço, colo e contorno dos olhos. Tubo de 40 mL vendido pela loja oficial da marca no Mercado Livre.",
+      "caracteristicas": [
+        "Tubo de 40 mL, para todo tipo de pele",
+        "Com pantenol e ácido hialurônico",
+        "Fragrância neutra e não comedogênico",
+        "Uso dia e noite, inclusive no contorno dos olhos",
+        "Dermatologicamente testado, segundo o anúncio"
+      ]
     },
     {
       "nome": "Loção Hidratante Corporal Sem Perfume, com Ceramidas Essenciais e Ácido Hialurônico, Textura Fluida CeraVe 473ml",
@@ -212,7 +225,20 @@
         }
       ],
       "marca": "CeraVe",
-      "prioridade": 5
+      "prioridade": 5,
+      "tipo": "Loção hidratante corporal",
+      "destaques": [
+        "Frasco de 473 mL",
+        "Sem fragrância"
+      ],
+      "descricao": "Loção hidratante corporal da CeraVe com três ceramidas essenciais e ácido hialurônico, indicada no anúncio para pele seca. Tem textura fluida, frasco com válvula dosadora de 473 mL e é livre de fragrância e de parabenos. Vendida pela loja oficial da CeraVe no Mercado Livre.",
+      "caracteristicas": [
+        "Frasco de 473 mL com válvula dosadora",
+        "3 ceramidas essenciais e ácido hialurônico",
+        "Sem fragrância e sem parabenos",
+        "Textura fluida, para o corpo",
+        "Indicada para pele seca, segundo o anúncio"
+      ]
     },
     {
       "nome": "Creatina Growth Supplements Monohidratada em pó Sem sabor x 250g",
@@ -228,7 +254,20 @@
           "data_preco": "2026-10-20T14:33:00-03:00"
         }
       ],
-      "marca": "Growth Supplements"
+      "marca": "Growth Supplements",
+      "tipo": "Creatina em pó",
+      "destaques": [
+        "Pote de 250 g",
+        "Sem sabor"
+      ],
+      "descricao": "Creatina monohidratada em pó da Growth Supplements, sem sabor, em pote de 250 g. Pelo anúncio, rende 50 porções com 5 g de creatina cada, não contém glúten e é indicada para maiores de 19 anos. É um suplemento alimentar, não um medicamento; o fabricante orienta consultar um profissional de saúde antes do uso.",
+      "caracteristicas": [
+        "Pote de 250 g, sem sabor",
+        "50 porções de 5 g de creatina",
+        "Creatina monohidratada em pó",
+        "Sem glúten",
+        "Idade mínima recomendada: 19 anos"
+      ]
     },
     {
       "nome": "Proteína Max Titanium Whey Pro Concetrado em pó sabor Morango x 1kg",
@@ -244,7 +283,20 @@
           "data_preco": "2026-10-20T14:33:00-03:00"
         }
       ],
-      "marca": "Max Titanium"
+      "marca": "Max Titanium",
+      "tipo": "Whey protein concentrado",
+      "destaques": [
+        "Pote de 1 kg",
+        "Sabor morango"
+      ],
+      "descricao": "Whey Pro da Max Titanium, proteína concentrada do soro do leite (WPC) sabor morango, em pote de 1 kg. Segundo o anúncio, rende 25 porções de 40 g, não contém glúten e é indicado para maiores de 18 anos. Os ingredientes listados incluem lecitina de soja, saborizantes e o adoçante sucralose.",
+      "caracteristicas": [
+        "Pote de 1 kg, sabor morango",
+        "25 porções de 40 g",
+        "Proteína concentrada do soro do leite (WPC)",
+        "Sem glúten",
+        "Adoçado com sucralose; contém lecitina de soja"
+      ]
     },
     {
       "nome": "Kit 10 Potes Vidro Hermetico Vai Ao Forno Microondas 640ml Marmita Hermético Freezer Fitness Rishon",
@@ -260,7 +312,20 @@
           "data_preco": "2026-10-20T14:33:00-03:00"
         }
       ],
-      "marca": "Rishon"
+      "marca": "Rishon",
+      "tipo": "Kit de potes de vidro",
+      "destaques": [
+        "10 potes de 640 mL",
+        "Vidro borossilicato"
+      ],
+      "descricao": "Kit com 10 potes de vidro borossilicato da Rishon, cada um com 640 mL e cerca de 18 x 10 x 7 cm. As tampas herméticas têm quatro travas e anel de silicone. O anúncio informa que o vidro vai do freezer ao micro-ondas e ao forno e que o material é livre de BPA. Vendido pela loja oficial da Rishon.",
+      "caracteristicas": [
+        "10 potes de 640 mL cada",
+        "Vidro borossilicato livre de BPA",
+        "Tampa hermética com 4 travas e anel de silicone",
+        "Vai ao freezer, micro-ondas e forno, segundo o anúncio",
+        "Medidas aproximadas: 18 x 10 x 7 cm"
+      ]
     },
     {
       "nome": "Ventilador de Mesa 30cm Super Power Mondial 60W VSP-30-B",
@@ -276,7 +341,20 @@
           "data_preco": "2026-10-20T14:33:00-03:00"
         }
       ],
-      "marca": "Mondial"
+      "marca": "Mondial",
+      "tipo": "Ventilador de mesa",
+      "destaques": [
+        "30 cm, 60 W",
+        "3 velocidades"
+      ],
+      "descricao": "Ventilador de mesa Mondial Super Power, modelo VSP-30-B, com hélice de 30 cm e seis pás. Tem 60 W de potência, 3 velocidades, grade removível e estrutura preta com pás prata. Mede cerca de 49 cm de altura e pesa 1,6 kg, segundo o anúncio. Confira a voltagem antes de comprar.",
+      "caracteristicas": [
+        "Hélice de 30 cm com 6 pás",
+        "Potência de 60 W e 3 velocidades",
+        "Grade removível",
+        "Estrutura preta e pás prata",
+        "Cerca de 49 cm de altura e 1,6 kg"
+      ]
     },
     {
       "nome": "Celular Samsung Galaxy A17 Com Ia, 256gb, 8gb Ram, Câm De 50mp, Tela De 6.7 , Nfc, Ip54 - Azul",
@@ -291,7 +369,20 @@
         }
       ],
       "marca": "Samsung",
-      "prioridade": 10
+      "prioridade": 10,
+      "tipo": "Smartphone",
+      "destaques": [
+        "256 GB / 8 GB RAM",
+        "Tela de 6,7\""
+      ],
+      "descricao": "Celular Samsung Galaxy A17 na cor azul, com 256 GB de memória interna e 8 GB de RAM. Pelo anúncio, tem tela Super AMOLED de 6,7 polegadas, três câmeras traseiras com principal de 50 MP, câmera frontal de 13 MP, entrada para cartão microSD de até 2 TB, carregamento por USB-C, NFC e é desbloqueado para qualquer operadora.",
+      "caracteristicas": [
+        "256 GB de memória interna e 8 GB de RAM",
+        "Tela Super AMOLED de 6,7\"",
+        "Câmera traseira tripla (principal de 50 MP) e frontal de 13 MP",
+        "Aceita cartão microSD de até 2 TB",
+        "Desbloqueado, com NFC e conector USB-C"
+      ]
     },
     {
       "nome": "Fone De Ouvido Headphone Dapon H02D Bluetooth 5.1 Over-ear 22h Preto",
@@ -307,7 +398,20 @@
           "data_preco": "2026-10-20T14:33:00-03:00"
         }
       ],
-      "marca": "Dapon"
+      "marca": "Dapon",
+      "tipo": "Fone de ouvido Bluetooth",
+      "destaques": [
+        "Bluetooth 5.1",
+        "Até 22 h de bateria"
+      ],
+      "descricao": "Headphone over-ear Dapon H02D na cor preta, com Bluetooth 5.1 e microfone integrado para chamadas. O anúncio informa até 22 horas de bateria e controles no fone para reprodução, volume, troca de faixa e chamadas. A recarga é feita por cabo micro-USB. Vendido pela loja oficial da Dapon.",
+      "caracteristicas": [
+        "Over-ear, cor preta",
+        "Bluetooth 5.1 com microfone integrado",
+        "Até 22 horas de bateria, segundo o anúncio",
+        "Controles de música, volume e chamadas no fone",
+        "Recarga por micro-USB"
+      ]
     },
     {
       "nome": "Patinete Infantil 3 Rodas com Led/Dobrável Menino/Menina",
@@ -322,6 +426,19 @@
           "preco": 51.9,
           "data_preco": "2026-10-20T14:33:00-03:00"
         }
+      ],
+      "tipo": "Patinete infantil",
+      "destaques": [
+        "3 rodas com LED",
+        "Dobrável"
+      ],
+      "descricao": "Patinete infantil de 3 rodas da ATENTU, dobrável, indicado no anúncio para crianças de 3 a 5 anos e até 30 kg. O guidão regula de 56 a 71 cm, as rodas de gel acendem LED e a direção funciona inclinando o corpo (lean to steer). Tem freio traseiro e chega desmontado, precisando de montagem.",
+      "caracteristicas": [
+        "3 rodas de gel com LED",
+        "Dobrável",
+        "Guidão regulável de 56 a 71 cm",
+        "Indicado para 3 a 5 anos, até 30 kg",
+        "Freio traseiro; requer montagem"
       ]
     },
     {
@@ -338,7 +455,20 @@
           "data_preco": "2026-10-20T14:33:00-03:00"
         }
       ],
-      "marca": "MSD"
+      "marca": "MSD",
+      "tipo": "Antipulgas e carrapatos",
+      "destaques": [
+        "Cães de 20 a 40 kg",
+        "Dura 12 semanas"
+      ],
+      "descricao": "Bravecto 1000 mg da MSD em comprimido mastigável, para cães de 20 a 40 kg. Segundo o anúncio, uma dose protege contra pulgas e carrapatos por 12 semanas e o efeito resiste à água. A embalagem tem 1 comprimido. É medicamento veterinário: escolha a faixa de peso certa e siga a orientação do veterinário.",
+      "caracteristicas": [
+        "1 comprimido mastigável de 1000 mg",
+        "Para cães de 20 a 40 kg",
+        "Contra pulgas e carrapatos",
+        "Proteção de 12 semanas, segundo o anúncio",
+        "Resistente à água"
+      ]
     },
     {
       "id": "amazon-b09b8vgcr8",

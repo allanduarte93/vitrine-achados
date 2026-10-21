@@ -58,9 +58,16 @@ export const classificar = (loja, urlFinal, status, { corpo = "", identificador 
  * URL usada na checagem pela rede. Para a Amazon, abre a página do produto SEM os
  * parâmetros de afiliado (tag, linkCode, linkId, ref_): assim a verificação automática
  * não gera cliques no ID de Associado. A tag continua sendo conferida offline
- * (validarLinkAfiliado). Para as demais lojas o link curto é o próprio redirecionamento.
+ * (validarLinkAfiliado). No Mercado Livre, abrir o link curto meli.la conta clique na etiqueta
+ * de afiliado; por isso, quando há o código de catálogo (MLB…), a checagem abre a página
+ * pública do produto (/p/MLB…), sem etiqueta. Para a Shopee o link curto é o próprio
+ * redirecionamento (a loja não está publicada).
  */
-export const urlParaChecagem = (loja, url) => {
+export const urlParaChecagem = (loja, url, identificador = "") => {
+  if (loja === "mercadolivre") {
+    const id = String(identificador || "").toUpperCase().replace(/^MLB-?/, "");
+    return /^\d+$/.test(id) ? `https://www.mercadolivre.com.br/p/MLB${id}` : url;
+  }
   if (loja !== "amazon") return url;
   try {
     const u = new URL(url);
@@ -108,7 +115,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   let falhas = 0;
   let inconclusivos = 0;
   for (const { p, o } of alvos) {
-    const r = await seguir(urlParaChecagem(o.loja, o.url));
+    const r = await seguir(urlParaChecagem(o.loja, o.url, o.identificador));
     const c = classificar(o.loja, r.final, r.status, { corpo: r.corpo, identificador: o.identificador });
     if (c.ok === false) falhas++;
     if (c.ok === null) inconclusivos++;
