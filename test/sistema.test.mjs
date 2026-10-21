@@ -605,6 +605,7 @@ test("checagem de links não gera clique de afiliado na Amazon", () => {
   assert.equal(urlParaChecagem("shopee", "https://s.shopee.com.br/x"), "https://s.shopee.com.br/x");
   assert.equal(urlParaChecagem("mercadolivre", "https://meli.la/1ovr4L1", "MLB18932156"), "https://www.mercadolivre.com.br/p/MLB18932156", "ML: checagem sem abrir o link de afiliado");
   assert.equal(urlParaChecagem("mercadolivre", "https://meli.la/1ovr4L1"), "https://meli.la/1ovr4L1");
+  assert.equal(classificar("mercadolivre", "https://www.mercadolivre.com.br/captcha/wall/logged?go_url=x", 200).ok, null, "captcha do ML é inconclusivo");
 });
 
 test("fotos: só imagens autorizadas entram nas páginas e no índice da busca", () => {
