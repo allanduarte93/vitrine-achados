@@ -19,7 +19,7 @@ Regras para qualquer conteúdo novo (o build barra o que não cumprir — `src/l
 | 4 | CeraVe × Cicaplast + FAQ (perfume, bebês, uso conjunto) | **Publicado/ampliado** | Demanda confirmada, farmácias dominam |
 | 5 | Echo Dot 5ª geração × Echo Dot Max × Echo Pop | Pendente — só quando os outros modelos estiverem no catálogo com link conferido | Muita demanda; precisa dos produtos publicados |
 | 6 | Potes Electrolux 12 peças: micro-ondas, freezer, lava-louças | Pendente | Perguntas objetivas, quase sem concorrência; anúncio já confirma micro-ondas, lava-louças e BPA |
-| 7 | Bravecto 250 mg: o que diz a bula (faixa de peso, 12 semanas, contraindicações) | Pendente — exige leitura da bula brasileira oficial | Demanda alta; risco: não dar orientação de dose |
+| 7 | Bravecto comprimido: o que diz o fabricante (faixa de peso, 12 semanas, contraindicações) | **Publicado** (`bravecto-comprimido-o-que-diz-o-fabricante`, 28/10) — fontes: [MSD Saúde Animal — Bravecto](https://www.msd-saude-animal.com.br/produto/bravecto/), [br.bravecto.com — comprimidos](https://br.bravecto.com/bravecto-comprimidos-caes/), [br.bravecto.com — perguntas frequentes](https://br.bravecto.com/perguntas-frequentes/). Faixas de peso só das duas apresentações do catálogo (250 mg e 1000 mg); sem orientação de dose, sem reações adversas (não constam nas páginas oficiais lidas; o guia remete à bula da caixa e ao veterinário) | Demanda alta; risco: não dar orientação de dose |
 | 8 | Elseve Óleo Extraordinário: úmido ou seco, proteção térmica | Pendente | Concorrência fraca; fatos do anúncio confirmam 230 °C |
 | — | Omo 5 L e Logitech M170 | Respondidos como perguntas frequentes na página do produto | Demanda fraca em português |
 

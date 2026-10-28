@@ -368,6 +368,118 @@
           "resposta": "Multiplique a potência pelo tempo de uso: 750 W por 10 minutos dão 0,125 kWh. Depois multiplique pelo valor do kWh na sua conta de luz e pelo número de usos no mês."
         }
       ]
+    },
+    {
+      "slug": "bravecto-comprimido-o-que-diz-o-fabricante",
+      "status": "aprovado",
+      "titulo": "Bravecto comprimido para cães: o que o fabricante informa antes da compra",
+      "resumo": "Faixa de peso, 12 semanas, idade mínima, banho, gestantes e cuidados: o que a MSD informa sobre o Bravecto comprimido. Decisão final com o veterinário.",
+      "categoria": "Pets",
+      "publicadoEm": "2026-10-28",
+      "atualizadoEm": "2026-10-28",
+      "produtos": [
+        "amazon-b07j4j9xkz",
+        "bravecto-caes-20-40kg-1000mg-1-comp-mastigavel-msd-azul-msd"
+      ],
+      "fonteFatos": "Informações técnicas da MSD Saúde Animal Brasil e do site oficial br.bravecto.com (consultados em 28/10/2026); faixas de peso das apresentações conforme os anúncios conferidos no catálogo",
+      "fontes": [
+        {
+          "titulo": "MSD Saúde Animal Brasil — Bravecto® (informações técnicas)",
+          "url": "https://www.msd-saude-animal.com.br/produto/bravecto/"
+        },
+        {
+          "titulo": "Bravecto® Brasil — Bravecto comprimidos para cães",
+          "url": "https://br.bravecto.com/bravecto-comprimidos-caes/"
+        },
+        {
+          "titulo": "Bravecto® Brasil — Perguntas frequentes",
+          "url": "https://br.bravecto.com/perguntas-frequentes/"
+        }
+      ],
+      "introducao": "O Bravecto em comprimido mastigável é um medicamento veterinário da MSD Saúde Animal contra pulgas e carrapatos em cães. Antes de comprar, as dúvidas mais comuns são qual apresentação corresponde ao peso do cachorro, quanto tempo dura cada dose, a partir de que idade ele pode ser usado e se o banho atrapalha. Este guia reúne apenas o que o fabricante publica nos canais oficiais. Ele não substitui a bula nem a consulta: quem define o uso para o seu cão é o médico-veterinário.",
+      "secoes": [
+        {
+          "titulo": "Cada comprimido corresponde a uma faixa de peso",
+          "paragrafos": [
+            "O Bravecto comprimido é vendido em apresentações diferentes, e cada uma é feita para uma faixa de peso. Nesta vitrine há duas: o comprimido de 250 mg, para cães de 4,5 a 10 kg, e o de 1000 mg, para cães de 20 a 40 kg. Existem outras apresentações para pesos diferentes desses.",
+            "A MSD informa que as doses foram calculadas para ficar entre 25 e 56 mg de fluralaner por quilo de peso dentro de cada faixa. Por isso, o ponto de partida é saber o peso atual do cão, de preferência pesado na clínica. Se o peso estiver perto do limite entre duas faixas, ou se o cão for muito grande, a escolha da apresentação deve ser feita com o veterinário, sem partir nem combinar comprimidos por conta própria."
+          ]
+        },
+        {
+          "titulo": "Duração, velocidade de ação e o que ele combate",
+          "paragrafos": [
+            "Segundo o fabricante, uma dose oferece proteção persistente por 12 semanas. Para cobrir o ano inteiro, o site oficial fala em quatro doses, repetidas a cada 12 semanas. A MSD também orienta não dar o produto em intervalos menores que 8 semanas, porque a segurança de intervalos mais curtos não foi testada.",
+            "A eficácia máxima é atingida em até 8 horas para pulgas e em até 12 horas para carrapatos. Como o princípio ativo age quando o parasita se alimenta do sangue do cão, o fabricante avisa que o risco de transmissão de doenças por pulgas e carrapatos não pode ser totalmente excluído.",
+            "Nas informações técnicas, a MSD lista carrapatos (Rhipicephalus sanguineus), pulgas (Ctenocephalides felis), sarna demodécica, sarna sarcóptica e ácaros de orelha, além de citar o produto como parte do tratamento da dermatite alérgica à picada de pulgas. Diagnóstico de sarna ou de alergia é tarefa do veterinário."
+          ]
+        },
+        {
+          "titulo": "Idade mínima, gestação e outros cuidados",
+          "paragrafos": [
+            "O comprimido é indicado para cães a partir de 8 semanas de idade e com pelo menos 2 kg. Abaixo disso, a segurança não foi estabelecida. O site oficial informa que o produto está aprovado para cadelas gestantes ou em lactação, e as perguntas frequentes incluem também cães reprodutores.",
+            "Não deve ser usado em animais com hipersensibilidade conhecida aos componentes. Sobre outros remédios, a MSD explica que o fluralaner se liga às proteínas do sangue e pode competir com medicamentos que têm essa característica, como anti-inflamatórios não esteroidais e a varfarina. Se o cão já toma alguma medicação contínua, conte ao veterinário antes de dar a dose."
+          ],
+          "lista": [
+            "Pese o cão antes de escolher a apresentação",
+            "Confirme na embalagem a faixa de peso indicada",
+            "Anote a data da dose para lembrar da próxima, 12 semanas depois",
+            "Leia a bula que acompanha a caixa e siga a orientação do veterinário"
+          ]
+        },
+        {
+          "titulo": "Banho, piscina e rotina",
+          "paragrafos": [
+            "Por ser um produto de ação sistêmica, dado por via oral e absorvido pelo intestino, o fabricante informa que banhos frequentes, inclusive com xampu, e atividades na água, como piscina e praia, não reduzem a eficácia ao longo das 12 semanas. Isso é uma diferença prática em relação a produtos aplicados sobre o pelo."
+          ]
+        }
+      ],
+      "tabela": {
+        "titulo": "Resumo do que o fabricante informa",
+        "colunas": [
+          "",
+          "Bravecto comprimido mastigável"
+        ],
+        "linhas": [
+          [
+            "Princípio ativo",
+            "Fluralaner"
+          ],
+          [
+            "Apresentações nesta vitrine",
+            "250 mg (4,5 a 10 kg) e 1000 mg (20 a 40 kg)"
+          ],
+          [
+            "Proteção por dose",
+            "12 semanas"
+          ],
+          [
+            "Idade e peso mínimos",
+            "8 semanas e 2 kg"
+          ],
+          [
+            "Intervalo mínimo entre doses",
+            "8 semanas"
+          ],
+          [
+            "Banho e água",
+            "Não reduzem a eficácia, segundo o fabricante"
+          ]
+        ]
+      },
+      "perguntas": [
+        {
+          "pergunta": "Qual Bravecto comprar para o meu cachorro?",
+          "resposta": "O que define é o peso atual do cão. O de 250 mg é para 4,5 a 10 kg e o de 1000 mg, para 20 a 40 kg; há outras apresentações para outros pesos. Em caso de dúvida, principalmente perto do limite entre faixas, confirme com o veterinário."
+        },
+        {
+          "pergunta": "Filhote pode tomar Bravecto comprimido?",
+          "resposta": "Segundo o fabricante, o comprimido é indicado a partir de 8 semanas de idade e 2 kg de peso. Abaixo disso, a segurança não foi estabelecida. Consulte o veterinário antes da primeira dose."
+        },
+        {
+          "pergunta": "Posso dar banho no cão depois do Bravecto?",
+          "resposta": "Sim. O fabricante informa que, por agir pelo sangue, o produto não perde eficácia com banhos frequentes, xampu, piscina ou praia durante as 12 semanas."
+        }
+      ]
     }
   ]
 }
