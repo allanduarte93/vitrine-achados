@@ -480,6 +480,81 @@
           "resposta": "Sim. O fabricante informa que, por agir pelo sangue, o produto não perde eficácia com banhos frequentes, xampu, piscina ou praia durante as 12 semanas."
         }
       ]
+    },
+    {
+      "slug": "potes-electrolux-12-pecas-micro-ondas-freezer",
+      "status": "aprovado",
+      "titulo": "Potes herméticos Electrolux 12 peças: micro-ondas, freezer e lava-louças",
+      "resumo": "Quanto tempo no micro-ondas, com ou sem tampa, até que temperatura no freezer e se vai à lava-louças: o que a Electrolux informa sobre o conjunto cinza.",
+      "categoria": "Casa e Cozinha",
+      "publicadoEm": "2026-11-04",
+      "atualizadoEm": "2026-11-04",
+      "produtos": [
+        "amazon-b09xjl4b9h",
+        "kit-10-potes-vidro-hermetico-vai-ao-forno-microondas-640ml-marmita-hermetico-fre"
+      ],
+      "fonteFatos": "Ficha oficial da Electrolux do conjunto de potes herméticos de plástico com 12 unidades e página do produto na loja oficial Electrolux (consultadas em 04/11/2026); modelo e cor conforme o anúncio conferido no catálogo",
+      "fontes": [
+        {
+          "titulo": "Electrolux — Conjunto de Potes Herméticos de Plástico (12 unidades), ficha do fabricante",
+          "url": "https://content.electrolux.com.br/brasil/electrolux/conjunto-potes-hermeticos-de-plastico-12unid/index.html?v=BaYTg4"
+        },
+        {
+          "titulo": "Loja oficial Electrolux — Potes Herméticos de Plástico Cinza com 12 Unidades",
+          "url": "https://loja.electrolux.com.br/potes-hermeticos-de-plastico-cinza-com-12-unidades/p"
+        }
+      ],
+      "introducao": "O conjunto de 12 potes herméticos de plástico cinza da Electrolux costuma gerar as mesmas perguntas antes da compra: dá para esquentar comida nele, pode congelar, aguenta a lava-louças e o plástico é seguro para alimentos. A resposta curta é sim para todas, mas com condições que a própria fabricante deixa por escrito e que quase ninguém lê. Este guia reúne apenas o que a Electrolux publica na ficha do produto e na loja oficial, e aponta o que essas páginas não informam, para você decidir sabendo o que esperar.",
+      "secoes": [
+        {
+          "titulo": "Micro-ondas: até 3 minutos e sem a tampa",
+          "paragrafos": [
+            "A ficha da Electrolux diz que os potes vão ao micro-ondas, mas com duas restrições claras: o uso é de até 3 minutos e sempre sem a tampa. A ficha também avisa que eles não devem ser usados na função grelhar, que alguns aparelhos têm junto com o micro-ondas comum.",
+            "Na prática, isso serve bem para amornar uma porção ou descongelar por pouco tempo. Para aquecer uma marmita grande que precise de vários minutos, o mais seguro é dividir o aquecimento em etapas curtas ou passar a comida para um recipiente próprio para isso. A tampa, que tem o anel de vedação, fica de fora do aparelho.",
+            "A ficha não menciona forno convencional, air fryer nem temperatura máxima de uso. Como não há essa informação, não trate estes potes como refratário."
+          ]
+        },
+        {
+          "titulo": "Freezer, geladeira e lava-louças",
+          "paragrafos": [
+            "Segundo a fabricante, os potes podem ser usados na geladeira e no freezer, com temperatura de até -20 °C. A maioria dos freezers domésticos trabalha perto dessa faixa; se o seu tiver ajuste mais frio, vale conferir no painel ou no manual do aparelho.",
+            "A Electrolux também informa que os potes vão à lava-louças. A ficha não dá orientação sobre o cesto ou sobre o programa de lavagem, então siga o manual da sua máquina."
+          ],
+          "lista": [
+            "Micro-ondas: até 3 minutos, sem tampa",
+            "Não usar na função grelhar",
+            "Freezer: até -20 °C",
+            "Geladeira e lava-louças: permitidos"
+          ]
+        },
+        {
+          "titulo": "Material, vedação e organização",
+          "paragrafos": [
+            "A loja oficial descreve o material como polipropileno, e a ficha afirma que ele é próprio para armazenar alimentos e livre de BPA. A vedação é feita por um anel de silicone na tampa, que é de abertura fácil e tem espaço para registrar a data, útil para controlar o que está congelado há mais tempo.",
+            "Os potes são empilháveis e têm acabamento cinza. A ficha lista as medidas externas de cada peça, a menor com 95 x 95 x 47 mm, mas não informa a capacidade em mililitros. Se você precisa de um tamanho específico para marmita, compare essas medidas com o que costuma guardar."
+          ]
+        },
+        {
+          "titulo": "Quando faz sentido escolher outro tipo de pote",
+          "paragrafos": [
+            "Se a ideia é levar a comida do freezer direto ao forno, o plástico não é a escolha. Nesta vitrine há também um kit de 10 potes de vidro borossilicato da Rishon, com 640 mL cada, que segundo o anúncio vai do freezer ao micro-ondas e ao forno. Ele resolve outra necessidade; os potes Electrolux fazem mais sentido para organizar geladeira, freezer e despensa com peças leves e empilháveis."
+          ]
+        }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "Posso esquentar comida no pote Electrolux com a tampa fechada?",
+          "resposta": "Não. A ficha da Electrolux orienta usar o pote no micro-ondas sem a tampa e por até 3 minutos, e não usar na função grelhar."
+        },
+        {
+          "pergunta": "O pote Electrolux pode ir ao forno?",
+          "resposta": "A ficha do fabricante não menciona forno nem temperatura máxima. Sem essa informação, não use o pote no forno; para isso, procure recipientes indicados como refratários."
+        },
+        {
+          "pergunta": "Qual a capacidade de cada pote do kit de 12?",
+          "resposta": "As páginas oficiais informam as medidas externas de cada pote, mas não a capacidade em mililitros."
+        }
+      ]
     }
   ]
 }
