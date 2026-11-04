@@ -88,3 +88,8 @@ Medição antes das ações de 04/11 (para comparar depois):
   afiliados. Sem oferta de pagamento ou comissão. Aguardando resposta.
 - Outros alvos pesquisados (influenciadores de beleza, newsletters, blogs de DIY) só aceitam
   publicidade paga ou não têm canal comercial público verificável: não foram contatados.
+- 04/11 (2ª rodada): proposta de artigo gratuito enviada à Revista 2K (seção Casa,
+  guestpostmkt@gmail.com, página "Aceitamos Guest Posts"), com aviso de afiliados e oferta de seguir
+  a regra deles sobre links. Avaliados e descartados: Technoeasy (público de pequenas empresas),
+  RHB Informática (proíbe conteúdo promocional), Paisagismo BR (pauta de negócios), Soluções
+  Industriais (B2B), Convidar.net (cobra para retirar anúncios). Sem respostas até agora.
