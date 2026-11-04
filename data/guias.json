@@ -809,6 +809,172 @@
           "resposta": "Ela tende a alisar. Para manter os cachos, o mais indicado é um secador com difusor, como o Philco PSC3500, que traz difusor segundo o anúncio."
         }
       ]
+    },
+    {
+      "slug": "whey-e-creatina-como-comparar-rotulos",
+      "status": "aprovado",
+      "titulo": "Whey e creatina: como comparar embalagens, porções e rótulos",
+      "resumo": "Como comparar whey e creatina pelo rótulo: proteína por porção, número de doses, tamanho da embalagem, glúten, lactose e idade mínima.",
+      "categoria": "Saúde e Bem-estar",
+      "publicadoEm": "2026-11-04",
+      "atualizadoEm": "2026-11-04",
+      "produtos": [
+        "whey-black-skull-100-hd-baunilha-900-g-black-skull",
+        "whey-black-skull-100-hd-chocolate-900-g-black-skull",
+        "basic-whey-growth-supplements-1-kg-baunilha-growth-supplements",
+        "proteina-max-titanium-whey-pro-concetrado-em-po-sabor-morango-x-1kg-max-titanium",
+        "creatina-monohidratada-dark-lab-1-kg-dark-lab",
+        "creatina-growth-supplements-monohidratada-em-po-sem-sabor-x-250g-growth-suppleme"
+      ],
+      "fonteFatos": "Fichas técnicas e tabelas informadas nos anúncios oficiais no Mercado Livre de cada produto citado, conferidas em 20/10/2026 e 04/11/2026",
+      "fontes": [
+        {
+          "titulo": "Mercado Livre — Whey Black Skull 100% HD Baunilha 900 g",
+          "url": "https://www.mercadolivre.com.br/p/MLB19549827"
+        },
+        {
+          "titulo": "Mercado Livre — Basic Whey Growth 1 kg",
+          "url": "https://www.mercadolivre.com.br/p/MLB79160251"
+        },
+        {
+          "titulo": "Mercado Livre — Whey Pro Max Titanium 1 kg",
+          "url": "https://www.mercadolivre.com.br/p/MLB6087971"
+        },
+        {
+          "titulo": "Mercado Livre — Creatina Dark Lab 1 kg",
+          "url": "https://www.mercadolivre.com.br/p/MLB25929487"
+        },
+        {
+          "titulo": "Mercado Livre — Creatina Growth 250 g",
+          "url": "https://www.mercadolivre.com.br/p/MLB19603205"
+        }
+      ],
+      "introducao": "Na hora de escolher whey protein ou creatina, a foto da embalagem diz pouco. O que permite comparar um produto com outro está no rótulo: quanto pesa a porção, quanta proteína ou creatina ela entrega, quantas doses vêm no pote e se há glúten ou lactose. Este guia mostra onde olhar, usando como exemplo os suplementos do catálogo e os números que os próprios anúncios informam. Não é orientação nutricional: suplemento não é remédio, e quem tem alguma condição de saúde deve conversar com um profissional antes de usar.",
+      "secoes": [
+        {
+          "titulo": "Whey: compare a proteína por porção, não só o peso do pote",
+          "paragrafos": [
+            "O Whey 100% HD da Black Skull vem em embalagens de 900 g. Pela tabela do anúncio, a porção de 30 g tem 21 g de proteína e 111 kcal, e o pote rende cerca de 30 doses. O Basic Whey da Growth tem 1 kg e porção de 30 g, enquanto o Whey Pro da Max Titanium tem 1 kg com porção de 40 g e 25 doses.",
+            "Por isso, um pote maior não significa necessariamente mais doses: depende do tamanho da porção indicada pelo fabricante. A conta mais justa é dividir o peso da embalagem pela porção e olhar quanta proteína cada dose entrega."
+          ]
+        },
+        {
+          "titulo": "Creatina: pura, sem sabor e com porção pequena",
+          "paragrafos": [
+            "As creatinas do catálogo são monohidratadas e sem sabor. A Dark Lab de 1 kg informa porção de 3 g e 333 doses; a Growth de 250 g informa porção de 5 g e 50 doses. A diferença no número de doses vem tanto do tamanho do pote quanto da porção recomendada no rótulo, então compare os dois números juntos.",
+            "Por ser sem sabor, a creatina costuma ser misturada em água, suco ou no próprio shake de whey, conforme a orientação da embalagem."
+          ]
+        },
+        {
+          "titulo": "Glúten, lactose e idade mínima",
+          "paragrafos": [
+            "Quem tem restrição alimentar deve ler essa parte primeiro. O Whey Black Skull de baunilha informa que é sem glúten e contém lactose; a creatina Dark Lab diz não ter glúten nem lactose. O Whey Pro da Max Titanium lista lecitina de soja e o adoçante sucralose. A idade mínima indicada varia entre 18 e 19 anos nos anúncios."
+          ]
+        },
+        {
+          "titulo": "Checklist antes de comprar",
+          "lista": [
+            "Peso da embalagem e tamanho da porção.",
+            "Quantidade de proteína ou creatina por dose.",
+            "Número de doses informado.",
+            "Sabor escolhido no anúncio.",
+            "Glúten, lactose e outros ingredientes.",
+            "Idade mínima recomendada."
+          ]
+        }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "Whey de 900 g rende menos que o de 1 kg?",
+          "resposta": "Não necessariamente. O rendimento depende da porção indicada no rótulo. Divida o peso do pote pela porção para comparar o número real de doses."
+        },
+        {
+          "pergunta": "Creatina precisa ter sabor?",
+          "resposta": "As creatinas do catálogo são sem sabor, o que facilita misturar em água, suco ou shake, seguindo a orientação da embalagem."
+        }
+      ]
+    },
+    {
+      "slug": "cozinha-organizada-potes-temperos-balanca",
+      "status": "aprovado",
+      "titulo": "Cozinha organizada: potes de vidro, porta-temperos, balança e cestos",
+      "resumo": "Como escolher potes herméticos de vidro, porta-temperos, balança de cozinha e cestos organizadores com base nas medidas e capacidades dos anúncios.",
+      "categoria": "Casa e Cozinha",
+      "publicadoEm": "2026-11-04",
+      "atualizadoEm": "2026-11-04",
+      "produtos": [
+        "kit-10-potes-hermeticos-de-vidro-starhouse-370-ml-starhouse",
+        "kit-10-potes-vidro-hermetico-vai-ao-forno-microondas-640ml-marmita-hermetico-fre",
+        "porta-temperos-giratorio-inox-com-16-potes-de-vidro-solar",
+        "balanca-digital-de-cozinha-bahrein-10-kg-branca-bahrein",
+        "kit-4-cestos-organizadores-dobraveis-cinza-ciclo-alternativa"
+      ],
+      "fonteFatos": "Fichas técnicas dos anúncios oficiais no Mercado Livre de cada produto citado, conferidas em 20/10/2026 e 04/11/2026",
+      "fontes": [
+        {
+          "titulo": "Mercado Livre — Kit 10 potes Starhouse 370 ml",
+          "url": "https://www.mercadolivre.com.br/p/MLB53222545"
+        },
+        {
+          "titulo": "Mercado Livre — Kit 10 potes Rishon 640 ml",
+          "url": "https://www.mercadolivre.com.br/p/MLB63904966"
+        },
+        {
+          "titulo": "Mercado Livre — Porta-temperos giratório 16 potes",
+          "url": "https://www.mercadolivre.com.br/p/MLB22684637"
+        },
+        {
+          "titulo": "Mercado Livre — Balança de cozinha Bahrein 10 kg",
+          "url": "https://www.mercadolivre.com.br/p/MLB24109769"
+        },
+        {
+          "titulo": "Mercado Livre — Kit 4 cestos organizadores",
+          "url": "https://www.mercadolivre.com.br/p/MLB63316009"
+        }
+      ],
+      "introducao": "Organizar a cozinha costuma começar pelos potes, mas a escolha errada de tamanho faz a geladeira encher de recipientes que não se encaixam. Antes de comprar, vale medir prateleiras e gavetas e pensar no uso: marmita do dia, sobras do jantar, temperos da bancada ou mantimentos do armário. Este guia compara os itens de organização do catálogo pelas medidas e capacidades informadas nos anúncios, para você escolher o tamanho certo para a sua rotina.",
+      "secoes": [
+        {
+          "titulo": "Potes de vidro: 370 ml ou 640 ml?",
+          "paragrafos": [
+            "O kit da Starhouse tem 10 potes de vidro de 370 ml, com cerca de 12,5 x 8,5 x 4,5 cm, segundo o anúncio. É um tamanho bom para porções individuais, lanches e acompanhamentos. O kit da Rishon também tem 10 potes, mas de 640 ml, com cerca de 18 x 10 x 7 cm, e a ficha informa vidro borossilicato livre de BPA, que vai do freezer ao micro-ondas e ao forno.",
+            "Para marmita completa de almoço, o pote maior costuma ser mais prático; para congelar porções pequenas ou guardar sobras, o menor ocupa menos espaço. Os dois kits usam tampa com quatro travas e vedação."
+          ]
+        },
+        {
+          "titulo": "Temperos à vista e balança na bancada",
+          "paragrafos": [
+            "Para quem cozinha com muitos temperos, a torre giratória do catálogo reúne dezesseis vidrinhos pequenos, de 80 ml cada, distribuídos em quatro andares sobre uma base que gira. Segundo a ficha, ela ocupa uma área de mais ou menos um palmo por um palmo na bancada e tem perto de 29 cm de altura, então meça o vão até o armário suspenso antes de comprar.",
+            "Para quem segue receitas ou controla porções, a balança digital Bahrein pesa até 10 kg com precisão de 1 g, tem função tara para descontar o peso do recipiente e funciona com duas pilhas AA, segundo a ficha."
+          ]
+        },
+        {
+          "titulo": "Armários e gavetas",
+          "paragrafos": [
+            "Os cestos organizadores dobráveis do catálogo vêm em kit com quatro unidades de 47 x 28 x 20 cm, em poliéster com fundo reforçado e alças laterais. Antes de comprar, meça a profundidade das prateleiras: 47 cm de comprimento cabem em armários fundos, mas não em nichos rasos."
+          ]
+        },
+        {
+          "titulo": "Checklist de medidas",
+          "lista": [
+            "Altura livre entre prateleiras e embaixo dos armários.",
+            "Profundidade das gavetas e nichos.",
+            "Capacidade de cada pote em ml.",
+            "Se o pote vai ao micro-ondas com ou sem tampa.",
+            "Tipo de pilha da balança."
+          ]
+        }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "Pote de vidro hermético pode ir ao micro-ondas com a tampa?",
+          "resposta": "Depende do fabricante. Confira no anúncio de cada kit se a tampa pode ir ao micro-ondas ou se o aquecimento deve ser feito sem ela."
+        },
+        {
+          "pergunta": "Qual tamanho de pote serve para marmita?",
+          "resposta": "Para uma refeição completa, potes por volta de 640 ml costumam ser mais práticos; os de 370 ml atendem porções menores e lanches."
+        }
+      ]
     }
   ]
 }

@@ -902,6 +902,16 @@
           "validadoEm": "2026-11-04T16:00:00-03:00",
           "mlb": "MLB19694427"
         }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "A escova secadora Britânia Soft BEC07R é bivolt?",
+          "resposta": "Sim. O anúncio informa funcionamento em 127 V e 220 V, com potência de 1.300 W."
+        },
+        {
+          "pergunta": "Ela tem controle de temperatura?",
+          "resposta": "Sim, a ficha do anúncio informa controle de temperatura e cerdas naturais."
+        }
       ]
     },
     {
@@ -953,6 +963,16 @@
           "validado": "sim",
           "validadoEm": "2026-11-04T16:00:00-03:00",
           "mlb": "MLB19549827"
+        }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "Quanta proteína tem a porção do Whey Black Skull 100% HD?",
+          "resposta": "Pela tabela do anúncio, a porção de 30 g tem 21 g de proteína e 111 kcal."
+        },
+        {
+          "pergunta": "O Whey Black Skull de baunilha tem lactose?",
+          "resposta": "Sim. O anúncio informa que contém lactose e não contém glúten."
         }
       ]
     },
@@ -1110,6 +1130,16 @@
           "validadoEm": "2026-11-04T16:00:00-03:00",
           "mlb": "MLB64322156"
         }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "O Philips OneBlade QP1425/10 pode ser usado no banho?",
+          "resposta": "Sim. O anúncio informa que ele é 100% à prova d'água, para uso seco ou molhado."
+        },
+        {
+          "pergunta": "Quanto tempo dura a bateria do OneBlade?",
+          "resposta": "Segundo o anúncio, até 30 minutos de uso sem fio."
+        }
       ]
     },
     {
@@ -1266,6 +1296,16 @@
           "validadoEm": "2026-11-04T16:00:00-03:00",
           "mlb": "MLB39232292"
         }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "Quantas latas cabem na caixa térmica Termolar SUV 20 L?",
+          "resposta": "O anúncio informa capacidade para 26 latas de 350 ml ou 4 garrafas PET de 1,5 L."
+        },
+        {
+          "pergunta": "Por quanto tempo ela conserva a temperatura?",
+          "resposta": "Segundo o fabricante no anúncio, até 12 horas sem gelo e até 24 horas com gelo."
+        }
       ]
     },
     {
@@ -1291,6 +1331,16 @@
           "validado": "sim",
           "validadoEm": "2026-11-04T16:00:00-03:00",
           "mlb": "MLB25929487"
+        }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "Quantas doses tem a creatina Dark Lab de 1 kg?",
+          "resposta": "O anúncio informa 333 porções de 3 g."
+        },
+        {
+          "pergunta": "A creatina Dark Lab tem glúten ou lactose?",
+          "resposta": "Segundo o anúncio, não contém glúten nem lactose."
         }
       ]
     },
@@ -1318,6 +1368,16 @@
           "validadoEm": "2026-11-04T16:00:00-03:00",
           "mlb": "MLB30144703"
         }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "Quantas baterias vêm com a The Black Tools TB-21PX?",
+          "resposta": "O anúncio informa 2 baterias de íon de lítio de 21 V e 2 Ah, além de carregador e maleta."
+        },
+        {
+          "pergunta": "Ela serve para furar parede?",
+          "resposta": "É uma furadeira e parafusadeira de impacto, segundo o anúncio. Confira na ficha as capacidades de perfuração antes de comprar."
+        }
       ]
     },
     {
@@ -1344,6 +1404,16 @@
           "validadoEm": "2026-11-04T16:00:00-03:00",
           "mlb": "MLB24076624"
         }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "A The Black Tools TB12A fura concreto?",
+          "resposta": "A ficha informa perfuração de até 8 mm em concreto, 10 mm em metal e 25 mm em madeira."
+        },
+        {
+          "pergunta": "Quanto tempo leva para carregar a bateria?",
+          "resposta": "Cerca de 2 horas, segundo o anúncio."
+        }
       ]
     },
     {
@@ -1369,6 +1439,16 @@
           "validado": "sim",
           "validadoEm": "2026-11-04T16:00:00-03:00",
           "mlb": "MLB47320998"
+        }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "A Xiaomi Smart Band 9 Active pode molhar?",
+          "resposta": "O anúncio informa resistência à água até 50 metros."
+        },
+        {
+          "pergunta": "Quanto dura a bateria da Smart Band 9 Active?",
+          "resposta": "Segundo o anúncio, cerca de uma semana, com bateria de 200 mAh."
         }
       ]
     },
@@ -1655,6 +1735,16 @@
           "validado": "sim",
           "validadoEm": "2026-11-04T16:00:00-03:00",
           "mlb": "MLB10892513"
+        }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "A panela de pressão Tramontina Vancouver Effect funciona em indução?",
+          "resposta": "O anúncio cita fogões a gás, elétricos e vitrocerâmicos e não menciona indução; confirme na página da loja se cozinha em indução."
+        },
+        {
+          "pergunta": "Qual a capacidade da panela?",
+          "resposta": "4,5 litros, com 20 cm de diâmetro, segundo o anúncio."
         }
       ]
     },
@@ -2175,6 +2265,16 @@
           "validado": "sim",
           "validadoEm": "2026-11-04T16:00:00-03:00",
           "mlb": "MLB57081243"
+        }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "O PlayStation 5 Slim Digital lê jogos em disco?",
+          "resposta": "Não. A edição digital não tem leitor de disco; os jogos são baixados."
+        },
+        {
+          "pergunta": "Quais jogos vêm no pacote?",
+          "resposta": "Segundo o anúncio, Astro Bot e Gran Turismo 7, além de um controle."
         }
       ]
     }
