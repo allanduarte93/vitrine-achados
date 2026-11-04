@@ -79,3 +79,12 @@ Medição antes das ações de 04/11 (para comparar depois):
 - Canais verificados e não usados: X (@workflowOS1, outro projeto), Instagram/Pinterest de outros
   projetos ou da Ana, Threads (sem login), Facebook e Reddit (bloqueados pela extensão do navegador),
   YouTube (só vídeo).
+
+### 04/11/2026 — prospecção de parceiros
+
+- E-mail enviado (Gmail do titular, já usado nos contatos da Vitrine Achados) para o Vida em Casa
+  (info@casadeviver.com.br), site de dicas para a casa que declara aceitar guest posts: proposta de
+  artigo original e gratuito sobre organização da cozinha, com link para o guia do site e aviso de
+  afiliados. Sem oferta de pagamento ou comissão. Aguardando resposta.
+- Outros alvos pesquisados (influenciadores de beleza, newsletters, blogs de DIY) só aceitam
+  publicidade paga ou não têm canal comercial público verificável: não foram contatados.
