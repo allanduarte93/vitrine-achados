@@ -98,3 +98,7 @@ Medição antes das ações de 04/11 (para comparar depois):
   Cozinha & Estilo (usa os próprios links de afiliado, concorrente direto); Espaço do Povo, Revista
   Sacada, Blog da Marcenaria e Kalinka Carvalho bloqueiam leitura automática (política não confirmada).
   Respostas de Vida em Casa e Revista 2K: nenhuma.
+- 04/11 — Diretórios: **Zearches** aceitou e publicou a listagem (categoria Resources, Tools &
+  Directories): https://zearches.com/directory.php?slug=resources-directories . **SoMuch.com**:
+  formulário preenchido (categoria Shopping), mas exige reCAPTCHA e verificação por e-mail;
+  não enviado. A aba ficou aberta no Chrome com os campos preenchidos.
