@@ -1,16 +1,16 @@
 {
-  "data": "2026-11-04T19:59:01.512Z",
+  "data": "2026-11-04T20:11:52.235Z",
   "site": "https://allanduarte93.github.io/vitrine-achados",
   "paginas": [
     {
       "pagina": "/",
       "viewport": "desktop",
-      "cards": 70,
+      "cards": 18,
       "destaquesSemFoto": 0,
-      "fotos": 59,
+      "fotos": 12,
       "faixa": true,
       "largura": 1366,
-      "fotosOk": 59
+      "fotosOk": 12
     },
     {
       "pagina": "celular-samsung-galaxy-a17-com-ia-256gb-8gb-ram-cam-de-50mp-tela-de-6-7-nfc-ip54",
@@ -741,16 +741,17 @@
     {
       "pagina": "/",
       "viewport": "celular",
-      "cards": 70,
+      "cards": 18,
       "destaquesSemFoto": 0,
-      "fotos": 59,
+      "fotos": 12,
       "faixa": true,
       "largura": 390,
-      "fotosOk": 59
+      "fotosOk": 12
     }
   ],
   "falhas": [
-    "desktop: link interno https://allanduarte93.github.io/vitrine-achados/guias/cerave-locao-ou-cicaplast-baume-b5/ → HTTP 503"
+    "desktop: home com 18 produtos, índice com 70",
+    "celular: home com 18 produtos, índice com 70"
   ],
   "resumo": {
     "produtos": 70,
