@@ -1,6 +1,6 @@
 {
   "versao": 1,
-  "atualizadoEm": "2026-10-21",
+  "atualizadoEm": "2026-11-04",
   "regra": "Foto só aparece com autorizacao 'autorizada', ou 'condicional' com a loja da condição confirmada em config.afiliados.programasConfirmados (na prévia local, condicional também aparece). A url precisa ser a mesma do catálogo e a identificação precisa bater com a oferta do produto.",
   "produtos": {
     "conjunto-fitness-feminino-legging-top-academia-suplex-zero-transparencia": {
@@ -389,6 +389,706 @@
       "autorizacao": "pendente",
       "condicao": null,
       "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+    },
+    "escova-secadora-britania-soft-bec07r-1300-w-bivolt-britania": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB19694427",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB19694427",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_717664-MLA116175833066_092026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB19694427, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "colonia-cebolinha-turma-da-monica-jequiti-25-ml-jequiti": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB36931922",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB36931922",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_685367-MLA115708034876_092026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB36931922, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "whey-black-skull-100-hd-baunilha-900-g-black-skull": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB19549827",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB19549827",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_938312-MLA120089437603_102026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB19549827, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "whey-black-skull-100-hd-chocolate-900-g-black-skull": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB18995413",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB18995413",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_953920-MLA111544908875_052026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB18995413, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "secador-de-cabelo-mondial-scn-01-2000-w-mondial": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB18638651",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB18638651",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_931087-MLA100025900529_122025-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB18638651, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "secador-taiff-black-ion-profissional-2000-w-taiff": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB18580665",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB18580665",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_742671-MLU78597786812_082024-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB18580665, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "escova-rotativa-mondial-erb-01-3-em-1-bivolt-mondial": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB22871761",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB22871761",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_842831-MLA99963285219_112025-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB22871761, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "escova-secadora-britania-bec02pr-4-em-1-1300-w-britania": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB22616606",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB22616606",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_877904-MLA99432213078_112025-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB22616606, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "philips-oneblade-qp1425-10-aparador-e-barbeador-5-em-1-philips": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB64322156",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB64322156",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_750670-MLA118429558724_102026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB64322156, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "cortador-mondial-super-groom-6-bg-04-sem-fio-mondial": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB54944960",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB54944960",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_828888-MLA98664329930_112025-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB54944960, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "aparador-mondial-super-groom-10-bg-03-bivolt-mondial": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB24001849",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB24001849",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_948099-MLA109212540976_042026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB24001849, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "kit-3-colonias-cebolinha-turma-da-monica-jequiti-25-ml-jequiti": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB41221309",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB41221309",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_735112-MLA115743494554_092026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB41221309, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "ilia-secreto-deo-parfum-feminino-natura-50-ml-natura": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB19148895",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB19148895",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_794205-MLU72571489728_112023-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB19148895, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "secador-philco-psc3500-4-em-1-dobravel-philco": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB49652036",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB49652036",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_875331-MLA117081876247_092026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB49652036, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "caixa-termica-termolar-suv-20-litros-termolar": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB39232292",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB39232292",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_733302-MLA99505909882_112025-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB39232292, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "creatina-monohidratada-dark-lab-1-kg-dark-lab": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB25929487",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB25929487",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_603981-MLA115262802698_082026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB25929487, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "parafusadeira-de-impacto-the-black-tools-tb-21px-21-v-com-2-baterias-the-black-t": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB30144703",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB30144703",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_981459-MLA117136184907_092026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB30144703, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "parafusadeira-e-furadeira-the-black-tools-tb12a-12-v-the-black-tools": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB24076624",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB24076624",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_648315-MLA113252989356_072026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB24076624, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "xiaomi-smart-band-9-active-preta-xiaomi": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB47320998",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB47320998",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_654384-MLA88062175998_072025-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB47320998, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "perfume-rabanne-1-million-masculino-edt-100-ml-rabanne": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB20693097",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB20693097",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_912680-MLA113675550524_072026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB20693097, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "organizador-de-maquiagem-giratorio-360-vittak-vittak": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB27634376",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB27634376",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_986811-MLA112845656392_072026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB27634376, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "tenis-olympikus-delta-masculino-preto-olympikus": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB19530922",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB19530922",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_708210-MLA100016985413_122025-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB19530922, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "nivea-demaquilante-bifasico-125-ml-nivea": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB24154306",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB24154306",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_909317-MLA109629044634_042026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB24154306, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "agua-micelar-bifasica-l-oreal-paris-200-ml-l-oreal-paris": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB19743409",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB19743409",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_629102-MLA114046222711_072026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB19743409, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "basic-whey-growth-supplements-1-kg-baunilha-growth-supplements": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB79160251",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB79160251",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_899347-MLA115984378274_092026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB79160251, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "kit-7-organizadores-de-mala-para-viagem-azul-escuro-generica": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB51912486",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB51912486",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_983860-MLA100086305353_122025-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB51912486, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "necessaire-organizadora-de-maquiagem-para-viagem-preta-superstyle": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB30907613",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB30907613",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_786927-MLU74164522516_012024-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB30907613, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "bolsa-de-bordo-feminina-para-viagem-rosa-generica": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB26687615",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB26687615",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_934875-MLA99588875934_122025-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB26687615, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "kit-10-potes-hermeticos-de-vidro-starhouse-370-ml-starhouse": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB53222545",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB53222545",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_801828-MLA115739959462_092026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB53222545, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "panela-de-pressao-tramontina-vancouver-effect-4-5-l-preta-tramontina": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB10892513",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB10892513",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_661364-MLA118230540914_102026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB10892513, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "parafusadeira-e-furadeira-de-impacto-wap-k21-id02-21-v-wap": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB28765604",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB28765604",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_621555-MLA114663974288_082026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB28765604, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "jogo-de-soquetes-stels-57-pecas-1-4-com-catraca-stels": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB36357048",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB36357048",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_935554-MLA75932190124_042024-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB36357048, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "balanca-corporal-bluetooth-epsilon-eps-6905-180-kg-epsilon": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB65374941",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB65374941",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_941738-MLA106814881195_022026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB65374941, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "mochila-termica-para-notebook-15-6-matein-preta-matein": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB45167592",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB45167592",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_843617-MLA100060322615_122025-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB45167592, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "kit-wella-invigo-nutri-enrich-shampoo-1-l-mascara-500-ml-wella": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB38539991",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB38539991",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_694616-MLU77879236235_072024-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB38539991, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "kit-truss-uso-obrigatorio-shampoo-e-condicionador-300-ml-truss": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB31394696",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB31394696",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_800183-MLA118277656550_102026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB31394696, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "umidificador-ultrassonico-dellamed-umi-pop-2-3-l-bivolt-dellamed": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB26908451",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB26908451",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_796573-MLU78868626071_092024-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB26908451, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "espelho-vildrex-roma-70-x-50-cm-lapidado-vildrex": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB55945060",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB55945060",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_818860-MLA111910223918_062026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB55945060, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "jogo-de-chaves-de-fenda-e-philips-imantadas-12-pecas-lotus": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB27398239",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB27398239",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_625409-MLA112629191862_062026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB27398239, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "kit-lavagem-automotiva-vonixx-shampoo-e-cera-vonixx": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB37821126",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB37821126",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_659633-MLA117032776949_092026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB37821126, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "balanca-digital-de-cozinha-bahrein-10-kg-branca-bahrein": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB24109769",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB24109769",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_917191-MLA104241724394_012026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB24109769, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "kit-presente-nativa-spa-ameixa-o-boticario-o-boticario": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB65976531",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB65976531",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_812015-MLA107655219735_022026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB65976531, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "oculos-de-sol-ray-ban-justin-classic-rb4165-ray-ban": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB18184912",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB18184912",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_939898-MLA99475703434_112025-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB18184912, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "jogo-de-panelas-tramontina-solar-inox-fundo-triplo-tramontina": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB47816179",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB47816179",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_885756-MLA96139099845_102025-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB47816179, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "kit-4-cestos-organizadores-dobraveis-cinza-ciclo-alternativa": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB63316009",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB63316009",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_843334-MLA101821298815_122025-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB63316009, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "porta-temperos-giratorio-inox-com-16-potes-de-vidro-solar": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB22684637",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB22684637",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_764223-MLA113633780762_072026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB22684637, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "jogo-stop-de-palavras-adedonha-babuu-babuu": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB66141214",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB66141214",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_633703-MLA120091503725_102026-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB66141214, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "jogo-de-toalhas-buddemeyer-bella-extra-soft-4-pecas-grafite-buddemeyer": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB48810551",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB48810551",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_992849-MLA100187157773_122025-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB48810551, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "umidificador-ultrassonico-g-tech-allergy-free-dual-3-l-g-tech": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB36059609",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB36059609",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_835583-MLU75771913004_042024-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB36059609, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
+    },
+    "console-playstation-5-slim-digital-com-astro-bot-e-gran-turismo-7-sony": {
+      "loja": "mercadolivre",
+      "identificacao": "MLB57081243",
+      "anuncio": "https://www.mercadolivre.com.br/p/MLB57081243",
+      "variacao": "produto de catálogo do ML (/p/): variação fixada pela página",
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_667226-MLA96871260244_112025-AB.webp",
+      "fonte": "Central de Afiliados e Criadores do Mercado Livre (ferramenta oficial do Programa)",
+      "autorizacao": "condicional",
+      "condicao": {
+        "loja": "mercadolivre",
+        "motivo": "Válida enquanto o Mercado Livre estiver ativo no site (programa confirmado por escrito em 21/10/2026)"
+      },
+      "evidencia": "Resposta oficial no caso 490066167 (21/10/2026): imagens das ferramentas oficiais permitidas. Foto exibida pela Central de Afiliados para MLB57081243, conferida em 04/11/2026; o mesmo arquivo aparece na galeria do anúncio. Anúncio \"Novo\" e vendedor com termômetro nível 5 (verde) em 04/11/2026."
     }
   }
 }

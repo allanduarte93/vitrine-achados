@@ -59,3 +59,17 @@ Alternativa permitida a qualquer momento: fotos tiradas pelo próprio titular do
 > (apenas redimensionamento), só nas páginas do site, com crédito à marca e remoção imediata a
 > pedido. Se o pedido deve ir a outra área (marketing/imprensa), agradeço o encaminhamento ou o
 > contato correto. Allan Duarte — allan.duarte93@gmail.com
+
+## Mercado Livre — ampliação de 04/11/2026
+
+50 produtos novos do Mercado Livre, escolhidos na Central de Afiliados (busca "Produtos
+selecionados para você"). Cada um foi conferido no anúncio exato (/p/MLB…) em 04/11/2026:
+condição "Novo", termômetro do vendedor no nível 5 (verde) e a foto exibida pela Central
+presente na galeria do anúncio. Links gerados no Gerador de Links oficial (etiqueta
+ad20260429184559). Registro por produto em `data/imagens.json` (autorização `condicional`
+ao ML ativo, mesma base da resposta escrita no caso 490066167).
+
+Rejeitados na conferência (2 de 52):
+- MLB33997846 — Controle Sony DualSense branco: vendedor com termômetro nível 3 (não verde).
+- MLB54738532 — Protetor solar L'Oréal Solar Expertise com cor: título diz cor 6.0 e a ficha diz
+  cor 2.0; a variação da foto não pôde ser confirmada.
