@@ -27,3 +27,18 @@ Só entra aqui o que foi efetivamente feito, com data e resultado medido.
   sobre links de afiliado: não foram usadas.
 - Acesso do Claude ao Search Console foi bloqueado pelo navegador no meio da sessão (permissão de
   site); as demais páginas de produto ficam para o próximo pedido de indexação.
+
+## 04/11/2026
+
+| Canal | Ação | Resultado medido |
+|---|---|---|
+| Site | +50 produtos ML verificados (70 no total, 59 com foto oficial); categoria Moda e Acessórios; home enxuta (12 destaques + 6 recomendações) | publicado (c09fece, ef6e1c0) |
+| Site (SEO) | Guias novos: Black Friday 2026 por perfil, Parafusadeira 12 V ou 21 V, Escova secadora ou secador; introduções em 6 categorias | publicado (35dcc24); sitemap com 96 URLs |
+| Google Search Console | `feed.xml` enviado como 2º sitemap; indexação solicitada para o guia de Black Friday | sitemaps seguem "Não foi possível buscar"; 5 páginas indexadas |
+| Pinterest | 6 artes originais prontas (`docs/pinterest/`) | não publicado: não há conta da Vitrine Achados |
+
+Medição antes das ações de 04/11 (para comparar depois):
+- **Google, últimos 28 dias até 02/11:** 43 impressões, 0 cliques, posição média 8,5; consultas:
+  "vitrine dos achados" (6), "pode fere stck" (1). 5 páginas indexadas, 0 com erro.
+- **Mercado Livre, 28/10–03/11:** 0 cliques, 0 compradores, 0 pedidos, R$ 0.
+- **Amazon (vitrineachados-20):** 0 pedidos, R$ 0.
