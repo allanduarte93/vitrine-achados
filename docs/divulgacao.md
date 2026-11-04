@@ -53,3 +53,17 @@ Medição antes das ações de 04/11 (para comparar depois):
   as demais o Google não exibe (consultas raras/anônimas).
 - Sitemap conferido no ar: HTTP 200, application/xml, 98 URLs, XML válido; robots.txt do projeto aponta
   para ele. Nenhum defeito técnico comprovado; o status "Não foi possível buscar" é do lado do Search Console.
+
+### 04/11/2026 (noite) — Fire TV Stick
+
+- Search Console (28 dias): o guia do Fire TV Stick HD teve 30 impressões, posição média 8,7, 0 cliques;
+  quase todas as consultas são anônimas no relatório. Concorrentes na busca usam "vale a pena" e
+  "o que saber" no título (Olhar Digital, TecMundo).
+- Publicado (b518992): título "Novo Fire TV Stick HD vale a pena? O que saber antes de comprar",
+  nova descrição (TV sem smart, mensalidade, apps, 4K) e pergunta frequente "vale a pena?".
+- Amazon, só vitrineachados-20, 05/10–03/11: 53 cliques (44 no período anterior medido, que incluía
+  cliques do verificador automático até 21/10), 0 pedidos, R$ 0,00. A origem dos cliques não é
+  identificável no relatório.
+- Mercado Livre, 28/10–03/11: 0 cliques, 0 pedidos, R$ 0.
+- Metadados do repositório no GitHub (link do site) não puderam ser alterados: o proxy desta sessão
+  bloqueia alterações de configuração do repositório.
