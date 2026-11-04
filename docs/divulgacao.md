@@ -67,3 +67,15 @@ Medição antes das ações de 04/11 (para comparar depois):
 - Mercado Livre, 28/10–03/11: 0 cliques, 0 pedidos, R$ 0.
 - Metadados do repositório no GitHub (link do site) não puderam ser alterados: o proxy desta sessão
   bloqueia alterações de configuração do repositório.
+
+### 04/11/2026 — primeira divulgação externa
+
+- **LinkedIn (perfil pessoal Allan Duarte, público "Qualquer pessoa"):** 1 post com o checklist de
+  compra da Black Friday e o link do guia
+  https://allanduarte93.github.io/vitrine-achados/guias/black-friday-2026-presentes-por-perfil/ ,
+  com aviso de links de afiliado. Link do post:
+  https://www.linkedin.com/feed/update/urn:li:activity:7523879457619714049/
+  Alcance esperado baixo: o perfil tem 0 conexões. Sem foto de produto (só a prévia do site).
+- Canais verificados e não usados: X (@workflowOS1, outro projeto), Instagram/Pinterest de outros
+  projetos ou da Ana, Threads (sem login), Facebook e Reddit (bloqueados pela extensão do navegador),
+  YouTube (só vídeo).
