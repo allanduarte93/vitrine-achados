@@ -42,3 +42,14 @@ Medição antes das ações de 04/11 (para comparar depois):
   "vitrine dos achados" (6), "pode fere stck" (1). 5 páginas indexadas, 0 com erro.
 - **Mercado Livre, 28/10–03/11:** 0 cliques, 0 compradores, 0 pedidos, R$ 0.
 - **Amazon (vitrineachados-20):** 0 pedidos, R$ 0.
+
+### 04/11/2026 (fim do dia)
+
+- Pergunta ao ML sobre fotos no Pinterest enviada (caso 490066167).
+- Canal externo: nenhum ativado (não há conta própria da Vitrine Achados em rede social; as
+  comunidades de promoção verificadas proíbem link de afiliado).
+- Search Console, 28 dias até 02/11: 43 impressões, 0 cliques. Por página: guia do Fire TV Stick
+  30 impressões, página inicial 13. Consultas visíveis: "vitrine dos achados" (6), "pode fere stck" (1);
+  as demais o Google não exibe (consultas raras/anônimas).
+- Sitemap conferido no ar: HTTP 200, application/xml, 98 URLs, XML válido; robots.txt do projeto aponta
+  para ele. Nenhum defeito técnico comprovado; o status "Não foi possível buscar" é do lado do Search Console.

@@ -132,3 +132,8 @@ Enquanto não houver resposta por escrito, `programasConfirmados` continua
   propriedade nova que o Google ainda não processou. Nenhuma correção ou republicação necessária.
 - Indexação solicitada (fila prioritária): página inicial (21/10), `/guias/` e
   `/guias/fire-tv-stick-hd-o-que-saber/` (21/10).
+
+- **Nova pergunta (04/11/2026, enviada no mesmo caso 490066167; "Pronto! Você enviou sua mensagem"):**
+  se as imagens das ferramentas oficiais (Central de Afiliados e Gerador de Links) podem ser usadas em
+  pins no Pinterest que levem ao site, com aviso de publicidade, e em quais condições. Fotos de produto
+  no Pinterest só depois da resposta por escrito. Aguardando.
