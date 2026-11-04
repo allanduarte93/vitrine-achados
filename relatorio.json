@@ -1,16 +1,16 @@
 {
-  "data": "2026-10-21T21:20:51.537Z",
+  "data": "2026-11-04T19:59:01.512Z",
   "site": "https://allanduarte93.github.io/vitrine-achados",
   "paginas": [
     {
       "pagina": "/",
       "viewport": "desktop",
-      "cards": 20,
+      "cards": 70,
       "destaquesSemFoto": 0,
-      "fotos": 9,
+      "fotos": 59,
       "faixa": true,
       "largura": 1366,
-      "fotosOk": 9
+      "fotosOk": 59
     },
     {
       "pagina": "celular-samsung-galaxy-a17-com-ia-256gb-8gb-ram-cam-de-50mp-tela-de-6-7-nfc-ip54",
@@ -42,10 +42,76 @@
       ]
     },
     {
+      "pagina": "agua-micelar-bifasica-l-oreal-paris-200-ml-l-oreal-paris",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_629102-MLA114046222711_072026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
       "pagina": "amazon-b0dvk166sv",
       "foto": null,
       "botoes": [
         "amazon"
+      ]
+    },
+    {
+      "pagina": "aparador-mondial-super-groom-10-bg-03-bivolt-mondial",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_948099-MLA109212540976_042026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "balanca-corporal-bluetooth-epsilon-eps-6905-180-kg-epsilon",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_941738-MLA106814881195_022026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "balanca-digital-de-cozinha-bahrein-10-kg-branca-bahrein",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_917191-MLA104241724394_012026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "basic-whey-growth-supplements-1-kg-baunilha-growth-supplements",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_899347-MLA115984378274_092026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "bolsa-de-bordo-feminina-para-viagem-rosa-generica",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_934875-MLA99588875934_122025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
       ]
     },
     {
@@ -67,6 +133,17 @@
       ]
     },
     {
+      "pagina": "caixa-termica-termolar-suv-20-litros-termolar",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_733302-MLA99505909882_112025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
       "pagina": "amazon-b07rk4hst7",
       "foto": null,
       "botoes": [
@@ -74,9 +151,53 @@
       ]
     },
     {
+      "pagina": "colonia-cebolinha-turma-da-monica-jequiti-25-ml-jequiti",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_685367-MLA115708034876_092026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "console-playstation-5-slim-digital-com-astro-bot-e-gran-turismo-7-sony",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_667226-MLA96871260244_112025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "cortador-mondial-super-groom-6-bg-04-sem-fio-mondial",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_828888-MLA98664329930_112025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
       "pagina": "creatina-growth-supplements-monohidratada-em-po-sem-sabor-x-250g-growth-suppleme",
       "foto": {
         "src": "https://http2.mlstatic.com/D_Q_NP_2X_662415-MLA97812910758_112025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "creatina-monohidratada-dark-lab-1-kg-dark-lab",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_603981-MLA115262802698_082026-AB.webp",
         "ok": true,
         "w": 448
       },
@@ -99,6 +220,50 @@
       ]
     },
     {
+      "pagina": "escova-rotativa-mondial-erb-01-3-em-1-bivolt-mondial",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_842831-MLA99963285219_112025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "escova-secadora-britania-bec02pr-4-em-1-1300-w-britania",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_877904-MLA99432213078_112025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "escova-secadora-britania-soft-bec07r-1300-w-bivolt-britania",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_717664-MLA116175833066_092026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "espelho-vildrex-roma-70-x-50-cm-lapidado-vildrex",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_818860-MLA111910223918_062026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
       "pagina": "fone-de-ouvido-headphone-dapon-h02d-bluetooth-5-1-over-ear-22h-preto-dapon",
       "foto": {
         "src": "https://http2.mlstatic.com/D_Q_NP_2X_673950-MLA99394598783_112025-AB.webp",
@@ -110,9 +275,163 @@
       ]
     },
     {
+      "pagina": "ilia-secreto-deo-parfum-feminino-natura-50-ml-natura",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_794205-MLU72571489728_112023-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "jogo-de-chaves-de-fenda-e-philips-imantadas-12-pecas-lotus",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_625409-MLA112629191862_062026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "jogo-de-panelas-tramontina-solar-inox-fundo-triplo-tramontina",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_885756-MLA96139099845_102025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "jogo-de-soquetes-stels-57-pecas-1-4-com-catraca-stels",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_935554-MLA75932190124_042024-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "jogo-de-toalhas-buddemeyer-bella-extra-soft-4-pecas-grafite-buddemeyer",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_992849-MLA100187157773_122025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "jogo-stop-de-palavras-adedonha-babuu-babuu",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_633703-MLA120091503725_102026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "kit-10-potes-hermeticos-de-vidro-starhouse-370-ml-starhouse",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_801828-MLA115739959462_092026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
       "pagina": "kit-10-potes-vidro-hermetico-vai-ao-forno-microondas-640ml-marmita-hermetico-fre",
       "foto": {
         "src": "https://http2.mlstatic.com/D_Q_NP_2X_895409-MLA117834564002_102026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "kit-3-colonias-cebolinha-turma-da-monica-jequiti-25-ml-jequiti",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_735112-MLA115743494554_092026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "kit-4-cestos-organizadores-dobraveis-cinza-ciclo-alternativa",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_843334-MLA101821298815_122025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "kit-7-organizadores-de-mala-para-viagem-azul-escuro-generica",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_983860-MLA100086305353_122025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "kit-lavagem-automotiva-vonixx-shampoo-e-cera-vonixx",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_659633-MLA117032776949_092026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "kit-presente-nativa-spa-ameixa-o-boticario-o-boticario",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_812015-MLA107655219735_022026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "kit-truss-uso-obrigatorio-shampoo-e-condicionador-300-ml-truss",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_800183-MLA118277656550_102026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "kit-wella-invigo-nutri-enrich-shampoo-1-l-mascara-500-ml-wella",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_694616-MLU77879236235_072024-AB.webp",
         "ok": true,
         "w": 448
       },
@@ -135,10 +454,54 @@
       ]
     },
     {
+      "pagina": "mochila-termica-para-notebook-15-6-matein-preta-matein",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_843617-MLA100060322615_122025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
       "pagina": "amazon-b074l9l5kz",
       "foto": null,
       "botoes": [
         "amazon"
+      ]
+    },
+    {
+      "pagina": "necessaire-organizadora-de-maquiagem-para-viagem-preta-superstyle",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_786927-MLU74164522516_012024-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "nivea-demaquilante-bifasico-125-ml-nivea",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_909317-MLA109629044634_042026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "oculos-de-sol-ray-ban-justin-classic-rb4165-ray-ban",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_939898-MLA99475703434_112025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
       ]
     },
     {
@@ -149,9 +512,97 @@
       ]
     },
     {
+      "pagina": "organizador-de-maquiagem-giratorio-360-vittak-vittak",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_986811-MLA112845656392_072026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "panela-de-pressao-tramontina-vancouver-effect-4-5-l-preta-tramontina",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_661364-MLA118230540914_102026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "parafusadeira-de-impacto-the-black-tools-tb-21px-21-v-com-2-baterias-the-black-t",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_981459-MLA117136184907_092026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "parafusadeira-e-furadeira-de-impacto-wap-k21-id02-21-v-wap",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_621555-MLA114663974288_082026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "parafusadeira-e-furadeira-the-black-tools-tb12a-12-v-the-black-tools",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_648315-MLA113252989356_072026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
       "pagina": "patinete-infantil-3-rodas-com-led-dobravel-menino-menina",
       "foto": {
         "src": "https://http2.mlstatic.com/D_Q_NP_2X_944838-MLA99549576346_122025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "perfume-rabanne-1-million-masculino-edt-100-ml-rabanne",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_912680-MLA113675550524_072026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "philips-oneblade-qp1425-10-aparador-e-barbeador-5-em-1-philips",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_750670-MLA118429558724_102026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "porta-temperos-giratorio-inox-com-16-potes-de-vidro-solar",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_764223-MLA113633780762_072026-AB.webp",
         "ok": true,
         "w": 448
       },
@@ -178,6 +629,72 @@
       ]
     },
     {
+      "pagina": "secador-de-cabelo-mondial-scn-01-2000-w-mondial",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_931087-MLA100025900529_122025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "secador-philco-psc3500-4-em-1-dobravel-philco",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_875331-MLA117081876247_092026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "secador-taiff-black-ion-profissional-2000-w-taiff",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_742671-MLU78597786812_082024-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "tenis-olympikus-delta-masculino-preto-olympikus",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_708210-MLA100016985413_122025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "umidificador-ultrassonico-dellamed-umi-pop-2-3-l-bivolt-dellamed",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_796573-MLU78868626071_092024-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "umidificador-ultrassonico-g-tech-allergy-free-dual-3-l-g-tech",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_835583-MLU75771913004_042024-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
       "pagina": "ventilador-de-mesa-30cm-super-power-mondial-60w-vsp-30-b-mondial",
       "foto": {
         "src": "https://http2.mlstatic.com/D_Q_NP_2X_620576-MLA99958768953_112025-AB.webp",
@@ -189,19 +706,54 @@
       ]
     },
     {
+      "pagina": "whey-black-skull-100-hd-baunilha-900-g-black-skull",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_938312-MLA120089437603_102026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "whey-black-skull-100-hd-chocolate-900-g-black-skull",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_953920-MLA111544908875_052026-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
+      "pagina": "xiaomi-smart-band-9-active-preta-xiaomi",
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_654384-MLA88062175998_072025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
+    },
+    {
       "pagina": "/",
       "viewport": "celular",
-      "cards": 20,
+      "cards": 70,
       "destaquesSemFoto": 0,
-      "fotos": 9,
+      "fotos": 59,
       "faixa": true,
       "largura": 390,
-      "fotosOk": 9
+      "fotosOk": 59
     }
   ],
-  "falhas": [],
+  "falhas": [
+    "desktop: link interno https://allanduarte93.github.io/vitrine-achados/guias/cerave-locao-ou-cicaplast-baume-b5/ → HTTP 503"
+  ],
   "resumo": {
-    "produtos": 20,
-    "comFotoNoIndice": 9
+    "produtos": 70,
+    "comFotoNoIndice": 59
   }
 }
