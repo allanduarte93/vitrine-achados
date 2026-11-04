@@ -659,6 +659,156 @@
           "resposta": "Procure na ficha técnica do anúncio a informação de voltagem. Produtos bivolt funcionam em 127 V e 220 V; os demais precisam da voltagem certa ou de um transformador."
         }
       ]
+    },
+    {
+      "slug": "parafusadeira-12v-ou-21v-qual-escolher",
+      "status": "aprovado",
+      "titulo": "Parafusadeira 12 V ou 21 V: qual escolher para usar em casa",
+      "resumo": "Diferença entre parafusadeira de 12 V e de 21 V, quando vale ter duas baterias e função impacto, e o que vem na caixa de três modelos.",
+      "categoria": "Ferramentas",
+      "publicadoEm": "2026-11-04",
+      "atualizadoEm": "2026-11-04",
+      "produtos": [
+        "parafusadeira-e-furadeira-the-black-tools-tb12a-12-v-the-black-tools",
+        "parafusadeira-de-impacto-the-black-tools-tb-21px-21-v-com-2-baterias-the-black-t",
+        "parafusadeira-e-furadeira-de-impacto-wap-k21-id02-21-v-wap",
+        "jogo-de-soquetes-stels-57-pecas-1-4-com-catraca-stels",
+        "jogo-de-chaves-de-fenda-e-philips-imantadas-12-pecas-lotus"
+      ],
+      "fonteFatos": "Fichas técnicas dos anúncios oficiais no Mercado Livre de cada modelo citado, conferidas em 04/11/2026",
+      "fontes": [
+        {
+          "titulo": "Mercado Livre — The Black Tools TB12A 12 V",
+          "url": "https://www.mercadolivre.com.br/p/MLB24076624"
+        },
+        {
+          "titulo": "Mercado Livre — The Black Tools TB-21PX 21 V",
+          "url": "https://www.mercadolivre.com.br/p/MLB30144703"
+        },
+        {
+          "titulo": "Mercado Livre — WAP K21 ID02 21 V",
+          "url": "https://www.mercadolivre.com.br/p/MLB28765604"
+        }
+      ],
+      "introducao": "Quem procura a primeira parafusadeira costuma travar na mesma dúvida: 12 V basta ou é melhor ir direto para 21 V? O número indica a tensão da bateria e, na prática, separa ferramentas leves, feitas para montar móveis e apertar parafusos, de modelos mais fortes, que encaram furos em parede e uso mais longo. Este guia compara três parafusadeiras do catálogo com os dados das fichas técnicas e mostra quais perguntas fazer antes de escolher. Preço não entra aqui, porque muda o tempo todo; confira na loja na hora da compra.",
+      "secoes": [
+        {
+          "titulo": "O que muda entre 12 V e 21 V",
+          "paragrafos": [
+            "A The Black Tools TB12A é o exemplo de 12 V do catálogo. A ficha informa bateria de íon de lítio de 1,3 Ah, recarga em cerca de 2 horas e capacidade de furar até 25 mm em madeira, 10 mm em metal e 8 mm em concreto. É uma ferramenta compacta, pensada para montar guarda-roupa, trocar dobradiça e instalar suportes leves.",
+            "Os modelos de 21 V do catálogo trazem baterias de 2 Ah, ou seja, mais carga guardada. A WAP K21 ID02, por exemplo, informa perfuração de até 13 mm em concreto e função martelete, que ajuda a furar alvenaria. Para quem pretende pendurar prateleiras, cortinas e televisores em parede de tijolo, essa diferença pesa mais do que a de tamanho."
+          ]
+        },
+        {
+          "titulo": "Uma ou duas baterias?",
+          "paragrafos": [
+            "A The Black Tools TB-21PX vem com duas baterias de 21 V, segundo o anúncio. Na prática, uma fica carregando enquanto a outra está em uso, o que evita parar no meio de uma montagem grande. Para uso esporádico, uma bateria costuma bastar; para mudança de casa, reforma ou trabalho frequente, a segunda bateria economiza tempo.",
+            "Repare também no tempo de recarga informado: cerca de 2 horas nos modelos da The Black Tools e cerca de 5 horas na WAP K21, de acordo com as fichas. Com uma bateria só, esse tempo é o intervalo em que a ferramenta fica parada."
+          ]
+        },
+        {
+          "titulo": "O que vem na caixa e o que comprar junto",
+          "paragrafos": [
+            "As fichas da TB-21PX e da WAP K21 citam maleta de transporte. Nenhum dos três anúncios promete um jogo completo de brocas e bits, então vale conferir a lista de itens antes de pagar. Para completar a caixa de ferramentas, o catálogo tem um jogo de soquetes Stels com 57 peças e catraca e um jogo de 12 chaves de fenda e Philips com ponta imantada, úteis para os parafusos que a parafusadeira não alcança."
+          ]
+        },
+        {
+          "titulo": "Resumo para decidir",
+          "lista": [
+            "Só monta móveis e aperta parafusos: 12 V atende e é mais leve.",
+            "Fura parede de tijolo ou concreto: prefira 21 V com impacto ou martelete.",
+            "Usa por horas seguidas: duas baterias evitam pausas.",
+            "Confira a voltagem do carregador e os acessórios incluídos no anúncio."
+          ]
+        }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "Parafusadeira de 12 V fura parede?",
+          "resposta": "A TB12A informa até 8 mm em concreto, o que resolve buchas pequenas. Para furos maiores ou paredes duras, os modelos de 21 V com impacto ou martelete são mais indicados, segundo as fichas."
+        },
+        {
+          "pergunta": "Mais volts significa bateria que dura mais?",
+          "resposta": "Não necessariamente. A duração depende da carga da bateria, indicada em Ah. Os modelos de 21 V do catálogo têm baterias de 2 Ah, contra 1,3 Ah do modelo de 12 V."
+        }
+      ]
+    },
+    {
+      "slug": "escova-secadora-ou-secador-qual-escolher",
+      "status": "aprovado",
+      "titulo": "Escova secadora ou secador de cabelo: qual escolher",
+      "resumo": "Quando a escova secadora resolve, quando o secador tradicional é melhor e o que comparar em potência, temperaturas, voltagem e acessórios.",
+      "categoria": "Beleza e Cuidados",
+      "publicadoEm": "2026-11-04",
+      "atualizadoEm": "2026-11-04",
+      "produtos": [
+        "escova-secadora-britania-soft-bec07r-1300-w-bivolt-britania",
+        "escova-secadora-britania-bec02pr-4-em-1-1300-w-britania",
+        "escova-rotativa-mondial-erb-01-3-em-1-bivolt-mondial",
+        "secador-de-cabelo-mondial-scn-01-2000-w-mondial",
+        "secador-taiff-black-ion-profissional-2000-w-taiff",
+        "secador-philco-psc3500-4-em-1-dobravel-philco"
+      ],
+      "fonteFatos": "Fichas técnicas dos anúncios oficiais no Mercado Livre de cada modelo citado, conferidas em 04/11/2026",
+      "fontes": [
+        {
+          "titulo": "Mercado Livre — Escova Secadora Britânia Soft BEC07R",
+          "url": "https://www.mercadolivre.com.br/p/MLB19694427"
+        },
+        {
+          "titulo": "Mercado Livre — Escova Rotativa Mondial ERB-01",
+          "url": "https://www.mercadolivre.com.br/p/MLB22871761"
+        },
+        {
+          "titulo": "Mercado Livre — Secador Mondial SCN-01",
+          "url": "https://www.mercadolivre.com.br/p/MLB18638651"
+        },
+        {
+          "titulo": "Mercado Livre — Secador Taiff Black Ion",
+          "url": "https://www.mercadolivre.com.br/p/MLB18580665"
+        },
+        {
+          "titulo": "Mercado Livre — Secador Philco PSC3500",
+          "url": "https://www.mercadolivre.com.br/p/MLB49652036"
+        }
+      ],
+      "introducao": "A escova secadora virou uma das compras mais comuns para quem quer escovar o cabelo em casa sem precisar de duas mãos ocupadas com secador e escova. Mas ela não substitui o secador em todas as situações. A diferença está em como cada aparelho trabalha: a escova seca e modela ao mesmo tempo, perto do fio, enquanto o secador tira a umidade de longe e deixa a finalização para a escova comum ou para a prancha. Este guia usa as fichas técnicas dos modelos do catálogo para mostrar o que comparar antes de decidir.",
+      "secoes": [
+        {
+          "titulo": "Quando a escova secadora faz mais sentido",
+          "paragrafos": [
+            "Para quem quer liso ou pontas modeladas com pouco esforço, a escova secadora resolve em um passo. A Britânia Soft BEC07R tem 1.300 W, controle de temperatura e é bivolt, segundo o anúncio. A Britânia BEC02PR, também de 1.300 W, destaca o cabo giratório de 360°, que não enrola no braço ao alcançar a parte de trás da cabeça.",
+            "A escova rotativa Mondial ERB-01 gira sozinha e se apresenta como 3 em 1: seca, alisa e modela. A ficha informa 1.200 W, cerâmica com turmalina, íons e temperatura máxima de 230 °C. Por trabalhar tão perto do fio, vale começar nas temperaturas mais baixas, principalmente em cabelos finos ou com química."
+          ]
+        },
+        {
+          "titulo": "Quando o secador tradicional é melhor",
+          "paragrafos": [
+            "Cabelos muito longos ou volumosos secam mais rápido com secador, porque ele tem mais potência e espalha o ar por uma área maior. O Mondial SCN-01 e o Taiff Black Ion informam 2.000 W, duas velocidades, íons e bico concentrador, de acordo com os anúncios. Quem tem cachos e quer manter a curvatura costuma preferir o secador com difusor.",
+            "O Philco PSC3500 é dobrável e tem 1.450 W, segundo a ficha, e já vem com bico concentrador, difusor e pente. Por ocupar menos espaço na mala, é uma opção para quem viaja."
+          ]
+        },
+        {
+          "titulo": "O que comparar na ficha antes de comprar",
+          "lista": [
+            "Voltagem: as escovas Britânia Soft e Mondial ERB-01 são bivolt; nos secadores, confira a versão.",
+            "Potência: mais watts secam mais rápido, mas esquentam mais.",
+            "Temperaturas e velocidades: quanto mais níveis, mais controle para cabelos sensíveis.",
+            "Acessórios: bico concentrador e difusor fazem diferença em cachos.",
+            "Comprimento do cabo: entre 1,7 m e 1,8 m nos secadores do catálogo."
+          ]
+        }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "Escova secadora estraga o cabelo?",
+          "resposta": "Qualquer fonte de calor pode ressecar o fio com o uso frequente. Usar a temperatura mais baixa que funcione para o seu cabelo e um protetor térmico reduz esse risco."
+        },
+        {
+          "pergunta": "Escova secadora serve para cabelo cacheado?",
+          "resposta": "Ela tende a alisar. Para manter os cachos, o mais indicado é um secador com difusor, como o Philco PSC3500, que traz difusor segundo o anúncio."
+        }
+      ]
     }
   ]
 }
