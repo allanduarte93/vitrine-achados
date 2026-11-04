@@ -93,3 +93,8 @@ Medição antes das ações de 04/11 (para comparar depois):
   a regra deles sobre links. Avaliados e descartados: Technoeasy (público de pequenas empresas),
   RHB Informática (proíbe conteúdo promocional), Paisagismo BR (pauta de negócios), Soluções
   Industriais (B2B), Convidar.net (cobra para retirar anúncios). Sem respostas até agora.
+- 04/11 (3ª rodada): nenhum envio. Avaliados e descartados: Olhar em Foco (jornalismo social da Unesp,
+  fora do tema), Revista O Empreiteiro (engenharia), Fazedores (comunidade maker sem contato público),
+  Cozinha & Estilo (usa os próprios links de afiliado, concorrente direto); Espaço do Povo, Revista
+  Sacada, Blog da Marcenaria e Kalinka Carvalho bloqueiam leitura automática (política não confirmada).
+  Respostas de Vida em Casa e Revista 2K: nenhuma.
