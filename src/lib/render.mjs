@@ -276,7 +276,16 @@ export const paginaInicial = ({ config, destaques, categorias, todos, guias = []
   const vitrine = [...destaques, ...todos].sort((x, y) => Number(temFoto(y.p)) - Number(temFoto(x.p)) || Number(!!y.p.prioritario) - Number(!!x.p.prioritario) || x.p.nome.localeCompare(y.p.nome, "pt-BR"));
   const comOferta = categorias.filter((c) => c.total > 0);
 
-  const [comFotoItens, semFotoItens] = separarPorFoto(vitrine);
+  const [todasComFoto, todasSemFoto] = separarPorFoto(vitrine);
+  // Home enxuta: até 12 produtos com foto, alternando categorias (prioritários primeiro), e até 6 sem foto.
+  // O catálogo completo fica na busca e nas categorias.
+  const porCategoria = new Map();
+  todasComFoto.forEach((x) => { const k = x.p.categoria || ""; if (!porCategoria.has(k)) porCategoria.set(k, []); porCategoria.get(k).push(x); });
+  const comFotoItens = [];
+  for (let rodada = 0; comFotoItens.length < 12 && rodada < todasComFoto.length; rodada++) {
+    for (const lista of porCategoria.values()) { if (lista[rodada] && comFotoItens.length < 12) comFotoItens.push(lista[rodada]); }
+  }
+  const semFotoItens = todasSemFoto.slice(0, 6);
   const temAmazon = vitrine.some(({ ativas }) => ativas.some((o) => o.loja === "amazon"));
   const secaoVitrine = temProdutos
     ? `${comFotoItens.length ? `<section class="secao secao-vitrine" aria-labelledby="t-destaques"><div class="container">

@@ -386,7 +386,8 @@ test("estrutura comercial com 30 produtos em 10 categorias", () => {
       assert.match(html, /content="index, follow"/, `${slug}: indexável`);
     }
     const home = ler("index.html");
-    assert.equal((home.match(/<article class="(card[ "]|rec")/g) || []).length, r.produtosPublicados, "home mostra todos os produtos publicados (o 06, sem link válido, fica fora)");
+    const naHome = (home.match(/<article class="(card[ "]|rec")/g) || []).length;
+    assert.ok(naHome > 0 && naHome <= 18 && naHome <= r.produtosPublicados, `home enxuta: até 12 com foto + 6 recomendações (${naHome})`);
     assert.doesNotMatch(home, /Em curadoria/, "com todas as categorias abastecidas, nada em curadoria");
     const p = ler("produto/produto-exemplo-20-marca-ficticia/index.html");
     const ofertas = p.split('id="ofertas"')[1].split("</section>")[0];
@@ -702,7 +703,8 @@ test("versão premium: publicidade visível, botão direto com loja identificada
     const ler = (f) => readFileSync(join(saida, f), "utf8");
     const home = ler("index.html");
     assert.match(home, /class="faixa-pub"[\s\S]*Publicidade[\s\S]*links de afiliado[\s\S]*aviso-de-afiliados/, "faixa de publicidade no topo");
-    assert.equal((home.match(/<article class="(card[ "]|rec")/g) || []).length, r.produtosPublicados, "home lista todos os publicados (fotos + recomendações)");
+    const naHome2 = (home.match(/<article class="(card[ "]|rec")/g) || []).length;
+    assert.ok(naHome2 > 0 && naHome2 <= 18 && naHome2 <= r.produtosPublicados, `home enxuta, sem excesso de produtos (${naHome2}); o catálogo completo fica na busca`);
     const cardsHome = [...home.matchAll(/<article class="card[^"]*"/g)].map((m) => m[0]);
     assert.ok(cardsHome.every((c) => c.includes("com-foto")), "vitrine principal só com produtos que têm foto real");
     assert.doesNotMatch(home.split('id="t-rec"')[0], /class="sem-foto/, "nenhum quadrado sem foto nos destaques");
