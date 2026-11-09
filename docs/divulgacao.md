@@ -121,3 +121,16 @@ Medição antes das ações de 04/11 (para comparar depois):
 - Sitemaps (sitemap.xml e feed.xml): continuam com "Não foi possível buscar".
 - Amazon medida com filtro só no ID vitrineachados-20 (o total "Tudo" inclui outro projeto e não foi usado).
 - Nenhum clique gerado pela medição.
+
+### 09/11/2026 — Etapa 1 (autorizada pelo titular)
+
+- Sitemap: teste ao vivo na Inspeção de URL do Search Console → "O URL está disponível para o Google"
+  (Googlebot busca o sitemap.xml). Os arquivos estão válidos (98 URLs, todas 200). Nenhum sitemap foi
+  removido nem reenviado; o status "Não foi possível buscar" fica em observação.
+- Publicado (commit bd447cc, workflow Publicar OK, conferido 3 vezes no site público):
+  - Guia Fire TV: título "Fire TV Stick HD vale a pena? Para que serve e o que saber", nova descrição,
+    pergunta "Para que serve", seção "Antes de comprar na Black Friday" e ligação com o guia Echo Dot x Fire TV.
+  - Guias de secador, whey/creatina e parafusadeira: título de busca com Black Friday e seção do que
+    conferir no anúncio (sem preço, desconto ou avaliação).
+  - Caixa "Onde comprar" logo após a introdução de todos os guias, com as mesmas URLs de afiliado e o aviso.
+- Links de afiliado: catálogo inalterado; 827 links no build conferidos (Amazon só vitrineachados-20, nenhum ID do contratipo).
