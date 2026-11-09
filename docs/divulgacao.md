@@ -102,3 +102,22 @@ Medição antes das ações de 04/11 (para comparar depois):
   Directories): https://zearches.com/directory.php?slug=resources-directories . **SoMuch.com**:
   formulário preenchido (categoria Shopping), mas exige reCAPTCHA e verificação por e-mail;
   não enviado. A aba ficou aberta no Chrome com os campos preenchidos.
+
+### 09/11/2026 — medição semanal (comparação com a base de 04/11)
+
+| Fonte | Base 04/11 | 09/11 |
+|---|---|---|
+| Search Console — impressões (28 dias) | 43 | 62 (até 07/11) |
+| Search Console — cliques | 0 | 0 |
+| Search Console — posição média | 8,5 | 8,1 |
+| Páginas indexadas | 5 | 6 (nenhuma com erro) |
+| Mercado Livre afiliados — cliques | 0 (28/10–03/11) | 6 (02–08/11) |
+| Mercado Livre — pedidos / ganho | 0 / R$ 0 | 0 / R$ 0 |
+| Amazon (só vitrineachados-20) — cliques | 53 (05/10–03/11) | 53 (10/10–08/11) |
+| Amazon (só vitrineachados-20) — pedidos / ganho | 0 / R$ 0 | 0 (N.A.) / R$ 0,00 |
+
+- Impressões por página: guia do Fire TV 43, home 18, guia de Black Friday 1.
+- Consultas: "vitrine dos achados" 6, "fire tv stick hd para que serve" 1, "pode fere stck" 1.
+- Sitemaps (sitemap.xml e feed.xml): continuam com "Não foi possível buscar".
+- Amazon medida com filtro só no ID vitrineachados-20 (o total "Tudo" inclui outro projeto e não foi usado).
+- Nenhum clique gerado pela medição.
