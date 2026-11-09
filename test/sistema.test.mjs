@@ -746,3 +746,18 @@ test("busca: preço no índice sempre acompanha a data da consulta", () => {
     rmSync(saida, { recursive: true, force: true });
   }
 });
+
+test("guia: atalho de compra no topo usa as mesmas URLs de afiliado e traz o aviso", async () => {
+  const { paginaGuia, AVISO_CURTO } = await import("../src/lib/render.mjs");
+  const config = { siteUrl: "https://ex.com", nomeSite: "X", programasConfirmados: { amazon: true } };
+  const url = "https://www.amazon.com.br/dp/B000000001?tag=vitrineachados-20";
+  const p = { id: "amazon-b000000001", nome: "Produto A", categoria: "Eletrônicos" };
+  const guia = { slug: "g", titulo: "Guia", tituloSeo: "Título curto", resumo: "r", introducao: "i", atualizadoEm: "2026-11-09", secoes: [] };
+  const html = paginaGuia({ config, guia, itens: [{ p, ativas: [{ loja: "amazon", url, estado: {} }] }] });
+  assert.equal(html.titulo, "Título curto");
+  const atalho = html.conteudo.split('class="guia-atalho"')[1].split("</aside>")[0];
+  assert.ok(atalho.includes(`href="${url.replace("&", "&amp;")}"`));
+  assert.ok(atalho.includes('rel="sponsored nofollow noopener"'));
+  assert.ok(atalho.includes(AVISO_CURTO));
+  assert.ok(html.conteudo.indexOf("guia-atalho") < html.conteudo.indexOf("guia-texto"));
+});

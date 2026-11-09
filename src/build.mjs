@@ -116,7 +116,7 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
       .slice(0, 4); // sempre uma linha cheia de fotos (4 no desktop, 2x2 no celular)
     render(`/produto/${x.p.id}/`, paginaProduto({ config, p: x.p, ativas: x.ativas, inativas: x.inativas, relacionados, outros, guias: guiasDoProduto(x.p.id) }), x.indexavel);
   });
-  guias.forEach((g) => render(`/guias/${g.slug}/`, paginaGuia({ config, guia: g, itens: g.produtos.map((id) => porId.get(id)), outrosGuias: guias.filter((o) => o.slug !== g.slug).slice(0, 4) })));
+  guias.forEach((g) => render(`/guias/${g.slug}/`, paginaGuia({ config, guia: g, itens: g.produtos.map((id) => porId.get(id)), outrosGuias: [...(g.relacionados || []).map((sl) => guias.find((o) => o.slug === sl)).filter(Boolean), ...guias.filter((o) => o.slug !== g.slug && !(g.relacionados || []).includes(o.slug))].slice(0, 4) })));
   if (guias.length) render("/guias/", paginaGuias({ config, guias }));
   render("/como-funciona/", paginaComoFunciona({ config }));
   render("/busca/", paginaBusca({ config, categorias: navCats.filter((c) => c.total > 0), ...(lojasPublicadas.length ? { lojas: lojasPublicadas } : {}) }), false);

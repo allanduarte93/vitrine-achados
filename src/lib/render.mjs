@@ -673,8 +673,21 @@ export const paginaGuia = ({ config, guia, itens, outrosGuias = [] }) => {
         .map((l) => `<tr>${l.map((c, i) => (i === 0 ? `<th scope="row">${esc(c)}</th>` : `<td>${esc(c)}</td>`)).join("")}</tr>`).join("")}</tbody></table></div></section>`
     : "";
   const url = `${config.siteUrl}/guias/${guia.slug}/`;
+  // Atalho de compra logo após a introdução: o leitor que chega pela busca vê a oferta sem rolar a página.
+  // Usa as mesmas URLs de afiliado das ofertas ativas (nada é reescrito) e traz o aviso de afiliado junto.
+  const ordem = Array.isArray(guia.atalho) ? [...guia.atalho.map((id) => itens.find((i) => i.p.id === id)).filter(Boolean), ...itens] : itens;
+  const comOferta = [...new Set(ordem)].filter(({ ativas }) => ativas.length).slice(0, 3);
+  const atalho = comOferta.length
+    ? `<aside class="guia-atalho" aria-label="Onde comprar">
+      <p class="guia-atalho-tit">Onde comprar os produtos deste guia</p>
+      <ul>${comOferta.map(({ p, ativas }) => `<li><a class="guia-atalho-nome" href="/produto/${esc(p.id)}/">${esc(p.nomeCurto || p.nome)}</a>${ativas
+        .map((o) => `<a class="btn btn-${o.loja} btn-loja" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener" data-oferta data-atalho data-produto="${esc(p.id)}" data-loja="${o.loja}">Ver preço atual ${esc(ARTIGO[o.loja] ? `no site ${ARTIGO[o.loja]}` : "na loja")}<span class="sr"> (abre em nova aba)</span> ${icone("externo", { tamanho: 16 })}</a>`)
+        .join("")}</li>`).join("")}</ul>
+      <p class="aviso-botoes">${esc(AVISO_CURTO)}${comOferta.some(({ ativas }) => ativas.some((o) => o.loja === "amazon")) ? ` ${esc(declaracaoAmazon(config))}` : ""}</p>
+    </aside>`
+    : "";
   return {
-    titulo: `${guia.titulo} | ${config.nomeSite}`,
+    titulo: guia.tituloSeo || `${guia.titulo} | ${config.nomeSite}`,
     descricao: guia.resumo,
     conteudo: `
 <div class="container">
@@ -686,6 +699,7 @@ export const paginaGuia = ({ config, guia, itens, outrosGuias = [] }) => {
       <p class="guia-intro">${esc(guia.introducao)}</p>
       <p class="guia-meta">Atualizado em ${esc(guia.atualizadoEm)} · ${esc(guia.fonteFatos || "Informações conferidas nos anúncios oficiais")}</p>
     </header>
+    ${atalho}
     <div class="texto guia-texto">
       ${secoes}
       ${tabela}

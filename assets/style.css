@@ -581,3 +581,13 @@ a.cat:hover { transform: none; box-shadow: var(--sombra); border-color: #d6dae6;
   /* selos do topo: quebram em linhas em vez de cortar na borda */
   .hero-confianca { flex-wrap: wrap; overflow: visible; white-space: normal; gap: 6px 14px; }
 }
+
+/* Atalho de compra no topo dos guias */
+.guia-atalho { max-width: 780px; box-sizing: border-box; margin: 20px auto 8px; padding: 16px; border: 1px solid var(--linha); border-radius: 12px; background: var(--papel); }
+.guia-atalho-tit { margin: 0 0 10px; font-weight: 700; }
+.guia-atalho ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.guia-atalho li { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.guia-atalho-nome { flex: 1 1 220px; font-weight: 600; line-height: 1.35; }
+.guia-atalho .btn { flex: 0 0 auto; }
+.guia-atalho .aviso-botoes { margin: 12px 0 0; }
+@media (max-width: 520px) { .guia-atalho .btn { width: 100%; justify-content: center; } }

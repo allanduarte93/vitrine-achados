@@ -89,6 +89,9 @@
           "titulo": "Tecnoblog — Alexa+: veja quais dispositivos são compatíveis",
           "url": "https://tecnoblog.net/noticias/alexa-veja-quais-dispositivos-sao-compativeis-ou-nao/"
         }
+      ],
+      "relacionados": [
+        "fire-tv-stick-hd-o-que-saber"
       ]
     },
     {
@@ -188,11 +191,11 @@
     {
       "slug": "fire-tv-stick-hd-o-que-saber",
       "status": "aprovado",
-      "titulo": "Novo Fire TV Stick HD vale a pena? O que saber antes de comprar",
-      "resumo": "Funciona em TV sem smart? Precisa de mensalidade? Quais apps rodam, por que não instala apps de fora da loja e a diferença para o 4K.",
+      "titulo": "Fire TV Stick HD vale a pena? Para que serve e o que saber",
+      "resumo": "Para que serve o Fire TV Stick HD, se funciona em TV sem smart, se tem mensalidade e quando o 4K compensa. Confira antes da Black Friday.",
       "categoria": "Eletrônicos",
       "publicadoEm": "2026-10-21",
-      "atualizadoEm": "2026-11-04",
+      "atualizadoEm": "2026-11-09",
       "produtos": [
         "amazon-b0dvk166sv"
       ],
@@ -229,6 +232,18 @@
           "titulo": "Para quem faz sentido",
           "paragrafos": [
             "Faz sentido para quem tem uma TV sem aplicativos, uma smart TV antiga e lenta, ou quer levar os serviços de streaming para uma TV secundária, como a do quarto. Para quem precisa de 4K ou de aplicativos fora da loja da Amazon, vale olhar outras opções antes de comprar."
+          ]
+        },
+        {
+          "titulo": "Antes de comprar na Black Friday",
+          "paragrafos": [
+            "A Black Friday de 2026 cai em 27 de novembro, e a linha Fire TV aparece em vários modelos ao mesmo tempo. Confira no título do anúncio se é o Fire TV Stick HD (modelo mais recente), e não o 4K, o 4K Max ou uma geração anterior: eles diferem na resolução e no sistema usado.",
+            "Também vale checar quem vende e entrega o produto e se a sua TV tem uma entrada HDMI livre e uma porta USB para alimentar o aparelho. Se faltar a porta USB, o anúncio é o lugar para confirmar alternativas de energia antes de fechar a compra."
+          ],
+          "lista": [
+            "Nome exato do modelo: HD, 4K ou 4K Max",
+            "Entrada HDMI livre e porta USB na TV",
+            "Vendedor e prazo de entrega na página da loja"
           ]
         }
       ],
@@ -267,6 +282,10 @@
       },
       "perguntas": [
         {
+          "pergunta": "Para que serve o Fire TV Stick HD?",
+          "resposta": "Ele transforma uma TV com entrada HDMI em uma central de streaming: reúne aplicativos como Netflix, Prime Video, YouTube e Globoplay em um só menu e vem com controle remoto por voz com Alexa. É pensado para TVs sem smart ou smart TVs antigas e lentas."
+        },
+        {
           "pergunta": "O novo Fire TV Stick HD vale a pena?",
           "resposta": "Vale para quem tem TV com HDMI sem aplicativos, ou uma smart TV antiga e lenta, e usa apps da loja da Amazon. Não é a melhor escolha para quem quer imagem 4K ou instalar aplicativos de fora da loja, que este modelo bloqueia."
         },
@@ -284,6 +303,10 @@
           "titulo": "Tecnoblog — Amazon lança novo Fire TV Stick HD com Vega OS no Brasil",
           "url": "https://tecnoblog.net/noticias/amazon-lanca-novo-fire-tv-stick-hd-com-vega-os-no-brasil/"
         }
+      ],
+      "tituloSeo": "Fire TV Stick HD vale a pena? Para que serve e o que saber",
+      "relacionados": [
+        "echo-dot-ou-fire-tv-stick"
       ]
     },
     {
@@ -668,10 +691,10 @@
       "slug": "parafusadeira-12v-ou-21v-qual-escolher",
       "status": "aprovado",
       "titulo": "Parafusadeira 12 V ou 21 V: qual escolher para usar em casa",
-      "resumo": "Diferença entre parafusadeira de 12 V e de 21 V, quando vale ter duas baterias e função impacto, e o que vem na caixa de três modelos.",
+      "resumo": "Parafusadeira de 12 V ou 21 V na Black Friday: quando vale ter duas baterias e impacto, e o que conferir no anúncio antes de comprar.",
       "categoria": "Ferramentas",
       "publicadoEm": "2026-11-04",
-      "atualizadoEm": "2026-11-04",
+      "atualizadoEm": "2026-11-09",
       "produtos": [
         "parafusadeira-e-furadeira-the-black-tools-tb12a-12-v-the-black-tools",
         "parafusadeira-de-impacto-the-black-tools-tb-21px-21-v-com-2-baterias-the-black-t",
@@ -724,6 +747,19 @@
             "Usa por horas seguidas: duas baterias evitam pausas.",
             "Confira a voltagem do carregador e os acessórios incluídos no anúncio."
           ]
+        },
+        {
+          "titulo": "Black Friday: o que olhar no anúncio",
+          "paragrafos": [
+            "Ferramentas a bateria estão entre os itens mais buscados na Black Friday, que em 2026 é em 27 de novembro. Compare kits iguais: uma versão com duas baterias, carregador e maleta não é o mesmo produto que a versão com uma bateria, nem que a versão vendida sem bateria.",
+            "Leia no anúncio a tensão (12 V ou 21 V), a capacidade da bateria em Ah, se o carregador vem na caixa e qual a voltagem dele. Se a ideia é furar parede de alvenaria, confira se o modelo tem função impacto, como explicado acima."
+          ],
+          "lista": [
+            "Tensão e capacidade da bateria (V e Ah)",
+            "Quantidade de baterias e carregador incluso",
+            "Função impacto para alvenaria",
+            "Garantia e assistência da marca"
+          ]
         }
       ],
       "perguntas": [
@@ -735,16 +771,17 @@
           "pergunta": "Mais volts significa bateria que dura mais?",
           "resposta": "Não necessariamente. A duração depende da carga da bateria, indicada em Ah. Os modelos de 21 V do catálogo têm baterias de 2 Ah, contra 1,3 Ah do modelo de 12 V."
         }
-      ]
+      ],
+      "tituloSeo": "Parafusadeira na Black Friday: 12 V ou 21 V, qual escolher"
     },
     {
       "slug": "escova-secadora-ou-secador-qual-escolher",
       "status": "aprovado",
       "titulo": "Escova secadora ou secador de cabelo: qual escolher",
-      "resumo": "Quando a escova secadora resolve, quando o secador tradicional é melhor e o que comparar em potência, temperaturas, voltagem e acessórios.",
+      "resumo": "Quando a escova secadora resolve, quando o secador é melhor e o que conferir na Black Friday: potência, temperaturas, voltagem e acessórios.",
       "categoria": "Beleza e Cuidados",
       "publicadoEm": "2026-11-04",
-      "atualizadoEm": "2026-11-04",
+      "atualizadoEm": "2026-11-09",
       "produtos": [
         "escova-secadora-britania-soft-bec07r-1300-w-bivolt-britania",
         "escova-secadora-britania-bec02pr-4-em-1-1300-w-britania",
@@ -801,6 +838,19 @@
             "Acessórios: bico concentrador e difusor fazem diferença em cachos.",
             "Comprimento do cabo: entre 1,7 m e 1,8 m nos secadores do catálogo."
           ]
+        },
+        {
+          "titulo": "Black Friday: o que conferir antes de fechar a compra",
+          "paragrafos": [
+            "A Black Friday de 2026 é em 27 de novembro. Nessa época o mesmo aparelho aparece em vários anúncios e versões, então compare o código do modelo (como SCN-01, BEC07R ou PSC3500) com a ficha técnica: versões com nome parecido podem mudar a potência ou os acessórios.",
+            "A voltagem é o motivo mais comum de troca. Veja se o anúncio diz bivolt ou 127 V e 220 V e se combina com a tomada de quem vai usar, principalmente se for presente. Anotar o valor alguns dias antes ajuda a saber se a oferta do dia muda alguma coisa."
+          ],
+          "lista": [
+            "Código do modelo e potência em watts",
+            "Voltagem: bivolt, 127 V ou 220 V",
+            "Acessórios na caixa: bico, difusor ou pente",
+            "Loja oficial ou vendedor com boa reputação e política de devolução"
+          ]
         }
       ],
       "perguntas": [
@@ -812,16 +862,22 @@
           "pergunta": "Escova secadora serve para cabelo cacheado?",
           "resposta": "Ela tende a alisar. Para manter os cachos, o mais indicado é um secador com difusor, como o Philco PSC3500, que traz difusor segundo o anúncio."
         }
+      ],
+      "tituloSeo": "Secador ou escova secadora na Black Friday: qual escolher",
+      "atalho": [
+        "secador-taiff-black-ion-profissional-2000-w-taiff",
+        "escova-secadora-britania-soft-bec07r-1300-w-bivolt-britania",
+        "secador-de-cabelo-mondial-scn-01-2000-w-mondial"
       ]
     },
     {
       "slug": "whey-e-creatina-como-comparar-rotulos",
       "status": "aprovado",
       "titulo": "Whey e creatina: como comparar embalagens, porções e rótulos",
-      "resumo": "Como comparar whey e creatina pelo rótulo: proteína por porção, número de doses, tamanho da embalagem, glúten, lactose e idade mínima.",
+      "resumo": "Como comparar whey e creatina na Black Friday: proteína por porção, número de doses, tamanho do pote, glúten, lactose e idade mínima.",
       "categoria": "Saúde e Bem-estar",
       "publicadoEm": "2026-11-04",
-      "atualizadoEm": "2026-11-04",
+      "atualizadoEm": "2026-11-09",
       "produtos": [
         "whey-black-skull-100-hd-baunilha-900-g-black-skull",
         "whey-black-skull-100-hd-chocolate-900-g-black-skull",
@@ -885,6 +941,19 @@
             "Glúten, lactose e outros ingredientes.",
             "Idade mínima recomendada."
           ]
+        },
+        {
+          "titulo": "Black Friday: faça a conta por dose",
+          "paragrafos": [
+            "Na Black Friday, que em 2026 cai em 27 de novembro, potes de tamanhos diferentes aparecem lado a lado. O pote maior nem sempre rende mais: nos anúncios deste guia, o whey de 1 kg da Max Titanium informa 25 porções de 40 g, enquanto o de 900 g da Black Skull informa 30 porções de 30 g.",
+            "Por isso, divida o valor pago pelo número de porções do rótulo e compare também os gramas de proteína por porção. Na creatina, a dose muda a duração: o pote de 1 kg da Dark Lab informa porções de 3 g, e o de 250 g da Growth, porções de 5 g."
+          ],
+          "lista": [
+            "Valor dividido pelo número de porções",
+            "Gramas de proteína por porção",
+            "Data de validade, principalmente em kits",
+            "Loja oficial da marca ou vendedor confiável"
+          ]
         }
       ],
       "perguntas": [
@@ -896,6 +965,12 @@
           "pergunta": "Creatina precisa ter sabor?",
           "resposta": "As creatinas do catálogo são sem sabor, o que facilita misturar em água, suco ou shake, seguindo a orientação da embalagem."
         }
+      ],
+      "tituloSeo": "Whey e creatina na Black Friday: como comparar antes de comprar",
+      "atalho": [
+        "basic-whey-growth-supplements-1-kg-baunilha-growth-supplements",
+        "creatina-growth-supplements-monohidratada-em-po-sem-sabor-x-250g-growth-suppleme",
+        "whey-black-skull-100-hd-chocolate-900-g-black-skull"
       ]
     },
     {
