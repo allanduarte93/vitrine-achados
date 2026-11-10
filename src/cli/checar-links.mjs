@@ -37,6 +37,8 @@ const RUIM = /\/(s|search|busca|lista)(\/|\?|$)|[?&](k|keyword|q)=|\/(login|sign
 export const classificar = (loja, urlFinal, status, { corpo = "", identificador = "" } = {}) => {
   // Lojas costumam barrar robôs de datacenter: isso não prova que o link está quebrado.
   if ([403, 429, 503].includes(status)) return { ok: null, motivo: `inconclusivo: a loja bloqueou a verificação automática (HTTP ${status}); confira abrindo o link` };
+  // Erro temporário do servidor/gateway da loja (ex.: 504): não prova link quebrado (isso seria 404/410).
+  if ([500, 502, 504].includes(status)) return { ok: null, motivo: `inconclusivo: erro temporário do servidor da loja (HTTP ${status}); confira abrindo o link` };
   if (!status || status >= 400) return { ok: false, motivo: `HTTP ${status || "sem resposta"}` };
   let u;
   try { u = new URL(urlFinal); } catch { return { ok: false, motivo: "URL final inválida" }; }

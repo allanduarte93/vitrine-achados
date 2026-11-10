@@ -341,6 +341,9 @@ test("verificador de links: aceita página de produto da loja certa e recusa bus
   assert.equal(classificar("amazon", "https://www.amazon.com.br/ap/signin?x=1", 200).ok, false);
   assert.equal(classificar("amazon", "https://www.amazon.com.br/dp/B0ABCDEFGH", 404).ok, false);
   assert.equal(classificar("amazon", "https://www.amazon.com.br/dp/B0ABCDEFGH", 503).ok, null, "bloqueio anti-robô é inconclusivo, não falha");
+  assert.equal(classificar("mercadolivre", "https://www.mercadolivre.com.br/p/MLB26687615", 504).ok, null, "504 do gateway da loja é inconclusivo");
+  assert.equal(classificar("mercadolivre", "https://www.mercadolivre.com.br/p/MLB26687615", 404).ok, false, "404 continua falha");
+  assert.equal(classificar("mercadolivre", "https://www.mercadolivre.com.br/p/MLB26687615", 410).ok, false, "410 continua falha");
   assert.equal(classificar("amazon", "https://www.amazon.com.br/errors/validateCaptcha?amzn=x", 200).ok, null, "captcha da Amazon é inconclusivo");
   assert.equal(classificar("amazon", "https://www.amazon.com.br/dp/B0ABCDEFGH?tag=x-20", 200, { corpo: "<form action=\"/errors/validateCaptcha\">" }).ok, null, "captcha com 200 na URL do produto também");
   assert.equal(classificar("amazon", "https://www.amazon.com.br/s?k=fone", 200, { corpo: "resultados" }).ok, false, "link que cai na busca continua falha");
