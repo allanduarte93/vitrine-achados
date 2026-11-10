@@ -2,7 +2,7 @@
 // divulgação de publicidade e páginas principais. Não clica em links de afiliado (nenhum clique artificial).
 //   SITE_URL=https://usuario.github.io/repo node scripts/conferir-publico.mjs <pasta-saida>
 import { chromium } from "playwright";
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync, readFileSync } from "node:fs";
 
 const BASE = (process.env.SITE_URL || "").replace(/\/+$/, "");
 const SAIDA = process.argv[2] || "conferencia";
@@ -36,7 +36,8 @@ for (const [nome, vp] of [["desktop", { width: 1366, height: 900 }], ["celular",
   await pg.screenshot({ path: `${SAIDA}/home-${nome}-primeira-tela.png` });
   await pg.screenshot({ path: `${SAIDA}/home-${nome}-inteira.png`, fullPage: true });
   rel.paginas.push({ pagina: "/", viewport: nome, ...home, fotos: home.fotos.length, fotosOk: home.fotos.filter((f) => f.ok).length });
-  if (home.cards !== produtos.length) falhas.push(`${nome}: home com ${home.cards} produtos, índice com ${produtos.length}`);
+  // A home mostra uma seleção (desde 04/11); todos os produtos ficam na busca e nas categorias.
+  if (home.cards < 1 || home.cards > produtos.length) falhas.push(`${nome}: home com ${home.cards} produtos, índice com ${produtos.length}`);
   if (home.destaquesSemFoto) falhas.push(`${nome}: ${home.destaquesSemFoto} destaque(s) sem foto na vitrine principal`);
   if (!home.faixa) falhas.push(`${nome}: sem faixa de publicidade`);
   if (home.largura > vp.width) falhas.push(`${nome}: rolagem horizontal (${home.largura}px)`);
@@ -91,6 +92,38 @@ for (const [nome, vp] of [["desktop", { width: 1366, height: 900 }], ["celular",
   await pg.evaluate(() => { document.documentElement.style.scrollBehavior = "auto"; scrollTo(0, document.body.scrollHeight); });
   await pg.waitForTimeout(300);
   await pg.screenshot({ path: `${SAIDA}/rodape-${nome}.png` });
+  // Produtos marcados como indisponíveis no catálogo: fora de todas as páginas e do índice.
+  if (nome === "desktop") {
+    const cat = JSON.parse(readFileSync("data/catalogo.json", "utf8"));
+    const fora = cat.produtos.filter((p) => p.ofertas.every((o) => ["indisponivel", "sem-compra-direta"].includes(o.disponibilidade?.estado)));
+    for (const p of fora) {
+      if (produtos.some((x) => x.id === p.id)) falhas.push(`${p.id}: indisponível, mas está no índice da busca`);
+      const st = (await fetch(`${BASE}/produto/${p.id}/`)).status;
+      if (st !== 404) falhas.push(`${p.id}: indisponível, mas /produto/ responde HTTP ${st}`);
+    }
+    const paginasChave = ["/", "/categoria/casa-e-cozinha/", "/categoria/pets/", "/guias/bravecto-comprimido-o-que-diz-o-fabricante/", "/guias/cozinha-organizada-potes-temperos-balanca/"];
+    for (const u of paginasChave) {
+      const html = await (await fetch(`${BASE}${u}`)).text();
+      for (const p of fora) for (const o of p.ofertas) if (html.includes(o.url.replaceAll("&", "&amp;")) || html.includes(`/produto/${p.id}/`)) falhas.push(`${u}: ainda cita o indisponível ${p.id}`);
+    }
+    const guiaBravecto = await (await fetch(`${BASE}/guias/bravecto-comprimido-o-que-diz-o-fabricante/`)).text();
+    if (!guiaBravecto.includes("https://meli.la/153k3Ma")) falhas.push("guia do Bravecto: sem a oferta ativa do Mercado Livre");
+    rel.indisponiveis = fora.map((p) => p.id);
+  }
+  // Celular: o primeiro botão de compra aparece na primeira tela em fichas e guias.
+  if (nome === "celular") {
+    const guiasPub = [...(await (await fetch(`${BASE}/guias/`)).text()).matchAll(/href="[^"]*\/guias\/([a-z0-9-]+)\/"/g)].map((m) => m[1]);
+    const alvosBotao = [...produtos.map((p) => p.url.replace(idx.base, "")), ...[...new Set(guiasPub)].map((g) => `/guias/${g}/`)];
+    const ys = [];
+    for (const u of alvosBotao) {
+      await pg.goto(`${BASE}${u}`, { waitUntil: "domcontentloaded" });
+      const y = await pg.evaluate(() => { const a = document.querySelector("main a[data-oferta]:not([data-barra])"); return a ? Math.round(a.getBoundingClientRect().top + scrollY) : null; });
+      ys.push(y);
+      if (y !== null && y > vp.height - 48) falhas.push(`celular ${u}: botão de compra fora da 1ª tela (y=${y})`);
+    }
+    const v = ys.filter((y) => y !== null);
+    rel.botaoCelular = { paginas: alvosBotao.length, comBotao: v.length, yMin: Math.min(...v), yMax: Math.max(...v) };
+  }
   const comFoto = produtos.find((p) => p.imagem);
   if (comFoto) { await pg.goto(`${BASE}${comFoto.url.replace(idx.base, "")}`, { waitUntil: "networkidle" }); await pg.screenshot({ path: `${SAIDA}/produto-com-foto-${nome}.png`, fullPage: false }); }
   await pg.goto(`${BASE}/busca/?q=creatina`, { waitUntil: "networkidle" });
