@@ -181,3 +181,16 @@ Medição antes das ações de 04/11 (para comparar depois):
 - ML: "Campanhas com incentivos" e "Campanhas exclusivas" sem campanhas disponíveis para a conta hoje.
   Perfil/lista pública não tem vitrine de descoberta dentro do ML (0 seguidores; alcance via link).
 - Medição: o site já aceita token do Cloudflare Web Analytics (sem cookies) em config.metricas; falta conta.
+
+### 10/11/2026 — e-mails de parceria (autorizados, 5 individuais)
+
+| Site | Contato público | Nicho / guia oferecido | Enviado | Resposta | Acompanhamento |
+|---|---|---|---|---|---|
+| PSX Brasil (psxbrasil.com.br, posts de 10/11) | contato@ps3brasil.com (página Contato) | PS5 Slim Digital + GTA VI | 10/11/2026 | — | 14/11 (antes de GTA VI) |
+| GameBlast (gameblast.com.br, posts de nov/2026) | comunicacao@gameblast.com.br (Relações Públicas) | PS5 Slim Digital + GTA VI | 10/11/2026 | — | 14/11 |
+| Combo Infinito (comboinfinito.com.br, posts de 10/11) | contato@comboinfinito.com.br (página Contato) | PS5 Slim Digital + GTA VI | 10/11/2026 | — | 14/11 |
+| A Chata de Batom (achatadebatom.com, posts de jul/2026) | e-mail público da barra lateral | Secador x escova secadora | 10/11/2026 | — | 17/11 |
+| DIY Home (diyhome.com.br, post de 18/10/2026) | contato@diyhome.com.br (página Contato) | Parafusadeira 12 V ou 21 V | 10/11/2026 | — | 17/11 |
+
+Todos sem proposta paga, sem preço/desconto, com aviso de que os botões são links de afiliado.
+Acompanhamento: no máximo 1 lembrete por site.
