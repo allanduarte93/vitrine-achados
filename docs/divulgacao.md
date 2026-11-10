@@ -134,3 +134,11 @@ Medição antes das ações de 04/11 (para comparar depois):
     conferir no anúncio (sem preço, desconto ou avaliação).
   - Caixa "Onde comprar" logo após a introdução de todos os guias, com as mesmas URLs de afiliado e o aviso.
 - Links de afiliado: catálogo inalterado; 827 links no build conferidos (Amazon só vitrineachados-20, nenhum ID do contratipo).
+
+### 09/11/2026 — Etapa 2
+
+- Publicado (autorizado): guia "Galaxy A17 4G vale a pena em 2026?" (/guias/galaxy-a17-4g-vale-a-pena/),
+  37 testes OK, workflow Publicar OK, conferido 3 vezes no site (página, lista de guias, home e sitemap).
+  Link de afiliado único e inalterado: https://meli.la/13qLjsv.
+- Preparado sem publicar: guia "PS5 Slim Digital vale a pena em 2026?" no branch etapa-3-ps5
+  (fontes: playstation.com/pt-br/ps5, rockstargames.com/VI, ficha do anúncio MLB57081243).
