@@ -194,3 +194,12 @@ Medição antes das ações de 04/11 (para comparar depois):
 
 Todos sem proposta paga, sem preço/desconto, com aviso de que os botões são links de afiliado.
 Acompanhamento: no máximo 1 lembrete por site.
+
+### 10/11/2026 — página "Black Friday 2026: 5 produtos para ficar de olho" (autorizada)
+
+- Publicada em /guias/black-friday-2026-produtos-para-ficar-de-olho/ (39 testes OK, portão de qualidade OK
+  com 14 guias, publicação OK, conferida 3 vezes: 5 botões com as URLs do catálogo, fotos carregando, sitemap e
+  lista de guias). Cada produto tem foto, "para quem vale a pena", botão e link para o guia existente.
+  Sem preço, desconto, avaliação ou a palavra "oferta". Catálogo inalterado.
+- Indexação solicitada no Search Console (primeira vez para esta URL).
+- Guia "Black Friday 2026: ideias de presente por perfil" agora aponta para a página nova em "Outros guias".
