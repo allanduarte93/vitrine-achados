@@ -761,3 +761,16 @@ test("guia: atalho de compra no topo usa as mesmas URLs de afiliado e traz o avi
   assert.ok(atalho.includes(AVISO_CURTO));
   assert.ok(html.conteudo.indexOf("guia-atalho") < html.conteudo.indexOf("guia-texto"));
 });
+
+test("home: destaques do topo usam a URL de afiliado da oferta, sem preço, com aviso", async () => {
+  const { cardDestaqueHome } = await import("../src/lib/render.mjs");
+  const url = "https://meli.la/abc123";
+  const p = { id: "x", nome: "Produto X", categoria: "Beleza", pontosChave: ["Ponto 1", "Ponto 2", "Ponto 3"] };
+  const html = cardDestaqueHome(p, [{ loja: "mercadolivre", url, estado: {} }], { slug: "guia-x" });
+  assert.ok(html.includes(`href="${url}"`));
+  assert.ok(html.includes('rel="sponsored nofollow noopener"'));
+  assert.ok(html.includes("Ver preço no Mercado Livre"));
+  assert.ok(html.includes('href="/guias/guia-x/"'));
+  assert.ok(!html.includes("Ponto 3"));
+  assert.ok(!/R\$|desconto|OFF/i.test(html));
+});

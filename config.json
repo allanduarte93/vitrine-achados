@@ -38,5 +38,30 @@
   "metricas": {
     "cloudflareToken": null,
     "_nota": "Token público do Cloudflare Web Analytics (sem cookies). Também pode vir da variável de repositório CF_WEB_ANALYTICS_TOKEN no workflow Publicar."
+  },
+  "destaquesHome": {
+    "titulo": "Escolhidos para a Black Friday",
+    "texto": "Cinco achados com link conferido e foto do anúncio oficial. O preço atual, o frete e a entrega você confere na página da loja.",
+    "itens": [
+      {
+        "id": "console-playstation-5-slim-digital-com-astro-bot-e-gran-turismo-7-sony",
+        "guia": "ps5-slim-digital-vale-a-pena"
+      },
+      {
+        "id": "philips-oneblade-qp1425-10-aparador-e-barbeador-5-em-1-philips"
+      },
+      {
+        "id": "secador-taiff-black-ion-profissional-2000-w-taiff",
+        "guia": "escova-secadora-ou-secador-qual-escolher"
+      },
+      {
+        "id": "basic-whey-growth-supplements-1-kg-baunilha-growth-supplements",
+        "guia": "whey-e-creatina-como-comparar-rotulos"
+      },
+      {
+        "id": "parafusadeira-de-impacto-the-black-tools-tb-21px-21-v-com-2-baterias-the-black-t",
+        "guia": "parafusadeira-12v-ou-21v-qual-escolher"
+      }
+    ]
   }
 }

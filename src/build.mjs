@@ -106,7 +106,10 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
     paginas.push({ caminho, indexavel: indexavel && !exemplo });
   };
 
-  render("/", paginaInicial({ config, destaques: itens.filter((x) => x.p.prioritario).slice(0, 10), categorias, todos: itens.filter((x) => !x.p.prioritario), guias }));
+  const destaquesHome = config.destaquesHome
+    ? { ...config.destaquesHome, itens: (config.destaquesHome.itens || []).map(({ id, guia }) => { const x = porId.get(id); return x && x.ativas.length ? { ...x, guia: guias.find((g) => g.slug === guia) || null } : null; }).filter(Boolean) }
+    : null;
+  render("/", paginaInicial({ config, destaques: itens.filter((x) => x.p.prioritario).slice(0, 10), categorias, todos: itens.filter((x) => !x.p.prioritario), guias, destaquesHome }));
   categorias.forEach((c) => render(`/categoria/${c.slug}/`, paginaCategoria({ config, categoria: c, itens: c.itens, outras: categorias.filter((o) => o.slug !== c.slug), intro: textosCategoria[c.slug] || null, guias: guias.filter((g) => g.produtos.some((id) => slugify(porId.get(id).p.categoria) === c.slug)) }), c.indexavel));
   itens.forEach((x) => {
     const relacionados = (catMap.get(slugify(x.p.categoria))?.itens || []).filter((r) => r.p.id !== x.p.id).slice(0, 4);

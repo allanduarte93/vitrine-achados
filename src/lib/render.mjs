@@ -269,21 +269,41 @@ const cabPagina = ({ titulo, sub, icn = "info", tom = ["#ffe7dc", "#c2410c"] }) 
 
 /* ---------------- Páginas ---------------- */
 
-export const paginaInicial = ({ config, destaques, categorias, todos, guias = [] }) => {
+// Card de destaque da home: foto, 2 pontos do anúncio e botão de compra claro (sem preço nem desconto:
+// o valor muda a toda hora e é conferido na loja). Usa a URL de afiliado da oferta ativa, sem reescrever.
+export const cardDestaqueHome = (p, ativas, guia) => {
+  const detalhe = `/produto/${p.id}/`;
+  const pontos = (p.pontosChave || []).slice(0, 2);
+  return `<article class="card card-bf${temFoto(p) ? " com-foto" : ""}" data-produto="${esc(p.id)}">
+  <a class="card-img" href="${detalhe}" tabindex="-1" aria-hidden="true">${imagemProduto(p, 40, { compacto: true })}</a>
+  <div class="card-corpo">
+    <span class="card-cat">${esc(p.categoria)}</span>
+    <h3><a href="${detalhe}">${esc(p.nomeCurto || p.nome)}</a></h3>
+    ${pontos.length ? `<ul class="card-pontos">${pontos.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}
+    ${ativas.map((o) => `<a class="btn btn-prim btn-loja" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener" data-oferta data-destaque-home data-produto="${esc(p.id)}" data-loja="${o.loja}">Ver preço no ${esc(LOJAS[o.loja]?.nome || "site da loja")}<span class="sr"> (abre em nova aba)</span> ${icone("externo", { tamanho: 16 })}</a>`).join("")}
+    ${guia ? `<a class="card-detalhes" href="/guias/${esc(guia.slug)}/">Ler o guia antes de comprar</a>` : `<a class="card-detalhes" href="${detalhe}">Detalhes do produto</a>`}
+  </div>
+</article>`;
+};
+
+export const paginaInicial = ({ config, destaques, categorias, todos, guias = [], destaquesHome = null }) => {
   const temProdutos = destaques.length + todos.length > 0;
   const umaLoja = new Set([...destaques, ...todos].flatMap((x) => x.ativas.map((o) => o.loja))).size === 1;
   // Todos os produtos publicados na home: com foto autorizada primeiro, depois prioritários e nome.
   const vitrine = [...destaques, ...todos].sort((x, y) => Number(temFoto(y.p)) - Number(temFoto(x.p)) || Number(!!y.p.prioritario) - Number(!!x.p.prioritario) || x.p.nome.localeCompare(y.p.nome, "pt-BR"));
   const comOferta = categorias.filter((c) => c.total > 0);
 
-  const [todasComFoto, todasSemFoto] = separarPorFoto(vitrine);
+  const idsTopo = new Set((destaquesHome?.itens || []).map(({ p }) => p.id));
+  const [todasComFoto, todasSemFoto] = separarPorFoto(vitrine.filter(({ p }) => !idsTopo.has(p.id)));
   // Home enxuta: até 12 produtos com foto, alternando categorias (prioritários primeiro), e até 6 sem foto.
   // O catálogo completo fica na busca e nas categorias.
   const porCategoria = new Map();
   todasComFoto.forEach((x) => { const k = x.p.categoria || ""; if (!porCategoria.has(k)) porCategoria.set(k, []); porCategoria.get(k).push(x); });
   const comFotoItens = [];
-  for (let rodada = 0; comFotoItens.length < 12 && rodada < todasComFoto.length; rodada++) {
-    for (const lista of porCategoria.values()) { if (lista[rodada] && comFotoItens.length < 12) comFotoItens.push(lista[rodada]); }
+  // Com destaques no topo, a vitrine com foto encolhe para manter a home em até 18 produtos.
+  const limiteFotos = idsTopo.size ? 6 : 12;
+  for (let rodada = 0; comFotoItens.length < limiteFotos && rodada < todasComFoto.length; rodada++) {
+    for (const lista of porCategoria.values()) { if (lista[rodada] && comFotoItens.length < limiteFotos) comFotoItens.push(lista[rodada]); }
   }
   const semFotoItens = todasSemFoto.slice(0, 6);
   const temAmazon = vitrine.some(({ ativas }) => ativas.some((o) => o.loja === "amazon"));
@@ -405,7 +425,7 @@ ${secaoCompara}
     <h1>Achados conferidos. <em>Você compra direto na loja.</em></h1>
     <p class="hero-sub">Produtos ${listaHero} com link oficial verificado${comFoto ? ", fotos autorizadas" : ""} e o essencial de cada anúncio. A ${esc(config.nomeSite)} recomenda; pagamento e entrega são feitos pela loja.</p>
     <div class="hero-acoes">
-      <a class="btn btn-prim" href="${comFotoItens.length ? "#t-destaques" : "#t-rec"}">Ver os achados ${icone("seta", { tamanho: 18 })}</a>
+      <a class="btn btn-prim" href="${destaquesHome?.itens?.length ? "#t-bf" : comFotoItens.length ? "#t-destaques" : "#t-rec"}">Ver os achados ${icone("seta", { tamanho: 18 })}</a>
       ${guias.length ? `<a class="btn btn-sec" href="/guias/">Guias de compra</a>` : ""}
     </div>
     <ul class="hero-confianca">
@@ -419,6 +439,12 @@ ${secaoCompara}
     ? `<div class="hero-fotos">${comFotoItens.slice(0, 4).map(({ p }) => `<a href="/produto/${p.id}/" class="hero-foto" tabindex="-1" aria-hidden="true"><img src="${esc(p.imagem)}" alt="" width="300" height="300" decoding="async" referrerpolicy="no-referrer"></a>`).join("")}</div>`
     : `<div class="hero-arte-box" aria-hidden="true">${heroSvg()}</div>`}
 </div></section>
+
+${destaquesHome?.itens?.length ? `<section class="secao secao-bf" aria-labelledby="t-bf"><div class="container">
+  <div class="secao-cab"><div><h2 id="t-bf">${esc(destaquesHome.titulo)}</h2><p>${esc(destaquesHome.texto)}</p></div></div>
+  <div class="grade-prod grade-bf">${destaquesHome.itens.map(({ p, ativas, guia }) => cardDestaqueHome(p, ativas, guia)).join("")}</div>
+  <p class="aviso-botoes">${esc(AVISO_CURTO)}${destaquesHome.itens.some(({ ativas }) => ativas.some((o) => o.loja === "amazon")) ? ` ${esc(declaracaoAmazon(config))}` : ""}</p>
+</div></section>` : ""}
 
 ${secaoVitrine}
 

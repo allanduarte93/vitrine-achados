@@ -591,3 +591,14 @@ a.cat:hover { transform: none; box-shadow: var(--sombra); border-color: #d6dae6;
 .guia-atalho .btn { flex: 0 0 auto; }
 .guia-atalho .aviso-botoes { margin: 12px 0 0; }
 @media (max-width: 520px) { .guia-atalho .btn { width: 100%; justify-content: center; } }
+
+/* Destaques de Black Friday no topo da home */
+.secao-bf { padding-top: 8px; }
+.grade-bf { grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.card-bf .card-img img { padding: 18px; }
+.card-bf h3 { font-size: 15px; }
+.card-pontos { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.4; color: var(--texto); }
+.card-bf .btn-loja { margin-top: auto; justify-content: center; }
+@media (max-width: 1100px) { .grade-bf { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 720px) { .grade-bf { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+@media (max-width: 420px) { .grade-bf { grid-template-columns: 1fr; } }
