@@ -142,3 +142,9 @@ Medição antes das ações de 04/11 (para comparar depois):
   Link de afiliado único e inalterado: https://meli.la/13qLjsv.
 - Preparado sem publicar: guia "PS5 Slim Digital vale a pena em 2026?" no branch etapa-3-ps5
   (fontes: playstation.com/pt-br/ps5, rockstargames.com/VI, ficha do anúncio MLB57081243).
+- 09/11 — Publicado (autorizado): guia "PS5 Slim Digital vale a pena em 2026?" (/guias/ps5-slim-digital-vale-a-pena/).
+  Conferido nas fontes oficiais antes: GTA VI em 19/11/2026 para PS5 (rockstargames.com/VI); Edição Digital
+  825 GB e leitor avulso para os grupos CFI-2000 e CFI-2100 (playstation.com/pt-br/ps5); aviso oficial de jogos
+  novos só em formato digital a partir de janeiro de 2028 (mesma página). Removido o código CFI-2014B citado
+  no anúncio (associado a 1 TB em outras fontes, conflita com os 825 GB da ficha). 37 testes OK, 13 guias
+  aprovados no portão de qualidade, site conferido 3 vezes. Link de afiliado inalterado: https://meli.la/27v3uS6.
