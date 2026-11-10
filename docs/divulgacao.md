@@ -216,3 +216,12 @@ Acompanhamento: no máximo 1 lembrete por site.
 - Verificador de links só confere status HTTP/URL: marcou os 10 da Amazon como OK sem detectar falta de estoque.
 - Celular (390 px): na página de produto o primeiro botão de compra fica em y≈945 (tela 844); nos guias, y≈990–1060.
 - Comissões oficiais Amazon (Programa de Taxas): Dispositivos Amazon 9,5%; Casa/Cozinha/Ferramentas/Pet 8–11%.
+
+### 10/11/2026 — e-mails a criadores (autorizados, 2 individuais)
+
+| Criador | Contato público (página Sobre do YouTube) | Guia oferecido | Enviado | Resposta | Lembrete |
+|---|---|---|---|---|---|
+| Rafic (youtube.com/@rafic87, 40,4 mil inscritos) | contatoirafic@gmail.com | PS5 Slim Digital | 10/11/2026 14:07 | — | 17/11 (único) |
+| Marcenaria para Todos (youtube.com/@MarcenariaparaTodos, 55,4 mil) | marcenariaparatodos.jr@gmail.com | Parafusadeira 12 V ou 21 V | 10/11/2026 14:07 | — | 17/11 (único) |
+
+Sem oferta de dinheiro ou comissão, sem pedir troca de links próprios, com aviso de links de afiliado.
