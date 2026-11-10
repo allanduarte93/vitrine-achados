@@ -1,5 +1,5 @@
 {
-  "data": "2026-11-10T18:28:06.981Z",
+  "data": "2026-11-10T18:31:25.477Z",
   "site": "https://allanduarte93.github.io/vitrine-achados",
   "paginas": [
     {
@@ -379,8 +379,14 @@
     },
     {
       "pagina": "kit-7-organizadores-de-mala-para-viagem-azul-escuro-generica",
-      "foto": null,
-      "botoes": []
+      "foto": {
+        "src": "https://http2.mlstatic.com/D_Q_NP_2X_983860-MLA100086305353_122025-AB.webp",
+        "ok": true,
+        "w": 448
+      },
+      "botoes": [
+        "mercadolivre"
+      ]
     },
     {
       "pagina": "kit-lavagem-automotiva-vonixx-shampoo-e-cera-vonixx",
@@ -729,12 +735,7 @@
     "yMin": 456,
     "yMax": 755
   },
-  "falhas": [
-    "kit-7-organizadores-de-mala-para-viagem-azul-escuro-generica: título diferente do índice",
-    "kit-7-organizadores-de-mala-para-viagem-azul-escuro-generica: foto autorizada não carregou (ausente)",
-    "kit-7-organizadores-de-mala-para-viagem-azul-escuro-generica: 0 botões para 1 ofertas",
-    "kit-7-organizadores-de-mala-para-viagem-azul-escuro-generica: divulgação de afiliado ausente"
-  ],
+  "falhas": [],
   "resumo": {
     "produtos": 67,
     "comFotoNoIndice": 58
