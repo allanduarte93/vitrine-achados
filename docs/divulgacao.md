@@ -148,3 +148,16 @@ Medição antes das ações de 04/11 (para comparar depois):
   novos só em formato digital a partir de janeiro de 2028 (mesma página). Removido o código CFI-2014B citado
   no anúncio (associado a 1 TB em outras fontes, conflita com os 825 GB da ficha). 37 testes OK, 13 guias
   aprovados no portão de qualidade, site conferido 3 vezes. Link de afiliado inalterado: https://meli.la/27v3uS6.
+
+### 10/11/2026 — Missão "primeira venda" (diagnóstico e preparação)
+
+- ML afiliados (3–9/11): 6 cliques, 0 compradores, 0 pedidos, R$ 0.
+- Search Console (02–08/11): 32 impressões, 0 cliques, posição média 7,9 (Fire TV 20, home 10, guia Black Friday 2).
+- Top 5 por potencial (painel de afiliados do ML, valores de hoje, só leitura):
+  OneBlade QP1425 R$ 134,40 (ganhos 16%), Taiff Black Ion R$ 229,89 (16%), Basic Whey Growth R$ 69,90 (16%),
+  Parafusadeira TB-21PX R$ 139,90 (12%), PS5 Slim Digital + 2 jogos R$ 4.277 (12%).
+- Rastreamento: links meli.la e tag vitrineachados-20 intactos; verificador automático não gera cliques
+  (remove a tag e usa /p/MLB); IndexNow enviado no último deploy (100 URLs, HTTP 200). Site não tem contador de visitas.
+- Canais: nenhuma publicação externa feita. Facebook salvo no Chrome é de outra pessoa (não usado), Reddit bloqueado
+  para a ferramenta, X e Pinterest são de outros projetos, LinkedIn já usado (regra de não repetir).
+- Preparado: docs/posts-prontos.md (5 textos sem preço, com aviso de afiliado).
