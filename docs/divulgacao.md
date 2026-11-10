@@ -173,3 +173,11 @@ Medição antes das ações de 04/11 (para comparar depois):
   2 pontos da ficha e botão "Ver preço no Mercado Livre" (URLs iguais às do catálogo, sem preço/desconto).
   38 testes OK; publicado; conferido 3 vezes (5 botões, 17 produtos na home, tags Amazon OK).
 - E-mails de parceria (Vida em Casa, Revista 2K) e chamado ML 490066167: sem resposta até hoje.
+
+### 10/11/2026 — visitantes qualificados
+
+- Search Console: pedida indexação (primeira vez) de /guias/ps5-slim-digital-vale-a-pena/ e
+  /guias/galaxy-a17-4g-vale-a-pena/. Ambas estavam "O Google não reconhece o URL" e sem sitemap de referência.
+- ML: "Campanhas com incentivos" e "Campanhas exclusivas" sem campanhas disponíveis para a conta hoje.
+  Perfil/lista pública não tem vitrine de descoberta dentro do ML (0 seguidores; alcance via link).
+- Medição: o site já aceita token do Cloudflare Web Analytics (sem cookies) em config.metricas; falta conta.
