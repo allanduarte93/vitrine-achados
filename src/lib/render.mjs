@@ -124,7 +124,7 @@ ${config.metricas?.cloudflareToken && !exemplo ? `<script defer src="https://sta
 <body data-endpoint="${esc(config.endpointCliques || "")}">
 ${exemplo ? `<div class="faixa-exemplo">PRÉ-VISUALIZAÇÃO COM DADOS FICTÍCIOS — não publicar</div>` : ""}
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
-${lojas.length ? `<div class="faixa-pub"><div class="container"><strong>Publicidade</strong> Este site tem links de afiliado ${esc(lojasComArtigo(lojas))}: podemos ganhar comissão, sem custo extra para você. <a href="/aviso-de-afiliados/">Saiba mais</a></div></div>` : ""}
+${lojas.length ? `<div class="faixa-pub"><div class="container"><strong>Publicidade</strong> <span class="pub-longo">Este site tem links de afiliado ${esc(lojasComArtigo(lojas))}: podemos ganhar comissão, sem custo extra para você.</span><span class="pub-curto">Links de afiliado: podemos ganhar comissão, sem custo extra.</span> <a href="/aviso-de-afiliados/">Saiba mais</a></div></div>` : ""}
 <header class="cab">
   <div class="container cab-topo">
     <a class="logo" href="/" aria-label="${esc(config.nomeSite)}: página inicial">${marcaSvg(40)}<span class="logo-txt"><b>vitrine</b><span>achados</span></span></a>
@@ -134,8 +134,8 @@ ${lojas.length ? `<div class="faixa-pub"><div class="container"><strong>Publicid
       <button type="submit" aria-label="Buscar">${icone("busca", { tamanho: 20 })}</button>
     </form>
     <nav class="cab-links" aria-label="Atalhos">
-      ${temGuias ? `<a href="/guias/">${icone("lupaCheck", { tamanho: 18 })}<span>Guias</span></a>` : ""}
-      <a href="/como-funciona/">${icone("info", { tamanho: 18 })}<span>Como funciona</span></a>
+      ${temGuias ? `<a href="/guias/" aria-label="Guias de compra">${icone("lupaCheck", { tamanho: 18 })}<span>Guias</span></a>` : ""}
+      <a href="/como-funciona/" aria-label="Como funciona">${icone("info", { tamanho: 18 })}<span>Como funciona</span></a>
     </nav>
   </div>
   ${navCategorias}
@@ -592,7 +592,7 @@ export const paginaProduto = ({ config, p, ativas, inativas, relacionados, guias
 
   const conteudo = `
 <div class="container">
-  <nav class="trilha" aria-label="Trilha"><a href="/">Início</a> › <a href="/categoria/${catSlug}/">${esc(p.categoria)}</a> › <span class="trilha-atual">${esc(p.nome)}</span></nav>
+  <nav class="trilha" aria-label="Trilha"><a href="/">Início</a> › <a href="/categoria/${catSlug}/">${esc(p.categoria)}</a><span class="trilha-atual"> › ${esc(p.nome)}</span></nav>
   <article class="produto-grade${temFoto(p) ? "" : " sem-imagem"}">
     ${temFoto(p)
       ? `<div class="produto-img">${imagemProduto(p, 80, { prioridade: true })}<span class="foto-fonte">Foto: ${esc(p.imagemFonte || "loja")}</span></div>`
@@ -707,7 +707,7 @@ export const paginaGuia = ({ config, guia, itens, outrosGuias = [] }) => {
       sec.lista?.length ? `<ul class="pontos">${sec.lista.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}${linkGuia(sec)}</section>`)
     .join("\n");
   const tabela = guia.tabela?.colunas?.length
-    ? `<section><h2>${esc(guia.tabela.titulo || "Lado a lado")}</h2><div class="tabela-rolagem"><table class="tabela-compara"><thead><tr>${guia.tabela.colunas
+    ? `<section><h2>${esc(guia.tabela.titulo || "Lado a lado")}</h2><div class="tabela-rolagem" tabindex="0" role="region" aria-label="Tabela (role para os lados se necessário)"><table class="tabela-compara"><thead><tr>${guia.tabela.colunas
         .map((c) => `<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${guia.tabela.linhas
         .map((l) => `<tr>${l.map((c, i) => (i === 0 ? `<th scope="row">${esc(c)}</th>` : `<td>${esc(c)}</td>`)).join("")}</tr>`).join("")}</tbody></table></div></section>`
     : "";
@@ -730,14 +730,14 @@ export const paginaGuia = ({ config, guia, itens, outrosGuias = [] }) => {
     descricao: guia.resumo,
     conteudo: `
 <div class="container">
-  <nav class="trilha" aria-label="Trilha"><a href="/">Início</a> › <a href="/guias/">Guias</a> › <span>${esc(guia.titulo)}</span></nav>
+  <nav class="trilha" aria-label="Trilha"><a href="/">Início</a> › <a href="/guias/">Guias</a><span class="trilha-atual"> › ${esc(guia.titulo)}</span></nav>
   <article class="guia">
     <header class="guia-cab">
       <p class="sobretitulo">Guia de compra</p>
       <h1>${esc(guia.titulo)}</h1>
-      <p class="guia-intro">${esc(guia.introducao)}</p>
-      <p class="guia-meta">Atualizado em ${esc(guia.atualizadoEm)} · ${esc(guia.fonteFatos || "Informações conferidas nos anúncios oficiais")}</p>
     </header>
+    <p class="guia-intro">${esc(guia.introducao)}</p>
+    <p class="guia-meta">Atualizado em ${esc(guia.atualizadoEm)} · ${esc(guia.fonteFatos || "Informações conferidas nos anúncios oficiais")}</p>
     ${atalho}
     <div class="texto guia-texto">
       ${secoes}

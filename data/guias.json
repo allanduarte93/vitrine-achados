@@ -403,9 +403,8 @@
       "resumo": "Faixa de peso, 12 semanas, idade mínima, banho, gestantes e cuidados: o que a MSD informa sobre o Bravecto comprimido. Decisão final com o veterinário.",
       "categoria": "Pets",
       "publicadoEm": "2026-10-28",
-      "atualizadoEm": "2026-10-28",
+      "atualizadoEm": "2026-11-10",
       "produtos": [
-        "amazon-b07j4j9xkz",
         "bravecto-caes-20-40kg-1000mg-1-comp-mastigavel-msd-azul-msd"
       ],
       "fonteFatos": "Informações técnicas da MSD Saúde Animal Brasil e do site oficial br.bravecto.com (consultados em 28/10/2026); faixas de peso das apresentações conforme os anúncios conferidos no catálogo",
@@ -428,7 +427,7 @@
         {
           "titulo": "Cada comprimido corresponde a uma faixa de peso",
           "paragrafos": [
-            "O Bravecto comprimido é vendido em apresentações diferentes, e cada uma é feita para uma faixa de peso. Nesta vitrine há duas: o comprimido de 250 mg, para cães de 4,5 a 10 kg, e o de 1000 mg, para cães de 20 a 40 kg. Existem outras apresentações para pesos diferentes desses.",
+            "O Bravecto comprimido é vendido em apresentações diferentes, e cada uma é feita para uma faixa de peso. Nesta vitrine está o comprimido de 1000 mg, para cães de 20 a 40 kg. Existem outras apresentações para outros pesos, como a de 250 mg, para cães de 4,5 a 10 kg.",
             "A MSD informa que as doses foram calculadas para ficar entre 25 e 56 mg de fluralaner por quilo de peso dentro de cada faixa. Por isso, o ponto de partida é saber o peso atual do cão, de preferência pesado na clínica. Se o peso estiver perto do limite entre duas faixas, ou se o cão for muito grande, a escolha da apresentação deve ser feita com o veterinário, sem partir nem combinar comprimidos por conta própria."
           ]
         },
@@ -473,7 +472,7 @@
           ],
           [
             "Apresentações nesta vitrine",
-            "250 mg (4,5 a 10 kg) e 1000 mg (20 a 40 kg)"
+            "1000 mg (20 a 40 kg)"
           ],
           [
             "Proteção por dose",
@@ -979,15 +978,14 @@
     {
       "slug": "cozinha-organizada-potes-temperos-balanca",
       "status": "aprovado",
-      "titulo": "Cozinha organizada: potes de vidro, porta-temperos, balança e cestos",
-      "resumo": "Como escolher potes herméticos de vidro, porta-temperos, balança de cozinha e cestos organizadores com base nas medidas e capacidades dos anúncios.",
+      "titulo": "Cozinha organizada: potes de vidro, balança e cestos",
+      "resumo": "Como escolher potes herméticos de vidro, balança de cozinha e cestos organizadores com base nas medidas e capacidades dos anúncios.",
       "categoria": "Casa e Cozinha",
       "publicadoEm": "2026-11-04",
-      "atualizadoEm": "2026-11-04",
+      "atualizadoEm": "2026-11-10",
       "produtos": [
         "kit-10-potes-hermeticos-de-vidro-starhouse-370-ml-starhouse",
         "kit-10-potes-vidro-hermetico-vai-ao-forno-microondas-640ml-marmita-hermetico-fre",
-        "porta-temperos-giratorio-inox-com-16-potes-de-vidro-solar",
         "balanca-digital-de-cozinha-bahrein-10-kg-branca-bahrein",
         "kit-4-cestos-organizadores-dobraveis-cinza-ciclo-alternativa"
       ],
@@ -1000,10 +998,6 @@
         {
           "titulo": "Mercado Livre — Kit 10 potes Rishon 640 ml",
           "url": "https://www.mercadolivre.com.br/p/MLB63904966"
-        },
-        {
-          "titulo": "Mercado Livre — Porta-temperos giratório 16 potes",
-          "url": "https://www.mercadolivre.com.br/p/MLB22684637"
         },
         {
           "titulo": "Mercado Livre — Balança de cozinha Bahrein 10 kg",
@@ -1024,9 +1018,8 @@
           ]
         },
         {
-          "titulo": "Temperos à vista e balança na bancada",
+          "titulo": "Balança na bancada",
           "paragrafos": [
-            "Para quem cozinha com muitos temperos, a torre giratória do catálogo reúne dezesseis vidrinhos pequenos, de 80 ml cada, distribuídos em quatro andares sobre uma base que gira. Segundo a ficha, ela ocupa uma área de mais ou menos um palmo por um palmo na bancada e tem perto de 29 cm de altura, então meça o vão até o armário suspenso antes de comprar.",
             "Para quem segue receitas ou controla porções, a balança digital Bahrein pesa até 10 kg com precisão de 1 g, tem função tara para descontar o peso do recipiente e funciona com duas pilhas AA, segundo a ficha."
           ]
         },

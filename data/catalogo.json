@@ -892,7 +892,12 @@
           "linkVerificado": true,
           "verificadoEm": "2026-10-20T15:15:00-03:00",
           "verificadoPor": "cowork",
-          "identificador": "B07J4J9XKZ"
+          "identificador": "B07J4J9XKZ",
+          "disponibilidade": {
+            "estado": "sem-compra-direta",
+            "conferidoEm": "2026-11-10",
+            "fonte": "Auditoria comercial de 10/11/2026 — Página do produto na Amazon (sem link de afiliado): sem botão de compra em destaque, só \"Ver todas as opções de compra\""
+          }
         }
       ],
       "descricao": "Antipulgas e carrapaticida Bravecto em comprimido mastigável de 250 mg, para cães de 4,5 a 10 kg. O princípio ativo é o fluralaner e, segundo o fabricante, uma única dose protege por 12 semanas, com eliminação de pulgas e carrapatos em até 12 horas. Por ser medicamento veterinário, a escolha da dose e o uso devem seguir a bula e a orientação do médico-veterinário.",
@@ -934,7 +939,12 @@
           "linkVerificado": true,
           "verificadoEm": "2026-10-20T15:15:00-03:00",
           "verificadoPor": "cowork",
-          "identificador": "B07DYHDXX8"
+          "identificador": "B07DYHDXX8",
+          "disponibilidade": {
+            "estado": "indisponivel",
+            "conferidoEm": "2026-11-10",
+            "fonte": "Auditoria comercial de 10/11/2026 — Página do produto na Amazon (sem link de afiliado): \"Não disponível\""
+          }
         }
       ],
       "descricao": "Sabão líquido para roupas Omo Lavagem Perfeita em galão de 5 litros. Segundo a marca, a fórmula remove manchas, cuida das cores e dos tecidos sem deixar resíduos e tem ativos biodegradáveis. O anúncio informa fórmula sem fosfato e aroma tradicional; a cor da tampa pode variar.",
@@ -2507,7 +2517,12 @@
           "linkVerificado": true,
           "verificadoEm": "2026-11-04T16:00:00-03:00",
           "verificadoPor": "cowork",
-          "identificador": "MLB22684637"
+          "identificador": "MLB22684637",
+          "disponibilidade": {
+            "estado": "indisponivel",
+            "conferidoEm": "2026-11-10",
+            "fonte": "Auditoria comercial de 10/11/2026 — Página do produto no Mercado Livre (sem link de afiliado): \"Este produto está indisponível\""
+          }
         }
       ],
       "descricao": "Porta-temperos giratório 360° com estrutura de aço inox e 16 potes de vidro de 80 ml. Segundo o anúncio, tem 4 níveis e mede cerca de 19 x 19 x 29 cm.",

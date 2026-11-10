@@ -29,8 +29,12 @@ const CAMPOS_PRODUTO = new Set([
 ]);
 const CAMPOS_OFERTA = new Set([
   "loja", "url", "linkVerificado", "verificadoEm", "verificadoPor", "preco",
-  "precoColetadoEm", "identificador", "titulo",
+  "precoColetadoEm", "identificador", "titulo", "disponibilidade",
 ]);
+// Disponibilidade conferida na página do produto (sem link de afiliado). Só estes estados
+// tiram a oferta das recomendações; "nao-verificado" (captcha/bloqueio) nunca vale como disponível
+// nem como indisponível: a oferta segue como estava, e o verificador reporta a dúvida.
+export const ESTADOS_INDISPONIVEL = { indisponivel: "indisponível na loja", "sem-compra-direta": "sem opção de compra direta na loja" };
 const CAMPOS_PROIBIDOS = /avalia|rating|nota|estrela|review|vendid|desconto|cupom|depoimento/i;
 
 const isDate = (s) => typeof s === "string" && !Number.isNaN(Date.parse(s));
@@ -46,6 +50,10 @@ export const estadoOferta = (oferta, config, agora = new Date()) => {
   if (!link.ok) motivo = link.motivo;
   else if (oferta.linkVerificado !== true) motivo = "link ainda não verificado";
   else if (!isDate(oferta.verificadoEm)) motivo = "verificação sem data";
+  if (ativa && ESTADOS_INDISPONIVEL[oferta.disponibilidade?.estado]) {
+    ativa = false;
+    motivo = `${ESTADOS_INDISPONIVEL[oferta.disponibilidade.estado]}${oferta.disponibilidade.conferidoEm ? ` (conferido em ${String(oferta.disponibilidade.conferidoEm).slice(0, 10)})` : ""}`;
+  }
   if (!ativa) return { ativa: false, motivo, mostrarPreco: false };
 
   const horas = config.precoValidadeHoras ?? 24;

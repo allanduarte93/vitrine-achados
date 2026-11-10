@@ -199,7 +199,8 @@ export const mesclarCatalogo = (catalogo, importados, agoraISO = new Date().toIS
       const prev = ofertas.get(o.loja);
       // Não rebaixa um link verificado para um não verificado igual.
       if (prev && prev.linkVerificado && !o.linkVerificado && prev.url === o.url) return;
-      ofertas.set(o.loja, o);
+      // Mantém a disponibilidade conferida (ex.: indisponível) se a pesquisa nova não trouxer outra.
+      ofertas.set(o.loja, prev?.disponibilidade && !o.disponibilidade && prev.url === o.url ? { ...o, disponibilidade: prev.disponibilidade } : o);
     });
     produtos[idx.get(imp.id)] = {
       ...imp,

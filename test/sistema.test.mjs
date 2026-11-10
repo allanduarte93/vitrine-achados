@@ -421,11 +421,13 @@ test("catálogo real do Cowork: ofertas preservadas, preço só dentro da valida
   try {
     const dentro = new Date("2026-10-20T16:00:00-03:00");
     const r = build({ catalogoPath: "data/catalogo.json", saida, agora: dentro });
-    assert.equal(r.produtosPublicados, catalogo.produtos.length);
+    const disponiveis = catalogo.produtos.filter((p) => p.ofertas.some((o) => !["indisponivel", "sem-compra-direta"].includes(o.disponibilidade?.estado)));
+    assert.equal(r.produtosPublicados, disponiveis.length);
     const busca = JSON.parse(readFileSync(join(saida, "busca.json"), "utf8")).produtos;
-    assert.equal(busca.length, catalogo.produtos.length);
+    assert.equal(busca.length, disponiveis.length);
     const html = readdirSync(join(saida, "produto")).map((d) => readFileSync(join(saida, "produto", d, "index.html"), "utf8")).join("\n");
-    for (const st of entrada.prontos) assert.ok(html.includes(`href="${st.link_afiliado.replaceAll("&", "&amp;")}"`), `botão aponta para ${st.link_afiliado}`);
+    const indisponivel = (url) => catalogo.produtos.some((p) => p.ofertas.some((o) => o.url === url && ["indisponivel", "sem-compra-direta"].includes(o.disponibilidade?.estado)));
+    for (const st of entrada.prontos) if (!indisponivel(st.link_afiliado)) assert.ok(html.includes(`href="${st.link_afiliado.replaceAll("&", "&amp;")}"`), `botão aponta para ${st.link_afiliado}`);
     assert.doesNotMatch(html, /aggregateRating|desconto/i);
     const paginas = readdirSync(join(saida, "produto")).map((d) => readFileSync(join(saida, "produto", d, "index.html"), "utf8"));
     for (const pag of paginas) {
@@ -487,7 +489,7 @@ test("meta descrição (produto, categoria, home, busca) cita só as lojas publi
   try {
     const r = build({ configPath: cfg, catalogoPath: "data/catalogo.json", saida: join(saida, "dist"), agora: new Date("2026-10-20T16:00:00-03:00") });
     const conf = Object.entries(base.afiliados.programasConfirmados).filter(([, v]) => v).map(([l]) => l);
-    const esperado = JSON.parse(readFileSync("data/catalogo.json", "utf8")).produtos.filter((p) => p.ofertas.some((o) => conf.includes(o.loja))).length;
+    const esperado = JSON.parse(readFileSync("data/catalogo.json", "utf8")).produtos.filter((p) => p.ofertas.some((o) => conf.includes(o.loja) && !["indisponivel", "sem-compra-direta"].includes(o.disponibilidade?.estado))).length;
     assert.equal(r.produtosPublicados, esperado);
     const dist = join(saida, "dist");
     const paginas = [join(dist, "index.html"), join(dist, "busca", "index.html"), ...readdirSync(join(dist, "produto")).map((d) => join(dist, "produto", d, "index.html")), ...readdirSync(join(dist, "categoria")).map((d) => join(dist, "categoria", d, "index.html"))];
@@ -788,4 +790,61 @@ test("guia: seção com produto mostra foto/botão com a URL de afiliado e escon
   assert.ok(html.includes('href="/guias/outro/"'));
   assert.ok(!html.includes("guia-atalho"), "atalho desligado");
   assert.ok(!html.includes("t-guia-prod"), "sem grade repetida quando todos os produtos têm seção");
+});
+
+test("indisponível na loja: sai das recomendações, mas o link e o ID ficam no catálogo", async () => {
+  const { estadoOferta } = await import("../src/lib/catalogo.mjs");
+  const cfg = { afiliados: { amazonTag: "x-20" }, precoValidadeHoras: 24 };
+  const base = { loja: "amazon", url: "https://www.amazon.com.br/dp/B000000001?tag=x-20", linkVerificado: true, verificadoEm: "2026-11-01" };
+  assert.equal(estadoOferta(base, cfg).ativa, true);
+  assert.equal(estadoOferta({ ...base, disponibilidade: { estado: "indisponivel", conferidoEm: "2026-11-10" } }, cfg).ativa, false);
+  assert.equal(estadoOferta({ ...base, disponibilidade: { estado: "sem-compra-direta" } }, cfg).ativa, false);
+  assert.equal(estadoOferta({ ...base, disponibilidade: { estado: "nao-verificado" } }, cfg).ativa, true, "não verificado não muda a oferta");
+
+  const catalogo = JSON.parse(readFileSync("data/catalogo.json", "utf8"));
+  const fora = catalogo.produtos.filter((p) => p.ofertas.every((o) => ["indisponivel", "sem-compra-direta"].includes(o.disponibilidade?.estado)));
+  assert.ok(fora.length >= 3);
+  const saida = mkdtempSync(join(tmpdir(), "vitrine-indisp-"));
+  process.env.SOMENTE_CONFIRMADOS = "1";
+  try {
+    build({ catalogoPath: "data/catalogo.json", saida, agora: new Date("2026-11-10T12:00:00-03:00") });
+    const arquivos = [];
+    const varrer = (d) => readdirSync(d, { withFileTypes: true }).forEach((e) => (e.isDirectory() ? varrer(join(d, e.name)) : /\.(html|json|xml)$/.test(e.name) && arquivos.push(join(d, e.name))));
+    varrer(saida);
+    const tudo = arquivos.map((f) => readFileSync(f, "utf8")).join("\n");
+    for (const p of fora) {
+      assert.ok(!existsSync(join(saida, "produto", p.id)), `${p.id}: sem página`);
+      for (const o of p.ofertas) {
+        assert.ok(o.url && o.identificador, "link e ID preservados no catálogo");
+        assert.ok(!tudo.includes(o.url) && !tudo.includes(o.url.replaceAll("&", "&amp;")), `${p.id}: link fora de todas as páginas publicadas`);
+      }
+      assert.ok(!tudo.includes(`/produto/${p.id}/`), `${p.id}: nenhum link interno para a página`);
+    }
+    const guia = readFileSync(join(saida, "guias", "bravecto-comprimido-o-que-diz-o-fabricante", "index.html"), "utf8");
+    assert.match(guia, /meli\.la\/153k3Ma/, "Bravecto: oferta ativa do Mercado Livre");
+    assert.doesNotMatch(guia, /amazon\.com\.br\/dp\/B07J4J9XKZ/, "Bravecto: sem a oferta da Amazon");
+  } finally {
+    delete process.env.SOMENTE_CONFIRMADOS;
+    rmSync(saida, { recursive: true, force: true });
+  }
+});
+
+test("verificador de estoque: só 'disponível' com sinal positivo; bloqueio vira 'não verificado'", async () => {
+  const { avaliarEstoque } = await import("../src/cli/checar-links.mjs");
+  const ok = (loja, corpo, status = 200) => avaliarEstoque(loja, { status, corpo }).estado;
+  // Amazon
+  assert.equal(ok("amazon", '<input id="add-to-cart-button" type="submit">'), "disponivel");
+  assert.equal(ok("amazon", '<div id="outOfStock"><span>Não disponível.</span></div>'), "indisponivel");
+  assert.equal(ok("amazon", '<a id="buybox-see-all-buying-choices">Ver todas as opções de compra</a>'), "sem-compra-direta");
+  assert.equal(ok("amazon", "<form action=\"/errors/validateCaptcha\">Digite os caracteres que você vê</form>"), "nao-verificado");
+  assert.equal(ok("amazon", "<html><body>Produto</body></html>"), "nao-verificado", "HTTP 200 sem sinal não é disponível");
+  assert.equal(ok("amazon", '<input id="add-to-cart-button">', 503), "nao-verificado");
+  assert.equal(ok("amazon", '<input id="add-to-cart-button"><span>Não disponível.</span>'), "nao-verificado", "conflito");
+  // Mercado Livre
+  assert.equal(ok("mercadolivre", '{"availability":"https://schema.org/InStock"}'), "disponivel");
+  assert.equal(ok("mercadolivre", "<p>Este produto está indisponível no momento.</p>"), "indisponivel");
+  assert.equal(ok("mercadolivre", '{"availability":"https://schema.org/OutOfStock"}'), "indisponivel");
+  assert.equal(ok("mercadolivre", "<h1>Por segurança, complete esta etapa</h1>"), "nao-verificado");
+  assert.equal(ok("mercadolivre", "<html>sem sinais</html>"), "nao-verificado");
+  assert.equal(ok("mercadolivre", "", 0), "nao-verificado");
 });

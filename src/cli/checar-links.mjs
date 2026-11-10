@@ -5,6 +5,8 @@
  *
  * Para cada oferta ativa: segue os redirecionamentos (até 10) e confere se o destino
  * final é uma página de produto da loja certa — e não busca, home, login ou erro.
+ * Confere também o estoque na mesma página (sem link de afiliado): indisponível ou sem compra
+ * direta conta como falha; captcha, bloqueio ou página sem sinal claro = "não verificado" (aviso).
  * Sai com código 1 se algum link falhar. Rode antes de cada publicação comercial.
  */
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
@@ -56,6 +58,37 @@ export const classificar = (loja, urlFinal, status, { corpo = "", identificador 
   }
   if (!PRODUTO[loja].test(u.pathname + u.search)) return { ok: false, motivo: "destino não parece página de produto" };
   return { ok: true };
+};
+
+/**
+ * Estoque a partir da página do produto (aberta SEM link de afiliado). Nunca conclui "disponível"
+ * sem um sinal positivo explícito; captcha, bloqueio ou página sem sinais = "nao-verificado".
+ * Estados: disponivel | indisponivel | sem-compra-direta | nao-verificado.
+ */
+const SINAIS = {
+  amazon: {
+    bloqueio: /validateCaptcha|api-services-support@amazon\.com|Digite os caracteres que você vê|Type the characters you see/i,
+    indisponivel: /id=["']outOfStock["']|N[ãa]o dispon[íi]vel\.|Atualmente indispon[íi]vel|Currently unavailable/i,
+    semCompraDireta: /buybox-see-all-buying-choices|Ver todas as op[çc][õo]es de compra/i,
+    disponivel: /id=["'](add-to-cart-button|buy-now-button)["']/i,
+  },
+  mercadolivre: {
+    bloqueio: /Por seguran[çc]a, complete esta etapa|gz\/account-verification/i,
+    indisponivel: /schema\.org\/(OutOfStock|SoldOut|Discontinued)|Este produto est[áa] indispon[íi]vel|(An[úu]ncio|Publica[çc][ãa]o) pausad[ao]|Sem estoque/i,
+    disponivel: /schema\.org\/InStock|>\s*Comprar agora\s*</i,
+  },
+};
+export const avaliarEstoque = (loja, { status = 0, corpo = "" } = {}) => {
+  const s = SINAIS[loja];
+  if (!s) return { estado: "nao-verificado", sinal: "loja sem regra de estoque" };
+  if (status !== 200 || !corpo) return { estado: "nao-verificado", sinal: status ? `HTTP ${status}` : "sem resposta" };
+  if (s.bloqueio.test(corpo)) return { estado: "nao-verificado", sinal: "captcha ou bloqueio da loja" };
+  const neg = s.indisponivel.test(corpo), pos = s.disponivel.test(corpo);
+  if (neg && pos) return { estado: "nao-verificado", sinal: "sinais conflitantes (há botão de compra e aviso de indisponível)" };
+  if (neg) return { estado: "indisponivel", sinal: corpo.match(s.indisponivel)[0] };
+  if (pos) return { estado: "disponivel", sinal: corpo.match(s.disponivel)[0].replace(/[<>]/g, "").trim() };
+  if (s.semCompraDireta?.test(corpo)) return { estado: "sem-compra-direta", sinal: corpo.match(s.semCompraDireta)[0] };
+  return { estado: "nao-verificado", sinal: "página sem sinal claro de estoque" };
 };
 
 /**
@@ -118,15 +151,23 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const linhas = [];
   let falhas = 0;
   let inconclusivos = 0;
+  const estoque = { disponivel: 0, indisponivel: 0, "sem-compra-direta": 0, "nao-verificado": 0 };
   for (const { p, o } of alvos) {
     const r = await seguir(urlParaChecagem(o.loja, o.url, o.identificador));
     const c = classificar(o.loja, r.final, r.status, { corpo: r.corpo, identificador: o.identificador });
-    if (c.ok === false) falhas++;
-    if (c.ok === null) inconclusivos++;
-    linhas.push({ produto: p.id, loja: o.loja, ok: c.ok, motivo: c.motivo || "", final: r.final, cadeia: r.cadeia });
-    console.log(`${c.ok ? "OK   " : c.ok === null ? "AVISO" : "FALHA"} ${p.id} · ${o.loja} → ${c.ok ? r.final : c.motivo}`);
+    // Estoque só é avaliado quando a página do produto abriu de verdade; senão, "não verificado".
+    const e = c.ok ? avaliarEstoque(o.loja, r) : { estado: "nao-verificado", sinal: c.motivo || "página não confirmada" };
+    estoque[e.estado]++;
+    const semEstoque = e.estado === "indisponivel" || e.estado === "sem-compra-direta";
+    if (c.ok === false || semEstoque) falhas++;
+    else if (c.ok === null || e.estado === "nao-verificado") inconclusivos++;
+    linhas.push({ produto: p.id, loja: o.loja, ok: c.ok, motivo: c.motivo || "", estoque: e.estado, sinalEstoque: e.sinal, final: r.final, cadeia: r.cadeia });
+    const rotulo = c.ok === false || semEstoque ? "FALHA" : c.ok === null || e.estado === "nao-verificado" ? "AVISO" : "OK   ";
+    console.log(`${rotulo} ${p.id} · ${o.loja} → ${c.ok ? `estoque: ${e.estado.replace("nao-verificado", "não verificado")} (${e.sinal})` : c.motivo}`);
+    if (semEstoque) console.log(`      ação: confira a página e, se confirmado, registre "disponibilidade": {"estado": "${e.estado}", ...} na oferta (data/catalogo.json)`);
     if (!c.ok) console.log(`      destino: ${r.final}\n      cadeia: ${r.cadeia.join(" → ")}`);
   }
+  console.log(`\nEstoque: ${estoque.disponivel} disponível(is) · ${estoque.indisponivel} indisponível(is) · ${estoque["sem-compra-direta"]} sem compra direta · ${estoque["nao-verificado"]} não verificado(s)`);
   mkdirSync(resolve(RAIZ, "data/relatorios"), { recursive: true });
   const rel = resolve(RAIZ, `data/relatorios/links-${new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-")}.json`);
   writeFileSync(rel, JSON.stringify(linhas, null, 2));

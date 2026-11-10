@@ -23,6 +23,20 @@
     });
   }
 
+  // 1b) Barra de compra fixa (celular): só aparece quando o botão principal da ficha sai da tela,
+  // para não cobrir a página nem repetir o botão que já está visível.
+  var barra = document.querySelector(".barra-compra");
+  var principal = document.querySelector("#ofertas a[data-oferta]");
+  if (barra && principal && "IntersectionObserver" in window) {
+    barra.classList.add("oculta");
+    new IntersectionObserver(function (entradas) {
+      var visivel = entradas[0].isIntersecting || entradas[0].boundingClientRect.top > window.innerHeight;
+      barra.classList.toggle("oculta", visivel);
+      barra.setAttribute("aria-hidden", visivel ? "true" : "false");
+      Array.prototype.forEach.call(barra.querySelectorAll("a"), function (a) { a.tabIndex = visivel ? -1 : 0; });
+    }).observe(principal);
+  }
+
   // 2) Filtros (categoria, loja e ordenação verificável) nas grades de produtos.
   var ligarFiltros = function (form) {
     form.hidden = false;

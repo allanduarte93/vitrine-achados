@@ -611,3 +611,57 @@ a.cat:hover { transform: none; box-shadow: var(--sombra); border-color: #d6dae6;
 .guia-prod-inline .gpi-nome { font-weight: 600; line-height: 1.35; }
 .gpi-guia { font-weight: 600; }
 @media (max-width: 520px) { .guia-prod-inline { flex-direction: column; align-items: stretch; } .guia-prod-inline .gpi-img { margin: 0 auto; } .guia-prod-inline .btn { justify-content: center; } }
+
+/* ===== Celular: botão de compra perto do título (ficha e guias) ===== */
+.pub-curto { display: none; }
+.guia > .guia-intro, .guia > .guia-meta { max-width: 780px; margin-left: auto; margin-right: auto; }
+.guia > .guia-intro { margin-top: 0; }
+@media (max-width: 820px) {
+  /* Ficha: título → loja e botão → foto/ficha → garantias e descrição (nada é removido) */
+  .produto-grade { display: flex; flex-direction: column; gap: 14px; padding-top: 4px; }
+  .produto-grade > .produto-info { display: contents; }
+  .produto-grade .produto-info > .card-cat { order: 1; margin-bottom: -10px; }
+  .produto-grade .produto-info > h1 { order: 2; margin: 0; }
+  .produto-grade .produto-info > .produto-meta { order: 3; margin: -6px 0 0; }
+  .produto-grade .produto-info > .ofertas { order: 4; }
+  .produto-grade > .produto-img, .produto-grade > .produto-ficha { order: 5; }
+  .produto-img { max-height: 360px; aspect-ratio: auto; }
+  .produto-img img { max-height: 340px; padding: 16px; }
+  .ofertas-tit { margin-bottom: 8px; }
+  .oferta { padding: 12px 14px; }
+  /* Guias: "Onde comprar" logo depois do título; a introdução vem em seguida */
+  .guia { display: flex; flex-direction: column; }
+  .guia > * { order: 3; }
+  .guia > .guia-cab { order: 0; margin-bottom: 0; }
+  .guia > .guia-atalho { order: 1; margin-top: 4px; }
+  .guia > .guia-intro { order: 2; margin-top: 16px; }
+  .guia > .guia-meta { order: 2; }
+  .guia-cab h1 { margin-bottom: 8px; }
+  /* Trilha numa linha só */
+  .trilha { padding: 10px 0 4px; flex-wrap: nowrap; overflow: hidden; white-space: nowrap; }
+  .trilha-atual { display: none; }
+}
+@media (max-width: 560px) {
+  .pub-longo { display: none; }
+  .pub-curto { display: inline; }
+}
+@media (max-width: 820px) {
+  .guia > .guia-meta { order: 4; }          /* data e fontes continuam na página, ao fim do guia */
+  .guia > .guia-intro { font-size: 1rem; }
+  .guia-texto > section:first-child > h2 { margin-top: 18px; }
+}
+@media (max-width: 520px) {
+  /* foto ao lado do nome e do botão: o botão sobe sem perder a foto */
+  .guia-prod-inline { flex-direction: row; align-items: center; gap: 12px; }
+  .guia-prod-inline .gpi-img { flex: 0 0 84px; width: 84px; height: 84px; margin: 0; }
+  .guia-prod-inline .gpi-nome { font-size: 14.5px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .guia-prod-inline .btn { font-size: 13.5px; padding: 9px 10px; min-height: 42px; }
+}
+@media (max-width: 820px) {
+  .barra-compra { transition: transform .2s ease; }
+  .barra-compra.oculta { transform: translateY(110%); }
+}
+@media (prefers-reduced-motion: reduce) { .barra-compra { transition: none; } }
+@media (max-width: 820px) {
+  .guia > * { min-width: 0; max-width: 100%; }   /* tabelas rolam dentro da própria caixa, sem alargar a página */
+}
