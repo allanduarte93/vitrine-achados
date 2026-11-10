@@ -689,9 +689,22 @@ export const paginaGuias = ({ config, guias }) => ({
 });
 
 export const paginaGuia = ({ config, guia, itens, outrosGuias = [] }) => {
+  // Seção ligada a um produto do guia (sec.produto = id): foto do anúncio + botão de compra com a mesma URL
+  // de afiliado da oferta ativa; sec.guia = slug de um guia existente para aprofundar.
+  const blocoProduto = (sec) => {
+    const x = sec.produto && itens.find((i) => i.p.id === sec.produto);
+    if (!x || !x.ativas.length) return "";
+    const { p, ativas } = x;
+    return `<div class="guia-prod-inline">
+      <a class="gpi-img" href="/produto/${esc(p.id)}/" tabindex="-1" aria-hidden="true">${imagemProduto(p, 40, { compacto: true })}</a>
+      <div class="gpi-corpo"><a class="gpi-nome" href="/produto/${esc(p.id)}/">${esc(p.nomeCurto || p.nome)}</a>
+      ${ativas.map((o) => `<a class="btn btn-prim btn-loja" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener" data-oferta data-guia-secao data-produto="${esc(p.id)}" data-loja="${o.loja}">Ver preço no ${esc(LOJAS[o.loja]?.nome || "site da loja")}<span class="sr"> (abre em nova aba)</span> ${icone("externo", { tamanho: 16 })}</a>`).join("")}</div>
+    </div>`;
+  };
+  const linkGuia = (sec) => (sec.guia ? `<p class="gpi-guia"><a href="/guias/${esc(sec.guia.slug)}/">${esc(sec.guia.rotulo || "Leia o guia completo")}: ${esc(sec.guia.titulo)}</a></p>` : "");
   const secoes = (guia.secoes || [])
-    .map((sec) => `<section><h2>${esc(sec.titulo)}</h2>${(sec.paragrafos || []).map((t) => `<p>${esc(t)}</p>`).join("")}${
-      sec.lista?.length ? `<ul class="pontos">${sec.lista.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}</section>`)
+    .map((sec) => `<section><h2>${esc(sec.titulo)}</h2>${blocoProduto(sec)}${(sec.paragrafos || []).map((t) => `<p>${esc(t)}</p>`).join("")}${
+      sec.lista?.length ? `<ul class="pontos">${sec.lista.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}${linkGuia(sec)}</section>`)
     .join("\n");
   const tabela = guia.tabela?.colunas?.length
     ? `<section><h2>${esc(guia.tabela.titulo || "Lado a lado")}</h2><div class="tabela-rolagem"><table class="tabela-compara"><thead><tr>${guia.tabela.colunas
@@ -702,7 +715,7 @@ export const paginaGuia = ({ config, guia, itens, outrosGuias = [] }) => {
   // Atalho de compra logo após a introdução: o leitor que chega pela busca vê a oferta sem rolar a página.
   // Usa as mesmas URLs de afiliado das ofertas ativas (nada é reescrito) e traz o aviso de afiliado junto.
   const ordem = Array.isArray(guia.atalho) ? [...guia.atalho.map((id) => itens.find((i) => i.p.id === id)).filter(Boolean), ...itens] : itens;
-  const comOferta = [...new Set(ordem)].filter(({ ativas }) => ativas.length).slice(0, 3);
+  const comOferta = guia.atalho === false ? [] : [...new Set(ordem)].filter(({ ativas }) => ativas.length).slice(0, 3);
   const atalho = comOferta.length
     ? `<aside class="guia-atalho" aria-label="Onde comprar">
       <p class="guia-atalho-tit">Onde comprar os produtos deste guia</p>
@@ -732,9 +745,9 @@ export const paginaGuia = ({ config, guia, itens, outrosGuias = [] }) => {
       ${guia.perguntas?.length ? `<section aria-labelledby="t-guia-faq"><h2 id="t-guia-faq">Perguntas frequentes</h2><div class="faq">${guia.perguntas.map((q) => `<details><summary>${esc(q.pergunta)}</summary><p>${esc(q.resposta)}</p></details>`).join("")}</div></section>` : ""}
       ${guia.fontes?.length ? `<section aria-labelledby="t-guia-fontes"><h2 id="t-guia-fontes">Fontes consultadas</h2><ul class="fontes">${guia.fontes.map((f) => `<li><a href="${esc(f.url)}" rel="nofollow noopener" target="_blank">${esc(f.titulo)}</a></li>`).join("")}</ul></section>` : ""}
     </div>
-    <section class="secao" aria-labelledby="t-guia-prod"><div class="secao-cab"><h2 id="t-guia-prod">Produtos citados neste guia</h2></div>
+    ${itens.every(({ p }) => (guia.secoes || []).some((sec) => sec.produto === p.id)) ? "" : `<section class="secao" aria-labelledby="t-guia-prod"><div class="secao-cab"><h2 id="t-guia-prod">Produtos citados neste guia</h2></div>
       <div class="grade-prod">${itens.map(({ p, ativas }) => cardProduto(p, ativas)).join("")}</div>
-    </section>
+    </section>`}
     ${outrosGuias.length ? `<section class="secao" aria-labelledby="t-outros-guias"><div class="secao-cab"><h2 id="t-outros-guias">Outros guias</h2></div><div class="grade-guias">${outrosGuias.map(cardGuia).join("")}</div></section>` : ""}
     <p class="fonte">${esc(guia.nota || "Este guia resume o que os fabricantes e as lojas informam nos anúncios. Confirme detalhes, preço e disponibilidade na página da loja antes de comprar.")}</p>
   </article>

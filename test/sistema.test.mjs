@@ -774,3 +774,18 @@ test("home: destaques do topo usam a URL de afiliado da oferta, sem preço, com 
   assert.ok(!html.includes("Ponto 3"));
   assert.ok(!/R\$|desconto|OFF/i.test(html));
 });
+
+test("guia: seção com produto mostra foto/botão com a URL de afiliado e esconde a grade repetida", async () => {
+  const { paginaGuia } = await import("../src/lib/render.mjs");
+  const config = { siteUrl: "https://ex.com", nomeSite: "X", programasConfirmados: { mercadolivre: true } };
+  const url = "https://meli.la/xyz789";
+  const p = { id: "prod-a", nome: "Produto A", categoria: "Casa" };
+  const guia = { slug: "g", titulo: "Guia", resumo: "r", introducao: "i", atualizadoEm: "2026-11-10", atalho: false,
+    secoes: [{ titulo: "Produto A", produto: "prod-a", guia: { slug: "outro", titulo: "Outro guia" }, paragrafos: ["texto"] }] };
+  const html = paginaGuia({ config, guia, itens: [{ p, ativas: [{ loja: "mercadolivre", url, estado: {} }] }] }).conteudo;
+  assert.ok(html.includes('class="guia-prod-inline"'));
+  assert.ok(html.includes(`href="${url}"`) && html.includes('rel="sponsored nofollow noopener"'));
+  assert.ok(html.includes('href="/guias/outro/"'));
+  assert.ok(!html.includes("guia-atalho"), "atalho desligado");
+  assert.ok(!html.includes("t-guia-prod"), "sem grade repetida quando todos os produtos têm seção");
+});

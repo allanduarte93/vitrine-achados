@@ -602,3 +602,12 @@ a.cat:hover { transform: none; box-shadow: var(--sombra); border-color: #d6dae6;
 @media (max-width: 1100px) { .grade-bf { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 720px) { .grade-bf { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
 @media (max-width: 420px) { .grade-bf { grid-template-columns: 1fr; } }
+
+/* Produto dentro da seção do guia */
+.guia-prod-inline { display: flex; gap: 14px; align-items: center; margin: 4px 0 14px; padding: 12px; border: 1px solid var(--linha); border-radius: 12px; background: var(--papel); }
+.guia-prod-inline .gpi-img { flex: 0 0 104px; width: 104px; height: 104px; display: block; }
+.guia-prod-inline .gpi-img img { width: 100%; height: 100%; object-fit: contain; }
+.guia-prod-inline .gpi-corpo { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.guia-prod-inline .gpi-nome { font-weight: 600; line-height: 1.35; }
+.gpi-guia { font-weight: 600; }
+@media (max-width: 520px) { .guia-prod-inline { flex-direction: column; align-items: stretch; } .guia-prod-inline .gpi-img { margin: 0 auto; } .guia-prod-inline .btn { justify-content: center; } }
