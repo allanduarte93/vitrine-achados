@@ -1,5 +1,5 @@
 {
-  "data": "2026-11-10T17:27:31.717Z",
+  "data": "2026-11-10T18:21:41.728Z",
   "site": "https://allanduarte93.github.io/vitrine-achados",
   "paginas": [
     {
@@ -123,13 +123,6 @@
       },
       "botoes": [
         "mercadolivre"
-      ]
-    },
-    {
-      "pagina": "amazon-b07j4j9xkz",
-      "foto": null,
-      "botoes": [
-        "amazon"
       ]
     },
     {
@@ -505,13 +498,6 @@
       ]
     },
     {
-      "pagina": "amazon-b07dyhdxx8",
-      "foto": null,
-      "botoes": [
-        "amazon"
-      ]
-    },
-    {
       "pagina": "organizador-de-maquiagem-giratorio-360-vittak-vittak",
       "foto": {
         "src": "https://http2.mlstatic.com/D_Q_NP_2X_986811-MLA112845656392_072026-AB.webp",
@@ -592,17 +578,6 @@
       "pagina": "philips-oneblade-qp1425-10-aparador-e-barbeador-5-em-1-philips",
       "foto": {
         "src": "https://http2.mlstatic.com/D_Q_NP_2X_750670-MLA118429558724_102026-AB.webp",
-        "ok": true,
-        "w": 448
-      },
-      "botoes": [
-        "mercadolivre"
-      ]
-    },
-    {
-      "pagina": "porta-temperos-giratorio-inox-com-16-potes-de-vidro-solar",
-      "foto": {
-        "src": "https://http2.mlstatic.com/D_Q_NP_2X_764223-MLA113633780762_072026-AB.webp",
         "ok": true,
         "w": 448
       },
@@ -750,11 +725,11 @@
     }
   ],
   "falhas": [
-    "desktop: home com 17 produtos, índice com 70",
-    "celular: home com 17 produtos, índice com 70"
+    "desktop: home com 17 produtos, índice com 67",
+    "celular: home com 17 produtos, índice com 67"
   ],
   "resumo": {
-    "produtos": 70,
-    "comFotoNoIndice": 59
+    "produtos": 67,
+    "comFotoNoIndice": 58
   }
 }
