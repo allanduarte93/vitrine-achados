@@ -161,3 +161,15 @@ Medição antes das ações de 04/11 (para comparar depois):
 - Canais: nenhuma publicação externa feita. Facebook salvo no Chrome é de outra pessoa (não usado), Reddit bloqueado
   para a ferramenta, X e Pinterest são de outros projetos, LinkedIn já usado (regra de não repetir).
 - Preparado: docs/posts-prontos.md (5 textos sem preço, com aviso de afiliado).
+
+### 10/11/2026 — Ações 1 e 3 (autorizadas)
+
+- Perfil público de afiliado do ML (https://www.mercadolivre.com.br/social/ad20260429184559): já existia, vazio.
+  Criada e tornada pública a lista de afiliados "Black Friday 2026" com 5 produtos (PS5 Slim Digital, OneBlade
+  QP1425, Taiff Black Ion, Basic Whey Growth, Parafusadeira TB-21PX). O perfil mostra só o apelido e a foto que
+  já estavam lá; as contas vinculadas de terceiros não aparecem e não foram alteradas. Lista padrão
+  "Minhas recomendações" (29 itens) continua privada. Etiqueta em uso confirmada: ad20260429184559.
+- Home: seção "Escolhidos para a Black Friday" no topo com os mesmos 5 produtos, foto do anúncio oficial,
+  2 pontos da ficha e botão "Ver preço no Mercado Livre" (URLs iguais às do catálogo, sem preço/desconto).
+  38 testes OK; publicado; conferido 3 vezes (5 botões, 17 produtos na home, tags Amazon OK).
+- E-mails de parceria (Vida em Casa, Revista 2K) e chamado ML 490066167: sem resposta até hoje.
