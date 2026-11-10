@@ -203,3 +203,16 @@ Acompanhamento: no máximo 1 lembrete por site.
   Sem preço, desconto, avaliação ou a palavra "oferta". Catálogo inalterado.
 - Indexação solicitada no Search Console (primeira vez para esta URL).
 - Guia "Black Friday 2026: ideias de presente por perfil" agora aponta para a página nova em "Outros guias".
+
+### 10/11/2026 — auditoria comercial (sem cliques, sem mudança em produção)
+
+- Indisponíveis na loja (conferido abrindo a página do produto, sem link de afiliado):
+  - Amazon B07DYHDXX8 (Omo 5 L): "Não disponível" — aparece em /categoria/casa-e-cozinha/ e na página do produto.
+  - Amazon B07J4J9XKZ (Bravecto 4,5–10 kg): sem botão de compra em destaque ("Ver todas as opções de compra")
+    — aparece na home, em /categoria/pets/, no guia do Bravecto e em 2 páginas de produto.
+  - ML MLB22684637 (porta-temperos 16 potes): "Este produto está indisponível" — no guia de cozinha,
+    em /categoria/casa-e-cozinha/ e na página do produto.
+  - Demais: 8 Amazon "Em estoque" com botão de compra; 59 ML ativos (46 pela busca do painel, 13 abrindo a página).
+- Verificador de links só confere status HTTP/URL: marcou os 10 da Amazon como OK sem detectar falta de estoque.
+- Celular (390 px): na página de produto o primeiro botão de compra fica em y≈945 (tela 844); nos guias, y≈990–1060.
+- Comissões oficiais Amazon (Programa de Taxas): Dispositivos Amazon 9,5%; Casa/Cozinha/Ferramentas/Pet 8–11%.
