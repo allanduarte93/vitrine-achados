@@ -225,3 +225,11 @@ Acompanhamento: no máximo 1 lembrete por site.
 | Marcenaria para Todos (youtube.com/@MarcenariaparaTodos, 55,4 mil) | marcenariaparatodos.jr@gmail.com | Parafusadeira 12 V ou 21 V | 10/11/2026 14:07 | — | 17/11 (único) |
 
 Sem oferta de dinheiro ou comissão, sem pedir troca de links próprios, com aviso de links de afiliado.
+
+### 11/11/2026 — medição semanal (agendada): NÃO realizada
+
+- O navegador (Chrome com a extensão) não estava acessível às 21h10 UTC; Search Console, painel de afiliados
+  do Mercado Livre e Associados Amazon exigem login e não puderam ser lidos. Nenhum número foi estimado.
+- Última medição válida continua sendo a de 09/11 (acima).
+- Gmail: nenhuma resposta dos 7 contatos de parceria (PSX Brasil, GameBlast, Combo Infinito, A Chata de Batom,
+  DIY Home, Rafic, Marcenaria para Todos), nem de Vida em Casa, Revista 2K ou do chamado ML 490066167; nenhum erro de entrega.
