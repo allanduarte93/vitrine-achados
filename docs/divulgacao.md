@@ -233,3 +233,18 @@ Sem oferta de dinheiro ou comissão, sem pedir troca de links próprios, com avi
 - Última medição válida continua sendo a de 09/11 (acima).
 - Gmail: nenhuma resposta dos 7 contatos de parceria (PSX Brasil, GameBlast, Combo Infinito, A Chata de Batom,
   DIY Home, Rafic, Marcenaria para Todos), nem de Vida em Casa, Revista 2K ou do chamado ML 490066167; nenhum erro de entrega.
+
+### 16/11/2026 — medição + ações
+
+- Search Console (08–14/11, 7 dias): **195 impressões** (antes 32/semana), 0 cliques, posição média 8,8.
+  Consultas: "ps5 slim digital black friday 2026" 37 (pos. 9,5), "ps5 slim black friday 2026" 25 (9,8),
+  "ps5 slim digital black friday" 15 (9,9), "vitrine dos achados" 9 (8,3), "ps5 slim vale a pena em 2026" 3 (10,3),
+  "fire tv stick hd para que serve" 2 (7,0), "ps5 slim digital 825gb vale a pena" 2, "black friday ps5 slim digital" 2,
+  "vale a pena comprar o a17 em 2026" 1 (8,0).
+- ML afiliados (9–15/11): 2 cliques (−67%), 0 pedidos, R$ 0. PS5 segue ativo (lista pública: R$ 4.369 hoje).
+- Amazon vitrineachados-20: não medido nesta rodada.
+- Ação 1: guia PS5 retitulado para a busca dominante — "PS5 Slim Digital na Black Friday 2026: vale a pena?" —
+  e nova descrição; 41 testes OK; publicado; conferido 3 vezes. Link de afiliado inalterado (meli.la/27v3uS6).
+  Indexação NÃO solicitada de novo (regra de não repetir).
+- Ação 2: lembrete único enviado (mesma conversa) a PSX Brasil, GameBlast e Combo Infinito, antes do GTA VI (19/11).
+- Gmail: nenhuma resposta dos 7 contatos. Lembrete de 17/11 (A Chata de Batom, DIY Home, Rafic, Marcenaria) agendado.
