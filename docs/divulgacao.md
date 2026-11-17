@@ -248,3 +248,10 @@ Sem oferta de dinheiro ou comissão, sem pedir troca de links próprios, com avi
   Indexação NÃO solicitada de novo (regra de não repetir).
 - Ação 2: lembrete único enviado (mesma conversa) a PSX Brasil, GameBlast e Combo Infinito, antes do GTA VI (19/11).
 - Gmail: nenhuma resposta dos 7 contatos. Lembrete de 17/11 (A Chata de Batom, DIY Home, Rafic, Marcenaria) agendado.
+
+### 16–17/11/2026 — guia PS5 e lembretes
+
+- 16/11: guia PS5 ganhou seção "PS5 Slim Digital na Black Friday 2026: o que conferir" e pergunta
+  "O PS5 Slim Digital vale a pena na Black Friday 2026?"; 41 testes OK; publicado e conferido 3 vezes; link inalterado.
+- 17/11: nenhuma resposta de Rafic, Marcenaria para Todos, A Chata de Batom, DIY Home (nem dos 3 sites de games).
+  Lembrete único enviado na mesma conversa aos 4. Não haverá novo contato com nenhum dos 7.
