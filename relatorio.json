@@ -1,5 +1,5 @@
 {
-  "data": "2026-11-18T19:56:43.187Z",
+  "data": "2026-11-18T20:15:13.216Z",
   "site": "https://allanduarte93.github.io/vitrine-achados",
   "paginas": [
     {
@@ -134,13 +134,6 @@
       },
       "botoes": [
         "mercadolivre"
-      ]
-    },
-    {
-      "pagina": "amazon-b07rk4hst7",
-      "foto": null,
-      "botoes": [
-        "amazon"
       ]
     },
     {
@@ -725,19 +718,23 @@
     }
   ],
   "indisponiveis": [
+    "amazon-b07rk4hst7",
     "amazon-b07j4j9xkz",
     "amazon-b07dyhdxx8",
     "porta-temperos-giratorio-inox-com-16-potes-de-vidro-solar"
   ],
   "botaoCelular": {
-    "paginas": 82,
-    "comBotao": 82,
+    "paginas": 81,
+    "comBotao": 81,
     "yMin": 456,
     "yMax": 755
   },
-  "falhas": [],
+  "falhas": [
+    "desktop: jornada — busca \"hidratante\" achou 1",
+    "celular: jornada — busca \"hidratante\" achou 1"
+  ],
   "resumo": {
-    "produtos": 67,
+    "produtos": 66,
     "comFotoNoIndice": 58
   }
 }
