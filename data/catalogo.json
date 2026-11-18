@@ -670,7 +670,12 @@
           "linkVerificado": true,
           "verificadoEm": "2026-10-20T15:15:00-03:00",
           "verificadoPor": "cowork",
-          "identificador": "B07RK4HST7"
+          "identificador": "B07RK4HST7",
+          "disponibilidade": {
+            "estado": "sem-compra-direta",
+            "conferidoEm": "2026-11-18",
+            "fonte": "Checar links de 18/11/2026 (página do produto na Amazon, sem link de afiliado): sem botão de compra, só \"Ver todas as opções de compra\""
+          }
         }
       ],
       "descricao": "Loção hidratante corporal da CeraVe em embalagem de 473 ml, com textura fluida e de rápida absorção. A fórmula combina três ceramidas essenciais e ácido hialurônico, ingredientes que ajudam a manter a umidade natural da pele. O fabricante indica o produto para peles secas a extrassecas e informa que a fórmula é sem perfume e hipoalergênica.",

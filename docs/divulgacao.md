@@ -255,3 +255,14 @@ Sem oferta de dinheiro ou comissão, sem pedir troca de links próprios, com avi
   "O PS5 Slim Digital vale a pena na Black Friday 2026?"; 41 testes OK; publicado e conferido 3 vezes; link inalterado.
 - 17/11: nenhuma resposta de Rafic, Marcenaria para Todos, A Chata de Batom, DIY Home (nem dos 3 sites de games).
   Lembrete único enviado na mesma conversa aos 4. Não haverá novo contato com nenhum dos 7.
+
+### 18/11/2026 — checape de links e conversão
+
+- Checar links (sob demanda, sem link de afiliado): Amazon 7 com botão de compra; **CeraVe Loção B07RK4HST7
+  sem compra direta** ("Ver todas as opções de compra"); ML 69 inconclusivos (captcha da verificação automática);
+  fotos 69/69 OK. Conferir site público: OK.
+- Correção: oferta Amazon da CeraVe marcada `sem-compra-direta` (link e ID intactos no catálogo). O guia
+  "CeraVe × Cicaplast" passa a usar a mesma loção (CeraVe 473 ml, loja oficial CeraVe) do Mercado Livre,
+  já publicada no catálogo com link inalterado (meli.la/2Eu2E8b). Assim o guia continua no ar com botão ativo.
+- Diagnóstico: botões já estão na 1ª tela do celular (correção de 10/11). O gargalo é tráfego, não conversão:
+  0 cliques do Google até 14/11 e 2–6 cliques/semana no ML. Gmail sem aviso de venda.
