@@ -39,3 +39,24 @@ Sempre manter a frase de afiliado. Links apontam para as páginas da Vitrine Ach
 > 12 V ou 21 V, qual escolher:
 > https://allanduarte93.github.io/vitrine-achados/guias/parafusadeira-12v-ou-21v-qual-escolher/
 > (Link de afiliado.)
+
+---
+
+# Kit WhatsApp/Telegram/Instagram — 18 a 27/11/2026 (para o titular postar)
+
+Canais permitidos por escrito pelo Mercado Livre (caso 490066167): grupos/canais públicos de WhatsApp e
+Telegram, redes sociais, site próprio. Não usar em envio direto a quem não pediu, nem em anúncios pagos.
+Só produtos do Mercado Livre neste kit (a autorização de WhatsApp é do ML). Sem preço: muda a toda hora.
+
+Lista pública de afiliado ML "Black Friday 2026" (5 produtos): https://www.mercadolivre.com.br/social/ad20260429184559
+
+| Dia | Post |
+|---|---|
+| 18–19/11 | PS5 + GTA VI |
+| 20/11 | OneBlade |
+| 21/11 | Secador Taiff |
+| 22/11 | Presentes por perfil |
+| 23/11 | Parafusadeira |
+| 24/11 | Whey |
+| 25–26/11 | Lista Black Friday (status + grupos) |
+| 27/11 (Black Friday) | PS5 de novo + lista completa, manhã e noite |
