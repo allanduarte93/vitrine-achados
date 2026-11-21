@@ -76,7 +76,7 @@ const imagemProduto = (p, tamanho = 64, { compacto = false, prioridade = false }
 
 /* ---------------- Layout ---------------- */
 
-export const layout = ({ config, titulo, descricao, caminho, conteudo, jsonld = [], indexavel = true, exemplo = false, categorias = [], temGuias = false, lojas = [] }) => {
+export const layout = ({ config, titulo, descricao, caminho, conteudo, jsonld = [], indexavel = true, exemplo = false, categorias = [], temGuias = false, lojas = [], ogType = "website" }) => {
   const url = `${config.siteUrl}${caminho}`;
   const robots = indexavel && !exemplo ? "index, follow" : "noindex, follow";
   const og = `${config.siteUrl}/assets/og-image.png`;
@@ -99,7 +99,7 @@ export const layout = ({ config, titulo, descricao, caminho, conteudo, jsonld = 
 <meta name="robots" content="${robots}">
 <link rel="canonical" href="${esc(url)}">
 <link rel="alternate" type="application/atom+xml" title="${esc(config.nomeSite)}: novidades" href="/feed.xml">
-<meta property="og:type" content="website">
+<meta property="og:type" content="${esc(ogType)}">
 <meta property="og:site_name" content="${esc(config.nomeSite)}">
 <meta property="og:title" content="${esc(titulo)}">
 <meta property="og:description" content="${esc(descricao)}">
@@ -107,8 +107,12 @@ export const layout = ({ config, titulo, descricao, caminho, conteudo, jsonld = 
 <meta property="og:image" content="${esc(og)}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${esc(config.nomeSite)}">
 <meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(titulo)}">
+<meta name="twitter:description" content="${esc(descricao)}">
+<meta name="twitter:image" content="${esc(og)}">
 <meta name="theme-color" content="#14215a">
 ${config.verificacao?.google ? `<meta name="google-site-verification" content="${esc(config.verificacao.google)}">` : ""}
 ${config.verificacao?.bing ? `<meta name="msvalidate.01" content="${esc(config.verificacao.bing)}">` : ""}
@@ -157,7 +161,7 @@ ${conteudo}
           <li><a href="/busca/">Buscar produtos</a></li>
           <li><a href="/como-funciona/">Como funciona</a></li>
           ${temGuias ? `<li><a href="/guias/">Guias de compra</a></li>` : ""}
-          ${categorias.slice(0, 4).map((c) => `<li><a href="/categoria/${c.slug}/">${esc(c.nome)}</a></li>`).join("")}
+          ${(categorias.some((c) => c.total > 0) ? categorias.filter((c) => c.total > 0) : categorias).map((c) => `<li><a href="/categoria/${c.slug}/">${esc(c.nome)}</a></li>`).join("")}
         </ul>
       </div>
       <div>
@@ -187,6 +191,12 @@ ${conteudo}
 
 /* ---------------- Componentes ---------------- */
 
+const rotuloPreco = (loja) => LOJAS[loja]?.rotuloBotao || "Ver preço na loja";
+
+/** Mesmo rótulo, rel e target em card, ficha, guia e barra fixa. */
+const botaoOferta = (o, produtoId, { classe = "btn-prim btn-loja", dados = "", iconeTamanho = 16 } = {}) =>
+  `<a class="btn ${classe}" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener" data-oferta${dados} data-produto="${esc(produtoId)}" data-loja="${o.loja}">${esc(rotuloPreco(o.loja))}<span class="sr"> (abre em nova aba)</span> ${icone("externo", { tamanho: iconeTamanho })}</a>`;
+
 const menorPrecoExibido = (ativas) => {
   const com = ativas.filter((o) => o.estado.mostrarPreco);
   if (!com.length) return null;
@@ -199,7 +209,7 @@ export const cardProduto = (p, ativas) => {
   const unica = ativas.length === 1 ? ativas[0] : null;
   const detalhe = `/produto/${p.id}/`;
   const acao = unica
-    ? `<a class="btn btn-prim btn-loja" href="${esc(unica.url)}" target="_blank" rel="sponsored nofollow noopener" data-oferta data-produto="${esc(p.id)}" data-loja="${unica.loja}">Ver produto na loja<span class="sr"> ${esc(LOJAS[unica.loja].nome)} (abre em nova aba)</span> ${icone("externo", { tamanho: 16 })}</a>`
+    ? botaoOferta(unica, p.id)
     : `<a class="btn btn-prim" href="${detalhe}">Comparar ${ativas.length} lojas</a>`;
   return `<article class="card${temFoto(p) ? " com-foto" : ""}" data-filtravel data-produto="${esc(p.id)}" data-lojas="${ativas.map((o) => o.loja).join(" ")}" data-preco="${menor ? menor.preco : ""}" data-nome="${esc(p.nome.toLowerCase())}" data-categoria="${esc(slugify(p.categoria))}">
   <a class="card-img" href="${detalhe}" tabindex="-1" aria-hidden="true">${imagemProduto(p, 40, { compacto: true })}${ativas.length > 1 ? `<span class="selo-lojas">${icone("comparar", { tamanho: 14 })}${ativas.length} lojas</span>` : ""}</a>
@@ -233,7 +243,7 @@ export const itemRecomendado = (p, ativas) => {
   </div>
   <div class="rec-acao">
     ${unica ? `<p class="card-loja">${marcaLoja(unica.loja)}<span>fotos e preço na loja</span></p>
-    <a class="btn btn-prim btn-loja" href="${esc(unica.url)}" target="_blank" rel="sponsored nofollow noopener" data-oferta data-produto="${esc(p.id)}" data-loja="${unica.loja}">Ver produto na loja<span class="sr"> ${esc(LOJAS[unica.loja].nome)} (abre em nova aba)</span> ${icone("externo", { tamanho: 16 })}</a>
+    ${botaoOferta(unica, p.id)}
     <a class="card-detalhes" href="${detalhe}">Detalhes do produto</a>`
     : `<p class="card-loja">${ativas.map((o) => marcaLoja(o.loja)).join("")}</p><a class="btn btn-prim" href="${detalhe}">Comparar ${ativas.length} lojas</a>`}
   </div>
@@ -280,7 +290,7 @@ export const cardDestaqueHome = (p, ativas, guia) => {
     <span class="card-cat">${esc(p.categoria)}</span>
     <h3><a href="${detalhe}">${esc(p.nomeCurto || p.nome)}</a></h3>
     ${pontos.length ? `<ul class="card-pontos">${pontos.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}
-    ${ativas.map((o) => `<a class="btn btn-prim btn-loja" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener" data-oferta data-destaque-home data-produto="${esc(p.id)}" data-loja="${o.loja}">Ver preço no ${esc(LOJAS[o.loja]?.nome || "site da loja")}<span class="sr"> (abre em nova aba)</span> ${icone("externo", { tamanho: 16 })}</a>`).join("")}
+    ${ativas.map((o) => botaoOferta(o, p.id, { classe: "btn-prim btn-loja", dados: " data-destaque-home" })).join("")}
     ${guia ? `<a class="card-detalhes" href="/guias/${esc(guia.slug)}/">Ler o guia antes de comprar</a>` : `<a class="card-detalhes" href="${detalhe}">Detalhes do produto</a>`}
   </div>
 </article>`;
@@ -441,7 +451,7 @@ ${secaoCompara}
 </div></section>
 
 ${destaquesHome?.itens?.length ? `<section class="secao secao-bf" aria-labelledby="t-bf"><div class="container">
-  <div class="secao-cab"><div><h2 id="t-bf">${esc(destaquesHome.titulo)}</h2><p>${esc(destaquesHome.texto)}</p></div></div>
+  <div class="secao-cab"><div><p class="bf-quando">${esc(destaquesHome.quando || "27 de novembro de 2026")}</p><h2 id="t-bf">${esc(destaquesHome.titulo)}</h2><p>${esc(destaquesHome.texto)}</p></div>${guias.some((g) => g.slug === "black-friday-2026-produtos-para-ficar-de-olho") ? `<a class="btn btn-sec" href="/guias/black-friday-2026-produtos-para-ficar-de-olho/">Ler o guia ${icone("seta", { tamanho: 18 })}</a>` : ""}</div>
   <div class="grade-prod grade-bf">${destaquesHome.itens.map(({ p, ativas, guia }) => cardDestaqueHome(p, ativas, guia)).join("")}</div>
   <p class="aviso-botoes">${esc(AVISO_CURTO)}${destaquesHome.itens.some(({ ativas }) => ativas.some((o) => o.loja === "amazon")) ? ` ${esc(declaracaoAmazon(config))}` : ""}</p>
 </div></section>` : ""}
@@ -469,6 +479,14 @@ ${secaoGuias}
       { "@context": "https://schema.org", "@type": "WebSite", name: config.nomeSite, url: `${config.siteUrl}/`, inLanguage: "pt-BR",
         potentialAction: { "@type": "SearchAction", target: `${config.siteUrl}/busca/?q={search_term_string}`, "query-input": "required name=search_term_string" } },
       { "@context": "https://schema.org", "@type": "Organization", name: config.nomeSite, url: `${config.siteUrl}/`, logo: `${config.siteUrl}/assets/icon-512.png` },
+      ...(destaquesHome?.itens?.length
+        ? [{
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: destaquesHome.titulo,
+            itemListElement: destaquesHome.itens.map(({ p }, i) => ({ "@type": "ListItem", position: i + 1, name: p.nome, url: `${config.siteUrl}/produto/${p.id}/` })),
+          }]
+        : []),
     ],
   };
 };
@@ -556,7 +574,6 @@ export const paginaProduto = ({ config, p, ativas, inativas, relacionados, guias
   const menor = comparaveis.length >= 2 ? Math.min(...comparaveis.map((o) => o.preco)) : null;
   const linhas = ativas
     .map((o) => {
-      const loja = LOJAS[o.loja];
       const preco = o.estado.mostrarPreco
         ? `<strong>${brl(o.preco)}</strong><small>consultado em ${esc(dataHora(o.precoColetadoEm))} — pode mudar</small>`
         : `<span class="sem-preco">Preço, frete e prazo na página da loja</span>`;
@@ -564,7 +581,7 @@ export const paginaProduto = ({ config, p, ativas, inativas, relacionados, guias
       return `<li class="oferta oferta-${o.loja}">
   <div class="oferta-loja">${marcaLoja(o.loja)} ${destaque}</div>
   <div class="oferta-preco">${preco}</div>
-  <a class="btn btn-${o.loja}" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener" data-oferta data-produto="${esc(p.id)}" data-loja="${o.loja}">Ver produto na loja<span class="sr"> ${esc(loja.nome)} (abre em nova aba)</span> ${icone("externo", { tamanho: 18 })}</a>
+  ${botaoOferta(o, p.id, { classe: `btn-${o.loja}`, iconeTamanho: 18 })}
   <p class="oferta-onde">Você conclui a compra no site ${esc(ARTIGO[o.loja] || loja.nome)}.</p>
 </li>`;
     })
@@ -628,7 +645,7 @@ export const paginaProduto = ({ config, p, ativas, inativas, relacionados, guias
 <div class="barra-compra" aria-label="Comprar">
   <span class="barra-compra-txt">${ativas.length === 1 ? `Compra concluída ${esc(ARTIGO[ativas[0].loja] ? `no site ${ARTIGO[ativas[0].loja]}` : "na loja")}` : `Disponível em ${ativas.length} lojas`}</span>
   ${ativas.length === 1
-    ? `<a class="btn btn-${ativas[0].loja}" href="${esc(ativas[0].url)}" target="_blank" rel="sponsored nofollow noopener" data-oferta data-barra data-produto="${esc(p.id)}" data-loja="${ativas[0].loja}">Ver produto na loja<span class="sr"> ${esc(LOJAS[ativas[0].loja].nome)}</span> ${icone("externo", { tamanho: 16 })}</a>`
+    ? botaoOferta(ativas[0], p.id, { classe: `btn-${ativas[0].loja}`, dados: " data-barra" })
     : `<a class="btn btn-prim" href="#ofertas">Ver lojas</a>`}
 </div>`;
 
@@ -650,25 +667,27 @@ export const paginaProduto = ({ config, p, ativas, inativas, relacionados, guias
       mainEntity: perguntas.map((q) => ({ "@type": "Question", name: q.pergunta, acceptedAnswer: { "@type": "Answer", text: q.resposta } })),
     });
   }
-  // Product só com ofertas de preço exibido (dados verdadeiros e visíveis na página).
+  // Product com o que a página mostra. Preço só quando está visível; sem nota, avaliação ou review.
   const comPreco = ativas.filter((o) => o.estado.mostrarPreco);
+  const produtoLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: p.nome,
+    ...(descricao ? { description: descricao } : {}),
+    ...(p.marca ? { brand: { "@type": "Brand", name: p.marca } } : {}),
+    ...(p.imagem && p.imagemPermitida === true ? { image: p.imagem.startsWith("http") ? p.imagem : `${config.siteUrl}${p.imagem}` } : {}),
+    category: p.categoria,
+  };
   if (comPreco.length) {
-    jsonld.push({
-      "@context": "https://schema.org",
-      "@type": "Product",
-      name: p.nome,
-      ...(p.marca ? { brand: { "@type": "Brand", name: p.marca } } : {}),
-      ...(p.imagem && p.imagemPermitida === true ? { image: p.imagem.startsWith("http") ? p.imagem : `${config.siteUrl}${p.imagem}` } : {}),
-      category: p.categoria,
-      offers: comPreco.map((o) => ({
-        "@type": "Offer",
-        price: o.preco.toFixed(2),
-        priceCurrency: "BRL",
-        url: o.url,
-        seller: { "@type": "Organization", name: LOJAS[o.loja].nome },
-      })),
-    });
+    produtoLd.offers = comPreco.map((o) => ({
+      "@type": "Offer",
+      price: o.preco.toFixed(2),
+      priceCurrency: "BRL",
+      url: o.url,
+      seller: { "@type": "Organization", name: LOJAS[o.loja].nome },
+    }));
   }
+  jsonld.push(produtoLd);
   return { titulo: `${p.nome}: onde comprar | ${config.nomeSite}`, descricao: metaDesc, conteudo, jsonld };
 };
 
@@ -698,7 +717,7 @@ export const paginaGuia = ({ config, guia, itens, outrosGuias = [] }) => {
     return `<div class="guia-prod-inline">
       <a class="gpi-img" href="/produto/${esc(p.id)}/" tabindex="-1" aria-hidden="true">${imagemProduto(p, 40, { compacto: true })}</a>
       <div class="gpi-corpo"><a class="gpi-nome" href="/produto/${esc(p.id)}/">${esc(p.nomeCurto || p.nome)}</a>
-      ${ativas.map((o) => `<a class="btn btn-prim btn-loja" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener" data-oferta data-guia-secao data-produto="${esc(p.id)}" data-loja="${o.loja}">Ver preço no ${esc(LOJAS[o.loja]?.nome || "site da loja")}<span class="sr"> (abre em nova aba)</span> ${icone("externo", { tamanho: 16 })}</a>`).join("")}</div>
+      ${ativas.map((o) => botaoOferta(o, p.id, { classe: `btn-${o.loja} btn-loja`, dados: " data-guia-secao" })).join("")}</div>
     </div>`;
   };
   const linkGuia = (sec) => (sec.guia ? `<p class="gpi-guia"><a href="/guias/${esc(sec.guia.slug)}/">${esc(sec.guia.rotulo || "Leia o guia completo")}: ${esc(sec.guia.titulo)}</a></p>` : "");
@@ -715,19 +734,23 @@ export const paginaGuia = ({ config, guia, itens, outrosGuias = [] }) => {
   // Atalho de compra logo após a introdução: o leitor que chega pela busca vê a oferta sem rolar a página.
   // Usa as mesmas URLs de afiliado das ofertas ativas (nada é reescrito) e traz o aviso de afiliado junto.
   const ordem = Array.isArray(guia.atalho) ? [...guia.atalho.map((id) => itens.find((i) => i.p.id === id)).filter(Boolean), ...itens] : itens;
-  const comOferta = guia.atalho === false ? [] : [...new Set(ordem)].filter(({ ativas }) => ativas.length).slice(0, 3);
-  const atalho = comOferta.length
-    ? `<aside class="guia-atalho" aria-label="Onde comprar">
+  const comOferta = [...new Set(ordem)].filter(({ ativas }) => ativas.length).slice(0, 3);
+  const blocoAtalho = (classeExtra, rotulo) =>
+    comOferta.length
+      ? `<aside class="guia-atalho${classeExtra}" aria-label="${esc(rotulo)}">
       <p class="guia-atalho-tit">Onde comprar os produtos deste guia</p>
       <ul>${comOferta.map(({ p, ativas }) => `<li><a class="guia-atalho-nome" href="/produto/${esc(p.id)}/">${esc(p.nomeCurto || p.nome)}</a>${ativas
-        .map((o) => `<a class="btn btn-${o.loja} btn-loja" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener" data-oferta data-atalho data-produto="${esc(p.id)}" data-loja="${o.loja}">Ver preço atual ${esc(ARTIGO[o.loja] ? `no site ${ARTIGO[o.loja]}` : "na loja")}<span class="sr"> (abre em nova aba)</span> ${icone("externo", { tamanho: 16 })}</a>`)
+        .map((o) => botaoOferta(o, p.id, { classe: `btn-${o.loja} btn-loja`, dados: " data-atalho" }))
         .join("")}</li>`).join("")}</ul>
       <p class="aviso-botoes">${esc(AVISO_CURTO)}${comOferta.some(({ ativas }) => ativas.some((o) => o.loja === "amazon")) ? ` ${esc(declaracaoAmazon(config))}` : ""}</p>
     </aside>`
-    : "";
+      : "";
+  const atalho = blocoAtalho("", "Onde comprar");
+  const atalhoFim = blocoAtalho(" guia-atalho-fim", "Onde comprar, no final do guia");
   return {
     titulo: guia.tituloSeo || `${guia.titulo} | ${config.nomeSite}`,
     descricao: guia.resumo,
+    ogType: "article",
     conteudo: `
 <div class="container">
   <nav class="trilha" aria-label="Trilha"><a href="/">Início</a> › <a href="/guias/">Guias</a><span class="trilha-atual"> › ${esc(guia.titulo)}</span></nav>
@@ -745,6 +768,7 @@ export const paginaGuia = ({ config, guia, itens, outrosGuias = [] }) => {
       ${guia.perguntas?.length ? `<section aria-labelledby="t-guia-faq"><h2 id="t-guia-faq">Perguntas frequentes</h2><div class="faq">${guia.perguntas.map((q) => `<details><summary>${esc(q.pergunta)}</summary><p>${esc(q.resposta)}</p></details>`).join("")}</div></section>` : ""}
       ${guia.fontes?.length ? `<section aria-labelledby="t-guia-fontes"><h2 id="t-guia-fontes">Fontes consultadas</h2><ul class="fontes">${guia.fontes.map((f) => `<li><a href="${esc(f.url)}" rel="nofollow noopener" target="_blank">${esc(f.titulo)}</a></li>`).join("")}</ul></section>` : ""}
     </div>
+    ${atalhoFim}
     ${itens.every(({ p }) => (guia.secoes || []).some((sec) => sec.produto === p.id)) ? "" : `<section class="secao" aria-labelledby="t-guia-prod"><div class="secao-cab"><h2 id="t-guia-prod">Produtos citados neste guia</h2></div>
       <div class="grade-prod">${itens.map(({ p, ativas }) => cardProduto(p, ativas)).join("")}</div>
     </section>`}
@@ -766,6 +790,13 @@ export const paginaGuia = ({ config, guia, itens, outrosGuias = [] }) => {
         publisher: { "@type": "Organization", name: config.nomeSite, logo: { "@type": "ImageObject", url: `${config.siteUrl}/assets/icon-512.png` } },
         image: `${config.siteUrl}/assets/og-image.png`,
       },
+      ...(guia.perguntas?.length
+        ? [{
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: guia.perguntas.map((q) => ({ "@type": "Question", name: q.pergunta, acceptedAnswer: { "@type": "Answer", text: q.resposta } })),
+          }]
+        : []),
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",

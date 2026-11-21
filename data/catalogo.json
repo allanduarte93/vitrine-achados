@@ -1,6 +1,6 @@
 {
   "versao": 1,
-  "atualizadoEm": "2026-11-04T21:24:45.788Z",
+  "atualizadoEm": "2026-11-21T23:30:00.000Z",
   "produtos": [
     {
       "id": "conjunto-fitness-feminino-legging-top-academia-suplex-zero-transparencia",
@@ -2677,6 +2677,147 @@
         }
       ],
       "atualizadoEm": "2026-11-04T21:24:45.788Z"
+    },
+    {
+      "id": "amazon-b0cp31qs6r",
+      "nome": "Kindle 16 GB (modelo 2024), tela antirreflexo, luz frontal ajustável, cor verde",
+      "marca": "Amazon",
+      "categoria": "Eletrônicos",
+      "prioritario": false,
+      "fonte": "Ficha técnica do anúncio oficial na Amazon, conferida em 21/11/2026",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0CP31QS6R?linkCode=ll2&tag=vitrineachados-20&ref_=as_li_ss_tl",
+          "linkVerificado": true,
+          "verificadoEm": "2026-11-21T20:30:00-03:00",
+          "verificadoPor": "auditoria",
+          "identificador": "B0CP31QS6R"
+        }
+      ],
+      "descricao": "Leitor Kindle de 16 GB, 11ª geração, modelo 2024, na cor verde (ASIN B0CP31QS6R). A ficha da Amazon descreve tela antirreflexo de 6 polegadas, 300 ppi, luz integrada e 16 níveis de cinza. Mede 157,8 x 108,6 x 8,0 mm e pesa 158 g, com variação possível de fabricação. Guarda 16 GB no aparelho e mantém na nuvem, sem custo, o conteúdo comprado na Amazon. A bateria informada chega a 6 semanas para meia hora de leitura por dia, com o wi-fi desligado e a luz no nível 13. A recarga é por USB-C: cerca de 4 horas num computador ou cerca de 2 horas num adaptador de 9 W. Aceita wi-fi de 2,4 GHz e de 5 GHz. Na caixa vêm o leitor, um cabo USB-C e o guia de início rápido. Homologação Anatel 08205-22-01698. A ficha cita garantia limitada de 1 ano.",
+      "pontosChave": [
+        "Tela antirreflexo de 6 polegadas, 300 ppi, com luz integrada",
+        "16 GB no aparelho; nuvem gratuita para compras da Amazon",
+        "Até 6 semanas de bateria no teste descrito na ficha (meia hora por dia, wi-fi desligado, luz no nível 13)",
+        "Recarga por USB-C; na caixa, leitor, cabo e guia de início rápido",
+        "Cor deste anúncio: verde. Medidas 157,8 x 108,6 x 8,0 mm e 158 g"
+      ],
+      "tipo": "Leitor de livros digitais",
+      "destaques": [
+        "Cor verde",
+        "Tela de 6 pol.",
+        "16 GB"
+      ],
+      "perguntas": [
+        {
+          "pergunta": "Este link é o Kindle verde ou o preto?",
+          "resposta": "É o anúncio da cor verde, ASIN B0CP31QS6R. A ficha da geração também cita a cor preta, que é outro anúncio. Confira a cor no título da página da loja antes de comprar."
+        },
+        {
+          "pergunta": "A ficha deste Kindle informa resistência à água?",
+          "resposta": "Não. A ficha técnica deste modelo de 16 GB não traz classificação de resistência à água. Quem precisa desse dado deve olhar o Paperwhite, cuja ficha informa IPX8."
+        },
+        {
+          "pergunta": "O adaptador de tomada vem na caixa?",
+          "resposta": "A ficha lista na caixa o Kindle, o cabo USB-C e o guia de início rápido. O adaptador de 9 W, citado só no tempo de recarga, não aparece entre os itens inclusos."
+        }
+      ],
+      "atualizadoEm": "2026-11-21T23:30:00.000Z"
+    },
+    {
+      "id": "amazon-b0cfpl6cfy",
+      "nome": "Kindle Paperwhite 16 GB (modelo 2024), tela de 7 polegadas, à prova d'água, cor preta",
+      "marca": "Amazon",
+      "categoria": "Eletrônicos",
+      "prioritario": false,
+      "fonte": "Ficha técnica do anúncio oficial na Amazon, conferida em 21/11/2026",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0CFPL6CFY?linkCode=ll2&tag=vitrineachados-20&ref_=as_li_ss_tl",
+          "linkVerificado": true,
+          "verificadoEm": "2026-11-21T20:30:00-03:00",
+          "verificadoPor": "auditoria",
+          "identificador": "B0CFPL6CFY"
+        }
+      ],
+      "descricao": "Kindle Paperwhite de 16 GB, 12ª geração, modelo 2024, cor preta no título do anúncio (ASIN B0CFPL6CFY). A ficha informa tela de 7 polegadas com tecnologia Paperwhite, 300 ppi, iluminação embutida e 16 níveis de cinza, além de ajuste de brilho e de temperatura de cor. Mede 127 x 176 x 7,8 mm e pesa 211 g. É à prova d'água IPX8, em teste de imersão a 2 metros de água doce por 60 minutos. A bateria informada chega a 12 semanas no mesmo tipo de uso citado para o Kindle: meia hora por dia, wi-fi desligado e luz no nível 13. A carga por USB-C leva cerca de 5 horas num computador ou menos de 2,5 horas num adaptador de 9 W, vendido à parte. Wi-Fi de 2,4 GHz e 5 GHz. Na caixa: o Paperwhite, cabo USB-C e guia de início rápido. Homologação Anatel 06879-24-01698. Garantia limitada de 1 ano, segundo a ficha.",
+      "pontosChave": [
+        "Tela de 7 polegadas, 300 ppi, com ajuste de brilho e de temperatura de cor",
+        "À prova d'água IPX8: teste de 2 metros em água doce por 60 minutos",
+        "Até 12 semanas de bateria no cenário da ficha (meia hora por dia, wi-fi desligado, luz no nível 13)",
+        "16 GB no aparelho; recarga por USB-C",
+        "127 x 176 x 7,8 mm e 211 g; cor preta neste anúncio"
+      ],
+      "tipo": "Leitor de livros digitais",
+      "destaques": [
+        "Cor preta",
+        "Tela de 7 pol.",
+        "IPX8"
+      ],
+      "perguntas": [
+        {
+          "pergunta": "O Paperwhite deste link tem 16 GB ou 32 GB?",
+          "resposta": "16 GB. O ASIN B0CFPL6CFY é o Paperwhite de 16 GB, modelo 2024. A edição Signature, com 32 GB, é outro aparelho e outro anúncio."
+        },
+        {
+          "pergunta": "Dá para ler na banheira ou na piscina?",
+          "resposta": "A ficha classifica o aparelho como IPX8 e descreve o teste de imersão em 2 metros de água doce por 60 minutos. Isso não cobre água salgada, queda nem outros líquidos."
+        },
+        {
+          "pergunta": "O adaptador de energia acompanha o Paperwhite?",
+          "resposta": "Não. A ficha diz que o adaptador de tomada de 9 W é vendido separadamente. A caixa traz o Paperwhite, o cabo USB-C e o guia de início rápido."
+        }
+      ],
+      "atualizadoEm": "2026-11-21T23:30:00.000Z"
+    },
+    {
+      "id": "amazon-b0dd1kd5jp",
+      "nome": "Philips Walita Airfryer Forno 12 L, preta, 110 V, modelo AI551/09",
+      "marca": "Philips Walita",
+      "categoria": "Casa e Cozinha",
+      "prioritario": false,
+      "fonte": "Ficha do fabricante (Philips, modelo AI551/09) e anúncio da Amazon, conferidos em 21/11/2026",
+      "ofertas": [
+        {
+          "loja": "amazon",
+          "url": "https://www.amazon.com.br/dp/B0DD1KD5JP?linkCode=ll2&tag=vitrineachados-20&ref_=as_li_ss_tl",
+          "linkVerificado": true,
+          "verificadoEm": "2026-11-21T20:30:00-03:00",
+          "verificadoPor": "auditoria",
+          "identificador": "B0DD1KD5JP"
+        }
+      ],
+      "descricao": "Fritadeira elétrica Philips Walita Série 5000 Airfryer Forno, modelo AI551/09, preta, com 12 litros. Este anúncio da Amazon é a versão 110 V (ASIN B0DD1KD5JP). Na ficha publicada pela Philips para o AI551/09, a voltagem informada é 127 V e a potência 1.600 W: no Brasil, 110 V e 127 V são a mesma rede residencial. Não é bivolt. Em tomada de 220 V este modelo não serve. A mesma ficha lista temperatura de 35 °C a 200 °C, timer de até 24 horas, desligamento automático, painel digital sensível ao toque com 10 pré-definições, janela transparente e acessórios que podem ir à lava-louças. A página do fabricante descreve o aparelho como airfryer e forno no mesmo produto, com duas bandejas e cesta entre quatro acessórios. O anúncio da Amazon repete 1.600 W e a faixa de 35 °C a 200 °C. Confira a voltagem no título da loja no dia da compra.",
+      "pontosChave": [
+        "Modelo AI551/09, 12 litros, cor preta",
+        "Voltagem: 110 V no título da Amazon e 127 V na ficha Philips. Não é bivolt; não use em 220 V",
+        "Potência de 1.600 W e temperatura de 35 °C a 200 °C",
+        "Timer de até 24 horas, desligamento automático e 10 pré-definições no painel touch",
+        "Janela transparente; acessórios próprios para lava-louças, segundo a Philips"
+      ],
+      "tipo": "Airfryer forno",
+      "destaques": [
+        "110/127 V",
+        "12 L, 1.600 W",
+        "Modelo AI551/09"
+      ],
+      "perguntas": [
+        {
+          "pergunta": "Esta airfryer funciona em tomada de 220 V?",
+          "resposta": "Não. O anúncio é o AI551/09, identificado como 110 V na Amazon. A ficha da Philips para esse código informa 127 V e 1.600 W. 110 V e 127 V são a rede residencial mais baixa do Brasil. Para 220 V é preciso outro modelo."
+        },
+        {
+          "pergunta": "Qual é a capacidade e a potência?",
+          "resposta": "12 litros. A Philips informa 1.600 W para o AI551/09, e o anúncio da Amazon também cita 1.600 W, com temperatura de 35 °C a 200 °C."
+        },
+        {
+          "pergunta": "Dá para ver a comida sem abrir a porta?",
+          "resposta": "Sim. A ficha da Philips marca janela transparente como sim, e o título do anúncio na Amazon também menciona visor transparente."
+        }
+      ],
+      "atualizadoEm": "2026-11-21T23:30:00.000Z"
     }
   ]
 }

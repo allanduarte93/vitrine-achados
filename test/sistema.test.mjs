@@ -395,7 +395,9 @@ test("estrutura comercial com 30 produtos em 10 categorias", () => {
     const p = ler("produto/produto-exemplo-20-marca-ficticia/index.html");
     const ofertas = p.split('id="ofertas"')[1].split("</section>")[0];
     assert.equal((ofertas.match(/data-oferta/g) || []).length, 3, "3 botões de loja");
-    for (const loja of ["Amazon", "Mercado Livre", "Shopee"]) assert.match(ofertas, new RegExp(`Ver produto na loja<span class="sr"> ${loja}`), `botão identifica a loja ${loja}`);
+    assert.match(ofertas, /Ver preço na Amazon<span class="sr"> \(abre em nova aba\)/);
+    assert.match(ofertas, /Ver preço no Mercado Livre<span class="sr"> \(abre em nova aba\)/);
+    assert.match(ofertas, /Ver preço na Shopee<span class="sr"> \(abre em nova aba\)/);
     assert.match(ofertas, /Você conclui a compra no site da Amazon/);
     assert.match(p, /Como Associado da Amazon/, "programa confirmado: declaração exibida");
     const locs = (ler("sitemap.xml").match(/<loc>/g) || []).length;
@@ -715,12 +717,16 @@ test("versão premium: publicidade visível, botão direto com loja identificada
     assert.doesNotMatch(home.split('id="t-rec"')[0], /class="sem-foto/, "nenhum quadrado sem foto nos destaques");
     const catalogo = JSON.parse(readFileSync("data/catalogo.json", "utf8"));
     const urlsCatalogo = new Set(catalogo.produtos.flatMap((p) => p.ofertas.map((o) => o.url.replaceAll("&", "&amp;"))));
-    const botoes = [...home.matchAll(/<a class="btn btn-prim btn-loja" href="([^"]+)" target="_blank" rel="([^"]+)"[^>]*data-loja="(\w+)">Ver produto na loja<span class="sr"> ([^<]+)<\/span>/g)];
+    const botoes = [...home.matchAll(/<a class="btn btn-prim btn-loja" href="([^"]+)" target="_blank" rel="([^"]+)"[^>]*data-loja="(\w+)">([^<]+)<span class="sr"> ([^<]+)<\/span>/g)];
     assert.ok(botoes.length > 0);
-    for (const [, url, rel, , nomeLoja] of botoes) {
+    const rotulos = { amazon: "Ver preço na Amazon", mercadolivre: "Ver preço no Mercado Livre", shopee: "Ver preço na Shopee" };
+    for (const [, url, rel, loja, texto, sr] of botoes) {
       assert.ok(urlsCatalogo.has(url), `botão usa o link de afiliado original: ${url}`);
       assert.match(rel, /sponsored/);
-      assert.match(nomeLoja, /^(Amazon|Mercado Livre) \(abre em nova aba\)$/);
+      assert.match(rel, /nofollow/);
+      assert.match(rel, /noopener/);
+      assert.equal(texto, rotulos[loja], `rótulo da loja ${loja}`);
+      assert.match(sr, /abre em nova aba/);
     }
     for (const f of ["index.html", "busca/index.html", ...readdirSync(join(saida, "categoria")).map((c) => `categoria/${c}/index.html`)]) assert.doesNotMatch(ler(f), /option value="preco"/, `${f}: sem ordenação por preço`);
     assert.doesNotMatch(home, /desconto|avalia(ç|c)(ão|oes)|estrelas|últimas unidades|frete grátis|só hoje/i, "sem urgência ou dados inventados");
@@ -791,7 +797,8 @@ test("guia: seção com produto mostra foto/botão com a URL de afiliado e escon
   assert.ok(html.includes('class="guia-prod-inline"'));
   assert.ok(html.includes(`href="${url}"`) && html.includes('rel="sponsored nofollow noopener"'));
   assert.ok(html.includes('href="/guias/outro/"'));
-  assert.ok(!html.includes("guia-atalho"), "atalho desligado");
+  assert.ok(html.includes("guia-atalho-fim"), "CTA no fim do guia, mesmo com atalho antigo desligado");
+  assert.ok(html.indexOf("guia-atalho") < html.indexOf("guia-texto"), "CTA também no topo");
   assert.ok(!html.includes("t-guia-prod"), "sem grade repetida quando todos os produtos têm seção");
 });
 

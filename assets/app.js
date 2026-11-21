@@ -79,12 +79,14 @@
     var norm = function (s) { return String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); };
     var escapar = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
     var ARTIGO = { amazon: "da Amazon", mercadolivre: "do Mercado Livre", shopee: "da Shopee" };
+    var ROTULO = { amazon: "Ver preço na Amazon", mercadolivre: "Ver preço no Mercado Livre", shopee: "Ver preço na Shopee" };
+    var rotuloPreco = function (loja) { return ROTULO[loja] || "Ver preço na loja"; };
     var ext = '<svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg>';
     var card = function (p) {
       var unica = p.ofertas && p.ofertas.length === 1 ? p.ofertas[0] : null;
       var loja = function (o) { return '<span class="marca-loja ' + escapar(o.loja) + '"><i></i>' + escapar(o.nome) + "</span>"; };
       var acao = unica
-        ? '<a class="btn btn-prim btn-loja" href="' + escapar(unica.url) + '" target="_blank" rel="sponsored nofollow noopener" data-oferta data-produto="' + escapar(p.id) + '" data-loja="' + escapar(unica.loja) + '">Ver produto na loja<span class="sr"> ' + escapar(unica.nome) + " (abre em nova aba)</span> " + ext + "</a>" +
+        ? '<a class="btn btn-prim btn-loja" href="' + escapar(unica.url) + '" target="_blank" rel="sponsored nofollow noopener" data-oferta data-produto="' + escapar(p.id) + '" data-loja="' + escapar(unica.loja) + '">' + escapar(rotuloPreco(unica.loja)) + '<span class="sr"> (abre em nova aba)</span> ' + ext + "</a>" +
           '<a class="card-detalhes" href="' + escapar(p.url) + '">Detalhes do produto</a>'
         : '<a class="btn btn-prim" href="' + escapar(p.url) + '">Comparar ' + (p.ofertas || []).length + " lojas</a>";
       var foto = p.imagem
@@ -103,7 +105,7 @@
         (p.tipo ? '<p class="rec-tipo">' + escapar(p.tipo) + "</p>" : "") +
         ((p.pontos || []).length ? '<ul class="rec-pontos">' + p.pontos.map(function (x) { return "<li>" + escapar(x) + "</li>"; }).join("") + "</ul>" : "") +
         '</div><div class="rec-acao">' + (unica
-          ? '<p class="card-loja">' + loja(unica) + '<span>fotos e preço na loja</span></p><a class="btn btn-prim btn-loja" href="' + escapar(unica.url) + '" target="_blank" rel="sponsored nofollow noopener" data-oferta data-produto="' + escapar(p.id) + '" data-loja="' + escapar(unica.loja) + '">Ver produto na loja<span class="sr"> ' + escapar(unica.nome) + " (abre em nova aba)</span> " + ext + '</a><a class="card-detalhes" href="' + escapar(p.url) + '">Detalhes do produto</a>'
+          ? '<p class="card-loja">' + loja(unica) + '<span>fotos e preço na loja</span></p><a class="btn btn-prim btn-loja" href="' + escapar(unica.url) + '" target="_blank" rel="sponsored nofollow noopener" data-oferta data-produto="' + escapar(p.id) + '" data-loja="' + escapar(unica.loja) + '">' + escapar(rotuloPreco(unica.loja)) + '<span class="sr"> (abre em nova aba)</span> ' + ext + '</a><a class="card-detalhes" href="' + escapar(p.url) + '">Detalhes do produto</a>'
           : '<p class="card-loja">' + (p.ofertas || []).map(loja).join("") + '</p><a class="btn btn-prim" href="' + escapar(p.url) + '">Comparar ' + (p.ofertas || []).length + " lojas</a>") + "</div></article>";
     };
     fetch(new URL("busca.json", raiz)).then(function (r) { return r.json(); }).then(function (dados) {

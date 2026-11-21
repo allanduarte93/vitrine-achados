@@ -2,6 +2,157 @@
   "_nota": "Guias editoriais. Cada guia só é publicado se todos os produtos de 'produtos' estiverem publicados. Fatos tirados dos anúncios oficiais conferidos em 20/10/2026; sem notas, avaliações ou preços.",
   "guias": [
     {
+      "slug": "kindle-ou-kindle-paperwhite-qual-escolher",
+      "status": "aprovado",
+      "titulo": "Kindle ou Kindle Paperwhite: qual escolher para presentear",
+      "tituloSeo": "Kindle ou Paperwhite: qual escolher para presentear",
+      "resumo": "Kindle 16 GB verde ou Paperwhite 16 GB, modelo 2024: o que a ficha diz sobre tela, água, luz e bateria na hora de presentear.",
+      "categoria": "Eletrônicos",
+      "publicadoEm": "2026-11-21",
+      "atualizadoEm": "2026-11-21",
+      "produtos": [
+        "amazon-b0cp31qs6r",
+        "amazon-b0cfpl6cfy"
+      ],
+      "atalho": [
+        "amazon-b0cp31qs6r",
+        "amazon-b0cfpl6cfy"
+      ],
+      "relacionados": [
+        "black-friday-2026-presentes-por-perfil",
+        "echo-dot-ou-fire-tv-stick"
+      ],
+      "fonteFatos": "Fichas técnicas dos anúncios oficiais na Amazon.com.br, conferidas em 21/11/2026, e a nota da Amazon Brasil sobre a linha Kindle de 2024",
+      "fontes": [
+        {
+          "titulo": "Amazon.com.br — Kindle 16 GB (modelo 2024), cor verde",
+          "url": "https://www.amazon.com.br/dp/B0CP31QS6R"
+        },
+        {
+          "titulo": "Amazon.com.br — Kindle Paperwhite 16 GB (modelo 2024)",
+          "url": "https://www.amazon.com.br/dp/B0CFPL6CFY"
+        },
+        {
+          "titulo": "About Amazon Brasil — nova linha Kindle, 16 de outubro de 2024",
+          "url": "https://www.aboutamazon.com.br/noticias/dispositivos/conheca-a-nova-linha-kindle-que-inclui-o-primeiro-kindle-colorido"
+        }
+      ],
+      "introducao": "Os dois leitores desta página são da geração anunciada em 2024 e guardam a mesma quantidade de arquivos: 16 GB. Um é o Kindle compacto, neste link na cor verde. O outro é o Paperwhite, neste link na cor preta, com tela maior. As fichas não tratam um como versão do outro. Elas mudam o tamanho da tela, o peso, a luz, a duração de bateria descrita e a menção à água. Este texto só organiza esses dados para quem vai dar de presente e quer evitar o modelo errado. O valor, o frete e o prazo ficam na página da loja.",
+      "secoes": [
+        {
+          "titulo": "O que as duas fichas têm em comum",
+          "paragrafos": [
+            "Os dois anúncios descrevem leitor de livros, não celular. A resolução informada é de 300 ppi, com 16 níveis de cinza, e os dois ligam em rede sem fio de 2,4 GHz e de 5 GHz. Nenhum dos dois pede computador para baixar o que foi comprado na loja: a ficha diz que o aparelho é sem fio.",
+            "O espaço interno citado é de 16 GB em cada um destes anúncios, com a ressalva de que o sistema ocupa parte disso. Compras feitas na Amazon ficam também na nuvem, sem cobrança extra de armazenamento, segundo as duas fichas. Os formatos listados incluem Kindle (AZW e AZW3), TXT, PDF, MOBI sem proteção e, por conversão, EPUB, DOC, DOCX e HTML, além de áudio Audible.",
+            "Os dois trazem ajuste de tamanho e de tipo de fonte, de espaço entre linhas e de margens, e um modo que inverte o texto para fundo escuro. A garantia escrita na ficha é limitada a 1 ano. A homologação Anatel é outra: 08205-22-01698 no Kindle e 06879-24-01698 no Paperwhite."
+          ]
+        },
+        {
+          "titulo": "Tela, peso e tipo de luz",
+          "produto": "amazon-b0cp31qs6r",
+          "paragrafos": [
+            "O Kindle verde mede 157,8 por 108,6 por 8,0 mm e pesa 158 gramas. A tela tem 6 polegadas, é antirreflexo e tem luz integrada, que o anúncio chama de luz frontal ajustável, com modo noturno. A ficha não fala em temperatura de cor dessa luz.",
+            "O Paperwhite mede 127 por 176 por 7,8 mm e pesa 211 gramas. A tela sobe para 7 polegadas. Além do brilho, o anúncio descreve temperatura de cor ajustável, do claro ao âmbar, para ler de dia ou de madrugada. É o ponto que a ficha do modelo de 6 polegadas não registra.",
+            "Na prática da ficha, o verde é o aparelho mais leve e mais curto. O Paperwhite é mais alto, um pouco mais fino e cerca de 53 gramas mais pesado. Os dois números de peso vêm com o aviso de que a fabricação pode alterar um pouco a medida."
+          ]
+        },
+        {
+          "titulo": "Água e bateria, do jeito que a ficha mede",
+          "produto": "amazon-b0cfpl6cfy",
+          "paragrafos": [
+            "Só o Paperwhite traz classificação de água. O texto diz IPX8 e descreve o teste: imersão em 2 metros de água doce durante 60 minutos. A ficha do Kindle de 6 polegadas não publica esse teste nem outra classe de proteção. Para presente de quem lê na piscina, na praia ou na banheira, essa linha da ficha é a diferença objetiva.",
+            "A bateria também é contada com a mesma régua nos dois anúncios: meia hora de leitura por dia, wi-fi desligado e luz no nível 13. Nesse cenário, a ficha do Kindle fala em até 6 semanas e a do Paperwhite em até 12 semanas. Fora desse uso, as duas fichas avisam que o resultado muda.",
+            "A recarga dos dois é por cabo USB-C, que vem na caixa. O tempo cheio num computador é de cerca de 4 horas no Kindle e de cerca de 5 horas no Paperwhite. Com adaptador de 9 W, a ficha fala em cerca de 2 horas e em menos de 2,5 horas, respectivamente. Nos dois casos o adaptador não está na lista do que vem na caixa; no Paperwhite ele é citado como vendido à parte."
+          ]
+        },
+        {
+          "titulo": "Como decidir na hora de presentear",
+          "guia": "black-friday-2026-presentes-por-perfil",
+          "paragrafos": [
+            "Se a pessoa lê em casa, carrega o leitor na bolsa e não pediu resistência à água, o Kindle de 6 polegadas na cor verde cobre o que a ficha lista: tela de 300 ppi, luz frontal e 16 GB. Confira no título se a cor ainda é a verde, porque a geração também existe em preto, em outro anúncio.",
+            "Se o uso inclui banheiro, piscina ou viagem em que o aparelho pode molhar, a ficha que responde é a do Paperwhite: IPX8, tela de 7 polegadas e temperatura de cor. O link desta página é o de 16 GB na cor preta, não a Signature de 32 GB, que a Amazon descreveu à parte, com carga sem fio e luz de ajuste automático.",
+            "Em 27 de novembro de 2026 é a Black Friday. O número de gigabytes, a cor e a presença ou não da sigla IPX8 no título do anúncio são o que separa estes dois modelos de outras versões com nome parecido. O preço do dia se vê só na loja."
+          ],
+          "lista": [
+            "16 GB nos dois links; a Signature de 32 GB é outro produto",
+            "6 polegadas e 158 g no Kindle verde; 7 polegadas e 211 g no Paperwhite",
+            "IPX8 só está escrito na ficha do Paperwhite",
+            "Temperatura de cor da luz só está escrita no anúncio do Paperwhite",
+            "Cabo USB-C na caixa dos dois; adaptador de tomada não"
+          ]
+        }
+      ],
+      "tabela": {
+        "titulo": "Lado a lado, segundo as fichas",
+        "colunas": [
+          "",
+          "Kindle 16 GB verde",
+          "Paperwhite 16 GB"
+        ],
+        "linhas": [
+          [
+            "Geração na ficha",
+            "11ª, modelo 2024",
+            "12ª, modelo 2024"
+          ],
+          [
+            "Tela",
+            "6 polegadas, 300 ppi",
+            "7 polegadas, 300 ppi"
+          ],
+          [
+            "Luz",
+            "Frontal ajustável e modo noturno",
+            "Brilho e temperatura de cor"
+          ],
+          [
+            "Água",
+            "A ficha não informa",
+            "IPX8, 2 m por 60 min em água doce"
+          ],
+          [
+            "Bateria no teste da ficha",
+            "Até 6 semanas",
+            "Até 12 semanas"
+          ],
+          [
+            "Peso e corpo",
+            "158 g; 157,8 x 108,6 x 8 mm",
+            "211 g; 127 x 176 x 7,8 mm"
+          ],
+          [
+            "Na caixa",
+            "Leitor, cabo USB-C e guia",
+            "Leitor, cabo USB-C e guia"
+          ],
+          [
+            "Cor deste link",
+            "Verde",
+            "Preta"
+          ]
+        ]
+      },
+      "perguntas": [
+        {
+          "pergunta": "Os dois leem os mesmos livros?",
+          "resposta": "As fichas listam os mesmos grupos de arquivo: formatos Kindle, TXT, PDF, MOBI sem proteção e, por conversão, EPUB e documentos de texto, além de Audible. Um arquivo pessoal pode precisar da conversão da Amazon para abrir."
+        },
+        {
+          "pergunta": "A bateria de 6 e a de 12 semanas usam o mesmo teste?",
+          "resposta": "Sim. As duas fichas descrevem meia hora de leitura por dia, wi-fi desligado e iluminação no nível 13, e avisam que o tempo real varia com o uso."
+        },
+        {
+          "pergunta": "O Kindle verde é resistente à água?",
+          "resposta": "A ficha técnica desse anúncio não informa resistência à água. A classificação IPX8, com o teste de 2 metros por 60 minutos em água doce, está na ficha do Paperwhite."
+        },
+        {
+          "pergunta": "Qual dos dois vem com adaptador de tomada?",
+          "resposta": "Nenhum dos dois lista adaptador entre os itens da caixa. Os dois incluem cabo USB-C. No Paperwhite, a ficha diz que o adaptador de 9 W é vendido separadamente."
+        }
+      ],
+      "nota": "Números e funções saem das fichas técnicas dos anúncios da Amazon conferidos em 21/11/2026 e da nota da Amazon Brasil de 16/10/2024 sobre a linha. Confirme cor, armazenamento e preço na página da loja antes de comprar."
+    },
+    {
       "slug": "echo-dot-ou-fire-tv-stick",
       "titulo": "Echo Dot ou Fire TV Stick HD: qual aparelho com Alexa combina com a sua casa",
       "resumo": "Os dois aparelhos da Amazon têm Alexa, mas resolvem coisas diferentes: um é caixa de som inteligente, o outro leva streaming para a TV. Veja o que cada um faz.",
@@ -686,7 +837,8 @@
         }
       ],
       "relacionados": [
-        "black-friday-2026-produtos-para-ficar-de-olho"
+        "black-friday-2026-produtos-para-ficar-de-olho",
+        "kindle-ou-kindle-paperwhite-qual-escolher"
       ]
     },
     {
