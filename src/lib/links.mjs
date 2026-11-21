@@ -9,9 +9,9 @@
  */
 
 export const LOJAS = {
-  amazon: { nome: "Amazon", rotuloBotao: "Ver na Amazon" },
-  mercadolivre: { nome: "Mercado Livre", rotuloBotao: "Ver no Mercado Livre" },
-  shopee: { nome: "Shopee", rotuloBotao: "Ver na Shopee" },
+  amazon: { nome: "Amazon", rotuloBotao: "Ver preço na Amazon" },
+  mercadolivre: { nome: "Mercado Livre", rotuloBotao: "Ver preço no Mercado Livre" },
+  shopee: { nome: "Shopee", rotuloBotao: "Ver preço na Shopee" },
 };
 
 const parse = (url) => {
