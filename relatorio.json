@@ -1,5 +1,5 @@
 {
-  "data": "2026-11-18T20:15:13.216Z",
+  "data": "2026-11-22T00:02:52.751Z",
   "site": "https://allanduarte93.github.io/vitrine-achados",
   "paginas": [
     {
@@ -327,6 +327,20 @@
       ]
     },
     {
+      "pagina": "amazon-b0cp31qs6r",
+      "foto": null,
+      "botoes": [
+        "amazon"
+      ]
+    },
+    {
+      "pagina": "amazon-b0cfpl6cfy",
+      "foto": null,
+      "botoes": [
+        "amazon"
+      ]
+    },
+    {
       "pagina": "kit-10-potes-hermeticos-de-vidro-starhouse-370-ml-starhouse",
       "foto": {
         "src": "https://http2.mlstatic.com/D_Q_NP_2X_801828-MLA115739959462_092026-AB.webp",
@@ -579,6 +593,13 @@
       ]
     },
     {
+      "pagina": "amazon-b0dd1kd5jp",
+      "foto": null,
+      "botoes": [
+        "amazon"
+      ]
+    },
+    {
       "pagina": "proteina-max-titanium-whey-pro-concetrado-em-po-sabor-morango-x-1kg-max-titanium",
       "foto": {
         "src": "https://http2.mlstatic.com/D_Q_NP_2X_608162-MLA112813208483_062026-AB.webp",
@@ -724,17 +745,17 @@
     "porta-temperos-giratorio-inox-com-16-potes-de-vidro-solar"
   ],
   "botaoCelular": {
-    "paginas": 81,
-    "comBotao": 81,
-    "yMin": 456,
-    "yMax": 755
+    "paginas": 85,
+    "comBotao": 85,
+    "yMin": 477,
+    "yMax": 613
   },
   "falhas": [
     "desktop: jornada — busca \"hidratante\" achou 1",
     "celular: jornada — busca \"hidratante\" achou 1"
   ],
   "resumo": {
-    "produtos": 66,
+    "produtos": 69,
     "comFotoNoIndice": 58
   }
 }
