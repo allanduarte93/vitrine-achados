@@ -44,7 +44,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": false,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-01-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-02-marca-ficticia",
@@ -85,7 +88,10 @@
       ],
       "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 02. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-02-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-03-marca-ficticia",
@@ -127,7 +133,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": false,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-03-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-04-marca-ficticia",
@@ -166,7 +175,10 @@
       ],
       "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 04. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-04-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-05-marca-ficticia",
@@ -208,7 +220,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": false,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-05-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-06-marca-ficticia",
@@ -228,7 +243,10 @@
       ],
       "descricao": "Texto curto.",
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-06-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-07-marca-ficticia",
@@ -272,7 +290,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": false,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-07-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-08-marca-ficticia",
@@ -311,7 +332,10 @@
       ],
       "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 08. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-08-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-09-marca-ficticia",
@@ -355,7 +379,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": false,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-09-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-10-marca-ficticia",
@@ -394,7 +421,10 @@
       ],
       "descricao": "[EXEMPLO FICTÍCIO] Descrição de teste do Produto Exemplo 10. Este texto existe apenas para validar o layout e as regras de indexação do site e não descreve nenhum produto real à venda.",
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-10-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-11-marca-ficticia",
@@ -438,7 +468,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": false,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-11-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-12-marca-ficticia",
@@ -477,7 +510,10 @@
       ],
       "descricao": "Texto curto.",
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-12-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-13-marca-ficticia",
@@ -520,7 +556,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-13-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-14-marca-ficticia",
@@ -563,7 +602,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-14-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-15-marca-ficticia",
@@ -606,7 +648,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-15-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-16-marca-ficticia",
@@ -649,7 +694,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-16-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-17-marca-ficticia",
@@ -692,7 +740,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-17-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-18-marca-ficticia",
@@ -735,7 +786,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-18-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-19-marca-ficticia",
@@ -778,7 +832,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-19-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-20-marca-ficticia",
@@ -821,7 +878,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-20-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-21-marca-ficticia",
@@ -864,7 +924,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-21-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-22-marca-ficticia",
@@ -907,7 +970,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-22-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-23-marca-ficticia",
@@ -950,7 +1016,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-23-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-24-marca-ficticia",
@@ -993,7 +1062,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-24-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-25-marca-ficticia",
@@ -1036,7 +1108,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-25-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-26-marca-ficticia",
@@ -1079,7 +1154,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-26-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-27-marca-ficticia",
@@ -1122,7 +1200,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-27-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-28-marca-ficticia",
@@ -1165,7 +1246,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-28-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-29-marca-ficticia",
@@ -1208,7 +1292,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-29-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     },
     {
       "id": "produto-exemplo-30-marca-ficticia",
@@ -1251,7 +1338,10 @@
         "Característica fictícia 3"
       ],
       "mesmoProdutoConfirmado": true,
-      "atualizadoEm": "2026-10-20T17:23:18.591Z"
+      "atualizadoEm": "2026-10-20T17:23:18.591Z",
+      "imagem": "https://exemplo.invalid/fotos/produto-exemplo-30-marca-ficticia.webp",
+      "imagemPermitida": true,
+      "imagemFonte": "Fixture de layout. Não é foto de produto real."
     }
   ]
 }

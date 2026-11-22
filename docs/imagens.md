@@ -1,9 +1,39 @@
 # Fotos dos produtos — registro de fonte, licença e status
 
 Regra do site: uma foto só aparece se o produto tiver `imagem` + `imagemPermitida: true` +
-`imagemFonte` (quem autorizou e quando). Com isso ela entra automaticamente na página inicial,
-nas categorias, na busca e na página do produto. Sem autorização, o site mostra a ficha do
-produto (tipo + fatos do anúncio). Nada de foto genérica, inventada ou gerada por IA.
+`imagemFonte` (quem autorizou e quando) e a URL for https de uma imagem (ou arquivo próprio em
+`/assets/`). Com isso ela entra na página inicial, nas categorias, na busca e na página do produto.
+Sem imagem válida, o produto **não entra** em vitrine, busca, lista nem página: nenhum card é
+renderizado sem foto. Nada de foto genérica, inventada ou gerada por IA.
+
+## 22/11/2026 — troca para o Mercado Livre, só com o mesmo modelo e com foto
+
+Os 10 anúncios da Amazon que estavam ativos sem foto ficaram no catálogo com `disponibilidade.estado: "guardada"`. Não é estoque esgotado: a oferta volta quando a Creators API entregar a foto. O botão público passa a ser o do Mercado Livre só quando existe o mesmo modelo, com foto no mesmo padrão dos outros produtos ML (hotlink em `http2.mlstatic.com`, sem rehospedar).
+
+O Cicaplast Baume B5+ de 40 ml já estava no site como catálogo MLB24326256, com foto da Central de Afiliados e link `meli.la/2L8U337`. O guia da CeraVe passa a apontar para esse anúncio. A oferta da Amazon desse item ficou guardada.
+
+Deste ambiente o Mercado Livre pediu login em todas as páginas de catálogo e a API pública respondeu 401, então não deu para copiar a foto oficial dos demais. Ficam fora até o Allan abrir a página, conferir modelo/cor/voltagem e gerar o `meli.la` na conta (etiqueta ad20260429184559, matt_tool 68963796):
+
+| Produto | Página de catálogo encontrada | Por que ficou fora |
+|---|---|---|
+| Kindle 16 GB verde, 11ª geração, modelo 2024 | https://www.mercadolivre.com.br/p/MLB46676867 | página bloqueou; sem foto oficial conferida |
+| Kindle Paperwhite 16 GB preto, 2024, ASIN B0CFPL6CFY | https://www.mercadolivre.com.br/p/MLB44031857 | página bloqueou; sem foto oficial conferida |
+| Elseve Óleo Extraordinário 100 ml | https://www.mercadolivre.com.br/p/MLB26080271 | ficha de 100 ml confere; sem foto oficial conferida |
+| Galaxy A17 azul 256 GB / 8 GB | https://www.mercadolivre.com.br/p/MLB54982411 | já tem `meli.la/13qLjsv`; falta a foto |
+| Echo Dot preto | só apareceu catálogo azul (MLB19795011) | cor diferente; não é o mesmo anúncio |
+| Fire TV Stick HD alimentado pela TV (B0DVK166SV) | o anúncio achado é outro ASIN, com fonte na tomada | não é o mesmo modelo |
+| Airfryer AI551/09 110/127 V, Cadence Click 127 V, potes Electrolux A23122901, Logitech M170 preto | sem página de catálogo conferida | sem equivalente exato com foto |
+
+## 22/11/2026 — nenhum anúncio sem foto
+
+Conferido no [Acordo Operacional](https://associados.amazon.com.br/help/operating/agreement) (atualizado em 15/10/2025) e nas [Políticas do Programa](https://associados.amazon.com.br/help/operating/policies), licença de PI:
+
+- Imagem de produto da Amazon é Conteúdo de Anúncio obtido pela **Creators API** ou pela API de Divulgação de Produtos (ou feed aprovado por escrito). A licença não inclui mineração, robô ou extração da página do produto.
+- É proibido armazenar ou colocar em cache o arquivo da imagem. Pode-se guardar **o link** da imagem por no máximo 24 horas e, em seguida, atualizar com uma nova chamada à API.
+- O SiteStripe desta conta, conferido em 20/10/2026, só gera link de texto. A documentação atual do programa também não oferece mais a opção de link de imagem nessa barra. Não há, portanto, link de imagem do SiteStripe para gravar com a tag `vitrineachados-20`.
+- Não havia credencial da Creators API no repositório nem no ambiente deste build. O `npm run build` chama a API só se existirem `AMAZON_CREATORS_CREDENTIAL_ID` e `AMAZON_CREATORS_CREDENTIAL_SECRET` (e, se o painel mostrar outro número, `AMAZON_CREATORS_VERSION`; para a amazon.com.br a tabela oficial usa 3.1). A URL volta só no HTML daquela publicação, em hotlink, e a imagem do card aponta para a página do produto na Amazon. O arquivo não é baixado nem copiado para `assets/`.
+
+Mercado Livre: a API pública `GET https://api.mercadolibre.com/products/{MLB}` passou a responder 401 sem token (22/11/2026), e a página do catálogo do Galaxy A17 (`MLB54982411`) pediu verificação de conta a partir deste ambiente. `npm run obter-fotos-ml` grava o hotlink do CDN `http2.mlstatic.com` quando a API devolve a foto. Com `ML_ACCESS_TOKEN` o mesmo comando envia `Authorization: Bearer`. Sem resposta, o produto continua sem foto e sai da vitrine. A Shopee segue desligada.
 
 Fonte de verdade por produto: **`data/imagens.json`**, com url, fonte, identificação (ASIN, MLB ou
 loja.item da Shopee), variação, autorização e evidência. O build só mostra a foto quando o registro

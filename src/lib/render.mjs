@@ -4,6 +4,7 @@
  */
 import { LOJAS } from "./links.mjs";
 import { slugify } from "./catalogo.mjs";
+import { imagemValida } from "./imagens.mjs";
 import { icone, iconeCategoria, TONS, marcaSvg, heroSvg, comparaSvg } from "./icones.mjs";
 
 export const esc = (s) =>
@@ -52,27 +53,26 @@ const bolhaCategoria = (nome, tamanho = 28) => {
 
 const marcaLoja = (loja) => `<span class="marca-loja ${loja}"><i></i>${esc(LOJAS[loja].nome)}</span>`;
 
-// Sem foto autorizada: painel original com ícone da categoria e a marca — não imita foto do produto.
-// No card (compacto) fica só o essencial; na página do produto, com tipo e fatos do anúncio.
-const semFoto = (p, tamanho, compacto = false) => {
-  const ic = iconeCategoria(p.categoria);
-  const [fundo, traco] = TONS[ic] || TONS.outros;
-  const destaques = compacto ? [] : (Array.isArray(p.destaques) ? p.destaques : []).slice(0, 3);
-  return `<div class="sem-foto${compacto ? " compacta" : p.tipo || destaques.length ? " ficha" : ""}" style="--fundo:${fundo};--traco:${traco}">
-  <span class="sem-foto-ic" aria-hidden="true">${icone(ic, { tamanho })}</span>
-  ${p.marca ? `<strong class="sem-foto-marca">${esc(p.marca)}</strong>` : ""}
-  ${p.tipo ? `<span class="sem-foto-tipo">${esc(p.tipo)}</span>` : ""}
-  ${destaques.length ? `<ul class="sem-foto-fatos">${destaques.map((d) => `<li>${esc(d)}</li>`).join("")}</ul>` : ""}
-  <span class="sem-foto-nota">${icone("externo", { tamanho: 13 })}Sem foto aqui · fotos na loja</span>
-</div>`;
+const temFoto = (p) => imagemValida(p);
+
+const medida = (n, padrao) => (Number.isInteger(n) && n > 0 && n <= 4000 ? n : padrao);
+
+const imagemProduto = (p, _tamanho = 64, { prioridade = false } = {}) => {
+  if (!temFoto(p)) return "";
+  const carga = prioridade ? 'fetchpriority="high"' : 'loading="lazy"';
+  return `<img src="${esc(p.imagem)}" alt="${esc(p.nome)}" width="${medida(p.imagemLargura, 600)}" height="${medida(p.imagemAltura, 600)}" ${carga} decoding="async" referrerpolicy="no-referrer">`;
 };
 
-const temFoto = (p) => Boolean(p.imagem && p.imagemPermitida === true);
+// Conteúdo da Amazon (foto da Creators API) só pode apontar para a página do produto na Amazon.
+const ofertaDaFoto = (p, ativas) => (p.imagemLinkLoja ? (ativas || []).find((o) => o.loja === p.imagemLinkLoja && o.url) : null);
 
-const imagemProduto = (p, tamanho = 64, { compacto = false, prioridade = false } = {}) =>
-  temFoto(p)
-    ? `<img src="${esc(p.imagem)}" alt="${esc(p.nome)}" width="600" height="600" ${prioridade ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" referrerpolicy="no-referrer">`
-    : semFoto(p, tamanho, compacto);
+const ancoraFoto = (p, ativas, detalhe, miolo) => {
+  const ext = ofertaDaFoto(p, ativas);
+  if (ext) {
+    return `<a class="card-img" href="${esc(ext.url)}" target="_blank" rel="sponsored nofollow noopener">${miolo}<span class="sr">Foto do anúncio na ${esc(LOJAS[ext.loja]?.nome || "loja")} (abre em nova aba)</span></a>`;
+  }
+  return `<a class="card-img" href="${detalhe}" tabindex="-1" aria-hidden="true">${miolo}</a>`;
+};
 
 /* ---------------- Layout ---------------- */
 
@@ -203,16 +203,17 @@ const menorPrecoExibido = (ativas) => {
   return com.reduce((a, b) => (b.preco < a.preco ? b : a));
 };
 
-// Card: foto (ou painel honesto sem foto), loja onde a compra termina e acesso direto ao produto na loja.
+// Card só com foto válida. Sem imagem, não há card.
 export const cardProduto = (p, ativas) => {
+  if (!temFoto(p)) return "";
   const menor = menorPrecoExibido(ativas);
   const unica = ativas.length === 1 ? ativas[0] : null;
   const detalhe = `/produto/${p.id}/`;
   const acao = unica
     ? botaoOferta(unica, p.id)
     : `<a class="btn btn-prim" href="${detalhe}">Comparar ${ativas.length} lojas</a>`;
-  return `<article class="card${temFoto(p) ? " com-foto" : ""}" data-filtravel data-produto="${esc(p.id)}" data-lojas="${ativas.map((o) => o.loja).join(" ")}" data-preco="${menor ? menor.preco : ""}" data-nome="${esc(p.nome.toLowerCase())}" data-categoria="${esc(slugify(p.categoria))}">
-  <a class="card-img" href="${detalhe}" tabindex="-1" aria-hidden="true">${imagemProduto(p, 40, { compacto: true })}${ativas.length > 1 ? `<span class="selo-lojas">${icone("comparar", { tamanho: 14 })}${ativas.length} lojas</span>` : ""}</a>
+  return `<article class="card com-foto" data-filtravel data-produto="${esc(p.id)}" data-lojas="${ativas.map((o) => o.loja).join(" ")}" data-preco="${menor ? menor.preco : ""}" data-nome="${esc(p.nome.toLowerCase())}" data-categoria="${esc(slugify(p.categoria))}">
+  ${ancoraFoto(p, ativas, detalhe, `${imagemProduto(p, 40, { compacto: true })}${ativas.length > 1 ? `<span class="selo-lojas">${icone("comparar", { tamanho: 14 })}${ativas.length} lojas</span>` : ""}`)}
   <div class="card-corpo">
     <span class="card-cat">${esc(p.categoria)}</span>
     <h3><a href="${detalhe}">${esc(p.nome)}</a></h3>
@@ -225,38 +226,12 @@ export const cardProduto = (p, ativas) => {
 </article>`;
 };
 
-// Recomendação editorial (produto sem foto autorizada): sem quadrado vazio — tipo, pontos do anúncio,
-// loja e acesso direto. Não simula fotografia.
-export const itemRecomendado = (p, ativas) => {
-  const unica = ativas.length === 1 ? ativas[0] : null;
-  const detalhe = `/produto/${p.id}/`;
-  const pontos = (p.pontosChave || []).filter(Boolean).slice(0, 2);
-  const ic = iconeCategoria(p.categoria);
-  const [fundo, traco] = TONS[ic] || TONS.outros;
-  return `<article class="rec" data-filtravel data-produto="${esc(p.id)}" data-lojas="${ativas.map((o) => o.loja).join(" ")}" data-nome="${esc(p.nome.toLowerCase())}" data-categoria="${esc(slugify(p.categoria))}">
-  <span class="rec-ic" style="background:${fundo};color:${traco}" aria-hidden="true">${icone(ic, { tamanho: 22 })}</span>
-  <div class="rec-txt">
-    <span class="rec-meta">${esc(p.categoria)}${p.marca ? ` · ${esc(p.marca)}` : ""}</span>
-    <h3><a href="${detalhe}">${esc(p.nome)}</a></h3>
-    ${p.tipo ? `<p class="rec-tipo">${esc(p.tipo)}</p>` : ""}
-    ${pontos.length ? `<ul class="rec-pontos">${pontos.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
-  </div>
-  <div class="rec-acao">
-    ${unica ? `<p class="card-loja">${marcaLoja(unica.loja)}<span>fotos e preço na loja</span></p>
-    ${botaoOferta(unica, p.id)}
-    <a class="card-detalhes" href="${detalhe}">Detalhes do produto</a>`
-    : `<p class="card-loja">${ativas.map((o) => marcaLoja(o.loja)).join("")}</p><a class="btn btn-prim" href="${detalhe}">Comparar ${ativas.length} lojas</a>`}
-  </div>
-</article>`;
-};
-
 const separarPorFoto = (itens) => [itens.filter(({ p }) => temFoto(p)), itens.filter(({ p }) => !temFoto(p))];
 
-// Grade de fotos + lista editorial dos sem foto (mesma página, nada escondido).
-const vitrineMista = (itens, { tituloLista = "Mais recomendações" } = {}) => {
-  const [com, sem] = separarPorFoto(itens);
-  return `${com.length ? `<div class="grade-prod${com.length % 3 === 0 && com.length % 4 !== 0 ? " grade-3" : ""}" data-grade>${com.map(({ p, ativas }) => cardProduto(p, ativas)).join("")}</div>` : ""}
-  ${sem.length ? `${com.length ? `<h3 class="lista-tit">${esc(tituloLista)} <small>foto na página da loja</small></h3>` : ""}<div class="lista-rec">${sem.map(({ p, ativas }) => itemRecomendado(p, ativas)).join("")}</div>` : ""}`;
+// Só a grade com foto. Produto sem imagem não vira card nem lista.
+const vitrineMista = (itens) => {
+  const com = separarPorFoto(itens)[0];
+  return com.length ? `<div class="grade-prod${com.length % 3 === 0 && com.length % 4 !== 0 ? " grade-3" : ""}" data-grade>${com.map(({ p, ativas }) => cardProduto(p, ativas)).join("")}</div>` : "";
 };
 
 const COMPROMISSOS = [
@@ -282,10 +257,11 @@ const cabPagina = ({ titulo, sub, icn = "info", tom = ["#ffe7dc", "#c2410c"] }) 
 // Card de destaque da home: foto, 2 pontos do anúncio e botão de compra claro (sem preço nem desconto:
 // o valor muda a toda hora e é conferido na loja). Usa a URL de afiliado da oferta ativa, sem reescrever.
 export const cardDestaqueHome = (p, ativas, guia) => {
+  if (!temFoto(p)) return "";
   const detalhe = `/produto/${p.id}/`;
   const pontos = (p.pontosChave || []).slice(0, 2);
-  return `<article class="card card-bf${temFoto(p) ? " com-foto" : ""}" data-produto="${esc(p.id)}">
-  <a class="card-img" href="${detalhe}" tabindex="-1" aria-hidden="true">${imagemProduto(p, 40, { compacto: true })}</a>
+  return `<article class="card card-bf com-foto" data-produto="${esc(p.id)}">
+  ${ancoraFoto(p, ativas, detalhe, imagemProduto(p, 40, { compacto: true }))}
   <div class="card-corpo">
     <span class="card-cat">${esc(p.categoria)}</span>
     <h3><a href="${detalhe}">${esc(p.nomeCurto || p.nome)}</a></h3>
@@ -297,16 +273,14 @@ export const cardDestaqueHome = (p, ativas, guia) => {
 };
 
 export const paginaInicial = ({ config, destaques, categorias, todos, guias = [], destaquesHome = null }) => {
-  const temProdutos = destaques.length + todos.length > 0;
-  const umaLoja = new Set([...destaques, ...todos].flatMap((x) => x.ativas.map((o) => o.loja))).size === 1;
-  // Todos os produtos publicados na home: com foto autorizada primeiro, depois prioritários e nome.
-  const vitrine = [...destaques, ...todos].sort((x, y) => Number(temFoto(y.p)) - Number(temFoto(x.p)) || Number(!!y.p.prioritario) - Number(!!x.p.prioritario) || x.p.nome.localeCompare(y.p.nome, "pt-BR"));
+  const vitrine = [...destaques, ...todos].filter(({ p }) => temFoto(p)).sort((x, y) => Number(!!y.p.prioritario) - Number(!!x.p.prioritario) || x.p.nome.localeCompare(y.p.nome, "pt-BR"));
+  const temProdutos = vitrine.length > 0;
+  const umaLoja = new Set(vitrine.flatMap((x) => x.ativas.map((o) => o.loja))).size === 1;
   const comOferta = categorias.filter((c) => c.total > 0);
 
   const idsTopo = new Set((destaquesHome?.itens || []).map(({ p }) => p.id));
-  const [todasComFoto, todasSemFoto] = separarPorFoto(vitrine.filter(({ p }) => !idsTopo.has(p.id)));
-  // Home enxuta: até 12 produtos com foto, alternando categorias (prioritários primeiro), e até 6 sem foto.
-  // O catálogo completo fica na busca e nas categorias.
+  const todasComFoto = vitrine.filter(({ p }) => !idsTopo.has(p.id));
+  // Home enxuta: até 12 produtos com foto, alternando categorias. O restante fica na busca e nas categorias.
   const porCategoria = new Map();
   todasComFoto.forEach((x) => { const k = x.p.categoria || ""; if (!porCategoria.has(k)) porCategoria.set(k, []); porCategoria.get(k).push(x); });
   const comFotoItens = [];
@@ -315,16 +289,11 @@ export const paginaInicial = ({ config, destaques, categorias, todos, guias = []
   for (let rodada = 0; comFotoItens.length < limiteFotos && rodada < todasComFoto.length; rodada++) {
     for (const lista of porCategoria.values()) { if (lista[rodada] && comFotoItens.length < limiteFotos) comFotoItens.push(lista[rodada]); }
   }
-  const semFotoItens = todasSemFoto.slice(0, 6);
-  const temAmazon = vitrine.some(({ ativas }) => ativas.some((o) => o.loja === "amazon"));
+  const temAmazon = vitrine.filter(({ p }) => temFoto(p)).some(({ ativas }) => ativas.some((o) => o.loja === "amazon"));
   const secaoVitrine = temProdutos
     ? `${comFotoItens.length ? `<section class="secao secao-vitrine" aria-labelledby="t-destaques"><div class="container">
   <div class="secao-cab"><div><h2 id="t-destaques">Destaques da vitrine</h2><p>Fotos dos anúncios oficiais, link conferido e compra direto na loja.</p></div><a class="btn btn-sec" href="/busca/">Buscar e filtrar os ${vitrine.length} ${icone("seta", { tamanho: 18 })}</a></div>
   <div class="grade-prod grade-destaque">${comFotoItens.map(({ p, ativas }) => cardProduto(p, ativas)).join("")}</div>
-</div></section>` : ""}
-${semFotoItens.length ? `<section class="secao secao-rec" aria-labelledby="t-rec"><div class="container">
-  <div class="secao-cab"><div><h2 id="t-rec">${comFotoItens.length ? "Mais recomendações" : "Recomendações"}</h2><p>Produtos com link oficial conferido e os pontos principais do anúncio. As fotos estão na página de cada loja.</p></div></div>
-  <div class="lista-rec">${semFotoItens.map(({ p, ativas }) => itemRecomendado(p, ativas)).join("")}</div>
 </div></section>` : ""}
 <div class="container"><p class="aviso-botoes aviso-vitrine">${esc(AVISO_CURTO)} ${temAmazon ? esc(declaracaoAmazon(config)) : ""}</p></div>`
     : `<section class="secao" aria-labelledby="t-curadoria"><div class="container">
@@ -355,7 +324,7 @@ ${semFotoItens.length ? `<section class="secao secao-rec" aria-labelledby="t-rec
     }</a>`);
 
   // Só cita as lojas com oferta ativa na vitrine; sem produtos, as três em que trabalhamos.
-  const ativasHome = new Set([...destaques, ...todos].flatMap((x) => x.ativas.map((o) => o.loja)));
+  const ativasHome = new Set(vitrine.flatMap((x) => x.ativas.map((o) => o.loja)));
   const lojasHero = ["amazon", "mercadolivre", "shopee"].filter((l) => !ativasHome.size || ativasHome.has(l));
   const listaHero = lojasComArtigo(lojasHero);
 
@@ -435,7 +404,7 @@ ${secaoCompara}
     <h1>Achados conferidos. <em>Você compra direto na loja.</em></h1>
     <p class="hero-sub">Produtos ${listaHero} com link oficial verificado${comFoto ? ", fotos autorizadas" : ""} e o essencial de cada anúncio. A ${esc(config.nomeSite)} recomenda; pagamento e entrega são feitos pela loja.</p>
     <div class="hero-acoes">
-      <a class="btn btn-prim" href="${destaquesHome?.itens?.length ? "#t-bf" : comFotoItens.length ? "#t-destaques" : "#t-rec"}">Ver os achados ${icone("seta", { tamanho: 18 })}</a>
+      <a class="btn btn-prim" href="${destaquesHome?.itens?.length ? "#t-bf" : comFotoItens.length ? "#t-destaques" : "#t-categorias"}">Ver os achados ${icone("seta", { tamanho: 18 })}</a>
       ${guias.length ? `<a class="btn btn-sec" href="/guias/">Guias de compra</a>` : ""}
     </div>
     <ul class="hero-confianca">
@@ -606,14 +575,17 @@ export const paginaProduto = ({ config, p, ativas, inativas, relacionados, guias
   const sufixo = `: onde comprar, com link conferido. ${rotuloLojas}.`;
   const cabe = 155 - sufixo.length;
   const metaDesc = descricao ? descricao.slice(0, 155) : `${p.nome.length > cabe ? `${p.nome.slice(0, cabe - 1).trimEnd()}…` : p.nome}${sufixo}`;
+  const fotoLoja = ofertaDaFoto(p, ativas);
+  const fotoHtml = imagemProduto(p, 80, { prioridade: true });
+  const blocoFoto = temFoto(p)
+    ? `<div class="produto-img">${fotoLoja ? `<a href="${esc(fotoLoja.url)}" target="_blank" rel="sponsored nofollow noopener">${fotoHtml}<span class="sr">Abrir a página do produto na loja</span></a>` : fotoHtml}<span class="foto-fonte">Foto: ${esc(p.imagemFonte || "loja")}</span></div>`
+    : "";
 
   const conteudo = `
 <div class="container">
   <nav class="trilha" aria-label="Trilha"><a href="/">Início</a> › <a href="/categoria/${catSlug}/">${esc(p.categoria)}</a><span class="trilha-atual"> › ${esc(p.nome)}</span></nav>
-  <article class="produto-grade${temFoto(p) ? "" : " sem-imagem"}">
-    ${temFoto(p)
-      ? `<div class="produto-img">${imagemProduto(p, 80, { prioridade: true })}<span class="foto-fonte">Foto: ${esc(p.imagemFonte || "loja")}</span></div>`
-      : `<div class="produto-ficha">${bolhaCategoria(p.categoria, 30)}<div><span class="card-cat">${esc(p.categoria)}${p.marca ? ` · ${esc(p.marca)}` : ""}</span>${p.tipo ? `<strong>${esc(p.tipo)}</strong>` : ""}<small>${icone("externo", { tamanho: 13 })} Sem foto autorizada aqui: veja as fotos na página da loja.</small></div></div>`}
+  <article class="produto-grade">
+    ${blocoFoto}
     <div class="produto-info">
       ${temFoto(p) ? `<span class="card-cat">${esc(p.categoria)}</span>` : ""}
       <h1>${esc(p.nome)}</h1>
@@ -675,7 +647,7 @@ export const paginaProduto = ({ config, p, ativas, inativas, relacionados, guias
     name: p.nome,
     ...(descricao ? { description: descricao } : {}),
     ...(p.marca ? { brand: { "@type": "Brand", name: p.marca } } : {}),
-    ...(p.imagem && p.imagemPermitida === true ? { image: p.imagem.startsWith("http") ? p.imagem : `${config.siteUrl}${p.imagem}` } : {}),
+    ...(temFoto(p) ? { image: p.imagem.startsWith("http") ? p.imagem : `${config.siteUrl}${p.imagem}` } : {}),
     category: p.categoria,
   };
   if (comPreco.length) {
@@ -712,10 +684,11 @@ export const paginaGuia = ({ config, guia, itens, outrosGuias = [] }) => {
   // de afiliado da oferta ativa; sec.guia = slug de um guia existente para aprofundar.
   const blocoProduto = (sec) => {
     const x = sec.produto && itens.find((i) => i.p.id === sec.produto);
-    if (!x || !x.ativas.length) return "";
+    if (!x || !x.ativas.length || !temFoto(x.p)) return "";
     const { p, ativas } = x;
+    const ext = ofertaDaFoto(p, ativas);
     return `<div class="guia-prod-inline">
-      <a class="gpi-img" href="/produto/${esc(p.id)}/" tabindex="-1" aria-hidden="true">${imagemProduto(p, 40, { compacto: true })}</a>
+      <a class="gpi-img" href="${ext ? esc(ext.url) : `/produto/${esc(p.id)}/`}"${ext ? ' target="_blank" rel="sponsored nofollow noopener"' : ' tabindex="-1" aria-hidden="true"'}>${imagemProduto(p, 40, { compacto: true })}</a>
       <div class="gpi-corpo"><a class="gpi-nome" href="/produto/${esc(p.id)}/">${esc(p.nomeCurto || p.nome)}</a>
       ${ativas.map((o) => botaoOferta(o, p.id, { classe: `btn-${o.loja} btn-loja`, dados: " data-guia-secao" })).join("")}</div>
     </div>`;
@@ -734,7 +707,7 @@ export const paginaGuia = ({ config, guia, itens, outrosGuias = [] }) => {
   // Atalho de compra logo após a introdução: o leitor que chega pela busca vê a oferta sem rolar a página.
   // Usa as mesmas URLs de afiliado das ofertas ativas (nada é reescrito) e traz o aviso de afiliado junto.
   const ordem = Array.isArray(guia.atalho) ? [...guia.atalho.map((id) => itens.find((i) => i.p.id === id)).filter(Boolean), ...itens] : itens;
-  const comOferta = [...new Set(ordem)].filter(({ ativas }) => ativas.length).slice(0, 3);
+  const comOferta = [...new Set(ordem)].filter(({ p, ativas }) => ativas.length && temFoto(p)).slice(0, 3);
   const blocoAtalho = (classeExtra, rotulo) =>
     comOferta.length
       ? `<aside class="guia-atalho${classeExtra}" aria-label="${esc(rotulo)}">

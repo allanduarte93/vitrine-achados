@@ -14,7 +14,7 @@ import { canonicalizarCategoria } from "../src/lib/categorias.mjs";
 import { criarServidor } from "../src/server.mjs";
 
 // Os testes não podem herdar as variáveis do workflow de publicação.
-for (const v of ["SITE_URL", "AMAZON_TAG", "ENDPOINT_CLIQUES", "SOMENTE_CONFIRMADOS"]) delete process.env[v];
+for (const v of ["SITE_URL", "AMAZON_TAG", "ENDPOINT_CLIQUES", "SOMENTE_CONFIRMADOS", "AMAZON_CREATORS_CREDENTIAL_ID", "AMAZON_CREATORS_CREDENTIAL_SECRET", "AMAZON_CREATORS_VERSION", "ML_ACCESS_TOKEN"]) delete process.env[v];
 
 const AGORA = new Date("2026-10-14T18:00:00-03:00");
 const CONFIG = { siteUrl: "https://site.test", afiliados: { amazonTag: null }, precoValidadeHoras: 24 };
@@ -426,21 +426,29 @@ test("catálogo real do Cowork: ofertas preservadas, preço só dentro da valida
   try {
     const dentro = new Date("2026-10-20T16:00:00-03:00");
     const r = build({ catalogoPath: "data/catalogo.json", saida, agora: dentro });
-    const disponiveis = catalogo.produtos.filter((p) => p.ofertas.some((o) => !["indisponivel", "sem-compra-direta"].includes(o.disponibilidade?.estado)));
-    assert.equal(r.produtosPublicados, disponiveis.length);
+    const disponiveis = catalogo.produtos.filter((p) => p.ofertas.some((o) => !["indisponivel", "sem-compra-direta", "guardada"].includes(o.disponibilidade?.estado)));
+    assert.equal(r.produtosPublicados + r.omitidosSemFoto.length, disponiveis.length);
     const busca = JSON.parse(readFileSync(join(saida, "busca.json"), "utf8")).produtos;
-    assert.equal(busca.length, disponiveis.length);
+    assert.equal(busca.length, r.produtosPublicados);
+    assert.ok(busca.every((p) => typeof p.imagem === "string" && p.imagem.startsWith("https://")));
     const html = readdirSync(join(saida, "produto")).map((d) => readFileSync(join(saida, "produto", d, "index.html"), "utf8")).join("\n");
-    const indisponivel = (url) => catalogo.produtos.some((p) => p.ofertas.some((o) => o.url === url && ["indisponivel", "sem-compra-direta"].includes(o.disponibilidade?.estado)));
-    for (const st of entrada.prontos) if (!indisponivel(st.link_afiliado)) assert.ok(html.includes(`href="${st.link_afiliado.replaceAll("&", "&amp;")}"`), `botão aponta para ${st.link_afiliado}`);
+    const indisponivel = (url) => catalogo.produtos.some((p) => p.ofertas.some((o) => o.url === url && ["indisponivel", "sem-compra-direta", "guardada"].includes(o.disponibilidade?.estado)));
+    const semFoto = new Set(r.omitidosSemFoto.map((p) => p.id));
+    const idDoLink = (url) => catalogo.produtos.find((p) => p.ofertas.some((o) => o.url === url))?.id;
+    for (const st of entrada.prontos) {
+      if (indisponivel(st.link_afiliado) || semFoto.has(idDoLink(st.link_afiliado))) continue;
+      assert.ok(html.includes(`href="${st.link_afiliado.replaceAll("&", "&amp;")}"`), `botão aponta para ${st.link_afiliado}`);
+    }
     assert.doesNotMatch(html, /aggregateRating|desconto/i);
     const paginas = readdirSync(join(saida, "produto")).map((d) => readFileSync(join(saida, "produto", d, "index.html"), "utf8"));
     for (const pag of paginas) {
       const temAmazon = /btn-amazon/.test(pag);
       assert.equal(/Como Associado da Amazon, ganhamos com compras qualificadas/.test(pag.split("<footer")[0]), temAmazon, "declaração da Amazon junto aos botões da Amazon (e só neles)");
     }
-    const samsung = readFileSync(join(saida, "produto", catalogo.produtos.find((p) => /Galaxy A17/.test(p.nome)).id, "index.html"), "utf8");
-    assert.doesNotMatch(samsung.split("<main")[1].split("Relacionados")[0], /R\$\s?1\.?349/, "preço não confirmado não aparece");
+    const idA17 = catalogo.produtos.find((p) => /Galaxy A17/.test(p.nome)).id;
+    assert.equal(existsSync(join(saida, "produto", idA17, "index.html")), false, "Galaxy A17 sem foto não tem página");
+    assert.ok(!busca.some((p) => p.id === idA17));
+    assert.doesNotMatch(html, /R\$\s?1\.?349/, "preço não confirmado não aparece");
     rmSync(saida, { recursive: true, force: true });
     build({ catalogoPath: "data/catalogo.json", saida, agora: new Date("2026-10-22T12:00:00-03:00") });
     const vencido = JSON.parse(readFileSync(join(saida, "busca.json"), "utf8")).produtos;
@@ -453,7 +461,7 @@ test("catálogo real do Cowork: ofertas preservadas, preço só dentro da valida
 test("home cita só as lojas com oferta ativa", () => {
   const saida = mkdtempSync(join(tmpdir(), "vitrine-lojas-"));
   const cat = join(saida, "c.json");
-  writeFileSync(cat, JSON.stringify({ versao: 1, produtos: [{ id: "x", nome: "Produto X", categoria: "Pets", ofertas: [{ loja: "shopee", url: "https://s.shopee.com.br/abc", ...V }] }] }));
+  writeFileSync(cat, JSON.stringify({ versao: 1, produtos: [{ id: "x", nome: "Produto X", categoria: "Pets", imagem: "https://exemplo.invalid/fotos/x.webp", imagemPermitida: true, imagemFonte: "fixture", ofertas: [{ loja: "shopee", url: "https://s.shopee.com.br/abc", ...V }] }] }));
   try {
     build({ configPath: CFG, catalogoPath: cat, saida: join(saida, "d"), agora: AGORA });
     const hero = readFileSync(join(saida, "d", "index.html"), "utf8").split('class="hero-lojas"')[1].split("</div>")[0];
@@ -494,8 +502,8 @@ test("meta descrição (produto, categoria, home, busca) cita só as lojas publi
   try {
     const r = build({ configPath: cfg, catalogoPath: "data/catalogo.json", saida: join(saida, "dist"), agora: new Date("2026-10-20T16:00:00-03:00") });
     const conf = Object.entries(base.afiliados.programasConfirmados).filter(([, v]) => v).map(([l]) => l);
-    const esperado = JSON.parse(readFileSync("data/catalogo.json", "utf8")).produtos.filter((p) => p.ofertas.some((o) => conf.includes(o.loja) && !["indisponivel", "sem-compra-direta"].includes(o.disponibilidade?.estado))).length;
-    assert.equal(r.produtosPublicados, esperado);
+    const esperado = JSON.parse(readFileSync("data/catalogo.json", "utf8")).produtos.filter((p) => p.ofertas.some((o) => conf.includes(o.loja) && !["indisponivel", "sem-compra-direta", "guardada"].includes(o.disponibilidade?.estado))).length;
+    assert.equal(r.produtosPublicados + r.omitidosSemFoto.length, esperado);
     const dist = join(saida, "dist");
     const paginas = [join(dist, "index.html"), join(dist, "busca", "index.html"), ...readdirSync(join(dist, "produto")).map((d) => join(dist, "produto", d, "index.html")), ...readdirSync(join(dist, "categoria")).map((d) => join(dist, "categoria", d, "index.html"))];
     for (const f of paginas) {
@@ -524,7 +532,7 @@ test("vitrine publicada: guias só com produtos publicados, sem categorias vazia
     const dist = join(saida, "dist");
     const guias = JSON.parse(readFileSync("data/guias.json", "utf8")).guias;
     const publicados = new Set(readdirSync(join(dist, "produto")));
-    const esperados = guias.filter((g) => g.status === "aprovado" && g.produtos.every((id) => publicados.has(id)));
+    const esperados = guias.filter((g) => g.status === "aprovado" && g.produtos.some((id) => publicados.has(id)));
     assert.equal(r.guias, esperados.length, JSON.stringify(r.guiasRejeitados));
     esperados.forEach((g) => assert.ok(existsSync(join(dist, "guias", g.slug, "index.html")), g.slug));
     // Nenhuma categoria publicada sem produto.
@@ -624,6 +632,7 @@ test("fotos: só imagens autorizadas entram nas páginas e no índice da busca",
   const cat = JSON.parse(readFileSync("data/catalogo.json", "utf8"));
   const amz = cat.produtos.filter((p) => p.ofertas.some((o) => o.loja === "amazon"));
   amz[0].imagem = "https://img.exemplo.invalid/autorizada.jpg"; amz[0].imagemPermitida = true; amz[0].imagemFonte = "teste";
+  for (const o of amz[0].ofertas) if (o.disponibilidade?.estado === "guardada") delete o.disponibilidade;
   amz[1].imagem = "https://img.exemplo.invalid/sem-licenca.jpg"; delete amz[1].imagemPermitida;
   const catPath = join(saida, "catalogo.json");
   writeFileSync(catPath, JSON.stringify(cat));
@@ -639,7 +648,8 @@ test("fotos: só imagens autorizadas entram nas páginas e no índice da busca",
     assert.match(prod, /autorizada\.jpg/);
     assert.doesNotMatch(home + prod, /sem-licenca\.jpg/);
     assert.equal(busca.produtos.find((p) => p.id === amz[0].id).imagem, "https://img.exemplo.invalid/autorizada.jpg");
-    assert.equal(busca.produtos.find((p) => p.id === amz[1].id).imagem, undefined);
+    assert.equal(busca.produtos.find((p) => p.id === amz[1].id), undefined, "produto sem foto autorizada fica fora da busca");
+    assert.equal(existsSync(join(dist, "produto", amz[1].id, "index.html")), false);
   } finally {
     delete process.env.SOMENTE_CONFIRMADOS;
     rmSync(saida, { recursive: true, force: true });
@@ -762,7 +772,7 @@ test("guia: atalho de compra no topo usa as mesmas URLs de afiliado e traz o avi
   const { paginaGuia, AVISO_CURTO } = await import("../src/lib/render.mjs");
   const config = { siteUrl: "https://ex.com", nomeSite: "X", programasConfirmados: { amazon: true } };
   const url = "https://www.amazon.com.br/dp/B000000001?tag=vitrineachados-20";
-  const p = { id: "amazon-b000000001", nome: "Produto A", categoria: "Eletrônicos" };
+  const p = { id: "amazon-b000000001", nome: "Produto A", categoria: "Eletrônicos", imagem: "https://exemplo.invalid/fotos/a.webp", imagemPermitida: true, imagemFonte: "fixture" };
   const guia = { slug: "g", titulo: "Guia", tituloSeo: "Título curto", resumo: "r", introducao: "i", atualizadoEm: "2026-11-09", secoes: [] };
   const html = paginaGuia({ config, guia, itens: [{ p, ativas: [{ loja: "amazon", url, estado: {} }] }] });
   assert.equal(html.titulo, "Título curto");
@@ -776,7 +786,7 @@ test("guia: atalho de compra no topo usa as mesmas URLs de afiliado e traz o avi
 test("home: destaques do topo usam a URL de afiliado da oferta, sem preço, com aviso", async () => {
   const { cardDestaqueHome } = await import("../src/lib/render.mjs");
   const url = "https://meli.la/abc123";
-  const p = { id: "x", nome: "Produto X", categoria: "Beleza", pontosChave: ["Ponto 1", "Ponto 2", "Ponto 3"] };
+  const p = { id: "x", nome: "Produto X", categoria: "Beleza", pontosChave: ["Ponto 1", "Ponto 2", "Ponto 3"], imagem: "https://exemplo.invalid/fotos/x.webp", imagemPermitida: true, imagemFonte: "fixture" };
   const html = cardDestaqueHome(p, [{ loja: "mercadolivre", url, estado: {} }], { slug: "guia-x" });
   assert.ok(html.includes(`href="${url}"`));
   assert.ok(html.includes('rel="sponsored nofollow noopener"'));
@@ -790,7 +800,7 @@ test("guia: seção com produto mostra foto/botão com a URL de afiliado e escon
   const { paginaGuia } = await import("../src/lib/render.mjs");
   const config = { siteUrl: "https://ex.com", nomeSite: "X", programasConfirmados: { mercadolivre: true } };
   const url = "https://meli.la/xyz789";
-  const p = { id: "prod-a", nome: "Produto A", categoria: "Casa" };
+  const p = { id: "prod-a", nome: "Produto A", categoria: "Casa", imagem: "https://exemplo.invalid/fotos/a.webp", imagemPermitida: true, imagemFonte: "fixture" };
   const guia = { slug: "g", titulo: "Guia", resumo: "r", introducao: "i", atualizadoEm: "2026-11-10", atalho: false,
     secoes: [{ titulo: "Produto A", produto: "prod-a", guia: { slug: "outro", titulo: "Outro guia" }, paragrafos: ["texto"] }] };
   const html = paginaGuia({ config, guia, itens: [{ p, ativas: [{ loja: "mercadolivre", url, estado: {} }] }] }).conteudo;
@@ -809,10 +819,11 @@ test("indisponível na loja: sai das recomendações, mas o link e o ID ficam no
   assert.equal(estadoOferta(base, cfg).ativa, true);
   assert.equal(estadoOferta({ ...base, disponibilidade: { estado: "indisponivel", conferidoEm: "2026-11-10" } }, cfg).ativa, false);
   assert.equal(estadoOferta({ ...base, disponibilidade: { estado: "sem-compra-direta" } }, cfg).ativa, false);
+  assert.equal(estadoOferta({ ...base, disponibilidade: { estado: "guardada", conferidoEm: "2026-11-22" } }, cfg).ativa, false);
   assert.equal(estadoOferta({ ...base, disponibilidade: { estado: "nao-verificado" } }, cfg).ativa, true, "não verificado não muda a oferta");
 
   const catalogo = JSON.parse(readFileSync("data/catalogo.json", "utf8"));
-  const fora = catalogo.produtos.filter((p) => p.ofertas.every((o) => ["indisponivel", "sem-compra-direta"].includes(o.disponibilidade?.estado)));
+  const fora = catalogo.produtos.filter((p) => p.ofertas.every((o) => ["indisponivel", "sem-compra-direta", "guardada"].includes(o.disponibilidade?.estado)));
   assert.ok(fora.length >= 3);
   const saida = mkdtempSync(join(tmpdir(), "vitrine-indisp-"));
   process.env.SOMENTE_CONFIRMADOS = "1";
