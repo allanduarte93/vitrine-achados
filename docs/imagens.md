@@ -6,6 +6,24 @@ Regra do site: uma foto só aparece se o produto tiver `imagem` + `imagemPermiti
 Sem imagem válida, o produto **não entra** em vitrine, busca, lista nem página: nenhum card é
 renderizado sem foto. Nada de foto genérica, inventada ou gerada por IA.
 
+## 22/11/2026 — troca para o Mercado Livre, só com o mesmo modelo e com foto
+
+Os 10 anúncios da Amazon que estavam ativos sem foto ficaram no catálogo com `disponibilidade.estado: "guardada"`. Não é estoque esgotado: a oferta volta quando a Creators API entregar a foto. O botão público passa a ser o do Mercado Livre só quando existe o mesmo modelo, com foto no mesmo padrão dos outros produtos ML (hotlink em `http2.mlstatic.com`, sem rehospedar).
+
+O Cicaplast Baume B5+ de 40 ml já estava no site como catálogo MLB24326256, com foto da Central de Afiliados e link `meli.la/2L8U337`. O guia da CeraVe passa a apontar para esse anúncio. A oferta da Amazon desse item ficou guardada.
+
+Deste ambiente o Mercado Livre pediu login em todas as páginas de catálogo e a API pública respondeu 401, então não deu para copiar a foto oficial dos demais. Ficam fora até o Allan abrir a página, conferir modelo/cor/voltagem e gerar o `meli.la` na conta (etiqueta ad20260429184559, matt_tool 68963796):
+
+| Produto | Página de catálogo encontrada | Por que ficou fora |
+|---|---|---|
+| Kindle 16 GB verde, 11ª geração, modelo 2024 | https://www.mercadolivre.com.br/p/MLB46676867 | página bloqueou; sem foto oficial conferida |
+| Kindle Paperwhite 16 GB preto, 2024, ASIN B0CFPL6CFY | https://www.mercadolivre.com.br/p/MLB44031857 | página bloqueou; sem foto oficial conferida |
+| Elseve Óleo Extraordinário 100 ml | https://www.mercadolivre.com.br/p/MLB26080271 | ficha de 100 ml confere; sem foto oficial conferida |
+| Galaxy A17 azul 256 GB / 8 GB | https://www.mercadolivre.com.br/p/MLB54982411 | já tem `meli.la/13qLjsv`; falta a foto |
+| Echo Dot preto | só apareceu catálogo azul (MLB19795011) | cor diferente; não é o mesmo anúncio |
+| Fire TV Stick HD alimentado pela TV (B0DVK166SV) | o anúncio achado é outro ASIN, com fonte na tomada | não é o mesmo modelo |
+| Airfryer AI551/09 110/127 V, Cadence Click 127 V, potes Electrolux A23122901, Logitech M170 preto | sem página de catálogo conferida | sem equivalente exato com foto |
+
 ## 22/11/2026 — nenhum anúncio sem foto
 
 Conferido no [Acordo Operacional](https://associados.amazon.com.br/help/operating/agreement) (atualizado em 15/10/2025) e nas [Políticas do Programa](https://associados.amazon.com.br/help/operating/policies), licença de PI:

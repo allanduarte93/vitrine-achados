@@ -426,13 +426,13 @@ test("catálogo real do Cowork: ofertas preservadas, preço só dentro da valida
   try {
     const dentro = new Date("2026-10-20T16:00:00-03:00");
     const r = build({ catalogoPath: "data/catalogo.json", saida, agora: dentro });
-    const disponiveis = catalogo.produtos.filter((p) => p.ofertas.some((o) => !["indisponivel", "sem-compra-direta"].includes(o.disponibilidade?.estado)));
+    const disponiveis = catalogo.produtos.filter((p) => p.ofertas.some((o) => !["indisponivel", "sem-compra-direta", "guardada"].includes(o.disponibilidade?.estado)));
     assert.equal(r.produtosPublicados + r.omitidosSemFoto.length, disponiveis.length);
     const busca = JSON.parse(readFileSync(join(saida, "busca.json"), "utf8")).produtos;
     assert.equal(busca.length, r.produtosPublicados);
     assert.ok(busca.every((p) => typeof p.imagem === "string" && p.imagem.startsWith("https://")));
     const html = readdirSync(join(saida, "produto")).map((d) => readFileSync(join(saida, "produto", d, "index.html"), "utf8")).join("\n");
-    const indisponivel = (url) => catalogo.produtos.some((p) => p.ofertas.some((o) => o.url === url && ["indisponivel", "sem-compra-direta"].includes(o.disponibilidade?.estado)));
+    const indisponivel = (url) => catalogo.produtos.some((p) => p.ofertas.some((o) => o.url === url && ["indisponivel", "sem-compra-direta", "guardada"].includes(o.disponibilidade?.estado)));
     const semFoto = new Set(r.omitidosSemFoto.map((p) => p.id));
     const idDoLink = (url) => catalogo.produtos.find((p) => p.ofertas.some((o) => o.url === url))?.id;
     for (const st of entrada.prontos) {
@@ -502,7 +502,7 @@ test("meta descrição (produto, categoria, home, busca) cita só as lojas publi
   try {
     const r = build({ configPath: cfg, catalogoPath: "data/catalogo.json", saida: join(saida, "dist"), agora: new Date("2026-10-20T16:00:00-03:00") });
     const conf = Object.entries(base.afiliados.programasConfirmados).filter(([, v]) => v).map(([l]) => l);
-    const esperado = JSON.parse(readFileSync("data/catalogo.json", "utf8")).produtos.filter((p) => p.ofertas.some((o) => conf.includes(o.loja) && !["indisponivel", "sem-compra-direta"].includes(o.disponibilidade?.estado))).length;
+    const esperado = JSON.parse(readFileSync("data/catalogo.json", "utf8")).produtos.filter((p) => p.ofertas.some((o) => conf.includes(o.loja) && !["indisponivel", "sem-compra-direta", "guardada"].includes(o.disponibilidade?.estado))).length;
     assert.equal(r.produtosPublicados + r.omitidosSemFoto.length, esperado);
     const dist = join(saida, "dist");
     const paginas = [join(dist, "index.html"), join(dist, "busca", "index.html"), ...readdirSync(join(dist, "produto")).map((d) => join(dist, "produto", d, "index.html")), ...readdirSync(join(dist, "categoria")).map((d) => join(dist, "categoria", d, "index.html"))];
@@ -632,6 +632,7 @@ test("fotos: só imagens autorizadas entram nas páginas e no índice da busca",
   const cat = JSON.parse(readFileSync("data/catalogo.json", "utf8"));
   const amz = cat.produtos.filter((p) => p.ofertas.some((o) => o.loja === "amazon"));
   amz[0].imagem = "https://img.exemplo.invalid/autorizada.jpg"; amz[0].imagemPermitida = true; amz[0].imagemFonte = "teste";
+  for (const o of amz[0].ofertas) if (o.disponibilidade?.estado === "guardada") delete o.disponibilidade;
   amz[1].imagem = "https://img.exemplo.invalid/sem-licenca.jpg"; delete amz[1].imagemPermitida;
   const catPath = join(saida, "catalogo.json");
   writeFileSync(catPath, JSON.stringify(cat));
@@ -818,10 +819,11 @@ test("indisponível na loja: sai das recomendações, mas o link e o ID ficam no
   assert.equal(estadoOferta(base, cfg).ativa, true);
   assert.equal(estadoOferta({ ...base, disponibilidade: { estado: "indisponivel", conferidoEm: "2026-11-10" } }, cfg).ativa, false);
   assert.equal(estadoOferta({ ...base, disponibilidade: { estado: "sem-compra-direta" } }, cfg).ativa, false);
+  assert.equal(estadoOferta({ ...base, disponibilidade: { estado: "guardada", conferidoEm: "2026-11-22" } }, cfg).ativa, false);
   assert.equal(estadoOferta({ ...base, disponibilidade: { estado: "nao-verificado" } }, cfg).ativa, true, "não verificado não muda a oferta");
 
   const catalogo = JSON.parse(readFileSync("data/catalogo.json", "utf8"));
-  const fora = catalogo.produtos.filter((p) => p.ofertas.every((o) => ["indisponivel", "sem-compra-direta"].includes(o.disponibilidade?.estado)));
+  const fora = catalogo.produtos.filter((p) => p.ofertas.every((o) => ["indisponivel", "sem-compra-direta", "guardada"].includes(o.disponibilidade?.estado)));
   assert.ok(fora.length >= 3);
   const saida = mkdtempSync(join(tmpdir(), "vitrine-indisp-"));
   process.env.SOMENTE_CONFIRMADOS = "1";

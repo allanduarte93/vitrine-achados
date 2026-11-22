@@ -34,7 +34,12 @@ const CAMPOS_OFERTA = new Set([
 // Disponibilidade conferida na página do produto (sem link de afiliado). Só estes estados
 // tiram a oferta das recomendações; "nao-verificado" (captcha/bloqueio) nunca vale como disponível
 // nem como indisponível: a oferta segue como estava, e o verificador reporta a dúvida.
-export const ESTADOS_INDISPONIVEL = { indisponivel: "indisponível na loja", "sem-compra-direta": "sem opção de compra direta na loja" };
+export const ESTADOS_INDISPONIVEL = {
+  indisponivel: "indisponível na loja",
+  "sem-compra-direta": "sem opção de compra direta na loja",
+  // Não é falta de estoque: a oferta fica no catálogo e volta quando a foto da Creators API existir.
+  guardada: "guardada no catálogo até a Creators API da Amazon liberar a foto",
+};
 const CAMPOS_PROIBIDOS = /avalia|rating|nota|estrela|review|vendid|desconto|cupom|depoimento/i;
 
 const isDate = (s) => typeof s === "string" && !Number.isNaN(Date.parse(s));
