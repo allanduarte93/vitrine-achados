@@ -35,7 +35,7 @@ Pré-visualização com dados fictícios (sai com `noindex` e faixa vermelha): `
 | Máximo de 10 produtos prioritários (destaques da home) | `catalogo.mjs` |
 | Produto sem oferta ativa não vira página | `build.mjs` |
 | Página sem conteúdo próprio (descrição ≥ 120 caracteres ou ≥ 3 pontos-chave) fica `noindex` e fora do sitemap | `produtoIndexavel` |
-| Imagem só com `imagemPermitida: true` (uso autorizado) | `catalogo.mjs` |
+| Imagem só com `imagemPermitida: true`, fonte declarada e URL válida. Sem isso o produto sai da vitrine, da busca e das listas | `imagens.mjs`, `build.mjs` |
 | Aviso de afiliado no topo, junto aos botões e no rodapé, incluindo a frase obrigatória da Amazon | `render.mjs` |
 | JSON-LD apenas com dados visíveis e verdadeiros: BreadcrumbList, ItemList e Product (só com preço exibido) | `render.mjs` |
 | Links de compra com `rel="sponsored nofollow"` e destino visível (sem cloaking) | `render.mjs` |

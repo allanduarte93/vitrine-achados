@@ -14,6 +14,7 @@ const rel = { data: new Date().toISOString(), site: BASE, paginas: [] };
 const b = await chromium.launch();
 const idx = await (await fetch(`${BASE}/busca.json`)).json();
 const produtos = idx.produtos;
+produtos.filter((p) => !p.imagem).forEach((p) => falhas.push(`${p.id}: produto no índice público sem imagem`));
 for (const [nome, vp] of [["desktop", { width: 1366, height: 900 }], ["celular", { width: 390, height: 844 }]]) {
   const pg = await b.newPage({ viewport: vp });
   const erros = [];
@@ -21,6 +22,7 @@ for (const [nome, vp] of [["desktop", { width: 1366, height: 900 }], ["celular",
   await pg.goto(`${BASE}/`, { waitUntil: "networkidle" });
   const home = await pg.evaluate(() => ({
     cards: document.querySelectorAll("article.card, article.rec").length,
+    cardsSemImg: [...document.querySelectorAll("article.card, article.rec")].filter((a) => !a.querySelector("img[src][alt][width][height]")).length,
     destaquesSemFoto: document.querySelectorAll(".grade-destaque .sem-foto").length,
     fotos: [...document.querySelectorAll(".card-img img")].map((i) => ({ src: i.currentSrc, ok: i.complete && i.naturalWidth > 0 })),
     faixa: !!document.querySelector(".faixa-pub"),
@@ -39,6 +41,7 @@ for (const [nome, vp] of [["desktop", { width: 1366, height: 900 }], ["celular",
   // A home mostra uma seleção (desde 04/11); todos os produtos ficam na busca e nas categorias.
   if (home.cards < 1 || home.cards > produtos.length) falhas.push(`${nome}: home com ${home.cards} produtos, índice com ${produtos.length}`);
   if (home.destaquesSemFoto) falhas.push(`${nome}: ${home.destaquesSemFoto} destaque(s) sem foto na vitrine principal`);
+  if (home.cardsSemImg) falhas.push(`${nome}: ${home.cardsSemImg} card(s) público(s) sem imagem`);
   if (!home.faixa) falhas.push(`${nome}: sem faixa de publicidade`);
   if (home.largura > vp.width) falhas.push(`${nome}: rolagem horizontal (${home.largura}px)`);
   home.fotos.filter((f) => !f.ok).forEach((f) => falhas.push(`${nome}: foto não carregou na home: ${f.src}`));

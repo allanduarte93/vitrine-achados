@@ -99,12 +99,15 @@ Enquanto não houver resposta por escrito, `programasConfirmados` continua
   Perguntas: ferramenta oficial de links com imagem no Brasil; forma permitida de
   exibir foto antes da API; uso de fotos licenciadas pelo fabricante.
 - Programa ativo (ID vitrineachados-20), sem pendência de autorização.
-- Imagens: pelas Políticas do Programa (abr/2026), imagens de produto só podem vir
-  da Creators API / API de Divulgação de Produtos ou feeds aprovados, sem cache.
-  A API exige 10 vendas qualificadas em 30 dias. O SiteStripe da conta (conferido em
-  20/10/2026) oferece apenas link de texto (curto/completo); o menu Ferramentas não
-  tem banners nem widgets de imagem. Alternativa permitida: fotos próprias ou
-  imagens com licença escrita do fabricante.
+- Imagens: pelas Políticas do Programa, imagens de produto só podem vir
+  da Creators API / API de Divulgação de Produtos ou feeds aprovados, sem cache
+  do arquivo. O link da imagem pode ser guardado por até 24 horas. A API exige
+  conta aceita e, na introdução da Creators API, 10 vendas qualificadas em 30 dias.
+  O SiteStripe da conta (conferido em 20/10/2026) oferece apenas link de texto;
+  não há link de imagem para gravar. Alternativa permitida: fotos próprias ou
+  imagens com licença escrita do fabricante. Em 22/11/2026 não havia credencial
+  da API no repositório: os anúncios da Amazon sem foto saem da vitrine até o
+  titular criar a credencial (só o dono da conta, em Ferramentas → Creators API).
 
 ## Medição (21/10/2026)
 

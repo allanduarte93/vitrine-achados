@@ -236,7 +236,7 @@
       "fonte": null,
       "autorizacao": "pendente",
       "condicao": null,
-      "evidencia": "Resposta oficial no caso 490066167 (atendente Joyce, Atenção ao Cliente, 21/10/2026): site próprio e busca orgânica permitidos; imagens oficiais permitidas quando vêm das ferramentas oficiais (Gerador de Links, Barra de Afiliados ou Central de Afiliados), sem alteração, sem logomarca do ML e com aviso de publicidade. Produto elegível (Barra de Afiliados mostra 'GANHOS 5%'), mas não aparece com o mesmo código na Central nem entrou na lista de afiliados em 21/10/2026: sem foto de ferramenta oficial, fica com a ficha."
+      "evidencia": "Resposta oficial no caso 490066167 (atendente Joyce, Atenção ao Cliente, 21/10/2026): imagens oficiais permitidas quando vêm das ferramentas oficiais, sem alteração. O produto não apareceu com foto na Central nem na lista de afiliados em 21/10/2026. Em 22/11/2026 a API pública GET /products/MLB54982411 respondeu 401 (authorization value not present) e a página do catálogo pediu verificação de conta: sem URL oficial para hotlink. Enquanto não houver foto, o produto fica fora da vitrine."
     },
     "fone-de-ouvido-headphone-dapon-h02d-bluetooth-5-1-over-ear-22h-preto-dapon": {
       "loja": "mercadolivre",
@@ -289,7 +289,7 @@
       "fonte": null,
       "autorizacao": "pendente",
       "condicao": null,
-      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md). Em 22/11/2026 não havia credencial da Creators API: o produto sai da vitrine em vez de aparecer sem foto."
     },
     "amazon-b0dvk166sv": {
       "loja": "amazon",
@@ -300,7 +300,7 @@
       "fonte": null,
       "autorizacao": "pendente",
       "condicao": null,
-      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md). Em 22/11/2026 não havia credencial da Creators API: o produto sai da vitrine em vez de aparecer sem foto."
     },
     "amazon-b07rk4hst7": {
       "loja": "amazon",
@@ -311,7 +311,7 @@
       "fonte": null,
       "autorizacao": "pendente",
       "condicao": null,
-      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md). Em 22/11/2026 não havia credencial da Creators API: o produto sai da vitrine em vez de aparecer sem foto."
     },
     "amazon-b072mk7bn2": {
       "loja": "amazon",
@@ -322,7 +322,7 @@
       "fonte": null,
       "autorizacao": "pendente",
       "condicao": null,
-      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md). Em 22/11/2026 não havia credencial da Creators API: o produto sai da vitrine em vez de aparecer sem foto."
     },
     "amazon-b07h113tpq": {
       "loja": "amazon",
@@ -333,7 +333,7 @@
       "fonte": null,
       "autorizacao": "pendente",
       "condicao": null,
-      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md). Em 22/11/2026 não havia credencial da Creators API: o produto sai da vitrine em vez de aparecer sem foto."
     },
     "amazon-b0cdj4l7cz": {
       "loja": "amazon",
@@ -344,7 +344,7 @@
       "fonte": null,
       "autorizacao": "pendente",
       "condicao": null,
-      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md). Em 22/11/2026 não havia credencial da Creators API: o produto sai da vitrine em vez de aparecer sem foto."
     },
     "amazon-b09xjl4b9h": {
       "loja": "amazon",
@@ -355,7 +355,7 @@
       "fonte": null,
       "autorizacao": "pendente",
       "condicao": null,
-      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md). Em 22/11/2026 não havia credencial da Creators API: o produto sai da vitrine em vez de aparecer sem foto."
     },
     "amazon-b07j4j9xkz": {
       "loja": "amazon",
@@ -366,7 +366,7 @@
       "fonte": null,
       "autorizacao": "pendente",
       "condicao": null,
-      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md). Em 22/11/2026 não havia credencial da Creators API: o produto sai da vitrine em vez de aparecer sem foto."
     },
     "amazon-b07dyhdxx8": {
       "loja": "amazon",
@@ -377,7 +377,7 @@
       "fonte": null,
       "autorizacao": "pendente",
       "condicao": null,
-      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md). Em 22/11/2026 não havia credencial da Creators API: o produto sai da vitrine em vez de aparecer sem foto."
     },
     "amazon-b074l9l5kz": {
       "loja": "amazon",
@@ -388,7 +388,7 @@
       "fonte": null,
       "autorizacao": "pendente",
       "condicao": null,
-      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md)"
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Consulta ao Suporte ao Associado (20/10/2026) e pedidos de licença aos fabricantes sem resposta (docs/imagens.md). Em 22/11/2026 não havia credencial da Creators API: o produto sai da vitrine em vez de aparecer sem foto."
     },
     "escova-secadora-britania-soft-bec07r-1300-w-bivolt-britania": {
       "loja": "mercadolivre",
@@ -1099,7 +1099,7 @@
       "fonte": null,
       "autorizacao": "pendente",
       "condicao": null,
-      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Estes três anúncios entraram em 21/11/2026 sem foto, no mesmo estado dos demais ASINs da Amazon (docs/imagens.md)."
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Estes três anúncios entraram em 21/11/2026 sem foto, no mesmo estado dos demais ASINs da Amazon (docs/imagens.md). Em 22/11/2026 não havia credencial da Creators API: o produto sai da vitrine em vez de aparecer sem foto."
     },
     "amazon-b0cfpl6cfy": {
       "loja": "amazon",
@@ -1110,7 +1110,7 @@
       "fonte": null,
       "autorizacao": "pendente",
       "condicao": null,
-      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Estes três anúncios entraram em 21/11/2026 sem foto, no mesmo estado dos demais ASINs da Amazon (docs/imagens.md)."
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Estes três anúncios entraram em 21/11/2026 sem foto, no mesmo estado dos demais ASINs da Amazon (docs/imagens.md). Em 22/11/2026 não havia credencial da Creators API: o produto sai da vitrine em vez de aparecer sem foto."
     },
     "amazon-b0dd1kd5jp": {
       "loja": "amazon",
@@ -1121,7 +1121,7 @@
       "fonte": null,
       "autorizacao": "pendente",
       "condicao": null,
-      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Estes três anúncios entraram em 21/11/2026 sem foto, no mesmo estado dos demais ASINs da Amazon (docs/imagens.md)."
+      "evidencia": "Políticas do Programa de Associados: fotos só pela Creators API / API de Divulgação (exige 10 vendas qualificadas em 30 dias), sem cache; SiteStripe da conta só oferece link de texto. Estes três anúncios entraram em 21/11/2026 sem foto, no mesmo estado dos demais ASINs da Amazon (docs/imagens.md). Em 22/11/2026 não havia credencial da Creators API: o produto sai da vitrine em vez de aparecer sem foto."
     }
   }
 }

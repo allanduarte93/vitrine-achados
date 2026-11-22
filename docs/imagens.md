@@ -1,9 +1,21 @@
 # Fotos dos produtos — registro de fonte, licença e status
 
 Regra do site: uma foto só aparece se o produto tiver `imagem` + `imagemPermitida: true` +
-`imagemFonte` (quem autorizou e quando). Com isso ela entra automaticamente na página inicial,
-nas categorias, na busca e na página do produto. Sem autorização, o site mostra a ficha do
-produto (tipo + fatos do anúncio). Nada de foto genérica, inventada ou gerada por IA.
+`imagemFonte` (quem autorizou e quando) e a URL for https de uma imagem (ou arquivo próprio em
+`/assets/`). Com isso ela entra na página inicial, nas categorias, na busca e na página do produto.
+Sem imagem válida, o produto **não entra** em vitrine, busca, lista nem página: nenhum card é
+renderizado sem foto. Nada de foto genérica, inventada ou gerada por IA.
+
+## 22/11/2026 — nenhum anúncio sem foto
+
+Conferido no [Acordo Operacional](https://associados.amazon.com.br/help/operating/agreement) (atualizado em 15/10/2025) e nas [Políticas do Programa](https://associados.amazon.com.br/help/operating/policies), licença de PI:
+
+- Imagem de produto da Amazon é Conteúdo de Anúncio obtido pela **Creators API** ou pela API de Divulgação de Produtos (ou feed aprovado por escrito). A licença não inclui mineração, robô ou extração da página do produto.
+- É proibido armazenar ou colocar em cache o arquivo da imagem. Pode-se guardar **o link** da imagem por no máximo 24 horas e, em seguida, atualizar com uma nova chamada à API.
+- O SiteStripe desta conta, conferido em 20/10/2026, só gera link de texto. A documentação atual do programa também não oferece mais a opção de link de imagem nessa barra. Não há, portanto, link de imagem do SiteStripe para gravar com a tag `vitrineachados-20`.
+- Não havia credencial da Creators API no repositório nem no ambiente deste build. O `npm run build` chama a API só se existirem `AMAZON_CREATORS_CREDENTIAL_ID` e `AMAZON_CREATORS_CREDENTIAL_SECRET` (e, se o painel mostrar outro número, `AMAZON_CREATORS_VERSION`; para a amazon.com.br a tabela oficial usa 3.1). A URL volta só no HTML daquela publicação, em hotlink, e a imagem do card aponta para a página do produto na Amazon. O arquivo não é baixado nem copiado para `assets/`.
+
+Mercado Livre: a API pública `GET https://api.mercadolibre.com/products/{MLB}` passou a responder 401 sem token (22/11/2026), e a página do catálogo do Galaxy A17 (`MLB54982411`) pediu verificação de conta a partir deste ambiente. `npm run obter-fotos-ml` grava o hotlink do CDN `http2.mlstatic.com` quando a API devolve a foto. Com `ML_ACCESS_TOKEN` o mesmo comando envia `Authorization: Bearer`. Sem resposta, o produto continua sem foto e sai da vitrine. A Shopee segue desligada.
 
 Fonte de verdade por produto: **`data/imagens.json`**, com url, fonte, identificação (ASIN, MLB ou
 loja.item da Shopee), variação, autorização e evidência. O build só mostra a foto quando o registro

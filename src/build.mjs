@@ -14,14 +14,15 @@ import { validarCatalogo, somenteConfirmadas, ofertasAtivas, produtoIndexavel, s
 import { layout, paginaInicial, paginaCategoria, paginaProduto, paginaBusca, paginaComoFunciona, paginaSobre, paginaAvisoAfiliados, paginaContato, paginaPrivacidade, pagina404, paginaGuias, paginaGuia } from "./lib/render.mjs";
 import { LOJAS } from "./lib/links.mjs";
 import { canonicalizarCategoria } from "./lib/categorias.mjs";
-import { aplicarRegistroImagens } from "./lib/imagens.mjs";
+import { aplicarRegistroImagens, imagemValida } from "./lib/imagens.mjs";
+import { aplicarImagensAmazonNoCatalogo, asinsSemFoto, buscarImagensAmazon } from "./lib/amazon-imagens.mjs";
 import { avaliarGuias } from "./lib/guias.mjs";
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 export const lerJson = (caminho) => JSON.parse(readFileSync(resolve(RAIZ, caminho), "utf8"));
 
-export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", configPath = "config.json", guiasPath = "data/guias.json", categoriasPath = "data/categorias.json", exemplo = false, agora = new Date() } = {}) => {
+export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", configPath = "config.json", guiasPath = "data/guias.json", categoriasPath = "data/categorias.json", exemplo = false, agora = new Date(), imagensAmazon = null } = {}) => {
   const config = lerJson(configPath);
   // Overrides por ambiente (usados no workflow de publicação, sem editar config.json).
   if (process.env.SITE_URL) config.siteUrl = process.env.SITE_URL;
@@ -39,13 +40,14 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
   const registroPath = catalogoPath.replace(/catalogo\.json$/, "imagens.json");
   const registro = registroPath !== catalogoPath && existsSync(resolve(RAIZ, registroPath)) ? lerJson(registroPath) : null;
   const fotos = registro ? aplicarRegistroImagens(recortado, registro, config, { publicacao }) : { catalogo: recortado, avisos: [] };
-  const catalogo = fotos.catalogo;
-  const { erros, avisos } = validarCatalogo(catalogo, config, agora);
+  const { erros, avisos } = validarCatalogo(fotos.catalogo, config, agora);
   if (erros.length) {
     const e = new Error(`Catálogo com ${erros.length} erro(s):\n- ${erros.join("\n- ")}`);
     e.erros = erros;
     throw e;
   }
+  // URL da Creators API entra só na memória deste build. Não é gravada em data/imagens.json.
+  const catalogo = aplicarImagensAmazonNoCatalogo(fotos.catalogo, imagensAmazon);
 
   const out = resolve(RAIZ, saida);
   rmSync(out, { recursive: true, force: true });
@@ -58,7 +60,7 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
   };
 
   const canonicas = config.categoriasVitrine || [];
-  const itens = catalogo.produtos
+  const comOfertaAtiva = catalogo.produtos
     .map((p0) => {
       const p = { ...p0, categoria: canonicalizarCategoria(p0.categoria, canonicas) };
       const ativas = ofertasAtivas(p, config, agora);
@@ -67,6 +69,9 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
     })
     .filter((x) => x.ativas.length > 0)
     .sort((a, b) => Number(!!b.p.prioritario) - Number(!!a.p.prioritario) || a.p.nome.localeCompare(b.p.nome, "pt-BR"));
+  // Sem imagem válida não há página, card, busca nem lista. O anúncio não aparece.
+  const omitidosSemFoto = comOfertaAtiva.filter((x) => !imagemValida(x.p)).map((x) => ({ id: x.p.id, nome: x.p.nome, lojas: [...new Set(x.ativas.map((o) => o.loja))] }));
+  const itens = comOfertaAtiva.filter((x) => imagemValida(x.p));
 
   const catMap = new Map();
   itens.forEach((x) => {
@@ -87,14 +92,27 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
   const categorias = [...comProdutos, ...vazias].sort((a, b) => ordem(a) - ordem(b) || a.nome.localeCompare(b.nome, "pt-BR"));
   const navCats = categorias.map(({ slug, nome, total }) => ({ slug, nome, total }));
 
-  // Guias editoriais: só entram se TODOS os produtos citados estiverem publicados (nada de guia apontando para oferta oculta).
+  // Guias: o texto permanece; produto sem foto sai da lista do guia. Se nenhum citado
+  // continuar publicado, o guia inteiro fica de fora (não aponta para página que não existe).
   const porId = new Map(itens.map((x) => [x.p.id, x]));
   const guiasDados = !exemplo && existsSync(resolve(RAIZ, guiasPath)) ? lerJson(guiasPath).guias || [] : [];
-  const { aprovados: guias, rejeitados: guiasRejeitados, avisos: avisosGuias } = avaliarGuias(guiasDados, {
+  const guiasComFoto = guiasDados.map((g) => ({
+    ...g,
+    produtos: (g.produtos || []).filter((id) => porId.has(id)),
+    ...(Array.isArray(g.atalho) ? { atalho: g.atalho.filter((id) => porId.has(id)) } : {}),
+  }));
+  const avaliados = avaliarGuias(guiasComFoto, {
     publicados: new Set(porId.keys()),
     descricoes: itens.map((x) => x.p.descricao || "").filter(Boolean),
     agora,
   });
+  const guias = avaliados.aprovados;
+  const guiasRejeitados = avaliados.rejeitados.map((g) => {
+    const original = guiasDados.find((x) => x.slug === g.slug);
+    if (!original?.produtos?.length || guiasComFoto.find((x) => x.slug === g.slug)?.produtos?.length) return g;
+    return { ...g, motivos: g.motivos.map((m) => (m === "nenhum produto citado" ? `sem foto válida: ${original.produtos.join(", ")}` : m)) };
+  });
+  const avisosGuias = avaliados.avisos;
   const textosCategoria = !exemplo && existsSync(resolve(RAIZ, categoriasPath)) ? lerJson(categoriasPath).categorias || {} : {};
   const guiasDoProduto = (id) => guias.filter((g) => g.produtos.includes(id));
 
@@ -119,7 +137,7 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
       .slice(0, 4); // sempre uma linha cheia de fotos (4 no desktop, 2x2 no celular)
     render(`/produto/${x.p.id}/`, paginaProduto({ config, p: x.p, ativas: x.ativas, inativas: x.inativas, relacionados, outros, guias: guiasDoProduto(x.p.id) }), x.indexavel);
   });
-  guias.forEach((g) => render(`/guias/${g.slug}/`, paginaGuia({ config, guia: { ...g, secoes: (g.secoes || []).map((sec) => (typeof sec.guia === "string" ? { ...sec, guia: ((o) => (o ? { slug: o.slug, titulo: o.titulo } : null))(guias.find((o) => o.slug === sec.guia)) } : sec)) }, itens: g.produtos.map((id) => porId.get(id)), outrosGuias: [...(g.relacionados || []).map((sl) => guias.find((o) => o.slug === sl)).filter(Boolean), ...guias.filter((o) => o.slug !== g.slug && !(g.relacionados || []).includes(o.slug))].slice(0, 4) })));
+  guias.forEach((g) => render(`/guias/${g.slug}/`, paginaGuia({ config, guia: { ...g, secoes: (g.secoes || []).map((sec) => (typeof sec.guia === "string" ? { ...sec, guia: ((o) => (o ? { slug: o.slug, titulo: o.titulo } : null))(guias.find((o) => o.slug === sec.guia)) } : sec)) }, itens: g.produtos.map((id) => porId.get(id)).filter(Boolean), outrosGuias: [...(g.relacionados || []).map((sl) => guias.find((o) => o.slug === sl)).filter(Boolean), ...guias.filter((o) => o.slug !== g.slug && !(g.relacionados || []).includes(o.slug))].slice(0, 4) })));
   if (guias.length) render("/guias/", paginaGuias({ config, guias }));
   render("/como-funciona/", paginaComoFunciona({ config }));
   render("/busca/", paginaBusca({ config, categorias: navCats.filter((c) => c.total > 0), ...(lojasPublicadas.length ? { lojas: lojasPublicadas } : {}) }), false);
@@ -178,8 +196,10 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
       // Preço só com a data da consulta (mesma regra das páginas).
       ...(comPreco.length ? { precoEm: comPreco.reduce((a, b) => (b.preco < a.preco ? b : a)).precoColetadoEm } : {}),
       url: `${base}/produto/${p.id}/`,
-      // Foto só entra no índice da busca se o uso for autorizado (mesma regra das páginas).
-      ...(p.imagem && p.imagemPermitida === true ? { imagem: p.imagem } : {}),
+      imagem: p.imagem,
+      ...(Number.isInteger(p.imagemLargura) ? { imagemLargura: p.imagemLargura } : {}),
+      ...(Number.isInteger(p.imagemAltura) ? { imagemAltura: p.imagemAltura } : {}),
+      ...(p.imagemLinkLoja ? { imagemLink: ativas.find((o) => o.loja === p.imagemLinkLoja)?.url } : {}),
     };
   });
   writeFileSync(join(out, "busca.json"), JSON.stringify({ base, produtos: indice }));
@@ -192,6 +212,7 @@ export const build = ({ catalogoPath = "data/catalogo.json", saida = "dist", con
     guias: guias.length,
     guiasRejeitados,
     avisos: [...fotos.avisos, ...avisos, ...avisosGuias],
+    omitidosSemFoto,
     resumo: resumoCatalogo(catalogo, config, agora),
     saida: out,
   };
@@ -203,15 +224,38 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     return i > -1 ? process.argv[i + 1] : padrao;
   };
   try {
+    const catalogoPath = arg("--catalogo", "data/catalogo.json");
+    const configPath = arg("--config", "config.json");
+    const exemplo = process.argv.includes("--exemplo");
+    let imagensAmazon = null;
+    if (!exemplo) {
+      const config = lerJson(configPath);
+      if (process.env.AMAZON_TAG) config.afiliados = { ...config.afiliados, amazonTag: process.env.AMAZON_TAG };
+      const lido = lerJson(catalogoPath);
+      const publicacao = process.env.SOMENTE_CONFIRMADOS === "1";
+      const base = publicacao ? somenteConfirmadas(lido, config) : lido;
+      const registroPath = catalogoPath.replace(/catalogo\.json$/, "imagens.json");
+      const registro = registroPath !== catalogoPath && existsSync(resolve(RAIZ, registroPath)) ? lerJson(registroPath) : null;
+      const asins = asinsSemFoto(base, registro, config, { publicacao });
+      const fotosAmazon = await buscarImagensAmazon({ asins, partnerTag: config.afiliados?.amazonTag });
+      fotosAmazon.avisos.forEach((a) => console.log(`aviso: ${a}`));
+      if (Object.keys(fotosAmazon.mapa).length) console.log(`Amazon: ${Object.keys(fotosAmazon.mapa).length} foto(s) por hotlink da Creators API nesta publicação (republicar em até 24 horas).`);
+      imagensAmazon = fotosAmazon.mapa;
+    }
     const r = build({
-      catalogoPath: arg("--catalogo", "data/catalogo.json"),
+      catalogoPath,
       saida: arg("--saida", "dist"),
-      configPath: arg("--config", "config.json"),
-      exemplo: process.argv.includes("--exemplo"),
+      configPath,
+      exemplo,
+      imagensAmazon,
     });
     r.avisos.forEach((a) => console.log(`aviso: ${a}`));
     console.log(`\n${r.paginas} páginas geradas (${r.indexaveis} indexáveis) em ${r.saida}`);
     console.log(`Produtos publicados: ${r.produtosPublicados}/${r.resumo.produtos} · categorias: ${r.categorias}`);
+    if (r.omitidosSemFoto?.length) {
+      console.log(`Fora da vitrine, sem foto válida (${r.omitidosSemFoto.length}):`);
+      r.omitidosSemFoto.forEach((p) => console.log(`  - ${p.nome} [${p.lojas.join(", ")}] ${p.id}`));
+    }
     console.log(`Ofertas ativas por loja: ${JSON.stringify(r.resumo.porLoja)}`);
     console.log(`Guias publicados: ${r.guias}`);
     r.guiasRejeitados.forEach((g) => console.log(`guia NÃO publicado: ${g.slug} — ${g.motivos.join("; ")}`));

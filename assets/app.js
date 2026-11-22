@@ -83,30 +83,23 @@
     var rotuloPreco = function (loja) { return ROTULO[loja] || "Ver preço na loja"; };
     var ext = '<svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg>';
     var card = function (p) {
+      if (!p.imagem) return "";
       var unica = p.ofertas && p.ofertas.length === 1 ? p.ofertas[0] : null;
       var loja = function (o) { return '<span class="marca-loja ' + escapar(o.loja) + '"><i></i>' + escapar(o.nome) + "</span>"; };
       var acao = unica
         ? '<a class="btn btn-prim btn-loja" href="' + escapar(unica.url) + '" target="_blank" rel="sponsored nofollow noopener" data-oferta data-produto="' + escapar(p.id) + '" data-loja="' + escapar(unica.loja) + '">' + escapar(rotuloPreco(unica.loja)) + '<span class="sr"> (abre em nova aba)</span> ' + ext + "</a>" +
           '<a class="card-detalhes" href="' + escapar(p.url) + '">Detalhes do produto</a>'
         : '<a class="btn btn-prim" href="' + escapar(p.url) + '">Comparar ' + (p.ofertas || []).length + " lojas</a>";
-      var foto = p.imagem
-        ? '<img src="' + escapar(p.imagem) + '" alt="' + escapar(p.nome) + '" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer">'
-        : '<div class="sem-foto compacta"><strong class="sem-foto-marca">' + escapar(p.marca || p.categoria) + '</strong><span class="sem-foto-nota">Sem foto aqui · fotos na loja</span></div>';
-      return '<article class="card' + (p.imagem ? " com-foto" : "") + '"><a class="card-img" href="' + escapar(p.url) + '" tabindex="-1" aria-hidden="true">' + foto + "</a>" +
+      var w = p.imagemLargura || 600, h = p.imagemAltura || 600;
+      var foto = '<img src="' + escapar(p.imagem) + '" alt="' + escapar(p.nome) + '" width="' + w + '" height="' + h + '" loading="lazy" decoding="async" referrerpolicy="no-referrer">';
+      var linkFoto = p.imagemLink
+        ? '<a class="card-img" href="' + escapar(p.imagemLink) + '" target="_blank" rel="sponsored nofollow noopener">' + foto + "</a>"
+        : '<a class="card-img" href="' + escapar(p.url) + '" tabindex="-1" aria-hidden="true">' + foto + "</a>";
+      return '<article class="card com-foto">' + linkFoto +
         '<div class="card-corpo"><span class="card-cat">' + escapar(p.categoria) + '</span><h3><a href="' + escapar(p.url) + '">' + escapar(p.nome) + "</a></h3>" +
         (p.marca ? '<span class="card-marca">' + escapar(p.marca) + "</span>" : "") +
         (p.preco && p.precoEm ? '<span class="card-preco"><strong>' + p.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) + "</strong>consultado em " + new Date(p.precoEm).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit", timeZone: "America/Sao_Paulo" }) + "</span>" : "") +
         '<p class="card-loja">' + (unica ? loja(unica) + "<span>compra concluída na loja</span>" : (p.ofertas || []).map(loja).join("")) + "</p>" + acao + "</div></article>";
-    };
-    var rec = function (p) {
-      var unica = p.ofertas && p.ofertas.length === 1 ? p.ofertas[0] : null;
-      var loja = function (o) { return '<span class="marca-loja ' + escapar(o.loja) + '"><i></i>' + escapar(o.nome) + "</span>"; };
-      return '<article class="rec"><div class="rec-txt"><span class="rec-meta">' + escapar(p.categoria) + (p.marca ? " · " + escapar(p.marca) : "") + '</span><h3><a href="' + escapar(p.url) + '">' + escapar(p.nome) + "</a></h3>" +
-        (p.tipo ? '<p class="rec-tipo">' + escapar(p.tipo) + "</p>" : "") +
-        ((p.pontos || []).length ? '<ul class="rec-pontos">' + p.pontos.map(function (x) { return "<li>" + escapar(x) + "</li>"; }).join("") + "</ul>" : "") +
-        '</div><div class="rec-acao">' + (unica
-          ? '<p class="card-loja">' + loja(unica) + '<span>fotos e preço na loja</span></p><a class="btn btn-prim btn-loja" href="' + escapar(unica.url) + '" target="_blank" rel="sponsored nofollow noopener" data-oferta data-produto="' + escapar(p.id) + '" data-loja="' + escapar(unica.loja) + '">' + escapar(rotuloPreco(unica.loja)) + '<span class="sr"> (abre em nova aba)</span> ' + ext + '</a><a class="card-detalhes" href="' + escapar(p.url) + '">Detalhes do produto</a>'
-          : '<p class="card-loja">' + (p.ofertas || []).map(loja).join("") + '</p><a class="btn btn-prim" href="' + escapar(p.url) + '">Comparar ' + (p.ofertas || []).length + " lojas</a>") + "</div></article>";
     };
     fetch(new URL("busca.json", raiz)).then(function (r) { return r.json(); }).then(function (dados) {
       var lista = dados.produtos || [];
@@ -125,21 +118,20 @@
         var temLojas = filtros && filtros.querySelector('input[name="loja"]');
         var ordem = filtros ? filtros.querySelector('select[name="ordem"]').value : "padrao";
         var vis = achados.filter(function (p) {
+          if (!p.imagem) return false;
           var okCat = !cat || p.categoriaSlug === cat;
           var okLoja = !temLojas || (p.ofertas || []).some(function (o) { return marcadas.indexOf(o.loja) > -1; });
           return okCat && okLoja;
         }).sort(function (a, b) {
           if (ordem === "nome") return a.nome.localeCompare(b.nome, "pt-BR");
-          return Number(!!b.imagem) - Number(!!a.imagem) || Number(!!b.prioritario) - Number(!!a.prioritario) || a.nome.localeCompare(b.nome, "pt-BR");
+          return Number(!!b.prioritario) - Number(!!a.prioritario) || a.nome.localeCompare(b.nome, "pt-BR");
         });
         if (!vis.length) {
           resultados.innerHTML = '<p class="vazio">Nenhum produto encontrado' + (termo ? " para “" + escapar(termo) + "”" : "") + '. Tente outro termo, ajuste os filtros ou <a href="./">veja todos</a>.</p>';
           return;
         }
-        var comFoto = vis.filter(function (p) { return p.imagem; }), semFoto = vis.filter(function (p) { return !p.imagem; });
         resultados.innerHTML = '<p class="sub">' + vis.length + (vis.length === 1 ? " produto" : " produtos") + (termo ? " para “" + escapar(termo) + "”" : "") + "</p>" +
-          (comFoto.length ? '<div class="grade-prod">' + comFoto.map(card).join("") + "</div>" : "") +
-          (semFoto.length ? (comFoto.length ? '<h3 class="lista-tit">Mais resultados <small>foto na página da loja</small></h3>' : "") + '<div class="lista-rec">' + semFoto.map(rec).join("") + "</div>" : "");
+          '<div class="grade-prod">' + vis.map(card).join("") + "</div>";
       };
       if (filtros) { filtros.hidden = false; filtros.addEventListener("change", mostrar); }
       mostrar();
