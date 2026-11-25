@@ -27,5 +27,13 @@ Regras para qualquer conteúdo novo (o build barra o que não cumprir — `src/l
 que não estão no catálogo, e não há outra pauta pendente na fila. Para a próxima semana, é preciso
 acrescentar pautas novas (com demanda verificada) ou conferir e cadastrar Echo Dot Max e Echo Pop.
 
+**Execução semanal de 25/11/2026:** nenhum guia novo. A pauta 5 continua bloqueada: desde 22/11 (#2)
+nenhum anúncio da Amazon aparece na vitrine (0 de 13 ofertas ativas, sem foto até a Creators API),
+então Echo Dot, Echo Dot Max e Echo Pop não estão publicados. Não há outra pauta pendente na fila.
+Build local (`SOMENTE_CONFIRMADOS=1`): 58/73 produtos, 10 guias publicados, 6 guias barrados por falta
+de foto (Kindle, Echo × Fire TV, Fire TV Stick, Cadence, Galaxy A17, Elseve). Para voltar a publicar,
+é preciso (a) pautas novas com demanda verificada sobre produtos do Mercado Livre já publicados, ou
+(b) a credencial da Creators API para os produtos da Amazon voltarem ao site.
+
 Quando Shopee e Mercado Livre forem autorizados, os produtos dessas lojas entram no
 build automaticamente (`programasConfirmados`), e esta pauta ganha os temas deles.
